@@ -1,0 +1,30 @@
+.p-title {
+    font-weight: bold;
+    font-size: 1.4em;
+    margin: 1px;
+  }
+  
+  .p-rating {
+    background-color: blueviolet;
+    color: white;
+    border-radius: 4px;
+    width: fit-content;
+    margin: 1px;
+    padding: 5px;
+  }
+  .c1{
+    width: 800px;
+   
+   
+    background-color:black;
+  }
+  
+  
+  .text-muted{
+    margin-left: 1px;
+
+  }
+  .h4{
+    margin-left: 1px;
+
+  }

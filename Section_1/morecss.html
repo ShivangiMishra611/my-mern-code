@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More CSS</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Alata:regular" rel="stylesheet" />
+    <style>
+        .c1{
+            border: 2px solid red;
+            font-size: 50px;
+            text-align: center;
+            font-family: Montserrat;
+            font-weight: bolder;
+            color: rgba(128, 0, 128, 0.801);
+            background-color: rgba(255, 255, 0, 0.87);
+            padding: 50px 100px;
+            margin:auto ;
+            width: 800px;
+
+
+        }
+        .card{
+            /* border:1px solid red; */
+            margin: 200px auto;
+            width: 40%;
+            border-radius: 10px;
+            padding:50px;
+            box-sizing: border-box;
+            background-color: yellow;
+            box-shadow: 5px 5px 20px -2px rgba(0, 0, 0, 0.205),-2px -2px 10px -2px rgba(0, 0, 0, 0.205)
+            
+            ;
+
+        }
+        .title{
+            font-size: 2em;
+            font-family: Montserrat;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 2px 3px 5px black;
+
+        }
+        .title1{
+            color: chartreuse;
+            text-shadow: 2px 3px 5px black;
+
+        }
+        .title2{
+           
+            text-shadow: 2px 3px 5px rgb(117,255,255);
+
+        }
+        .mybtn{
+            background-color: #b70ffb;
+            border: 2px solid #b70ffb ;
+            color: white;
+            /* border: none; */
+            padding: 20px 50px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            font-weight: 600;
+            font-family: Alata;
+            transition: 200ms;
+            transform: rotateZ(-10deg);
+        }
+        .mybtn:hover{
+            background-color: white;
+            color: #b70ffb;
+            /* transform: rotateZ(0deg); */
+            /* transform: translate(20px ,0px); */
+            transform: skewY(10deg) rotateZ(0deg);
+
+        }
+        .MyLink:visited{
+            color:red;
+
+        }
+        body{
+            background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2% );
+
+            
+            /* background: linear-gradient(to right top,red,blue,green); */
+            background-image: linear-gradient( 68.3deg,  rgba(245,177,97,1) 0.4%, rgba(236,54,110,1) 100.2% );
+            height:100vh;
+        }
+        
+
+
+    </style>
+</head>
+<body>
+
+    <p class="c1">The Box Model</p>
+    <div class="card">
+        <p class="title title1">Card Title</p>
+        <p class="title title2">Card Title</p>
+        <button class="mybtn">click here</button>
+        <a href="http://npgc.in/" class="My Link">Its a Link</a>
+        <a href="http://.in/" class="MyLink">Its a Link</a>
+
+    </div>
+    
+</body>
+</html>

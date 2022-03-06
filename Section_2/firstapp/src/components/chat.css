@@ -1,0 +1,34 @@
+.chat-area {
+    height: 80vh;
+    overflow-y: scroll;
+  }
+  
+  .chat-card {
+    background: #ffdc9a;
+  }
+  
+  .message-box {
+    margin-bottom: 2rem;
+    padding: 0.6rem;
+    width: fit-content;
+    max-width: 80%;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .message-text {
+    margin: 0;
+  }
+  
+  .message-sent {
+    background: #00c3ff;
+    background: linear-gradient(to right, #e96900, #ff0d6a);
+    margin-left: auto;
+    border-radius: 10px 0 10px 10px;
+  }
+  
+  .message-recieved {
+    background-color: #00cf80;
+    background: linear-gradient(to right, #00cf80, #00d6cb);
+    border-radius: 0 10px 10px 10px;
+  }

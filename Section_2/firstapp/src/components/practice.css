@@ -1,0 +1,230 @@
+.logo {
+   
+    padding-top: 0px;
+    
+  }
+
+.link1 a{
+    margin-left: 10px;
+    display: block;
+    color: white;
+    padding-bottom: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    /* margin-top: -50px; */
+    
+
+}
+.profile-title{
+    color:red;
+    margin-left: -35px;
+}
+.link1 h4{
+    text-align: center;
+    padding-top: -0px;
+    
+
+}
+.link1{
+    margin-top: -50px;
+}
+.line{
+    
+    color:white;
+    height: 1000px;
+    border-width: 70px;
+    size: 8;
+    width: 90%;
+}
+  
+.profile{
+    height:80%;
+    padding:240px;
+    padding-left: 50px;
+    padding-top: 30px;
+    width:20%;
+    box-shadow: 5px 5px 20px -2px rgba(0, 0, 0, 0.205),-2px -2px 10px -2px rgba(0, 0, 0, 0.205);
+    background-color:  #E600FF;;
+
+}
+.headerprof{
+    align-items: center;
+    padding-top: 10px;
+}
+.profname{
+   text-align: center;
+   padding-top: 20px;
+}
+.form1{
+   
+    height:80%;
+    padding:250px;
+    padding-left: 50px;
+    padding-top: 30px;
+    width:40%;
+    box-shadow: 5px 5px 20px -2px rgba(0, 0, 0, 0.205),-2px -2px 10px -2px rgba(0, 0, 0, 0.205);
+
+}
+.form2{
+    height:80%;
+    padding:250px;
+    padding-left: 50px;
+    padding-top: 2px;
+    width:40%;
+    
+}
+.profile-form{
+    width:202%;
+    padding-top: 30px;
+    padding-left: 0px;
+}
+.page-two{
+    width:180%;
+    padding-top: 30px;
+    padding-left: 30px;
+    box-shadow: 5px 5px 20px -2px rgba(0, 0, 0, 0.205),-2px -2px 10px -2px rgba(0, 0, 0, 0.205);
+
+
+}
+.form2inp{
+    width:50%;
+
+
+
+}
+.sidebar{
+    width:250%;
+    /* background-color: black; */
+    color: black;
+    height: 100%;
+    padding-top: 30px;
+}
+.profile-link a{
+    margin-left: 10px;
+    display: block;
+    color: black;
+    padding-bottom: 10px;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bolder;
+    padding:15px;
+}
+a:hover{
+    color: red;
+    font-weight: bolder
+}
+a:active{
+    color: red;
+}
+
+select,input{
+    width:50%;
+   border-top-style: hidden;
+   border-left-style: hidden;
+   border-right-style: hidden;
+   border-bottom-style: groove ;
+   display: inline;
+  
+}
+ 
+.label1{
+   margin-left: -35px;
+    display: inline-block;
+    position: fixed;
+    font-weight: bold;
+    }
+
+.user-form span{
+    display: inline-block;
+}
+
+
+.user-form  input{
+    
+    width:130%;
+    padding:10px;
+    margin-left: 50px;
+    margin-right: -10px;
+    
+    padding-left: 5px;
+    
+}
+p{
+    margin-left:90px;
+    font-weight: bolder;
+    
+}
+
+.user-form1  input{
+    
+    width:80%;
+    padding:10px;
+    margin-left: 100px;
+    margin-right: -10px;
+    
+    padding-left: 5px;
+    position: relative;
+   
+   
+    
+}
+.user-form  select{
+    
+    width:115%;
+    padding:10px;
+    margin-left: 40px;
+    margin-right: -10px;
+   display: inline-block;
+    
+    padding-left: 5px;
+   
+    
+}
+.no-outline:focus{
+    outline: none;
+}
+
+.d1 select{
+    width:17%;
+
+}
+.d2 select{
+    width:30%;
+
+}
+.d3 select{
+    width:22%;
+    
+    
+
+}
+ .d select{
+    
+    
+    float:left;
+}
+.d3{
+    
+    margin-left: 80px;
+}
+
+
+
+.label2,.label3,.label4{
+    margin-left: -35px;
+    font-weight: bold;
+}
+
+.mybtn{
+    font-family: Montserrat;
+          margin-left: 120px;
+            background: orangered;
+            color: white;
+            width:25%;
+            padding:5px;
+            border-radius: 8px;
+            margin-top:-15px;
+} 
