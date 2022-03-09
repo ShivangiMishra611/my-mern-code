@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-
+import SideBar from "./components/admin/sidebar";
 import Login from "./components/main/login";
 import Reporter from "./components/reporter";
 import AddNews from "./components/reporter/addNews";
