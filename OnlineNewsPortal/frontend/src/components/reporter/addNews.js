@@ -61,9 +61,8 @@ const AddNews = () => {
                     News Title
                   </label>
                   <input
-                    type="email"
                     className="form-control"
-                    id="exampleFormControlInput1"
+                    id="title"
                     onChange={handleChange}
                     value={values.title}
                   />
@@ -76,6 +75,7 @@ const AddNews = () => {
                   <select
                     className="form-select"
                     aria-label="Default select example"
+                    id="category"
                     onChange={handleChange}
                     value={values.category}
                   >
@@ -95,6 +95,7 @@ const AddNews = () => {
                     aria-label="Default select example"
                     onChange={handleChange}
                     value={values.subCategory}
+                    id="subCategory"
                   >
                     <option selected>Sub Category</option>
                     <option value="1">One</option>
@@ -112,7 +113,7 @@ const AddNews = () => {
                   </label>
                   <textarea
                     className="form-control"
-                    id="exampleFormControlTextarea1"
+                    id="summary"
                     rows="5"
                     onChange={handleChange}
                     value={values.summary}
@@ -128,7 +129,7 @@ const AddNews = () => {
                   </label>
                   <textarea
                     className="form-control"
-                    id="exampleFormControlTextarea1"
+                    id="tags"
                     rows="3"
                     onChange={handleChange}
                     value={values.tags}
@@ -142,12 +143,12 @@ const AddNews = () => {
                   <input
                     className="form-control"
                     type="file"
-                    id="formFile"
+                    id="thumbnail"
                     onChange={uploadThumbnail}
                   />
                 </div>
 
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-primary" >
                   Submit
                 </button>
               </div>

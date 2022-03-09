@@ -63,10 +63,6 @@ const Login = () => {
 
   return (
     <div>
-<<<<<<< HEAD
-      <h1>Login</h1>
-=======
->>>>>>> 70c6b71717e843fcd6a79eadcccb5b60dfcd57f4
       <Paper className="login-container">
         <Grid container justifyContent="center">
           <Grid item md={3} sm={2}>
@@ -117,8 +113,6 @@ const Login = () => {
   );
 };
 
-<<<<<<< HEAD
 export default Login;
-=======
-export default Login;
->>>>>>> 70c6b71717e843fcd6a79eadcccb5b60dfcd57f4
+
+
