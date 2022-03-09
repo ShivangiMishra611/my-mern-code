@@ -8,7 +8,6 @@ import TopStories from "./components/main/topStories";
 import Reporter from "./components/reporter";
 import AddNews from "./components/reporter/addNews";
 import ReporterDashbord from "./components/reporter/dashboard";
-import AddReporter from  "./components/admin/"
 
 function App() {
   return (
@@ -28,9 +27,7 @@ function App() {
             <Route element={<Login />} path="login" />
 
             <Route element={<AddReporter />} path="addreporter" />
-              
-           
-          
+
         </Routes>
       </BrowserRouter>
     </div>
