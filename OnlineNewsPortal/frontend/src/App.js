@@ -13,8 +13,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Reporter />} path="reporter">
-            <Route element={<ReporterDashbord />} path="dashboard">
+            <Route element={<ReporterDashboard />} path="dashboard">
               <Route element={<AddNews />} path="addnews" />
+              <Route element={<AddReporter />} path="addreporter" />
+            
             </Route>
           </Route>
           
