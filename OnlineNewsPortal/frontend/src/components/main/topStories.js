@@ -11,18 +11,18 @@ import {
   
   
   const TopStories = () => {
-    const [productArray, setProductArray] = useState([]);
+    const [newsArray, setNewsArray] = useState([]);
     const [loading, setLoading] = useState(true);
   
     const url = app_config.api_url;
   
     // Step 1 : Fetch Data from server
     const fetchData = () => {
-      fetch(url + "/product/getall")
+      fetch(url + "/news/getall")
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-          setProductArray(data);
+          setNewsArray(data);
           setLoading(false);
         });
     };
@@ -31,15 +31,15 @@ import {
       fetchData();
     }, []);
   
-    const displayProducts = () => {
+    const displaynews = () => {
       if (!loading) {
-        return productArray.map((product) => (
+        return newsArray.map((news) => (
           <Grid item md={3}>
             <Card>
               <CardMedia
                 component="img"
                 height="350"
-                image={url + "/" + product.thumbnail}
+                image={url + "/" + news.thumbnail}
                 
                 alt={product.name}
               />
