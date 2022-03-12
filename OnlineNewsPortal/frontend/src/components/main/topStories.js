@@ -2,15 +2,18 @@ import {
     Card,
     CardContent,
     CardMedia,
-    CircularProgress,
+    
     Grid,
   } from "@mui/material";
   import { useEffect, useState } from "react";
 import app_config from "../../config";
+
   
   
   
   const TopStories = () => {
+
+   
     const [newsArray, setNewsArray] = useState([]);
     const [loading, setLoading] = useState(true);
   

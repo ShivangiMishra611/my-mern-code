@@ -1,9 +1,20 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom';
+import Footer from './footer';
+import Header from './header';
 
 const Main = () => {
   return (
-    <div>Main</div>
-  )
-}
+    <div>
+     
+      <h1>Main Dashboard</h1>
+      <Header />
 
-export default Main
+      <Outlet />
+
+      <Footer />
+    </div>
+  );
+};
+
+export default Main;

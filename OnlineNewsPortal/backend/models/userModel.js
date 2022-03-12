@@ -8,6 +8,6 @@ const mySchema = new mongoose.Schema({
   createdAt: { type: Date, default: new Date() },
 });
 
-const myModel = mongoose.model("userlogin", mySchema);
+const myModel = mongoose.model("user", mySchema);
 
 module.exports = myModel;

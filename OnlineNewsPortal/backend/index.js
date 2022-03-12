@@ -7,6 +7,7 @@ const userRouter = require("./routers/userRouter");
 const newsRouter = require("./routers/newsRouter");
 const reporterRouter = require("./routers/reporterRouter");
 
+
 const utilRouter = require("./routers/utils");
 
 app.use(
@@ -20,7 +21,7 @@ app.use(express.json());
 app.use("/user", userRouter);
 app.use("/util", utilRouter);
 app.use("/news", newsRouter);
-app.use("/reporter", newsRouter);
+// app.use("/reporter", reporterRouter);
 
 const { createServer } = require("http");
 const { Server } = require("socket.io");
@@ -44,22 +45,9 @@ io.on("connection", (socket) => {
 
 app.use(express.static("./uploads"));
 
-app.use(
-  cors({
-    origin: ["http://localhost:3000"],
-  })
-);
 
-app.use(express.json());
-
-// app.get("/", (req, res) => {
-//   res.send("you got a response");
-// });
-
-// app.get("/homepage", (req, res) => {
-//   res.send("you got a response from home");
-// });
 
 httpServer.listen(port, () => {
   console.log("server started");
 });
+3
