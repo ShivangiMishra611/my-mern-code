@@ -7,6 +7,8 @@ const userRouter = require("./routers/userRouter");
 const newsRouter = require("./routers/newsRouter");
 const reporterRouter = require("./routers/reporterRouter");
 
+const managerRouter = require("./routers/managerRouter");
+
 
 const utilRouter = require("./routers/utils");
 
@@ -22,6 +24,8 @@ app.use("/user", userRouter);
 app.use("/util", utilRouter);
 app.use("/news", newsRouter);
 app.use("/reporter", reporterRouter);
+pp.use("/reporter", managerRouter);
+
 // app.use("/reporter", reporterRouter);
 
 const { createServer } = require("http");
