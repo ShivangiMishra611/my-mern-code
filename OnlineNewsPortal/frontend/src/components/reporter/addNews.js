@@ -53,9 +53,9 @@ const AddNews = () => {
       <Formik initialValues={newsForm} onSubmit={newsSubmit}>
         {({ values, handleChange, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <div class="card">
-              <h5 class="card-header">Add News</h5>
-              <div class="card-body">
+            <div className="card">
+              <h5 className="card-header">Add News</h5>
+              <div className="card-body">
                 <div className="mb-3">
                   <label for="exampleFormControlInput1" className="form-label">
                     News Title
