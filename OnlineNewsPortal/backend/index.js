@@ -5,6 +5,7 @@ const cors = require("cors");
 
 const userRouter = require("./routers/userRouter");
 const newsRouter = require("./routers/newsRouter");
+const reporterRouter = require("./routers/reporterRouter");
 
 const utilRouter = require("./routers/utils");
 
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use("/user", userRouter);
 app.use("/util", utilRouter);
 app.use("/news", newsRouter);
+app.use("/reporter", newsRouter);
 
 const { createServer } = require("http");
 const { Server } = require("socket.io");
