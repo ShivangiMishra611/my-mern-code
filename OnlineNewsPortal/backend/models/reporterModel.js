@@ -1,20 +1,14 @@
 const mongoose = require("../connection");
 
 const mySchema = new mongoose.Schema({
-  
+  name :String,
   username: String,
   password: String,
-  dateOfBirth: Number,
-  designation : String,
-  FacebookLink: String,
-  TwitterLink: String,
-  Country: String,
-  Landmark:String,
-  Language:String,
-  City:String,
+  age: Number,
+  thumbnail: String,
   createdAt: { type: Date, default: new Date() },
 });
 
-const myModel = mongoose.model("reporters", mySchema);
+const myModel = mongoose.model("reporter", mySchema);
 
 module.exports = myModel;

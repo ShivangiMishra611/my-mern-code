@@ -21,6 +21,7 @@ app.use(express.json());
 app.use("/user", userRouter);
 app.use("/util", utilRouter);
 app.use("/news", newsRouter);
+app.use("/reporter", reporterRouter);
 // app.use("/reporter", reporterRouter);
 
 const { createServer } = require("http");

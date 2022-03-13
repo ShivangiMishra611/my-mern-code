@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
+import Admin from "./components/admin";
 import AddReporter from "./components/admin/addReporter";
 
 import Main from "./components/main";
@@ -16,29 +17,26 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Reporter />} path="reporter">
-
             <Route element={<ReporterDashbord />} path="dashboard">
               <Route element={<AddNews />} path="addnews" />
             </Route>
           </Route>
 
           <Route element={<Main />} path="main">
-              <Route element={<TopStories />} path="topstories" />
-            </Route>
+            <Route element={<TopStories />} path="topstories" />
+          </Route>
 
+          <Route element={<Main />} path="main">
+            <Route element={<Login />} path="login" />
+          </Route>
 
-            <Route element={<Main />} path="main">
-              <Route element={<Login />} path="login" />
-              </Route>
+          <Route element={<Main />} path="main">
+            <Route element={<Signup />} path="signup" />
+          </Route>
 
-              <Route element={<Main />} path="main">
-              <Route element={<Signup />} path="signup" />
-              </Route>
-          
-           
-
+          <Route element={<Admin />} path="admin">
             <Route element={<AddReporter />} path="addreporter" />
-
+          </Route>
         </Routes>
       </BrowserRouter>
     </div>
