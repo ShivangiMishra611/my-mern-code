@@ -1,3 +1,4 @@
+
 import "./addreporter.css";
 const AddReporter = () => {
   return (
@@ -103,21 +104,9 @@ const AddReporter = () => {
     <input type="text" class="form-control" id="inputZip"/>
   </div>
 
-  <div className="mb-3">
-                  <label for="formFile" class="form-label">
-                    Add Image
-                  </label>
-                  <input
-                    className="form-control"
-                    type="file"
-                    id="thumbnail"
-                    // onChange={uploadThumbnail}
-                  />
-                </div>
-
  
   <div class="col-12">
-  <button className=" mybtn btn btn-primary  w-90">Save</button>
+  <button className=" mybtn btn btn-primary  w-100">Save</button>
   </div>
 </form></div>
     <div className="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...''oipoipoipoiopiopioi'</div>
@@ -135,3 +124,100 @@ const AddReporter = () => {
 };
 
 export default AddReporter;
+  
+
+// const AddReporter = () => {
+//   return (
+//     <div>
+//     <section className="vh-100" ></section>
+//   <div className="container h-100"></div>
+//     <div className="row d-flex justify-content-center align-items-center h-100">   </div>
+    
+
+
+//       <div className="col-xl-9"></div>
+
+//         <h1 className="text-white mb-4">Apply for a job</h1>
+
+//         <div className="card" ></div>
+//           <div className="card-body"></div>
+
+//             <div className="row align-items-center pt-4 pb-3">
+//               <div className="col-md-3 ps-5">
+
+//                 <h6 className="mb-0">Full name</h6>
+
+//               </div>
+//               <div className="col-md-9 pe-5">
+
+//                 <input type="text" className="form-control form-control-lg" />
+
+//               </div>
+//             </div>
+
+//             <hr className="mx-n3"></hr>
+
+//             <div className="row align-items-center py-3">
+//               <div className="col-md-3 ps-5">
+
+//                 <h6 className="mb-0">Email address</h6>
+
+//               </div>
+//               <div className="col-md-9 pe-5">
+
+//                 <input type="email" className="form-control form-control-lg" placeholder="example@example.com" />
+
+//               </div>
+//             </div>
+
+//             <hr className="mx-n3"></hr>
+
+//             <div className="row align-items-center py-3">
+//               <div className="col-md-3 ps-5">
+
+//                 <h6 className="mb-0">Full name</h6>
+
+//               </div>
+//               <div className="col-md-9 pe-5">
+
+//                 <textarea className="form-control" rows="3" placeholder="Message sent to the employer"></textarea>
+
+//               </div>
+//             </div>
+
+//             <hr className="mx-n3"></hr>
+
+//             <div className="row align-items-center py-3">
+//               <div className="col-md-3 ps-5">
+
+//                 <h6 className="mb-0">Upload CV</h6>
+
+//               </div>
+//               <div className="col-md-9 pe-5">
+
+//                 <input className="form-control form-control-lg" id="formFileLg" type="file" />
+//                 <div className="small text-muted mt-2">Upload your CV/Resume or any other relevant file. Max file size 50 MB
+                
+//                 </div>
+
+//               </div>
+//             </div>
+
+//             <hr className="mx-n3"></hr>
+
+//             <div className="px-5 py-4">
+//               <button type="submit" className="btn btn-primary btn-lg">Send application</button>
+//             </div>
+
+       
+//   </div>
+
+
+    
+    
+   
+      
+//   );
+// };
+
+// export default AddReporter;

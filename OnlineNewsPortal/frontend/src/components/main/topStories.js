@@ -3,12 +3,12 @@ import {
     CardContent,
     CardMedia,
     
-    Grid,
+    Grid,Box,Button
   } from "@mui/material";
   import { useEffect, useState } from "react";
 import app_config from "../../config";
 
-  
+import "./topstories.css";
   
   
   const TopStories = () => {
@@ -60,7 +60,45 @@ import app_config from "../../config";
   
     return (
       <div className="container">
-        <h1>Display News</h1>
+        <h1 className="news-title">Trusted News Tribune</h1>
+        <div className="category-header">
+        <Box sx={{ '& button': { m: 1 } }}>
+
+        <Button variant="contained" size="medium">
+         Category1
+        </Button>
+
+        <Button variant="contained" size="medium">
+         Category2
+        </Button>
+
+        <Button variant="contained" size="medium">
+         Category3
+        </Button>
+
+        <Button variant="contained" size="medium">
+         Category4
+        </Button>
+
+        <Button variant="contained" size="medium">
+         Category5
+        </Button>
+
+        <Button variant="contained" size="medium">
+         Category6
+        </Button>
+
+
+        <Button variant="contained" size="medium">
+         Category7
+        </Button>
+
+        <Button variant="contained" size="medium">
+         Category8
+        </Button>
+
+        </Box>
+        </div>
         <Grid container spacing={6}>
           {displaynews()}
         </Grid>
