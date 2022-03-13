@@ -1,109 +1,125 @@
 import {
-    Card,
-    CardContent,
-    CardMedia,
-    
-    Grid,Box,Button
-  } from "@mui/material";
-  import { useEffect, useState } from "react";
+  Card,
+  CardContent,
+  CardMedia,
+  Grid,
+  Box,
+  Button,
+  Typography,
+  CardActions,
+  Container,
+} from "@mui/material";
+import { useEffect, useState } from "react";
 import app_config from "../../config";
 
 import "./topstories.css";
-  
-  
-  const TopStories = () => {
 
-   
-    const [newsArray, setNewsArray] = useState([]);
-    const [loading, setLoading] = useState(true);
-  
-    const url = app_config.api_url;
-  
-    // Step 1 : Fetch Data from server
-    const fetchData = () => {
-      fetch(url + "/news/getall")
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          setNewsArray(data);
-          setLoading(false);
-        });
-    };
-  
-    useEffect(() => {
-      fetchData();
-    }, []);
-  
-    const displaynews = () => {
-      if (!loading) {
-        return newsArray.map((news) => (
-          <Grid item md={3}>
-            <Card>
+const TopStories = () => {
+  const [newsArray, setNewsArray] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const newsCategories = [
+    "Sports",
+    "Politics",
+    "World",
+    "Lifestyle",
+    "Entertainment",
+  ];
+
+  const newssubCategories =[
+
+  ]
+
+  const url = app_config.api_url;
+
+  // Step 1 : Fetch Data from server
+  const fetchData = () => {
+    fetch(url + "/news/getall")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setNewsArray(data);
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const displayCategories = () => {
+    return newsCategories.map((category) => (
+      <Button variant="outlined" size="medium">
+        {category}
+      </Button>
+    ));
+  };
+
+  const displaynews = () => {
+    if (!loading) {
+      return newsArray.map((news) => (
+        <Card className="mt-5">
+          <Grid container>
+            <Grid item xs={6} md={4}>
               <CardMedia
                 component="img"
-                height="350"
+                height="200"
                 image={url + "/" + news.thumbnail}
-                
                 alt={news.title}
               />
+            </Grid>
+            <Grid item xs={6} md={8}>
               <CardContent>
-                <p className="p-title">{news.title}</p>
-                <p className="text-muted">{news.summary}</p>
-                
-                
+                <Typography component="div" variant="h5">
+                  {news.title}
+                </Typography>
+                <Typography
+                  variant="subtitle1"
+                  color="text.secondary"
+                  component="div"
+                >
+                  {news.summary}
+                </Typography>
               </CardContent>
-            </Card>
+              <CardActions>
+                <Button size="small">Share</Button>
+                <Button size="small">Learn More</Button>
+              </CardActions>
+            </Grid>
           </Grid>
-        ));
-      } 
-    };
-  
-    return (
-      <div className="container">
-        <h1 className="news-title">Trusted News Tribune</h1>
-        <div className="category-header">
-        <Box sx={{ '& button': { m: 1 } }}>
-
-        <Button variant="contained" size="medium">
-         Category1
-        </Button>
-
-        <Button variant="contained" size="medium">
-         Category2
-        </Button>
-
-        <Button variant="contained" size="medium">
-         Category3
-        </Button>
-
-        <Button variant="contained" size="medium">
-         Category4
-        </Button>
-
-        <Button variant="contained" size="medium">
-         Category5
-        </Button>
-
-        <Button variant="contained" size="medium">
-         Category6
-        </Button>
-
-
-        <Button variant="contained" size="medium">
-         Category7
-        </Button>
-
-        <Button variant="contained" size="medium">
-         Category8
-        </Button>
-
-        </Box>
-        </div>
-        <Grid container spacing={6}>
-          {displaynews()}
-        </Grid>
-      </div>
-    );
+        </Card>
+      ));
+    }
   };
-  
-  export default TopStories;
+
+  return (
+    <div>
+      <header className="stories-header">
+        <Container>
+          <h1 className="news-title">Trusted News Tribune</h1>
+          <div className="category-header">
+            <Box
+              sx={{
+                "& button": { m: 1 },
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              {displayCategories()}
+            </Box>
+          </div>
+        </Container>
+      </header>
+      <Container>
+        <Grid container spacing={3}>
+          <Grid item md={9}>
+            {displaynews()}
+          </Grid>
+          <Grid item md={3}></Grid>
+        </Grid>
+      </Container>
+    </div>
+  );
+};
+
+export default TopStories;
