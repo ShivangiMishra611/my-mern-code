@@ -3,7 +3,7 @@ import { Formik } from "formik";
 import { useState } from "react";
 import app_config from "../../config";
 
-const AddNews = () => {
+const  AddReporter = () => {
   const url = app_config.api_url;
 
   const [thumbnail, setThumbnail] = useState("");
@@ -131,4 +131,4 @@ const AddNews = () => {
   );
 };
 
-export default AddNews;
+export default AddReporter;

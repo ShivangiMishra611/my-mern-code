@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Admin from "./components/admin";
-import AddReporter from "./components/admin/addReporter";
+import AddReporter from "./components/admin/addreporter";
 
 import Main from "./components/main";
 import Login from "./components/main/login";

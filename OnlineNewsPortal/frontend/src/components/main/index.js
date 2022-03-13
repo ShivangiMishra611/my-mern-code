@@ -7,7 +7,6 @@ const Main = () => {
   return (
     <div>
      
-      <h1>Main Dashboard</h1>
       <Header />
 
       <Outlet />

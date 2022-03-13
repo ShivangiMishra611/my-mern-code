@@ -2,6 +2,13 @@ import "./news.css";
 import { Formik } from "formik";
 import { useState } from "react";
 import app_config from "../../config";
+import {
+  MenuItem,
+  Select,
+  InputLabel,
+  FormControl,
+  TextField,TextareaAutosize
+} from "@mui/material";
 
 const AddNews = () => {
   const url = app_config.api_url;
@@ -16,6 +23,14 @@ const AddNews = () => {
     thumbnail: "",
     tags: "",
   };
+
+  const newsCategories = [
+    "Sports",
+    "Politics",
+    "World",
+    "Lifestyle",
+    "Entertainment",
+  ];
 
   const newsSubmit = (values) => {
     values.thumbnail = thumbnail;
@@ -57,36 +72,54 @@ const AddNews = () => {
               <h5 className="card-header">Add News</h5>
               <div className="card-body">
                 <div className="mb-3">
-                  <label for="exampleFormControlInput1" className="form-label">
+                  {/* <label for="exampleFormControlInput1" className="form-label">
                     News Title
-                  </label>
-                  <input
-                    className="form-control"
+                  </label> */}
+                  <TextField
+                    className="w-100 mt-3"
+                    placeholder="Title"
+                    label="Title"
+                    variant="outlined"
                     id="title"
                     onChange={handleChange}
                     value={values.title}
                   />
                 </div>
 
-                <div className="mb-3">
-                  <label for="exampleFormControlInput2" className="form-label">
-                    Add Category
-                  </label>
-                  <select
-                    className="form-select"
-                    aria-label="Default select example"
+                <FormControl fullWidth>
+                  <InputLabel id="category">Category</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
                     id="category"
-                    onChange={handleChange}
                     value={values.category}
+                    label="Category"
+                    onChange={handleChange}
                   >
-                    <option selected>Category</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div>
+                    {newsCategories.map((category) => (
+                      <MenuItem value={category}>{category}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+                <br></br><br></br>
 
-                <div className="mb-3">
+
+                <FormControl fullWidth>
+                  <InputLabel id="category">Category</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="category"
+                    value={values.category}
+                    label="Category"
+                    onChange={handleChange}
+                  >
+                    {newsCategories.map((category) => (
+                      <MenuItem value={category}>{category}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+                <br></br><br></br>
+
+                {/* <div className="mb-3">
                   <label for="exampleFormControlInput3" className="form-label">
                     Add SubCategory
                   </label>
@@ -102,39 +135,40 @@ const AddNews = () => {
                     <option value="2">Two</option>
                     <option value="3">Three</option>
                   </select>
-                </div>
+                </div> */}
 
                 <div className="mb-3">
-                  <label
-                    for="exampleFormControlTextarea1"
-                    className="form-label"
-                  >
-                    Add News
-                  </label>
-                  <textarea
-                    className="form-control"
+                  
+
+                  <TextareaAutosize
+                    maxRows={4}
                     id="summary"
                     rows="5"
                     onChange={handleChange}
                     value={values.summary}
-                  ></textarea>
+                    aria-label="Add News"
+                    placeholder="Add News"
+                    style={{ width: 640 }}
+                  />
+                  
                 </div>
+                <br></br>
 
                 <div className="mb-3">
-                  <label
-                    for="exampleFormControlTextarea1"
-                    className="form-label"
-                  >
-                    Add Tags
-                  </label>
-                  <textarea
-                    className="form-control"
+                  
+                  <TextareaAutosize
+                    maxRows={4}
                     id="tags"
-                    rows="3"
+                    rows="5"
                     onChange={handleChange}
                     value={values.tags}
-                  ></textarea>
+                    aria-label="Add Tags"
+                    placeholder="Add Tags"
+                    style={{ width: 640 }}
+                  />
+                  
                 </div>
+                <br></br>
 
                 <div className="mb-3">
                   <label for="formFile" class="form-label">
@@ -148,7 +182,7 @@ const AddNews = () => {
                   />
                 </div>
 
-                <button type="submit" className="btn btn-primary" >
+                <button type="submit" className="btn btn-primary">
                   Submit
                 </button>
               </div>

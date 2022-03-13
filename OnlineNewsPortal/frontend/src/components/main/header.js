@@ -1,3 +1,4 @@
+import { NavLink,useNavigate } from "react-router-dom";
 const Header = () => {
     return (
       <div>
@@ -14,9 +15,18 @@ const Header = () => {
           <li className="nav-item">
             <a className="nav-link active" aria-current="page" href="#">Home</a>
           </li>
+          
+
           <li className="nav-item">
-            <a className="nav-link" href="#">Link</a>
-          </li>
+              <NavLink className="nav-link" to="/main/topstories">
+               Top Stories
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/reporter/dashboard/addnews">
+               Add News
+              </NavLink>
+            </li>
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown

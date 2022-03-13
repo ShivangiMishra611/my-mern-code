@@ -24,7 +24,7 @@ app.use("/user", userRouter);
 app.use("/util", utilRouter);
 app.use("/news", newsRouter);
 app.use("/reporter", reporterRouter);
-pp.use("/reporter", managerRouter);
+app.use("/reporter", managerRouter);
 
 // app.use("/reporter", reporterRouter);
 
