@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Model = require("../models/newsModel");
+const Model = require("../models/reporterModel");
 
 router.post("/add", (req, res) => {
   console.log(req.body);
@@ -7,7 +7,7 @@ router.post("/add", (req, res) => {
   new Model(req.body)
     .save()
     .then((data) => {
-      console.log("News data saved successfully..");
+      console.log("Reporter data saved successfully..");
       res.status(200).json(data);
     })
     .catch((err) => {
@@ -19,7 +19,7 @@ router.post("/add", (req, res) => {
 router.get("/getall", (req, res) => {
   Model.find({})
     .then((data) => {
-      console.log("News data fetched successfully..");
+      console.log("Reporter data fetched successfully..");
       res.status(200).json(data);
     })
     .catch((err) => {
@@ -27,6 +27,17 @@ router.get("/getall", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+router.delete("/delete/:id", (req, res) => {
+    Model.findByIdAndDelete(req.params.id)
+      .then((data) => {
+        res.status(200).json({message : 'success'});
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500).json(err);
+      });
+  });
 
 // for exporting router
 module.exports = router;

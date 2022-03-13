@@ -1,143 +1,94 @@
-// import "./news.css";
-import { Formik } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Button } from "@mui/material";
+import toast, { Toaster } from "react-hot-toast";
 import app_config from "../../config";
 
-const AddNews = () => {
+const ManageReporters= () => {
+  const [ReporterArray, setReporterArray] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const url = app_config.api_url;
 
-  const [thumbnail, setThumbnail] = useState("");
-  // const img1="image1.jpg"
-  const managerForm = {
-  name :"",
-  password: "",
-  email: "",
-  gender:"",
-  mobilephone: "",
-  address: "",
-  country:"",
-  landmark:"",
-  language:"",
-  facebooklink:"",
-  twitterlink:"",
-  thumbnail:"" 
-  
-
+  const fetchData = () => {
+    fetch(url + "/reporter/getall")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setReporterArray(data);
+        setLoading(false);
+      });
   };
 
-  const managerSubmit = (values) => {
-    values.thumbnail = thumbnail;
-    console.log(values);
-
-    fetch(url + "/reporter/add", {
-      method: "POST",
-      body: JSON.stringify(values),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((res) => {
-      console.log(res.status);
-    });
+  const deleteReporter = (id) => {
+    fetch(url + "/reporter/delete/" + id, { method: "DELETE" })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        fetchData();
+        toast.success("Reporter Successfully Deleted!!", {
+        
+          style: {
+            borderRadius: "10px",
+            background: "#333",
+            color: "#fff",
+          },
+        });
+      });
   };
 
-  const uploadThumbnail = (e) => {
-    console.log("file selected");
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-    let file = e.target.files[0];
-    console.log(file.name);
-    setThumbnail(file.name);
-    let form = new FormData();
-    form.append("myfile", file);
-
-    fetch(url + "/util/uploadfile", { method: "POST", body: form }).then(
-      (res) => {
-        console.log(res.status);
-      }
-    );
+  const displayReporters = () => {
+    if (!loading) {
+      return ReporterArray.map((reporter, i) => (
+        <tr key={reporter._id}>
+          <td>{reporter.name}</td>
+          <td>{reporter.username}</td>
+          <td>{reporter.age}</td>
+          <td>
+            <img src={url+'/'+reporter.thumbnail} style={{maxWidth: '100px'}} />
+          </td>
+          <td>
+            {new Date(reporter.createdAt).toLocaleDateString()} &nbsp;
+            {new Date(reporter.createdAt).toLocaleTimeString()}
+          </td>
+          <td>
+            <Button
+              variant="contained"
+              color="error"
+              onClick={(e) => deleteReporter(reporter._id)}
+            >
+              <i className="fas fa-trash-alt"></i>Delete
+            </Button>
+          </td>
+        </tr>
+      ));
+    }
   };
 
   return (
-    <div>
-      <Formik initialValues={managerForm} onSubmit={managerSubmit}>
-        {({ values, handleChange, handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
-            <div className="card">
-              <h5 className="card-header">Manage Reporter</h5>
-              <div className="card-body">
-                <div className="mb-3">
-                  <label for="exampleFormControlInput1" className="form-label">
-                    Name
-                  </label>
-                  <input
-                    className="form-control"
-                    id="title"
-                    onChange={handleChange}
-                    value={values.name}
-                  />
-                </div>
+    <div className="container">
+      <Toaster position="top-right" reverseOrder={false} />
+      <h1>Manage Reporters</h1>
 
-                <div className="mb-3">
-                  <label for="exampleFormControlInput2" className="form-label">
-                    Username
-                  </label>
-                  <input
-                    className="form-control"
-                    id="title"
-                    onChange={handleChange}
-                    value={values.username}
-                  />
-                </div>
+      <table className="table table-dark">
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>username</th>
+            <th>age</th>
+            <th></th>
 
-                <div className="mb-3">
-                  <label for="exampleFormControlInput2" className="form-label">
-                    Password
-                  </label>
-                  <input
-                    className="form-control"
-                    id="title"
-                    onChange={handleChange}
-                    value={values.password}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label for="exampleFormControlInput2" className="form-label">
-                    Age
-                  </label>
-                  <input
-                    className="form-control"
-                    id="title"
-                    onChange={handleChange}
-                    value={values.age}
-                  />
-                </div>
-                
-
-
-
-
-
-                <div className="mb-3">
-                  <label for="formFile" class="form-label">
-                    Add Image
-                  </label>
-                  <input
-                    className="form-control"
-                    type="file"
-                    id="thumbnail"
-                    onChange={uploadThumbnail}
-                  />
-                </div>
-
-                <button type="submit" className="btn btn-primary" >
-                  Submit
-                </button>
-              </div>
-            </div>
-          </form>
-        )}
-      </Formik>
+            <th>Create At</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>{displayReporters()}</tbody>
+      </table>
     </div>
   );
 };
 
-export default AddNews;
+export default ManageReporters; 

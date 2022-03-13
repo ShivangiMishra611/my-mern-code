@@ -1,19 +1,18 @@
-// import "./news.css";
 import { Formik } from "formik";
 import { useState } from "react";
 import app_config from "../../config";
 
-const AddNews = () => {
+const AddReporter = () => {
   const url = app_config.api_url;
 
   const [thumbnail, setThumbnail] = useState("");
   // const img1="image1.jpg"
   const reporterForm = {
-    name :"",
-  username: "",
-  password: "",
-  age: "",
-  thumbnail: "",
+    name: "",
+    username: "",
+    password: "",
+    age: "",
+    thumbnail: "",
   };
 
   const reporterSubmit = (values) => {
@@ -61,7 +60,7 @@ const AddNews = () => {
                   </label>
                   <input
                     className="form-control"
-                    id="title"
+                    id="name"
                     onChange={handleChange}
                     value={values.name}
                   />
@@ -73,7 +72,7 @@ const AddNews = () => {
                   </label>
                   <input
                     className="form-control"
-                    id="title"
+                    id="username"
                     onChange={handleChange}
                     value={values.username}
                   />
@@ -85,7 +84,7 @@ const AddNews = () => {
                   </label>
                   <input
                     className="form-control"
-                    id="title"
+                    id="password"
                     onChange={handleChange}
                     value={values.password}
                   />
@@ -96,16 +95,12 @@ const AddNews = () => {
                   </label>
                   <input
                     className="form-control"
-                    id="title"
+                    id="age"
                     onChange={handleChange}
                     value={values.age}
                   />
                 </div>
                 
-
-
-
-
 
                 <div className="mb-3">
                   <label for="formFile" class="form-label">
@@ -119,7 +114,11 @@ const AddNews = () => {
                   />
                 </div>
 
-                <button type="submit" className="btn btn-primary" >
+                <button 
+                type="submit" 
+                className="btn btn-primary"
+                color ="success"
+                variant="contained">
                   Submit
                 </button>
               </div>
@@ -131,4 +130,4 @@ const AddNews = () => {
   );
 };
 
-export default AddNews;
+export default AddReporter;

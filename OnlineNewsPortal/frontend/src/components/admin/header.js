@@ -15,6 +15,29 @@ const Header = () => {
           <a className="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li className="nav-item">
+        <a className="nav-link active" aria-current="page" href="#">Add news</a>
+      </li>
+
+      <li className="nav-item">
+      <a className="nav-link active" aria-current="page" href="#">Add reporter</a>
+    </li>
+
+    <li className="nav-item">
+    <a className="nav-link active" aria-current="page" href="#">Manage Reporter</a>
+  </li>
+
+  <li className="nav-item">
+  <a className="nav-link active" aria-current="page" href="#"> TopStories</a>
+</li>
+
+<li className="nav-item">
+<a className="nav-link active" aria-current="page" href="#"> Archieve </a>
+</li>
+    
+
+      
+
+        <li className="nav-item">
           <a className="nav-link" href="#">Link</a>
         </li>
         <li className="nav-item dropdown">
@@ -28,6 +51,8 @@ const Header = () => {
             <li><a className="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+     
+
         <li className="nav-item">
           <a className="nav-link disabled">Disabled</a>
         </li>
