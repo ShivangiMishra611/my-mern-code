@@ -1,10 +1,17 @@
 const mongoose = require("../connection");
 
 const mySchema = new mongoose.Schema({
-  name: String,
+  
   username: String,
   password: String,
-  age: Number,
+  dateOfBirth: Number,
+  designation : String,
+  FacebookLink: String,
+  TwitterLink: String,
+  Country: String,
+  Landmark:String,
+  Language:String,
+  City:String,
   createdAt: { type: Date, default: new Date() },
 });
 
