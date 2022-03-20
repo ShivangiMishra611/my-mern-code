@@ -27,6 +27,43 @@ const Header = () => {
                Add News
               </NavLink>
             </li>
+
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/admin/addreporter">
+               Add Reporter
+              </NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/main/topstories">
+               Top Stories
+              </NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/admin/managereporters">
+              Manage Reporter
+              </NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/main/login">
+               Login
+              </NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/main/signup">
+               Signup
+              </NavLink>
+            </li>
+
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/main/archieves">
+              Archieves
+              </NavLink>
+            </li>
+
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
@@ -51,8 +88,14 @@ const Header = () => {
   </nav>
   </div>
   );
-  };
     
-  export default Header;
+
+      
+
+        
+};
   
+export default Header;
+
+
   

@@ -7,7 +7,7 @@ const userRouter = require("./routers/userRouter");
 const newsRouter = require("./routers/newsRouter");
 const reporterRouter = require("./routers/reporterRouter");
 
-const managerRouter = require("./routers/managerRouter");
+// const managerRouter = require("./routers/managerRouter");
 
 
 const utilRouter = require("./routers/utils");
@@ -54,4 +54,3 @@ app.use(express.static("./uploads"));
 httpServer.listen(port, () => {
   console.log("server started");
 });
-3

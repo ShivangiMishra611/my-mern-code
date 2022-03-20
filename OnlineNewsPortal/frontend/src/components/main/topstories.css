@@ -1,7 +1,8 @@
 .news-title{
-   
+    margin-top: -50px;
     margin-left: 400px;
     color: blue;
+
 }
 .category-header{
     /* background-color: black; */

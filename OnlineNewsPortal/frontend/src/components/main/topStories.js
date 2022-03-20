@@ -43,13 +43,38 @@ const TopStories = () => {
       });
   };
 
+  const refreshData = (filter) => {
+    setLoading(true);
+    fetch(url + "/news/getall")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        applyFilter(data, filter)
+        
+      });
+  };
+
+  const applyFilter = (data, filter) => { 
+    
+    const filteredArray = data.filter( news => {
+      return filter.toLowerCase() == news.category.toLowerCase();
+    } )
+
+    console.log(filteredArray);
+
+    setNewsArray([...filteredArray]);
+    setLoading(false);
+
+
+   };
+
   useEffect(() => {
     fetchData();
   }, []);
 
   const displayCategories = () => {
     return newsCategories.map((category) => (
-      <Button variant="outlined" size="medium">
+      <Button variant="outlined" size="medium" onClick={e => refreshData(category)}>
         {category}
       </Button>
     ));
@@ -95,8 +120,10 @@ const TopStories = () => {
   return (
     <div>
       <header className="stories-header">
+      <h1 className="news-title">Trusted News Tribune</h1>
+      <br></br>
         <Container>
-          <h1 className="news-title">Trusted News Tribune</h1>
+         
           <div className="category-header">
             <Box
               sx={{
