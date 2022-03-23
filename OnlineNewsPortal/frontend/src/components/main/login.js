@@ -131,6 +131,7 @@ const Login = () => {
 
                       <TextField
                         className="w-100 mt-3"
+                        InputProps={{startAdornment: (<InputAdornment position="start">  <LockIcon /> </InputAdornment> )}}   
                         placeholder="Password"
                         label="Password"
                         type={values.showPassword ? 'text' : 'password'}
@@ -164,6 +165,7 @@ const Login = () => {
                         fullWidth
                       >
                         Signin to Continue
+                        
                       </Button>
 
                       <Typography>

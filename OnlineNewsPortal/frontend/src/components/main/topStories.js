@@ -12,7 +12,7 @@ import {
 import { useEffect, useState } from "react";
 import app_config from "../../config";
 
-import "./topstories.css";
+import "./topstories.css"; 
 
 const TopStories = () => {
   const [newsArray, setNewsArray] = useState([]);

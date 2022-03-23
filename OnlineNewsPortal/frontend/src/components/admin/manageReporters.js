@@ -3,6 +3,8 @@ import { Button } from "@mui/material";
 import toast, { Toaster } from "react-hot-toast";
 import app_config from "../../config";
 
+
+
 const ManageReporters= () => {
   const [ReporterArray, setReporterArray] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,6 +18,7 @@ const ManageReporters= () => {
         console.log(data);
         setReporterArray(data);
         setLoading(false);
+        
       });
   };
 
@@ -26,6 +29,7 @@ const ManageReporters= () => {
         console.log(data);
         fetchData();
         toast.success("Reporter Successfully Deleted!!", {
+        
         
           style: {
             borderRadius: "10px",

@@ -1,6 +1,13 @@
 import { Formik } from "formik";
 import { useState } from "react";
 import app_config from "../../config";
+import {
+  
+  TextField,
+} from "@mui/material";
+
+
+
 
 const AddReporter = () => {
   const url = app_config.api_url;
@@ -45,6 +52,7 @@ const AddReporter = () => {
       }
     );
   };
+  
 
   return (
     <div>
@@ -55,50 +63,54 @@ const AddReporter = () => {
               <h5 className="card-header">Add Reporter</h5>
               <div className="card-body">
                 <div className="mb-3">
-                  <label for="exampleFormControlInput1" className="form-label">
-                    Name
-                  </label>
-                  <input
-                    className="form-control"
-                    id="name"
-                    onChange={handleChange}
-                    value={values.name}
-                  />
+                <TextField
+                className="w-100 mt-3"
+                placeholder="Name"
+                label="Name"
+                variant="outlined"
+                id="name"
+                onChange={handleChange}
+                value={values.name}
+              />
+                </div>
+
+
+                <div className="mb-3">
+                <TextField
+                className="w-100 mt-3"
+                placeholder="Userame"
+                label="Username"
+                variant="outlined"
+                id="username"
+                onChange={handleChange}
+                value={values.username}
+              />
+                 
                 </div>
 
                 <div className="mb-3">
-                  <label for="exampleFormControlInput2" className="form-label">
-                    Username
-                  </label>
-                  <input
-                    className="form-control"
-                    id="username"
-                    onChange={handleChange}
-                    value={values.username}
-                  />
-                </div>
-
-                <div className="mb-3">
-                  <label for="exampleFormControlInput2" className="form-label">
-                    Password
-                  </label>
-                  <input
-                    className="form-control"
-                    id="password"
-                    onChange={handleChange}
-                    value={values.password}
-                  />
+                <TextField
+                className="w-100 mt-3"
+                placeholder="Password"
+                label="Password"
+                variant="outlined"
+                id="password"
+                onChange={handleChange}
+                value={values.password}
+              />
+                  
                 </div>
                 <div className="mb-3">
-                  <label for="exampleFormControlInput2" className="form-label">
-                    Age
-                  </label>
-                  <input
-                    className="form-control"
-                    id="age"
-                    onChange={handleChange}
-                    value={values.age}
-                  />
+                <TextField
+                className="w-100 mt-3"
+                placeholder="Age"
+                label="Age"
+                variant="outlined"
+                id="age"
+                onChange={handleChange}
+                value={values.age}
+              />
+                  
                 </div>
                 
 

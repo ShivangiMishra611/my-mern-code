@@ -122,6 +122,7 @@ const AddNews = () => {
                   <Select
                     labelId="demo-simple-select-label"
                     id="category"
+                    name="category"
                     value={values.category}
                     label="Category"
                     onChange={handleChange}
