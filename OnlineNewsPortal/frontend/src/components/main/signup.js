@@ -5,8 +5,9 @@ import {
     CardContent,
     Grid,
     Paper,
-    TextField,
+    TextField,InputAdornment
   } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
 import { Formik } from "formik";
 import app_config from "../../config";
 import Swal from "sweetalert2";
@@ -80,6 +81,15 @@ const Signup=()=>{
                               onChange={handleChange}
                               value={values.name}
                               helperText="Enter your name please"
+                              InputProps={{
+                                endAdornment: (
+                                  <InputAdornment position="end">
+                                    <PersonIcon
+                                      sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                                    />
+                                  </InputAdornment>
+                                ),
+                              }}
                             />
             
                             <TextField
@@ -90,6 +100,15 @@ const Signup=()=>{
                               id="username"
                               onChange={handleChange}
                               value={values.username}
+                              InputProps={{
+                                endAdornment: (
+                                  <InputAdornment position="end">
+                                    <PersonIcon
+                                      sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                                    />
+                                  </InputAdornment>
+                                ),
+                              }}
                               helperText="Enter your Username please"
                             />
             
@@ -102,6 +121,7 @@ const Signup=()=>{
                               id="password"
                               onChange={handleChange}
                               value={values.password}
+                              
                               helperText="Enter your Password please"
                             />
           
@@ -114,6 +134,7 @@ const Signup=()=>{
                               id="age"
                               onChange={handleChange}
                               value={values.age}
+                              
                               helperText="Enter your correct age please"
                             />
           

@@ -9,7 +9,7 @@ import {
   InputLabel,
   FormControl,
   TextField,
-  TextareaAutosize,
+  TextareaAutosize,Autocomplete
 } from "@mui/material";
 
 const AddNews = () => {
@@ -19,7 +19,7 @@ const AddNews = () => {
   // const img1="image1.jpg"
   const newsForm = {
     title: "",
-    
+
     category: "",
     subCategory: "",
     summary: "",
@@ -35,6 +35,8 @@ const AddNews = () => {
     "Entertainment",
   ];
 
+  const [tags, setTags] = useState([]);
+
   const newsSubmit = (values) => {
     values.thumbnail = thumbnail;
     console.log(values);
@@ -45,30 +47,18 @@ const AddNews = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    })
-    
-
-    .then((res) =>{
+    }).then((res) => {
       console.log(res.status);
-      if(res.status ===200)
-      {
-          Swal.fire({
-              icon:"success",
-              title:"success",
-              text:"News Added Successfully",
-          });
-  
+      if (res.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "success",
+          text: "News Added Successfully",
+        });
       }
       return res.json();
-  
-  })
-  
-  
+    });
   };
-
-  
-
-
 
   const uploadThumbnail = (e) => {
     console.log("file selected");
@@ -108,14 +98,15 @@ const AddNews = () => {
                 <br></br>
 
                 <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label1">Category</InputLabel>
+                  <InputLabel id="demo-simple-select-label1">
+                    Category
+                  </InputLabel>
                   <Select
                     labelId="demo-simple-select-label1"
                     id="category"
                     name="category"
                     label="Category"
                     value={values.category}
-                   
                     onChange={handleChange}
                   >
                     {newsCategories.map((category) => (
@@ -175,15 +166,19 @@ const AddNews = () => {
                 <br></br>
                 <br></br>
 
-                <TextareaAutosize
-                  maxRows={4}
-                  id="tags"
-                  rows="5"
-                  onChange={handleChange}
-                  value={values.tags}
-                  aria-label="Add Tags"
-                  placeholder="Add Tags"
-                  style={{ width: 640 }}
+                <Autocomplete
+                  multiple
+                  id="tags-outlined"
+                  options={tags}
+                  getOptionLabel={(option) => option}
+                  filterSelectedOptions
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="filterSelectedOptions"
+                      placeholder="Favorites"
+                    />
+                  )}
                 />
 
                 <br></br>

@@ -14,6 +14,7 @@ import Reporter from "./components/reporter";
 import AddNews from "./components/reporter/addNews";
 import ReporterDashbord from "./components/reporter/dashboard";
 import ViewArchieve  from "./components/main/viewArchieve";
+import ResetPassword from "./components/main/resetPassword";
 
 function App() {
   return (
@@ -32,6 +33,10 @@ function App() {
 
           <Route element={<Main />} path="main">
             <Route element={<Login />} path="login" />
+          </Route>
+
+          <Route element={<Main />} path="main">
+            <Route element={<ResetPassword />} path="resetpassword" />
           </Route>
 
           <Route element={<Main />} path="main">

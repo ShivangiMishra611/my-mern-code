@@ -46,6 +46,7 @@ const ManageNews= () => {
         <tr key={news._id}>
           <td>{news.title}</td>
           <td>{news.summary}</td>
+          <td>{news.category}</td>
           
           <td>
             <img src={url+'/'+news.thumbnail} style={{maxWidth: '100px'}} />

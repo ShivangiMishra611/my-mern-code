@@ -60,7 +60,7 @@ const ManageReporters= () => {
               color="error"
               onClick={(e) => deleteReporter(reporter._id)}
             >
-              <i className="fas fa-trash-alt"></i>Delete
+              <i className="fas fa-trash-alt"></i>  Delete
             </Button>
           </td>
         </tr>
