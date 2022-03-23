@@ -7,7 +7,7 @@ const userRouter = require("./routers/userRouter");
 const newsRouter = require("./routers/newsRouter");
 const reporterRouter = require("./routers/reporterRouter");
 
-
+// const managerRouter = require("./routers/managerRouter");
 
 
 const utilRouter = require("./routers/utils");

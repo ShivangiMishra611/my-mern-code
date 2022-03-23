@@ -1,10 +1,8 @@
 .news-title{
-   
-    margin-left: 350px;
+    margin-top: -50px;
+    margin-left: 400px;
     color: blue;
-    top:50px;
-    /* left:80px; */
-    position:absolute;
+
 }
 /* .category-header{
     /* background-color: black; */

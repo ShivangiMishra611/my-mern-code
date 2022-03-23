@@ -4,6 +4,8 @@ import Admin from "./components/admin";
 import AddReporter from "./components/admin/addreporter";
 import ManageReporters from "./components/admin/manageReporters";
 
+import ManageNews from "./components/admin/manageNews";
+
 import Main from "./components/main";
 import Login from "./components/main/login";
 import Signup from "./components/main/signup";
@@ -48,6 +50,10 @@ function App() {
 
           <Route element={<Admin />} path="admin">
             <Route element={<ManageReporters />} path="managereporters" />
+          </Route>
+
+          <Route element={<Admin />} path="admin">
+            <Route element={<ManageNews />} path="managenews" />
           </Route>
         </Routes>
       </BrowserRouter>

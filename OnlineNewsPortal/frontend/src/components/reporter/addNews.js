@@ -1,5 +1,6 @@
 import "./news.css";
 import { Formik } from "formik";
+import Swal from "sweetalert2";
 import { useState } from "react";
 import app_config from "../../config";
 import {
@@ -7,7 +8,8 @@ import {
   Select,
   InputLabel,
   FormControl,
-  TextField,TextareaAutosize
+  TextField,
+  TextareaAutosize,
 } from "@mui/material";
 
 const AddNews = () => {
@@ -17,9 +19,10 @@ const AddNews = () => {
   // const img1="image1.jpg"
   const newsForm = {
     title: "",
-    summary: "",
+    
     category: "",
     subCategory: "",
+    summary: "",
     thumbnail: "",
     tags: "",
   };
@@ -42,10 +45,30 @@ const AddNews = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((res) => {
+    })
+    
+
+    .then((res) =>{
       console.log(res.status);
-    });
+      if(res.status ===200)
+      {
+          Swal.fire({
+              icon:"success",
+              title:"success",
+              text:"News Added Successfully",
+          });
+  
+      }
+      return res.json();
+  
+  })
+  
+  
   };
+
+  
+
+
 
   const uploadThumbnail = (e) => {
     console.log("file selected");
@@ -71,28 +94,28 @@ const AddNews = () => {
             <div className="card">
               <h5 className="card-header">Add News</h5>
               <div className="card-body">
-                <div className="mb-3">
-                  {/* <label for="exampleFormControlInput1" className="form-label">
-                    News Title
-                  </label> */}
-                  <TextField
-                    className="w-100 mt-3"
-                    placeholder="Title"
-                    label="Title"
-                    variant="outlined"
-                    id="title"
-                    onChange={handleChange}
-                    value={values.title}
-                  />
-                </div>
+                <TextField
+                  className="w-100 mt-3"
+                  placeholder="Title"
+                  label="Title"
+                  variant="outlined"
+                  id="title"
+                  onChange={handleChange}
+                  value={values.title}
+                />
+
+                <br></br>
+                <br></br>
 
                 <FormControl fullWidth>
-                  <InputLabel id="category">Category</InputLabel>
+                  <InputLabel id="demo-simple-select-label1">Category</InputLabel>
                   <Select
-                    labelId="demo-simple-select-label"
+                    labelId="demo-simple-select-label1"
                     id="category"
-                    value={values.category}
+                    name="category"
                     label="Category"
+                    value={values.category}
+                   
                     onChange={handleChange}
                   >
                     {newsCategories.map((category) => (
@@ -100,11 +123,11 @@ const AddNews = () => {
                     ))}
                   </Select>
                 </FormControl>
-                <br></br><br></br>
+                <br></br>
+                <br></br>
 
-
-                <FormControl fullWidth>
-                <InputLabel id="category">Category</InputLabel>
+                {/* <FormControl fullWidth>
+                  <InputLabel id="category">Category</InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="category"
@@ -118,7 +141,8 @@ const AddNews = () => {
                     ))}
                   </Select>
                 </FormControl>
-                <br></br><br></br>
+                <br></br>
+                <br></br> */}
 
                 {/* <div className="mb-3">
                   <label for="exampleFormControlInput3" className="form-label">
@@ -138,37 +162,32 @@ const AddNews = () => {
                   </select>
                 </div> */}
 
-                <div className="mb-3">
-                  
+                <TextareaAutosize
+                  maxRows={4}
+                  id="summary"
+                  rows="5"
+                  onChange={handleChange}
+                  value={values.summary}
+                  aria-label="Add News"
+                  placeholder="Add News"
+                  style={{ width: 640 }}
+                />
 
-                  <TextareaAutosize
-                    maxRows={4}
-                    id="summary"
-                    rows="5"
-                    onChange={handleChange}
-                    value={values.summary}
-                    aria-label="Add News"
-                    placeholder="Add News"
-                    style={{ width: 640 }}
-                  />
-                  
-                </div>
+                <br></br>
                 <br></br>
 
-                <div className="mb-3">
-                  
-                  <TextareaAutosize
-                    maxRows={4}
-                    id="tags"
-                    rows="5"
-                    onChange={handleChange}
-                    value={values.tags}
-                    aria-label="Add Tags"
-                    placeholder="Add Tags"
-                    style={{ width: 640 }}
-                  />
-                  
-                </div>
+                <TextareaAutosize
+                  maxRows={4}
+                  id="tags"
+                  rows="5"
+                  onChange={handleChange}
+                  value={values.tags}
+                  aria-label="Add Tags"
+                  placeholder="Add Tags"
+                  style={{ width: 640 }}
+                />
+
+                <br></br>
                 <br></br>
 
                 <div className="mb-3">
