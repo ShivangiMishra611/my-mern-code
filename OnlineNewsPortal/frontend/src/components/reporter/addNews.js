@@ -104,10 +104,11 @@ const AddNews = () => {
 
 
                 <FormControl fullWidth>
-                  <InputLabel id="category">Category</InputLabel>
+                <InputLabel id="category">Category</InputLabel>
                   <Select
                     labelId="demo-simple-select-label"
                     id="category"
+                    name="category"
                     value={values.category}
                     label="Category"
                     onChange={handleChange}

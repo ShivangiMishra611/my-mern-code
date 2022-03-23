@@ -20,7 +20,9 @@ const Signup=()=>{
         name:'',
         username:'',
         password:'',
+        confirmPassword:'',
         age:'',
+        email:'',
     }
 
     //submit callback function
@@ -57,6 +59,46 @@ const Signup=()=>{
 
 
     };
+    const validate = (values) => {
+      const errors = {};
+
+      if (!values.email) {
+        errors.email = "Required";
+
+      }
+      else if (
+        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+      ){
+        errors.email="Invalid email address";
+      }
+      if (!values.name) {
+        errors.name = "Required";
+      }else if(  !/^[A-Za-z]+/i.test(values.name)
+
+      )
+      {
+        errors.name="Invalid name";
+      }
+      if (!values.username) {
+        errors.username = "Required";
+      }
+      
+      if (values.confirmPassword!== values.password) {
+        errors.confirmPassword = "Please re -enter your password";
+      }
+      return errors;
+
+    };
+
+    const validateconfirmPassword =(pass,value)=>{
+      let error = "";
+      if(pass && value) { 
+        if (pass !== value){
+          error="password not matched";
+        }
+      }
+      return error;
+    };
     return(
         <div>
              <Paper className="login-container">
@@ -66,9 +108,9 @@ const Signup=()=>{
               <Card>
                 <CardContent>
                   <p className="h3 text-center mb-5 mt-5">Signup Here</p>
-                  <Formik initialValues={userForm} onSubmit={userSubmit}>
+                  <Formik initialValues={userForm} onSubmit={userSubmit} validate={validate}>
                       {
-                          ({ values,handleChange,handleSubmit}) =>(
+                          ({ values,handleChange,handleSubmit,errors,touched}) =>(
                             <form onSubmit={handleSubmit}>
 
                             <TextField
@@ -79,19 +121,35 @@ const Signup=()=>{
                               id="name"
                               onChange={handleChange}
                               value={values.name}
-                              helperText="Enter your name please"
+                              error ={errors.name}
+                              helperText={errors.name}
+                             
                             />
             
                             <TextField
                               className="w-100 mt-3"
-                              placeholder="Username"
-                              label="Username"
+                              placeholder="username"
+                              label="username"
                               variant="outlined"
                               id="username"
                               onChange={handleChange}
                               value={values.username}
-                              helperText="Enter your Username please"
+                              error ={errors.username}
+                            helperText={errors.username}
+                              
                             />
+                            <TextField
+                            className="w-100 mt-3"
+                            placeholder="email"
+                            label="Email"
+                            type="email"
+                            variant="outlined"
+                            id="email"
+                            onChange={handleChange}
+                            value={values.email}
+                            error ={errors.email}
+                            helperText={errors.email}
+                          />
             
                             <TextField
                               className="w-100 mt-3"
@@ -102,21 +160,28 @@ const Signup=()=>{
                               id="password"
                               onChange={handleChange}
                               value={values.password}
-                              helperText="Enter your Password please"
+                              error ={errors.password}
+                            helperText={errors.password}
+                              
                             />
+                            <TextField
+                            className="w-100 mt-3"
+                            placeholder="Re -enterPassword"
+                            label="ConfirmPassword"
+                            type="password"
+                            variant="outlined"
+                            id="confirmPassword"
+                            onChange={handleChange}
+                            value={values.confirmPassword}
+                            error ={errors.confirmPassword}
+                          helperText={errors.confirmPassword}
+                            
+                          />
+
+                           
+        
           
-                              <TextField
-                              className="w-100 mt-3"
-                              placeholder="Age"
-                              label="Age"
-                              type="number"
-                              variant="outlined"
-                              id="age"
-                              onChange={handleChange}
-                              value={values.age}
-                              helperText="Enter your correct age please"
-                            />
-          
+                            
             
                             <Button color="success" variant="contained" className="mt-5" type="submit">
                               Signin to Continue

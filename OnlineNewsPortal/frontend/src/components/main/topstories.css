@@ -1,11 +1,14 @@
 .news-title{
    
-    margin-left: 400px;
+    margin-left: 350px;
     color: blue;
+    top:50px;
+    /* left:80px; */
+    position:absolute;
 }
-.category-header{
+/* .category-header{
     /* background-color: black; */
-}
+/* } */ */
 
 .card-margin{
     margin-top: 100px;
