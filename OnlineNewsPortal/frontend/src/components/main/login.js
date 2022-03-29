@@ -60,7 +60,7 @@ const Login = () => {
     console.log(values);
 
     //url
-    //request method
+    //request method 
     //data
     //data format
     fetch(url + "/user/checklogin", {
@@ -131,7 +131,7 @@ const Login = () => {
 
                       <TextField
                         className="w-100 mt-3"
-                        InputProps={{startAdornment: (<InputAdornment position="start">  <LockIcon /> </InputAdornment> )}}   
+                          
                         placeholder="Password"
                         label="Password"
                         type={values.showPassword ? 'text' : 'password'}
@@ -153,6 +153,7 @@ const Login = () => {
                             </InputAdornment>
                           ),
                         }}
+                        
                       />
                      
 

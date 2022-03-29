@@ -2,8 +2,10 @@ const mongoose = require("../connection");
 
 const mySchema = new mongoose.Schema({
   name :String,
-  username: String,
+  email : String,
   password: String,
+  contact: Number ,
+  gender: String,
   age: Number,
   thumbnail: String,
   createdAt: { type: Date, default: new Date() },

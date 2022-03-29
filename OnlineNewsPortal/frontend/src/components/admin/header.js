@@ -45,6 +45,12 @@ const Header = () => {
               Manage Reporter
               </NavLink>
             </li>
+            
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/admin/managenews">
+              Manage News
+              </NavLink>
+            </li>
 
             <li className="nav-item">
               <NavLink className="nav-link" to="/main/login">

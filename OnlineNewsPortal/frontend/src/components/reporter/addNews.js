@@ -57,8 +57,9 @@ const AddNews = () => {
         });
       }
       return res.json();
-    });
-  };
+   
+  });
+};
 
   const uploadThumbnail = (e) => {
     console.log("file selected");

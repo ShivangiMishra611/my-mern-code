@@ -12,9 +12,10 @@ import Signup from "./components/main/signup";
 import TopStories from "./components/main/topStories";
 import Reporter from "./components/reporter";
 import AddNews from "./components/reporter/addNews";
-import ReporterDashbord from "./components/reporter/dashboard";
+import ReporterDashbord from "./components/reporter/sidebar";
 import ViewArchieve  from "./components/main/viewArchieve";
 import ResetPassword from "./components/main/resetPassword";
+import SideBar from "./components/sidebar";
 
 function App() {
   return (
@@ -57,9 +58,10 @@ function App() {
             <Route element={<ManageReporters />} path="managereporters" />
           </Route>
 
-          <Route element={<Admin />} path="admin">
-            <Route element={<ManageNews />} path="managenews" />
+          <Route element={<Admin />} path="admin"> 
+            <Route element={<SideBar  />} path="sidebar" />
           </Route>
+ 
         </Routes>
       </BrowserRouter>
     </div>
