@@ -8,8 +8,11 @@ const mySchema = new mongoose.Schema({
   thumbnail: String,
   tags: Array,
   uploadedBy: {type : mongoose.Types.ObjectId, ref:'reporters'},
+
   
   createdAt: { type: Date, default: new Date() },
+
+  approvenews:{type:Boolean,default:'false'}
 });
 
 const myModel = mongoose.model("news", mySchema);

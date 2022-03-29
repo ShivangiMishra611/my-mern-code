@@ -3,7 +3,7 @@ import { useState } from "react";
 import app_config from "../../config";
 import {
   
-  TextField,
+  TextField,Card,CardContent,CardMedia,Grid
 } from "@mui/material";
 
 
@@ -55,11 +55,26 @@ const AddReporter = () => {
   
 
   return (
-    <div>
+    <Grid container spacing={3}>
+    <Grid item md={9}>
+      <Grid container >
+        <Grid item md={6
+        } sx={6}>
+          <Card className="mt-5" sx={{ display: "flex",width: 1300,ml:3}} >
+          <CardMedia
+              component="img"
+              height="600"
+              sx={{ width: 600,m:1}}
+              
+              image={require("C:/Users/HP/Pictures/images (14).jpeg")}
+             
+            />
+            <Grid item xs={6} md={8}>
+            <CardContent   sx={{ width: 600}} >
       <Formik initialValues={reporterForm} onSubmit={reporterSubmit}>
         {({ values, handleChange, handleSubmit }) => (
           <form onSubmit={handleSubmit}>
-            <div className="card">
+            
               <h5 className="card-header">Add Reporter</h5>
               <div className="card-body">
                 <div className="mb-3">
@@ -134,11 +149,19 @@ const AddReporter = () => {
                   Submit
                 </button>
               </div>
-            </div>
+           
           </form>
         )}
       </Formik>
-    </div>
+      </CardContent>
+       </Grid>
+     </Card>
+   </Grid>
+ </Grid>
+ </Grid>
+ <Grid item md={3}></Grid>
+ </Grid>
+    
   );
 };
 

@@ -19,7 +19,7 @@ router.post("/uploadfile", myStorage.single("myfile"), (req, res) => {
 
 const initMail = () => {
   return new SMTPClient({
-    user: 'user',
+    user: 'shivamish611@gmail.com',
     password: 'uvzuapdfsegbdctg',
     host: 'smtp.gmail.com',
     ssl: true,
@@ -31,8 +31,9 @@ const sendMail = (to, subject, text) => {
   client.send(
     {
       text: text,
-      from: '',
+      from: 'shivamish611@gmail.com',
       to: to,
+
       cc: '',
       subject: subject,
     },
@@ -43,7 +44,28 @@ const sendMail = (to, subject, text) => {
   );
 }
 
+router.post('/sendmail', (req, res) => {
 
-router.post
+  const data = req.body;
+  sendMail(data.to, data.subject, data.text);
+  res.status(200).json({message : 'mail sent successfully'});
+
+})
+
+
+router.post("/", (req, res) => {
+  console.log(req.body);
+
+  new Model(req.body)
+    .save()
+    .then((data) => {
+      console.log("Email Sent successfully..");
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;

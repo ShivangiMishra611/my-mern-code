@@ -3,20 +3,25 @@ import { Formik } from "formik";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import app_config from "../../config";
+import TitleSharpIcon from '@mui/icons-material/TitleSharp';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
+import CategoryIcon from '@mui/icons-material/Category';
+import StyleIcon from '@mui/icons-material/Style';
 import {
   MenuItem,
   Select,
   InputLabel,
   FormControl,
   TextField,
-  TextareaAutosize,Autocomplete
+  Autocomplete,Card,Grid,CardContent,CardMedia,InputAdornment,
+  
 } from "@mui/material";
 
 const AddNews = () => {
   const url = app_config.api_url;
 
   const [thumbnail, setThumbnail] = useState("");
-  // const img1="image1.jpg"
+  
   const newsForm = {
     title: "",
 
@@ -36,6 +41,7 @@ const AddNews = () => {
   ];
 
   const [tags, setTags] = useState([]);
+  const img1="ADDNEWS.jpeg"
 
   const newsSubmit = (values) => {
     values.thumbnail = thumbnail;
@@ -47,7 +53,8 @@ const AddNews = () => {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((res) => {
+    })
+    .then((res) => {
       console.log(res.status);
       if (res.status === 200) {
         Swal.fire({
@@ -75,14 +82,64 @@ const AddNews = () => {
       }
     );
   };
+  const validate = (values) => {
+    const errors = {};
+
+    
+   
+    if (!values.title) {
+      errors.title = "Required";
+    }
+   
+    
+  if (!values.category) {
+    errors.category = "Required";
+    
+  }
+
+  if (!values.summary) {
+    errors.summary = "Required";
+    
+  }
+
+
+  if (!values.tags) {
+    errors.tags = "Required";
+    
+  }
+  return errors;
+    
+    
+   
+
+};
 
   return (
     <div>
-      <Formik initialValues={newsForm} onSubmit={newsSubmit}>
-        {({ values, handleChange, handleSubmit }) => (
+       <Grid container spacing={3}>
+      <Grid item md={9}>
+        <Grid container >
+          <Grid item md={6
+          } sx={6}>
+            <Card className="mt-5" sx={{ display: "flex",width: 1300,m:1}} >
+            <CardMedia
+                component="img"
+                height="600"
+                sx={{ width: 600,m:1}}
+                
+                image={require("C:/Users/HP/Pictures/images (19).jpeg")}
+               
+              />
+              <Grid item xs={6} md={8}>
+              <CardContent   sx={{ width: 600}} >
+      <Formik initialValues={newsForm} onSubmit={newsSubmit} validate={validate}>
+        {({ values, handleChange, handleSubmit ,errors }) => (
           <form onSubmit={handleSubmit}>
-            <div className="card">
-              <h5 className="card-header">Add News</h5>
+            
+              <h5 className="card-header">Add News</h5
+              
+              >
+
               <div className="card-body">
                 <TextField
                   className="w-100 mt-3"
@@ -92,6 +149,17 @@ const AddNews = () => {
                   id="title"
                   onChange={handleChange}
                   value={values.title}
+                  error={errors.title}
+                  helperText={errors.title}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <TitleSharpIcon
+                          sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                        />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
 
                 <br></br>
@@ -107,7 +175,18 @@ const AddNews = () => {
                     name="category"
                     label="Category"
                     value={values.category}
+                    error={errors.category}
+                    helperText={errors.category}
                     onChange={handleChange}
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <CategoryIcon
+                            sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                          />
+                        </InputAdornment>
+                      ),
+                    }}
                   >
                     {newsCategories.map((category) => (
                       <MenuItem value={category}>{category}</MenuItem>
@@ -117,52 +196,32 @@ const AddNews = () => {
                 <br></br>
                 <br></br>
 
-                {/* <FormControl fullWidth>
-                  <InputLabel id="category">Category</InputLabel>
-                  <Select
-                    labelId="demo-simple-select-label"
-                    id="category"
-                    name="category"
-                    value={values.category}
-                    label="Category"
-                    onChange={handleChange}
-                  >
-                    {newsCategories.map((category) => (
-                      <MenuItem value={category}>{category}</MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-                <br></br>
-                <br></br> */}
-
-                {/* <div className="mb-3">
-                  <label for="exampleFormControlInput3" className="form-label">
-                    Add SubCategory
-                  </label>
-                  <select
-                    className="form-select"
-                    aria-label="Default select example"
-                    onChange={handleChange}
-                    value={values.subCategory}
-                    id="subCategory"
-                  >
-                    <option selected>Sub Category</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div> */}
-
-                <TextareaAutosize
-                  maxRows={4}
+                <TextField
+                  className="w-100 mt-3"
+                 
+                  label="Add News"
+                  multiline
+                  variant="outlined"
                   id="summary"
-                  rows="5"
                   onChange={handleChange}
                   value={values.summary}
+                  error={errors.summary}
+                  helperText={errors.summary}
                   aria-label="Add News"
                   placeholder="Add News"
-                  style={{ width: 640 }}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <NewspaperIcon
+                          sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                        />
+                      </InputAdornment>
+                    ),
+                  }}
                 />
+
+
+                
 
                 <br></br>
                 <br></br>
@@ -170,7 +229,18 @@ const AddNews = () => {
                 <Autocomplete
                   multiple
                   id="tags-outlined"
+                  error={errors.tags}
+                  helperText={errors.tags}
                   options={tags}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <StyleIcon
+                          sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                        />
+                      </InputAdornment>
+                    ),
+                  }}
                   getOptionLabel={(option) => option}
                   filterSelectedOptions
                   renderInput={(params) => (
@@ -201,10 +271,18 @@ const AddNews = () => {
                   Submit
                 </button>
               </div>
-            </div>
+           
           </form>
         )}
       </Formik>
+       </CardContent>
+       </Grid>
+     </Card>
+   </Grid>
+ </Grid>
+ </Grid>
+ <Grid item md={3}></Grid>
+ </Grid>
     </div>
   );
 };
