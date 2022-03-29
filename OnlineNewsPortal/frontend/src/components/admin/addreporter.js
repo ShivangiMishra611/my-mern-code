@@ -5,6 +5,14 @@ import {
   
   TextField,Card,CardContent,CardMedia,Grid
 } from "@mui/material";
+import Swal from "sweetalert2";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import InputAdornment from '@mui/material/InputAdornment';
+import EmailIcon from '@mui/icons-material/Email';
+import KeyIcon from '@mui/icons-material/Key';
+import WcIcon from '@mui/icons-material/Wc';
+import CallIcon from '@mui/icons-material/Call';
+import MenuItem from '@mui/material/MenuItem';
 
 
 
@@ -16,10 +24,12 @@ const AddReporter = () => {
   // const img1="image1.jpg"
   const reporterForm = {
     name: "",
-    username: "",
     password: "",
-    age: "",
+    email:"",
+    number:"",
+    gender:"",
     thumbnail: "",
+    age: "",
   };
 
   const reporterSubmit = (values) => {
@@ -34,9 +44,28 @@ const AddReporter = () => {
       },
     }).then((res) => {
       console.log(res.status);
-    });
-  };
-
+        if (res.status === 200) {
+         
+          Swal.fire({
+            icon: "success",
+            title: "success",
+            text: "Reporter added Successfully",
+          });
+        }
+     
+        else if (res.status === 300) {
+          Swal.fire({
+            icon: "error",
+            title: "failed",
+            text: " failed",
+          });
+        }
+        
+        return res.json();
+        });
+    };
+  
+    
   const uploadThumbnail = (e) => {
     console.log("file selected");
 
@@ -52,9 +81,51 @@ const AddReporter = () => {
       }
     );
   };
+
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.email) {
+      errors.email = "Required";
+
+    }
+    else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
+    ){
+      errors.email="Invalid email address";
+    }
+    if (!values.name) {
+      errors.name = "Required";
+    }else if(  !/^[A-Za-z]+/i.test(values.name)
+
+    )
+    {
+      errors.name="Invalid name";
+    }
+   
+    if (!values.number) {
+      errors.number = "Required";
+    }
+    if(!values.gender){
+        errors.gender ="Required";
+    }
+    
+    
+    if (!values.age) {
+      errors.age = "Required";
+    }
+      
+    if (!values.password) {
+      errors.password = "Required";
+    }
+    return errors;
+
+  };
+
   
 
   return (
+<<<<<<< HEAD
     <Grid container spacing={3}>
     <Grid item md={9}>
       <Grid container >
@@ -73,6 +144,11 @@ const AddReporter = () => {
             <CardContent   sx={{ width: 600}} >
       <Formik initialValues={reporterForm} onSubmit={reporterSubmit}>
         {({ values, handleChange, handleSubmit }) => (
+=======
+    <div>
+      <Formik initialValues={reporterForm} onSubmit={reporterSubmit}  validate={validate}>
+        {({ values, handleChange, handleSubmit,errors,touched  }) => (
+>>>>>>> 48b45970f551061597a8571dea7c0c15809cd16a
           <form onSubmit={handleSubmit}>
             
               <h5 className="card-header">Add Reporter</h5>
@@ -84,8 +160,22 @@ const AddReporter = () => {
                 label="Name"
                 variant="outlined"
                 id="name"
+                type="text"
                 onChange={handleChange}
                 value={values.name}
+                error={errors.name}
+                              
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <AccountCircleIcon
+                        sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                      />
+                    </InputAdornment>
+                  ),
+                }}
+                helperText={errors.name}
+                
               />
                 </div>
 
@@ -93,12 +183,23 @@ const AddReporter = () => {
                 <div className="mb-3">
                 <TextField
                 className="w-100 mt-3"
-                placeholder="Userame"
-                label="Username"
+                placeholder="email"
+                label="Email"
                 variant="outlined"
-                id="username"
+                id="email"
                 onChange={handleChange}
-                value={values.username}
+                value={values.email}
+                error={errors.email}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <EmailIcon
+                        sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                      />
+                    </InputAdornment>
+                  ),
+                }}
+                helperText={errors.email}
               />
                  
                 </div>
@@ -108,11 +209,74 @@ const AddReporter = () => {
                 className="w-100 mt-3"
                 placeholder="Password"
                 label="Password"
+                type="password"
                 variant="outlined"
                 id="password"
                 onChange={handleChange}
                 value={values.password}
+                error={errors.password}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <KeyIcon
+                        sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                      />
+                    </InputAdornment>
+                  ),
+                }}
+                helperText={errors.password}
               />
+              <div className="mb-3">
+              <TextField
+              className="w-100 mt-3"
+              placeholder="gender"
+              label="Gender"
+              variant="outlined"
+              id="gender"
+              onChange={handleChange}
+              value={values.gender}
+              error={errors.gender}
+              type="text"
+             
+             
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <WcIcon
+                      sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                    />
+                  </InputAdornment>
+                ),
+              }}
+              helperText={errors.gender}
+              />
+            
+               
+              </div>
+              <div className="mb-3">
+              <TextField
+              className="w-100 mt-3"
+              placeholder="Contact"
+              label="Contact"
+              variant="outlined"
+              id="number"
+              type="number"
+              onChange={handleChange}
+              value={values.number}
+              error={errors.number}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end" >
+                    <CallIcon
+                      sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                    />
+                  </InputAdornment>
+                ),
+              }}
+              helperText={errors.number}
+            />
+                
+              </div>
                   
                 </div>
                 <div className="mb-3">
@@ -122,8 +286,11 @@ const AddReporter = () => {
                 label="Age"
                 variant="outlined"
                 id="age"
+                type="number"
                 onChange={handleChange}
                 value={values.age}
+                error={errors.age}
+                helperText={errors.age}
               />
                   
                 </div>
@@ -163,6 +330,7 @@ const AddReporter = () => {
  </Grid>
     
   );
-};
+                
+};          
 
 export default AddReporter;

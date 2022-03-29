@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import toast, { Toaster } from "react-hot-toast";
 import app_config from "../../config";
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Typography from '@mui/material/Typography';
 
 
 
@@ -47,27 +51,21 @@ const ManageReporters= () => {
   const displayReporters = () => {
     if (!loading) {
       return ReporterArray.map((reporter, i) => (
-        <tr key={reporter._id}>
-          <td>{reporter.name}</td>
-          <td>{reporter.username}</td>
-          <td>{reporter.age}</td>
-          <td>
-            <img src={url+'/'+reporter.thumbnail} style={{maxWidth: '100px'}} />
-          </td>
-          <td>
-            {new Date(reporter.createdAt).toLocaleDateString()} &nbsp;
-            {new Date(reporter.createdAt).toLocaleTimeString()}
-          </td>
-          <td>
-            <Button
-              variant="contained"
-              color="error"
-              onClick={(e) => deleteReporter(reporter._id)}
-            >
-              <i className="fas fa-trash-alt"></i>  Delete
-            </Button>
-          </td>
-        </tr>
+        <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography>{reporter.email}</Typography>
+          </AccordionSummary>
+          </Accordion>
+
+          
+          
+        
+
+       
       ));
     }
   };
@@ -76,21 +74,7 @@ const ManageReporters= () => {
     <div className="container">
       <Toaster position="top-right" reverseOrder={false} />
       <h1>Manage Reporters</h1>
-
-      <table className="table table-dark">
-        <thead>
-          <tr>
-            <th>name</th>
-            <th>username</th>
-            <th>age</th>
-            <th></th>
-
-            <th>Create At</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>{displayReporters()}</tbody>
-      </table>
+      {displayReporters()} 
     </div>
   );
 };
