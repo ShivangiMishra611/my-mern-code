@@ -67,14 +67,10 @@ function App() {
           <Route element={<Admin />} path="admin"> 
             <Route element={<SideBar  />} path="sidebar" />
           </Route>
-<<<<<<< HEAD
 
           <Route element={<Admin />} path="admin">
             <Route element={<SideBar />} path="sidebar" />
           </Route>
-=======
- 
->>>>>>> 48b45970f551061597a8571dea7c0c15809cd16a
         </Routes>
       </BrowserRouter>
     </div>
