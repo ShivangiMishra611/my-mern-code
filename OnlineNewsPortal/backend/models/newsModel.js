@@ -12,7 +12,7 @@ const mySchema = new mongoose.Schema({
   
   createdAt: { type: Date, default: new Date() },
 
-  approvenews:{type:Boolean,default:'false'}
+  approvenews:{type:Boolean,default:false}
 });
 
 const myModel = mongoose.model("news", mySchema);

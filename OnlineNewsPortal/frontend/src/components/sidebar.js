@@ -2,8 +2,7 @@ import {
     ChevronLeft,
     ChevronRight,
     Menu,
-    Mail,
-    Inbox,
+   
   } from "@mui/icons-material";
   import ListItemIcon from "@mui/material/ListItemIcon";
   import MuiDrawer from "@mui/material/Drawer";
@@ -171,4 +170,4 @@ import { useNavigate } from "react-router-dom";
   
 
   
- 
+  

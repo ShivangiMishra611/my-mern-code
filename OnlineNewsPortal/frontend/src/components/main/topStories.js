@@ -30,22 +30,37 @@ const TopStories = () => {
 
   ]
 
+  const filterTopStories = (data) => {
+    
+    Date.prototype.removeDays = function(days) {
+      var date = new Date(this.valueOf());
+      date.setDate(date.getDate() - days);
+      return date;
+  }
+    const filtered =  data.filter((news) => {
+      return new Date(news.createdAt) >= new Date().removeDays(1);
+    })
+
+    console.log(filtered);
+    return filtered;
+  }
+
   const url = app_config.api_url;
 
   // Step 1 : Fetch Data from server
   const fetchData = () => {
-    fetch(url + "/news/getall")
+    fetch(url + "/news/approvenews")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setNewsArray(data);
+        setNewsArray(filterTopStories(data));
         setLoading(false);
       });
   };
 
   const refreshData = (filter) => {
     setLoading(true);
-    fetch(url + "/news/getall")
+    fetch(url + "/news/approvenews")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

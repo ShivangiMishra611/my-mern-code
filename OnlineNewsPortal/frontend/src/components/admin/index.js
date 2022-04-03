@@ -2,11 +2,10 @@ import { Container } from "@mui/material";
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../sidebar";
-// import Footer from "./footer";
-import Header from "./header";
+
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import BadgeIcon from '@mui/icons-material/Badge';
-
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
 const Admin = () => {
 
@@ -18,19 +17,19 @@ const Admin = () => {
     },
     {
       title : 'Manage News',
-      icon : <PersonAddIcon/>,
+      icon : <BadgeIcon/>,
       link : '/admin/managenews'
 
     },
     {
       title : 'Manage Reporter',
-      icon : <PersonAddIcon/>,
+      icon : <GroupAddIcon/>,
       link : '/admin/managereporters'
 
-    }
+    },
+      
    
-    
-    
+
   ]
   return (
     <div>
