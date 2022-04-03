@@ -1,13 +1,12 @@
 const mongoose = require("../connection");
 
 const mySchema = new mongoose.Schema({
-    user:"",
-  
-  uploadedBy: {type : mongoose.Types.ObjectId, ref:'reporters'},
-  
+
+  user: {type : mongoose.Types.ObjectId, ref:'users'},
+  text : String,  
   createdAt: { type: Date, default: new Date() },
 });
 
-const myModel = mongoose.model("news", mySchema);
+const myModel = mongoose.model("feedback", mySchema);
 
 module.exports = myModel;

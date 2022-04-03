@@ -128,7 +128,7 @@ const AddNews = () => {
                 height="600"
                 sx={{ width: 600,m:1}}
                 
-                image={require("C:/Users/HP/Pictures/images (19).jpeg")}
+                // image={require("C:/Users/HP/Pictures/images (19).jpeg")}
                
               />
               <Grid item xs={6} md={8}>

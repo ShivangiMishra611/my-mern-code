@@ -125,7 +125,6 @@ const AddReporter = () => {
   
 
   return (
-<<<<<<< HEAD
     <Grid container spacing={3}>
     <Grid item md={9}>
       <Grid container >
@@ -137,18 +136,13 @@ const AddReporter = () => {
               height="600"
               sx={{ width: 600,m:1}}
               
-              image={require("C:/Users/HP/Pictures/images (14).jpeg")}
+              image={require("C:\Users\NEHA\Pictures\images (14).jpeg")}
              
             />
             <Grid item xs={6} md={8}>
             <CardContent   sx={{ width: 600}} >
       <Formik initialValues={reporterForm} onSubmit={reporterSubmit}>
-        {({ values, handleChange, handleSubmit }) => (
-=======
-    <div>
-      <Formik initialValues={reporterForm} onSubmit={reporterSubmit}  validate={validate}>
-        {({ values, handleChange, handleSubmit,errors,touched  }) => (
->>>>>>> 48b45970f551061597a8571dea7c0c15809cd16a
+        {({ values, handleChange, handleSubmit,errors }) => (
           <form onSubmit={handleSubmit}>
             
               <h5 className="card-header">Add Reporter</h5>
@@ -158,7 +152,7 @@ const AddReporter = () => {
                 className="w-100 mt-3"
                 placeholder="Name"
                 label="Name"
-                variant="outlined"
+                 variant="outlined"
                 id="name"
                 type="text"
                 onChange={handleChange}

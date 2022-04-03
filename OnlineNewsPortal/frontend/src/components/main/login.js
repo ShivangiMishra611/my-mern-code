@@ -90,34 +90,6 @@ const Login = () => {
 
   return (
     <div>
-<<<<<<< HEAD
-      <Paper className="password-container" elevation={6}>
-        <Grid container spacing={3}>
-          <Grid item md={9}>
-            <Grid container>
-              <Grid item md={6} sx={6}>
-                <Card
-                  className="mt-5"
-                  sx={{ display: "flex", width: 1020, ml: 20 }}
-                >
-                  <CardMedia
-                    component="img"
-                    height="650"
-                    sx={{ width: 600, m: 1 }}
-                    image={require("C:/Users/HP/Pictures/news-bannerTab.jpg")}
-                  />
-                  <Grid item xs={6} md={8}>
-                    <CardContent sx={{ width: 400 }}>
-                      <Avatar style={avatarStyle}>
-                        <LockIcon />
-                      </Avatar>
-                      <p className="h3 text-center mb-5 mt-5">Sign In</p>
-
-                      <Formik
-                        initialValues={loginForm}
-                        onSubmit={loginSubmit}
-                        validate={validate}
-=======
       <Paper className="login-container">
         <Grid container justifyContent="center">
           <Grid item md={3} sm={2}>
@@ -128,66 +100,6 @@ const Login = () => {
                 </Avatar>
                 <p className="h3 text-center mb-5 mt-5">Sign In</p>
                 <Formik initialValues={loginForm} onSubmit={loginSubmit}>
-                  {({ values, handleChange, handleSubmit }) => (
-                    <form onSubmit={handleSubmit}>
-                      <TextField
-                        className="w-100 mt-3"
-                        placeholder="Username"
-                        label="Username"
-                        variant="outlined"
-                        id="username"
-                        // <i className="fas fa-user-alt"></i>
-
-                        onChange={handleChange}
-                        value={values.username}
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <PersonIcon
-                                sx={{ color: "active.active", mr: 1, my: 0.5 }}
-                              />
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
-
-                      <TextField
-                        className="w-100 mt-3"
-                          
-                        placeholder="Password"
-                        label="Password"
-                        type={values.showPassword ? 'text' : 'password'}
-                        variant="outlined"
-                        id="password"
-                        onChange={handleChange('password')}
-                        value={values.password}
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <IconButton
-                                onClick={handleClickShowPassword}
-                                onMouseDown={handleMouseDownPassword}
-                                edge="end"
-                              >
-                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                  
-                              </IconButton>
-                            </InputAdornment>
-                          ),
-                        }}
-                        
-                      />
-                     
-
-                      <Button
-                        // style={btnStyle}
-                        color="success"
-                        variant="contained"
-                        className="mt-5"
-                        type="submit"
-                        fullWidth
->>>>>>> 48b45970f551061597a8571dea7c0c15809cd16a
-                      >
                         {({ values, handleChange, handleSubmit, errors }) => (
                           <form onSubmit={handleSubmit}>
                             <TextField
@@ -267,12 +179,10 @@ const Login = () => {
                             </Typography>
                           </form>
                         )}
-                      </Formik>
+                      
+                        </Formik>
                     </CardContent>
-                  </Grid>
                 </Card>
-              </Grid>
-            </Grid>
           </Grid>
           <Grid item md={3}></Grid>
         </Grid>

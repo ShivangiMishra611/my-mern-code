@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Admin from "./components/admin";
+import User from "./components/user";
 import AddReporter from "./components/admin/addreporter";
 import ManageReporters from "./components/admin/manageReporters";
-import SideBar from "./components/sidebar";
 
 import ManageNews from "./components/admin/manageNews";
 
@@ -18,6 +18,9 @@ import ReporterDashbord from "./components/reporter/sidebar";
 import ViewArchieve  from "./components/main/viewArchieve";
 import ResetPassword from "./components/main/resetPassword";
 import SideBar from "./components/sidebar";
+
+
+import Feedback from "./components/user/feedback";
 
 function App() {
   return (
@@ -67,14 +70,14 @@ function App() {
           <Route element={<Admin />} path="admin"> 
             <Route element={<SideBar  />} path="sidebar" />
           </Route>
-<<<<<<< HEAD
 
-          <Route element={<Admin />} path="admin">
-            <Route element={<SideBar />} path="sidebar" />
+
+
+
+          <Route element={<User />} path="user"> 
+            <Route element={<Feedback  />} path="feedback" />
           </Route>
-=======
  
->>>>>>> 48b45970f551061597a8571dea7c0c15809cd16a
         </Routes>
       </BrowserRouter>
     </div>
