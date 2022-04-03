@@ -112,7 +112,7 @@ const AddNews = () => {
         <Grid item md={9}>
           <Grid container>
             <Grid item md={6} xs={6}>
-              <Card className="mt-5" sx={{ display: "flex", width: 1300 }}>
+              <Card className="mt-5" sx={{ dizsplay: "flex", width: 1300 }}>
                 <CardMedia
                   component="img"
                   height="600"
