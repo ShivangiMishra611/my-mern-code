@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 import app_config from "../../config";
 import TitleSharpIcon from "@mui/icons-material/TitleSharp";
+import * as Yup from "yup";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import CategoryIcon from "@mui/icons-material/Category";
 import StyleIcon from "@mui/icons-material/Style";
@@ -85,6 +86,14 @@ const AddNews = () => {
       }
     );
   };
+  const validationSchema = Yup.object().shape({
+    title: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Title is Required"),
+    category: Yup.string().required("Gender is Required"),
+    summary: Yup.string().required("News Summary is Required"),
+  });
 
   return (
     <div>
@@ -101,7 +110,7 @@ const AddNews = () => {
                 />
                 <Grid item xs={6} md={8}>
                   <CardContent sx={{ width: 600 }}>
-                    <Formik initialValues={newsForm} onSubmit={newsSubmit}>
+                    <Formik initialValues={newsForm} onSubmit={newsSubmit}  validationSchema={validationSchema}>
                       {({ values, handleChange, handleSubmit, errors }) => (
                         <form onSubmit={handleSubmit}>
                           <h5 className="card-header">Add News</h5>
@@ -115,7 +124,7 @@ const AddNews = () => {
                               id="title"
                               onChange={handleChange}
                               value={values.title}
-                              error={errors.title}
+                              error={Boolean(errors.title)}
                               helperText={errors.title}
                               InputProps={{
                                 endAdornment: (
@@ -145,7 +154,7 @@ const AddNews = () => {
                                 name="category"
                                 label="Category"
                                 value={values.category}
-                                error={errors.category}
+                                error={Boolean(errors.category)}
                                 helperText={errors.category}
                                 onChange={handleChange}
                                 InputProps={{
@@ -181,7 +190,7 @@ const AddNews = () => {
                               id="summary"
                               onChange={handleChange}
                               value={values.summary}
-                              error={errors.summary}
+                              error={Boolean(errors.summary)}
                               helperText={errors.summary}
                               aria-label="Add News"
                               placeholder="Add News"
@@ -206,7 +215,7 @@ const AddNews = () => {
                             <Autocomplete
                               multiple
                               id="tags-outlined"
-                              error={errors.tags}
+                              error={Boolean(errors.tags)}
                               helperText={errors.tags}
                               options={tags}
                               InputProps={{
@@ -244,6 +253,9 @@ const AddNews = () => {
                                 className="form-control"
                                 type="file"
                                 id="thumbnail"
+                                value={values.thumbnail}
+                                error={Boolean(errors.thumbnail)}
+                                helperText={errors.thumbnail}
                                 onChange={uploadThumbnail}
                               />
                             </div>

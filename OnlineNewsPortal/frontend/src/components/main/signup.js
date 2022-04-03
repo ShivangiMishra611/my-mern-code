@@ -2,8 +2,9 @@ import {
   Button,
   Card,
   CardContent,
+  Container,
   Grid,
-  Paper,
+ 
   TextField,
   InputAdornment,CardMedia
 } from "@mui/material";
@@ -12,6 +13,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import { Formik } from "formik";
 import app_config from "../../config";
 import Swal from "sweetalert2";
+import * as Yup from "yup";
 
 
 //form object
@@ -56,68 +58,50 @@ const Signup = () => {
         console.log(data);
       });
   };
-  const validate = (values) => {
-    const errors = {};
-
-    if (!values.email) {
-      errors.email = "Required";
-    } 
-    else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    ) {
-      errors.email = "Invalid email address";
-    }
-    if (!values.name) {
-      errors.name = "Required";
-    } 
-    else if (!/^[A-Za-z]+/i.test(values.name)) {
-      errors.name = "Invalid name";
-    }
-    if (!values.username) {
-      errors.username = "Required";
-    }
-    else if (!/^[A-Za-z]+/i.test(values.username)) {
-      errors.username = "Invalid Username";
-    }
-
-    if (values.confirmPassword !== values.password) {
-      errors.confirmPassword = "Please re -enter your password";
-    }
-    return errors;
-  };
-
-  const validateconfirmPassword = (pass, value) => {
-    let error = "";
-    if (pass && value) {
-      if (pass !== value) {
-        error = "password not matched";
-      }
-    }
-    return error;
-  };
+  const validationSchema = Yup.object().shape({
+    name: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Name is Required"),
+    username: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("UserName is Required"),
+    
+    age: Yup.string().required("Age is Required"),
+    email: Yup.string().email("Invalid email").required("Email is Required"),
+    password: Yup.string()
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+      )
+      .required("Password is Required"),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .required("Password Confirmation is Required"),
+  });
+  
+    
+ 
   return (
     <div>
-      <Paper className="login-container">
-      <Grid container spacing={3}>
-      <Grid item md={9}>
-        <Grid container justifyContent="center">
-          <Grid item md={6
-          } sx={6}>
-            <Card className="mt-5" sx={{ display: "flex",width: 800}} >
-            <CardMedia
+      <Container maxWidth="xl">
+        <Card className="mt-5" sx={{ display: "flex", ml: 3 }}>
+          <Grid container>
+            <Grid item xs={6} md={7}>
+              <CardMedia
                 component="img"
                 height="800"
-                sx={{ width: 600}}
-                // image={require("C:\Users\NEHA\Pictures\images (19).jpeg")}
-               
+                image={url + "/images/sign-up.png"}
               />
-              <Grid item xs={6} md={8}>
-              <CardContent   sx={{ width: 300}}>
+            </Grid>
+            <Grid item xs={6} md={5}>
+            <CardContent sx={{display: 'flex', flexDirection:'column'}}>
                 <p className="h3 text-center mb-5 mt-5">Signup Here</p>
                 <Formik
                   initialValues={userForm}
                   onSubmit={userSubmit}
-                  validate={validate}
+                  validationSchema={validationSchema}
                 >
                   {({
                     values,
@@ -135,6 +119,7 @@ const Signup = () => {
                         id="name"
                         onChange={handleChange}
                         value={values.name}
+                        error={Boolean(errors.name)}
                         helperText="Enter your name please"
                         InputProps={{
                           endAdornment: (
@@ -155,6 +140,7 @@ const Signup = () => {
                         id="username"
                         onChange={handleChange}
                         value={values.username}
+                        error={Boolean(errors.username)}
                         
                         InputProps={{
                           endAdornment: (
@@ -176,7 +162,7 @@ const Signup = () => {
                         id="email"
                         onChange={handleChange}
                         value={values.email}
-                        error={errors.email}
+                        error={Boolean(errors.email)}
                         helperText={errors.email}
                       />
 
@@ -189,6 +175,7 @@ const Signup = () => {
                         id="password"
                         onChange={handleChange}
                         value={values.password}
+                        error={Boolean(errors.password)}
                         helperText="Enter your Password please"
                       />
 
@@ -201,7 +188,7 @@ const Signup = () => {
                         id="age"
                         onChange={handleChange}
                         value={values.age}
-                        error={errors.age}
+                        error={Boolean(errors.age)}
                         helperText="Enter your correct age please"
                       />
                       <TextField
@@ -214,7 +201,7 @@ const Signup = () => {
                         onChange={handleChange}
                         value={values.confirmPassword}
                         error={errors.confirmPassword}
-                        helperText={errors.confirmPassword}
+                        helperText={Boolean(errors.confirmPassword)}
                       />
 
                       <Button
@@ -227,16 +214,13 @@ const Signup = () => {
                       </Button>
                     </form>
                   )}
+                
                 </Formik>
-                </CardContent>
-              </Grid>
-            </Card>
+              </CardContent>
+            </Grid>
           </Grid>
-        </Grid>
-        </Grid>
-        <Grid item md={3}></Grid>
-        </Grid>
-      </Paper>
+        </Card>
+      </Container>
     </div>
   );
 };

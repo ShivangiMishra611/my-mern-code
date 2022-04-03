@@ -6,6 +6,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import * as React from "react";
+import * as Yup from "yup";
 
 import {
   Button,
@@ -13,8 +14,7 @@ import {
   CardContent,
   CardMedia,
   Grid,
-  
-  Paper,
+ Container,
   TextField,
   Link,
   Typography,
@@ -25,7 +25,7 @@ import {
 import { useState } from "react";
 
 const Login = () => {
-  const avatarStyle = { backgroundColor: "green" };
+  const avatarStyle = { backgroundColor: "green" ,justifyContent:"center", alignItems:'center'};
 
   const url = app_config.api_url;
 
@@ -41,7 +41,7 @@ const Login = () => {
     console.log(values);
 
     //url
-    //request method 
+    //request method
     //data
     //data format
     fetch(url + "/user/checklogin", {
@@ -73,120 +73,126 @@ const Login = () => {
         sessionStorage.setItem("user", JSON.stringify(data));
       });
   };
-  const validate = (values) => {
-    const errors = {};
+  const validationSchema = Yup.object().shape({
+    username: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("FullName is Required"),
+  
+    password: Yup.string()
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+      )
+      .required("Password is Required"),
+   
+  });
 
-    if (!values.username) {
-      errors.username = "Required";
-    } else if (!/^[A-Za-z]+/i.test(values.username)) {
-      errors.username = "Invalid Username";
-    }
-
-    if (!values.password) {
-      errors.password = "Required";
-    }
-    return errors;
-  };
 
   return (
     <div>
-      <Paper className="login-container">
-        <Grid container justifyContent="center">
-          <Grid item md={3} sm={2}>
-            <Card>
-              <CardContent align="center">
+      <Container maxWidth="xl">
+        <Card className="mt-5" sx={{ display: "flex", ml: 3 }}>
+          <Grid container>
+            <Grid item xs={6} md={7}>
+              <CardMedia
+                component="img"
+                height="600"
+                image={url + "/images/user_login.jpg"}
+              />
+            </Grid>
+            <Grid item xs={6} md={5}>
+              <CardContent sx={{display: 'flex', flexDirection:'column'}}>
                 <Avatar style={avatarStyle}>
                   <LockIcon />
                 </Avatar>
                 <p className="h3 text-center mb-5 mt-5">Sign In</p>
-                <Formik initialValues={loginForm} onSubmit={loginSubmit}>
-                        {({ values, handleChange, handleSubmit, errors }) => (
-                          <form onSubmit={handleSubmit}>
-                            <TextField
-                              className="w-100 mt-3"
-                              placeholder="Username"
-                              label="Username"
-                              variant="outlined"
-                              id="username"
-                              error={errors.username}
-                              helperText={errors.username}
-                              onChange={handleChange}
-                              value={values.username}
-                              InputProps={{
-                                endAdornment: (
-                                  <InputAdornment position="end">
-                                    <PersonIcon
-                                      sx={{
-                                        color: "active.active",
-                                        mr: 1,
-                                        my: 0.5,
-                                      }}
-                                    />
-                                  </InputAdornment>
-                                ),
-                              }}
-                            />
+                <Formik initialValues={loginForm} onSubmit={loginSubmit} validationSchema={validationSchema}>
+                  {({ values, handleChange, handleSubmit, errors }) => (
+                    <form onSubmit={handleSubmit}>
+                      <TextField
+                        className="w-100 mt-3"
+                        placeholder="Username"
+                        label="Username"
+                        variant="outlined"
+                        id="username"
+                        error={Boolean(errors.username)}
+                        helperText={errors.username}
+                        onChange={handleChange}
+                        value={values.username}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <PersonIcon
+                                sx={{
+                                  color: "active.active",
+                                  mr: 1,
+                                  my: 0.5,
+                                }}
+                              />
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
 
-                            <TextField
-                              className="w-100 mt-3"
-                              placeholder="Password"
-                              label="Password"
-                              type={passVisible ? "text" : "password"}
-                              variant="outlined"
-                              id="password"
-                              onChange={handleChange}
-                              value={values.password}
-                              error={errors.password}
-                              helperText={errors.password}
-                              InputProps={{
-                                endAdornment: (
-                                  <InputAdornment position="end">
-                                    <IconButton
-                                      aria-label="toggle password visibility"
-                                      onClick={(e) => {
-                                        setPassVisible(!passVisible);
-                                      }}
-                                      edge="end"
-                                    >
-                                      {passVisible ? (
-                                        <Visibility />
-                                      ) : (
-                                        <VisibilityOff />
-                                      )}
-                                    </IconButton>
-                                  </InputAdornment>
-                                ),
-                              }}
-                            />
+                      <TextField
+                        className="w-100 mt-3"
+                        placeholder="Password"
+                        label="Password"
+                        type={passVisible ? "text" : "password"}
+                        variant="outlined"
+                        id="password"
+                        onChange={handleChange}
+                        value={values.password}
+                        error={Boolean(errors.password)}
+                        helperText={errors.password}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={(e) => {
+                                  setPassVisible(!passVisible);
+                                }}
+                                edge="end"
+                              >
+                                {passVisible ? (
+                                  <Visibility />
+                                ) : (
+                                  <VisibilityOff />
+                                )}
+                              </IconButton>
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
 
-                            <Button
-                              color="success"
-                              variant="contained"
-                              className="mt-5"
-                              type="submit"
-                              fullWidth
-                            >
-                              Signin to Continue
-                            </Button>
-                            <Typography>
-                              <Link href="resetPassword">Forgot Password?</Link>
-                            </Typography>
+                      <Button
+                        color="success"
+                        variant="contained"
+                        className="mt-5"
+                        type="submit"
+                        fullWidth
+                      >
+                        Signin to Continue
+                      </Button>
+                      <Typography>
+                        <Link href="resetPassword">Forgot Password?</Link>
+                      </Typography>
 
-                            <Typography>
-                              {" "}
-                              Do'nt have an account?
-                              <Link href="signup">Sign Up</Link>
-                            </Typography>
-                          </form>
-                        )}
-                      
-                        </Formik>
-                    </CardContent>
-                </Card>
+                      <Typography>
+                        {" "}
+                        Do'nt have an account?
+                        <Link href="signup">Sign Up</Link>
+                      </Typography>
+                    </form>
+                  )}
+                </Formik>
+              </CardContent>
+            </Grid>
           </Grid>
-          <Grid item md={3}></Grid>
-        </Grid>
-      </Paper>
+        </Card>
+      </Container>
     </div>
   );
 };

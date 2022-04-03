@@ -1,3 +1,4 @@
+
 import { Formik } from "formik";
 import app_config from "../../config";
 import Swal from "sweetalert2";
@@ -24,7 +25,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-const ReporterLogin = () => {
+const AdminLogin = () => {
   const avatarStyle = { backgroundColor: "green" ,justifyContent:"center", alignItems:'center'};
 
   const url = app_config.api_url;
@@ -88,7 +89,6 @@ const ReporterLogin = () => {
    
   });
 
-
   return (
     <div>
       <Container maxWidth="xl">
@@ -98,7 +98,7 @@ const ReporterLogin = () => {
               <CardMedia
                 component="img"
                 height="600"
-                image={url + "/images/reporter_login.jpg"}
+                image={url + "/images/admin_login.png"}
               />
             </Grid>
             <Grid item xs={6} md={5}>
@@ -107,7 +107,7 @@ const ReporterLogin = () => {
                   <LockIcon />
                 </Avatar>
                 <p className="h3 text-center mb-5 mt-5">Sign In</p>
-                <Formik initialValues={loginForm} onSubmit={loginSubmit} validationSchema={validationSchema}>
+                <Formik initialValues={loginForm} onSubmit={loginSubmit}  validationSchema={validationSchema}>
                   {({ values, handleChange, handleSubmit, errors }) => (
                     <form onSubmit={handleSubmit}>
                       <TextField
@@ -197,4 +197,4 @@ const ReporterLogin = () => {
   );
 };
 
-export default ReporterLogin;
+export default AdminLogin;

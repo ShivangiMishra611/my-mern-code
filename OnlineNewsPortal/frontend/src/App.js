@@ -21,6 +21,7 @@ import ResetPassword from "./components/main/resetPassword";
 import Feedback from "./components/user/feedback";
 import Home from "./components/main/home";
 import ReporterLogin from "./components/reporter/reporterLogin";
+import AdminLogin from "./components/admin/adminLogin";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
             <Route element={<AddReporter />} path="addreporter" />
             <Route element={<AddReporter />} path="addreporter" />
             <Route element={<ManageNews />} path="managenews" />
+            <Route element={<AdminLogin />} path="login" />
             <Route element={<ManageReporters />} path="managereporters" />
           </Route>
 
