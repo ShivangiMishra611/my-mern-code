@@ -24,7 +24,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-const Login = () => {
+const ReporterLogin = () => {
   const avatarStyle = { backgroundColor: "green" ,justifyContent:"center", alignItems:'center'};
 
   const url = app_config.api_url;
@@ -98,7 +98,7 @@ const Login = () => {
               <CardMedia
                 component="img"
                 height="600"
-                image={url + "/images/user_login.jpg"}
+                image={url + "/images/reporter_login.jpg"}
               />
             </Grid>
             <Grid item xs={6} md={5}>
@@ -197,4 +197,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ReporterLogin;
