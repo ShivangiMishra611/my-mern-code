@@ -85,7 +85,10 @@ const AddReporter = () => {
       .max(50, "Too Long!")
       .required("FullName is Required"),
     gender: Yup.string().required("Gender is Required"),
-    number: Yup.string().required("Number is Required"),
+    number: Yup.number()
+    .min(6)
+    .max(10)
+    .required("Number is Required"),
     age: Yup.string().required("Age is Required"),
     email: Yup.string().email("Invalid email").required("Email is Required"),
     password: Yup.string()
