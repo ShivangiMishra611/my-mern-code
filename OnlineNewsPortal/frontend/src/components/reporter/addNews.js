@@ -85,26 +85,6 @@ const AddNews = () => {
       }
     );
   };
-  const validate = (values) => {
-    const errors = {};
-
-    if (!values.title) {
-      errors.title = "Required";
-    }
-
-    if (!values.category) {
-      errors.category = "Required";
-    }
-
-    if (!values.summary) {
-      errors.summary = "Required";
-    }
-
-    if (!values.tags) {
-      errors.tags = "Required";
-    }
-    return errors;
-  };
 
   return (
     <div>
@@ -121,11 +101,7 @@ const AddNews = () => {
                 />
                 <Grid item xs={6} md={8}>
                   <CardContent sx={{ width: 600 }}>
-                    <Formik
-                      initialValues={newsForm}
-                      onSubmit={newsSubmit}
-                      validate={validate}
-                    >
+                    <Formik initialValues={newsForm} onSubmit={newsSubmit}>
                       {({ values, handleChange, handleSubmit, errors }) => (
                         <form onSubmit={handleSubmit}>
                           <h5 className="card-header">Add News</h5>
@@ -200,6 +176,7 @@ const AddNews = () => {
                               className="w-100 mt-3"
                               label="Add News"
                               multiline
+                              rows={4}
                               variant="outlined"
                               id="summary"
                               onChange={handleChange}

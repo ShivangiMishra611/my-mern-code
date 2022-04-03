@@ -84,6 +84,9 @@ const AddReporter = () => {
       .min(2, "Too Short!")
       .max(50, "Too Long!")
       .required("FullName is Required"),
+    gender: Yup.string().required("Gender is Required"),
+    number: Yup.string().required("Number is Required"),
+    age: Yup.string().required("Age is Required"),
     email: Yup.string().email("Invalid email").required("Email is Required"),
     password: Yup.string()
       // .matches(
@@ -113,7 +116,7 @@ const AddReporter = () => {
                 <Formik
                   initialValues={reporterForm}
                   onSubmit={reporterSubmit}
-                  validate={validationSchema}
+                  validationSchema={validationSchema}
                 >
                   {({ values, handleChange, handleSubmit, errors }) => (
                     <form onSubmit={handleSubmit}>
@@ -271,7 +274,7 @@ const AddReporter = () => {
                         </div>
 
                         <div className="mb-3">
-                          <label for="formFile" class="form-label">
+                          <label htmlFor="formFile" className="form-label">
                             Add Image
                           </label>
                           <input
