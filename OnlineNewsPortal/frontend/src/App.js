@@ -20,6 +20,7 @@ import ResetPassword from "./components/main/resetPassword";
 
 import Feedback from "./components/user/feedback";
 import Home from "./components/main/home";
+import ReporterLogin from "./components/reporter/reporterLogin";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Routes>
           <Route element={<Reporter />} path="reporter">
             <Route element={<AddNews />} path="addnews" />
+            <Route element={<ReporterLogin />} path="login" />
           </Route>
 
           <Route element={<Main />} path="main">

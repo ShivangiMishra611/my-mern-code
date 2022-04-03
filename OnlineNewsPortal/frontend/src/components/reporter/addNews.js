@@ -112,12 +112,12 @@ const AddNews = () => {
         <Grid item md={9}>
           <Grid container>
             <Grid item md={6} xs={6}>
-              <Card className="mt-5" sx={{ dizsplay: "flex", width: 1300 }}>
+              <Card className="mt-5" sx={{ display: "flex", width: 1300 }}>
                 <CardMedia
                   component="img"
                   height="600"
                   sx={{ width: 600, m: 1 }}
-                  image={url + "/images/news_reporting.webp"}
+                  image={url + "/images/add_news.jpg"}
                 />
                 <Grid item xs={6} md={8}>
                   <CardContent sx={{ width: 600 }}>

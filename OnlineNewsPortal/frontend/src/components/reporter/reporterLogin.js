@@ -1,0 +1,198 @@
+import { Formik } from "formik";
+import app_config from "../../config";
+import Swal from "sweetalert2";
+import LockIcon from "@mui/icons-material/Lock";
+import PersonIcon from "@mui/icons-material/Person";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import * as React from "react";
+
+import {
+  Button,
+  Card,
+  CardContent,
+  CardMedia,
+  Grid,
+ Container,
+  TextField,
+  Link,
+  Typography,
+  Avatar,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
+import { useState } from "react";
+
+const ReporterLogin = () => {
+  const avatarStyle = { backgroundColor: "green" ,justifyContent:"center", alignItems:'center'};
+
+  const url = app_config.api_url;
+
+  const [currentUser, setCurrentUser] = useState({});
+  const [loggedin, setLoggedin] = useState(false);
+  const [passVisible, setPassVisible] = useState(false);
+
+  const loginForm = {
+    username: "",
+    password: "",
+  };
+  const loginSubmit = (values) => {
+    console.log(values);
+
+    //url
+    //request method
+    //data
+    //data format
+    fetch(url + "/user/checklogin", {
+      method: "POST",
+      body: JSON.stringify(values),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => {
+        console.log(res.status);
+        if (res.status === 200) {
+          setLoggedin(true);
+          Swal.fire({
+            icon: "success",
+            title: "success",
+            text: "Loggedin Successfully",
+          });
+        } else if (res.status === 300) {
+          Swal.fire({
+            icon: "error",
+            title: "failed",
+            text: "loggedin failed",
+          });
+        }
+      })
+      .then((data) => {
+        setCurrentUser(data);
+
+        //storing value in session
+        sessionStorage.setItem("user", JSON.stringify(data));
+      });
+  };
+  const validate = (values) => {
+    const errors = {};
+
+    if (!values.username) {
+      errors.username = "Required";
+    } else if (!/^[A-Za-z]+/i.test(values.username)) {
+      errors.username = "Invalid Username";
+    }
+
+    if (!values.password) {
+      errors.password = "Required";
+    }
+    return errors;
+  };
+
+  return (
+    <div>
+      <Container maxWidth="xl">
+        <Card className="mt-5" sx={{ display: "flex", ml: 3 }}>
+          <Grid container>
+            <Grid item xs={6} md={7}>
+              <CardMedia
+                component="img"
+                height="600"
+                image={url + "/images/reporter_login.jpg"}
+              />
+            </Grid>
+            <Grid item xs={6} md={5}>
+              <CardContent sx={{display: 'flex', flexDirection:'column'}}>
+                <Avatar style={avatarStyle}>
+                  <LockIcon />
+                </Avatar>
+                <p className="h3 text-center mb-5 mt-5">Sign In</p>
+                <Formik initialValues={loginForm} onSubmit={loginSubmit}>
+                  {({ values, handleChange, handleSubmit, errors }) => (
+                    <form onSubmit={handleSubmit}>
+                      <TextField
+                        className="w-100 mt-3"
+                        placeholder="Username"
+                        label="Username"
+                        variant="outlined"
+                        id="username"
+                        error={errors.username}
+                        helperText={errors.username}
+                        onChange={handleChange}
+                        value={values.username}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <PersonIcon
+                                sx={{
+                                  color: "active.active",
+                                  mr: 1,
+                                  my: 0.5,
+                                }}
+                              />
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+
+                      <TextField
+                        className="w-100 mt-3"
+                        placeholder="Password"
+                        label="Password"
+                        type={passVisible ? "text" : "password"}
+                        variant="outlined"
+                        id="password"
+                        onChange={handleChange}
+                        value={values.password}
+                        error={errors.password}
+                        helperText={errors.password}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={(e) => {
+                                  setPassVisible(!passVisible);
+                                }}
+                                edge="end"
+                              >
+                                {passVisible ? (
+                                  <Visibility />
+                                ) : (
+                                  <VisibilityOff />
+                                )}
+                              </IconButton>
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+
+                      <Button
+                        color="success"
+                        variant="contained"
+                        className="mt-5"
+                        type="submit"
+                        fullWidth
+                      >
+                        Signin to Continue
+                      </Button>
+                      <Typography>
+                        <Link href="resetPassword">Forgot Password?</Link>
+                      </Typography>
+
+                      <Typography>
+                        {" "}
+                        Do'nt have an account?
+                        <Link href="signup">Sign Up</Link>
+                      </Typography>
+                    </form>
+                  )}
+                </Formik>
+              </CardContent>
+            </Grid>
+          </Grid>
+        </Card>
+      </Container>
+    </div>
+  );
+};
+
+export default ReporterLogin;
