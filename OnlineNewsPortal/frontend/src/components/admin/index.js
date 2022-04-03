@@ -17,13 +17,13 @@ const Admin = () => {
     },
     {
       title : 'Manage News',
-      icon : <PersonAddIcon/>,
+      icon : <BadgeIcon/>,
       link : '/admin/managenews'
 
     },
     {
       title : 'Manage Reporter',
-      icon : <PersonAddIcon/>,
+      icon : <GroupAddIcon/>,
       link : '/admin/managereporters'
 
     },

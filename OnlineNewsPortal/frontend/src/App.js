@@ -17,7 +17,7 @@ import AddNews from "./components/reporter/addNews";
 import ReporterDashbord from "./components/reporter/sidebar";
 import ViewArchieve  from "./components/main/viewArchieve";
 import ResetPassword from "./components/main/resetPassword";
-import SideBar from "./components/sidebar";
+
 
 function App() {
   return (
@@ -58,6 +58,10 @@ function App() {
 
           <Route element={<Admin />} path="admin">
             <Route element={<AddReporter />} path="addreporter" />
+          </Route>
+
+          <Route element={<Admin />} path="admin">
+            <Route element={<ManageNews />} path="managenews" />
           </Route>
 
           <Route element={<Admin />} path="admin">

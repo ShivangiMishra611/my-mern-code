@@ -8,14 +8,10 @@ import {
   InputAdornment,CardMedia
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
-import EmailIcon from '@mui/icons-material/Email';
+
 import { Formik } from "formik";
 import app_config from "../../config";
 import Swal from "sweetalert2";
-import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
-import HttpsIcon from '@mui/icons-material/Https';
-import LockOpenTwoToneIcon from '@mui/icons-material/LockOpenTwoTone';
-import BadgeOutlinedIcon from '@mui/icons-material/BadgeOutlined';
 
 
 //form object
@@ -90,15 +86,7 @@ const Signup = () => {
     return errors;
   };
 
-  const validateconfirmPassword = (pass, value) => {
-    let error = "";
-    if (pass && value) {
-      if (pass !== value) {
-        error = "password not matched";
-      }
-    }
-    return error;
-  };
+  
   return (
     <div>
       <Paper className="login-container">

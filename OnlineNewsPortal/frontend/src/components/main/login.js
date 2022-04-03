@@ -90,7 +90,7 @@ const Login = () => {
 
   return (
     <div>
-      <Paper className="password-container" elevation={6}>
+      <Paper className="login-container" elevation={6}>
         <Grid container spacing={3}>
           <Grid item md={9}>
             <Grid container>
