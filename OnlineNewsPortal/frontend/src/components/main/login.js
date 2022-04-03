@@ -90,33 +90,16 @@ const Login = () => {
 
   return (
     <div>
-      <Paper className="login-container" elevation={6}>
-        <Grid container spacing={3}>
-          <Grid item md={9}>
-            <Grid container>
-              <Grid item md={6} sx={6}>
-                <Card
-                  className="mt-5"
-                  sx={{ display: "flex", width: 1020, ml: 20 }}
-                >
-                  <CardMedia
-                    component="img"
-                    height="650"
-                    sx={{ width: 600, m: 1 }}
-                    image={require("C:/Users/HP/Pictures/news-bannerTab.jpg")}
-                  />
-                  <Grid item xs={6} md={8}>
-                    <CardContent sx={{ width: 400 }}>
-                      <Avatar style={avatarStyle}>
-                        <LockIcon />
-                      </Avatar>
-                      <p className="h3 text-center mb-5 mt-5">Sign In</p>
-
-                      <Formik
-                        initialValues={loginForm}
-                        onSubmit={loginSubmit}
-                        validate={validate}
-                      >
+      <Paper className="login-container">
+        <Grid container justifyContent="center">
+          <Grid item md={3} sm={2}>
+            <Card>
+              <CardContent align="center">
+                <Avatar style={avatarStyle}>
+                  <LockIcon />
+                </Avatar>
+                <p className="h3 text-center mb-5 mt-5">Sign In</p>
+                <Formik initialValues={loginForm} onSubmit={loginSubmit}>
                         {({ values, handleChange, handleSubmit, errors }) => (
                           <form onSubmit={handleSubmit}>
                             <TextField
@@ -196,12 +179,10 @@ const Login = () => {
                             </Typography>
                           </form>
                         )}
-                      </Formik>
+                      
+                        </Formik>
                     </CardContent>
-                  </Grid>
                 </Card>
-              </Grid>
-            </Grid>
           </Grid>
           <Grid item md={3}></Grid>
         </Grid>

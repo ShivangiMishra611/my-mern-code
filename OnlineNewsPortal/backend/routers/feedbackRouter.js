@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Model = require("../models/commentModel");
+const Model = require("../models/feedbackModel");
 
 router.post("/add", (req, res) => {
   console.log(req.body);
@@ -7,7 +7,7 @@ router.post("/add", (req, res) => {
   new Model(req.body)
     .save()
     .then((data) => {
-      console.log("Comment added successfully..");
+      console.log("Feedback added successfully..");
       res.status(200).json(data);
     })
     .catch((err) => {
@@ -19,7 +19,7 @@ router.post("/add", (req, res) => {
 router.get("/getall", (req, res) => {
   Model.find({})
     .then((data) => {
-      console.log("Comment fetched successfully..");
+      console.log("Feedback fetched successfully..");
       res.status(200).json(data);
     })
     .catch((err) => {

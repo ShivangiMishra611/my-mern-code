@@ -86,7 +86,15 @@ const Signup = () => {
     return errors;
   };
 
-  
+  const validateconfirmPassword = (pass, value) => {
+    let error = "";
+    if (pass && value) {
+      if (pass !== value) {
+        error = "password not matched";
+      }
+    }
+    return error;
+  };
   return (
     <div>
       <Paper className="login-container">
@@ -100,7 +108,7 @@ const Signup = () => {
                 component="img"
                 height="800"
                 sx={{ width: 600}}
-                image={require("C:/Users/HP/Pictures/images (11).jpeg")}
+                // image={require("C:\Users\NEHA\Pictures\images (19).jpeg")}
                
               />
               <Grid item xs={6} md={8}>

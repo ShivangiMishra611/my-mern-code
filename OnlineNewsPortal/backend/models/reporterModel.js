@@ -1,13 +1,14 @@
 const mongoose = require("../connection");
 
 const mySchema = new mongoose.Schema({
-  name :String,
-  email : String,
+  name: String,
+  email: String,
   password: String,
-  contact: Number ,
+  number: Number,
   gender: String,
   age: Number,
   thumbnail: String,
+  isAdmin: { type: Boolean, default: false },
   createdAt: { type: Date, default: new Date() },
 });
 
