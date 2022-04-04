@@ -2,12 +2,16 @@ import { Button, Card, CardContent, TextField } from "@mui/material";
 import { useState } from "react";
 import app_config from "../../config";
 import Swal from "sweetalert2";
+import { Formik } from "formik";
+import { useNavigate } from "react-router-dom";
 
 const ResetPassword = () => {
   const [email, setEmail] = useState("");
 
   const [otp, setOTP] = useState("");
-  const [userInput, setUserInput] = useState(0);
+  const [showReset, setShowReset] = useState(false);
+  const [currentUser, setCurrentUser] = useState({});
+  const navigate = useNavigate();
 
   const url = app_config.api_url;
 
@@ -17,12 +21,18 @@ const ResetPassword = () => {
     return otp;
   };
 
+  const passwordForm = {
+    otp: "",
+    password: "",
+    confirm: "",
+  };
+
   const sendOTP = () => {
     fetch(url + "/util/sendmail", {
       method: "POST",
       body: JSON.stringify({
-        to: "shivangimishra.com@gmail.com",
-        subject: "Password Resetr",
+        to: email,
+        subject: "Password Reset",
         text: "This is your OTP for password reset " + generateOTP(),
       }),
       headers: {
@@ -41,22 +51,118 @@ const ResetPassword = () => {
     });
   };
 
-  const verifyOTP = () => {
-    if (otp == userInput) {
+  const verifyUser = () => {
+    fetch(url + "/user/getbyemail/" + email)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        if (!data) {
+          console.log("not found!!");
+          Swal.fire({
+            icon: "error",
+            title: "Email not registered!!",
+          });
+        } else {
+          setCurrentUser(data);
+          setShowReset(true);
+          sendOTP();
+          // console.log(generateOTP());
+        }
+      });
+  };
+
+  const verifyOTP = (formdata) => {
+    if (otp == formdata.otp) {
       console.log("otp matched");
-      resetPassword();
+      resetPassword(formdata);
     } else {
-      console.log("otp matched");
+      console.log("otp not matched");
       Swal.fire({
         icon: "error",
         title: "failed",
-        text: "Please Try Again",
+        text: "Enter Correct OTP",
       });
     }
   };
 
-  const resetPassword = () => {
-    fetch(url + "/user/update/");
+  const resetPassword = ({ password }) => {
+    fetch(url + "/user/update/" + currentUser._id, {
+      method: "PUT",
+      body: JSON.stringify({ password: password }),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => {
+        console.log("reset");
+        if (res.status === 200)
+          Swal.fire({
+            icon: "success",
+            title: "Password Reset Success!!",
+          }).then(() => {
+            navigate("/main/login");
+          });
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
+  const showResetForm = () => {
+    if (showReset) {
+      return (
+        <Card className="mt-5" sx={{ width: 451 }} align="center">
+          <CardContent align="center">
+            <Formik initialValues={passwordForm} onSubmit={verifyOTP}>
+              {({ values, handleSubmit, handleChange }) => (
+                <form onSubmit={handleSubmit}>
+                  <TextField
+                    className="w-100 mt-3"
+                    placeholder="Enter OTP recieved in Email"
+                    label="Enter OTP"
+                    variant="outlined"
+                    id="otp"
+                    value={values.otp}
+                    onChange={handleChange}
+                  />
+                  <TextField
+                    className="w-100 mt-3"
+                    placeholder="Enter New Password"
+                    label="Password"
+                    variant="outlined"
+                    id="password"
+                    type="password"
+                    value={values.password}
+                    onChange={handleChange}
+                  />
+                  <TextField
+                    className="w-100 mt-3"
+                    placeholder="Confirm Password"
+                    label="Confirm Password"
+                    variant="outlined"
+                    id="confirm"
+                    type="password"
+                    value={values.confirm}
+                    onChange={handleChange}
+                  />
+
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    className="mt-5"
+                    type="submit"
+                    fullWidth
+                  >
+                    Submit
+                  </Button>
+                </form>
+              )}
+            </Formik>
+          </CardContent>
+        </Card>
+      );
+    }
   };
 
   return (
@@ -72,14 +178,6 @@ const ResetPassword = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <TextField
-            className="w-100 mt-3"
-            placeholder=""
-            label="Enter OTP"
-            variant="outlined"
-            id="otp"
-            type="number"
-          />
 
           <Button
             color="success"
@@ -87,12 +185,14 @@ const ResetPassword = () => {
             className="mt-5"
             type="submit"
             fullWidth
-            onClick={sendOTP}
+            onClick={verifyUser}
           >
             Submit
           </Button>
         </CardContent>
       </Card>
+
+      {showResetForm()}
     </div>
   );
 };
