@@ -42,7 +42,6 @@ function App() {
 
           <Route element={<Admin />} path="admin">
             <Route element={<AddReporter />} path="addreporter" />
-            <Route element={<AddReporter />} path="addreporter" />
             <Route element={<ManageNews />} path="managenews" />
             <Route element={<ManageReporters />} path="managereporters" />
           </Route>
