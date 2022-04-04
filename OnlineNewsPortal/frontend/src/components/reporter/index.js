@@ -11,6 +11,12 @@ import GroupAddIcon from '@mui/icons-material/GroupAdd';
 
 const Reporter = () => {
   const sidebarOptions = [
+
+    {
+      title : 'Login',
+      icon : <PersonAddIcon/>,
+      link : '/reporter/login'
+    },
     {
       title : 'Add Reporter',
       icon : <PersonAddIcon/>,

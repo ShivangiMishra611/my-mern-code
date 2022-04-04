@@ -7,6 +7,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
 import AccordionDetails from '@mui/material/AccordionDetails';
+import Stack from "@mui/material/Stack";
 
 
 
@@ -44,6 +45,18 @@ const ManageReporters= () => {
         });
       });
   };
+  const approveReporter = (id) => {
+    fetch(url + "/reporter/update/" + id, {
+      method: "PUT",
+      body: JSON.stringify({ approvereporter: true }),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        fetchData();
+      });
+  };
 
   useEffect(() => {
     fetchData();
@@ -72,6 +85,26 @@ const ManageReporters= () => {
 
 
           </AccordionDetails>
+          <Stack direction="row" spacing={2}>
+          <Button
+            disabled={reporter.approvereporter}
+            variant="contained"
+            color="error"
+            onClick={(e) => approveReporter(reporter._id)}
+          >
+            {reporter.approvereporter ? "Approved" : "Approve Reporter"}
+            <i class="fa-solid fa-thumbs-up"></i>
+          </Button>
+
+          <Button
+            variant="contained"
+            color="error"
+            onClick={(e) => deleteReporter(reporter._id)}
+          >
+            Delete Reporter
+            
+          </Button>
+        </Stack>
 
           </Accordion>
 
