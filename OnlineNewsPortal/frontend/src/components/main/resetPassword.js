@@ -1,11 +1,22 @@
-import { Button, Card, CardContent, TextField } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardContent,
+  TextField,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
 import { useState } from "react";
 import app_config from "../../config";
 import Swal from "sweetalert2";
 import { Formik } from "formik";
 import { useNavigate } from "react-router-dom";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 const ResetPassword = () => {
+  const [passVisible, setPassVisible] = useState(false);
+
   const [email, setEmail] = useState("");
 
   const [otp, setOTP] = useState("");
@@ -135,6 +146,21 @@ const ResetPassword = () => {
                     type="password"
                     value={values.password}
                     onChange={handleChange}
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility1"
+                            onClick={(e) => {
+                              setPassVisible(!passVisible);
+                            }}
+                            edge="end"
+                          >
+                            {passVisible ? <Visibility /> : <VisibilityOff />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
                   />
                   <TextField
                     className="w-100 mt-3"
@@ -145,6 +171,21 @@ const ResetPassword = () => {
                     type="password"
                     value={values.confirm}
                     onChange={handleChange}
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility1"
+                            onClick={(e) => {
+                              setPassVisible(!passVisible);
+                            }}
+                            edge="end"
+                          >
+                            {passVisible ? <Visibility /> : <VisibilityOff />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
                   />
 
                   <Button
@@ -164,6 +205,9 @@ const ResetPassword = () => {
       );
     }
   };
+  // const validationSchema = Yup.object().shape({
+  //   email: Yup.string().email("Invalid email").required("Email is Required")
+  // });
 
   return (
     <div className="reset-card" align="center">

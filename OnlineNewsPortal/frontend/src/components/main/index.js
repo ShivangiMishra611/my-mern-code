@@ -29,9 +29,10 @@ const Main = () => {
   ];
   return (
     <div>
-      <Sidebar title={"Main Dashboard"} sidebarOptions={sidebarOptions}>
+      {/* <Sidebar title={"Main Dashboard"} sidebarOptions={sidebarOptions}>
+      </Sidebar> */}
+      <Header />
         <Outlet />
-      </Sidebar>
      
     </div>
   );
