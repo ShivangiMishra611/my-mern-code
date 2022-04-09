@@ -4,6 +4,7 @@ import app_config from "../../config";
 import { TextField,
   Card,
   CardContent,
+  TextareaAutosize,
   CardMedia,
   Grid,
   Container,
@@ -13,6 +14,7 @@ import Swal from "sweetalert2";
 import TitleSharpIcon from "@mui/icons-material/TitleSharp";
 
 import InputAdornment from "@mui/material/InputAdornment";
+import SendIcon from '@mui/icons-material/Send';
 
 
 const Feedback = () => {
@@ -21,6 +23,10 @@ const Feedback = () => {
   // const img1="image1.jpg"
   const feedbackForm = {
     user: "",
+    name:"",
+    text:"",
+    suggestion:"",
+    compliment:"",
   };
 
   const feedbackSubmit = (values) => {
@@ -64,6 +70,8 @@ const Feedback = () => {
     return errors;
   };
 
+  
+
   return (
     <div>
     <Container maxWidth="xl">
@@ -72,38 +80,76 @@ const Feedback = () => {
             <Grid item xs={6} md={7}>
               <CardMedia
                 component="img"
-                height="500"
-                image={url + "/images/feedform.webp"}
+                height="650"
+                image={url + "/images/feedback.jpg"}
               />
             </Grid>
     
     <Formik initialValues={feedbackForm} onSubmit={feedbackSubmit}>
       {({ values, handleChange, handleSubmit, errors }) => (
         <form onSubmit={handleSubmit}>
-          <h5 className="card-header">Feedback </h5>
+        
+          <h3 className="card- header">   &nbsp; Your FeedBack  </h3>
+          <h6> We would like your feedback to improve our news portal.</h6>
+          <div className="mb-4">
+          <TextField
+           className="w-100 mt-3"
+           id="name"
+            label="name"
+            type="text"
+             variant="outlined"
+             onChange={handleChange}
+             value={values.name}
+             error={errors.name} />
+          </div>
+          <div className="mb-4">
+          <h6> Please select your feedback category below:</h6>
+          <TextField 
+          id="suggestion" 
+          placeholder="Suggestion"
+           variant="filled"
+            /> &nbsp; &nbsp;&nbsp;
+              <TextField 
+              className="mb-4"
+              
+              id="compliment" 
+              placeholder="Compliment"
+               variant="filled"
+                />
+          
+          </div>
+     
+    
+
           <div className="card-body">
             <div className="mb-4">
-              <TextField
-                className="w-100 mt-3"
-                placeholder="Text"
-                label="text"
-                variant="outlined"
-                id="name"
-                type="text"
-                onChange={handleChange}
-                value={values.text}
-                error={errors.text}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <TitleSharpIcon
-                        sx={{ color: "active.active", mr: 1, my: 0.5 }}
-                      />
-                    </InputAdornment>
-                  ),
-                }}
-                helperText={errors.text}
-              />
+            <h6> Please  leave your feedback below. </h6>
+            <TextareaAutosize
+            classname="w-100 mt-3"
+            maxRows={4}
+            aria-label="maximum height"
+            placeholder="Give ur feedback here..."
+            variant ="outlined"
+
+          
+            style={{ width: 500  ,  height: 200}}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <TitleSharpIcon
+                    sx={{
+                      color: "active.active",
+                      mr: 1,
+                      my: 0.5,
+                    }}
+                  />
+                </InputAdornment>
+              ),
+            }}
+          />
+
+
+             
             </div>
             <button
             
@@ -111,8 +157,22 @@ const Feedback = () => {
               className=" w-100 mt -3 btn btn-primary"
               color="success"
               variant="contained"
+
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <SendIcon
+                      sx={{
+                        color: "active.active",
+                        mr: 1,
+                        my: 0.5,
+                      }}
+                    />
+                  </InputAdornment>
+                ),
+              }}
             >
-              Submit
+              Send Feedback
             </button>
           </div>
         </form>

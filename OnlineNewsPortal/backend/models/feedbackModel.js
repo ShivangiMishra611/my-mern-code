@@ -4,6 +4,8 @@ const mySchema = new mongoose.Schema({
 
   user: {type : mongoose.Types.ObjectId, ref:'users'},
   text : String,  
+  name: String,
+  
   createdAt: { type: Date, default: new Date() },
 });
 

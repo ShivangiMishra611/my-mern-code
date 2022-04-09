@@ -17,24 +17,14 @@ const Reporter = () => {
       icon : <PersonAddIcon/>,
       link : '/reporter/login'
     },
+    
     {
-      title : 'Add Reporter',
-      icon : <PersonAddIcon/>,
-      link : '/admin/addreporter'
-    },
-    {
-      title : 'Manage News',
+      title : 'Add News',
       icon : <BadgeIcon/>,
       link : '/admin/managenews'
 
     },
-    {
-      title : 'Manage Reporter',
-      icon : <GroupAddIcon/>,
-      link : '/admin/managereporters'
-
-    },
-      
+   
    
 
   ]
