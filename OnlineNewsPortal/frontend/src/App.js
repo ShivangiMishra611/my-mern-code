@@ -22,6 +22,7 @@ import Feedback from "./components/user/feedback";
 import Home from "./components/main/home";
 import ReporterLogin from "./components/reporter/reporterLogin";
 import AdminLogin from "./components/admin/adminLogin";
+import Authenticator from "./components/authenticator";
 
 function App() {
   return (
@@ -43,7 +44,14 @@ function App() {
             <Route element={<TopStories />} path="topstories" />
           </Route>
 
-          <Route element={<Admin />} path="admin">
+          <Route
+            element={
+              <Authenticator>
+                <Admin />
+              </Authenticator>
+            }
+            path="admin"
+          >
             <Route element={<AddReporter />} path="addreporter" />
             <Route element={<ManageNews />} path="managenews" />
             <Route element={<AdminLogin />} path="login" />
