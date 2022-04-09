@@ -4,9 +4,9 @@ import {
   CardContent,
   Container,
   Grid,
- 
   TextField,
-  InputAdornment,CardMedia
+  InputAdornment,
+  CardMedia,
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import EmailIcon from '@mui/icons-material/Email';
@@ -18,7 +18,6 @@ import { Formik } from "formik";
 import app_config from "../../config";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
-
 
 //form object
 
@@ -72,7 +71,7 @@ const Signup = () => {
       .min(2, "Too Short!")
       .max(50, "Too Long!")
       .required("UserName is Required"),
-    
+
     age: Yup.string().required("Age is Required"),
     email: Yup.string().email("Invalid email").required("Email is Required"),
     password: Yup.string()
@@ -90,9 +89,7 @@ const Signup = () => {
       .required("Contact is Required"),
       
   });
-  
-    
- 
+
   return (
     <div>
       <Container maxWidth="xl">
@@ -106,7 +103,7 @@ const Signup = () => {
               />
             </Grid>
             <Grid item xs={6} md={5}>
-            <CardContent sx={{display: 'flex', flexDirection:'column'}}>
+              <CardContent sx={{ display: "flex", flexDirection: "column" }}>
                 <p className="h3 text-center mb-5 mt-5">Signup Here</p>
                 <Formik
                   initialValues={userForm}
@@ -151,7 +148,6 @@ const Signup = () => {
                         onChange={handleChange}
                         value={values.username}
                         error={Boolean(errors.username)}
-                        
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
@@ -274,7 +270,6 @@ const Signup = () => {
                       </Button>
                     </form>
                   )}
-                
                 </Formik>
               </CardContent>
             </Grid>
