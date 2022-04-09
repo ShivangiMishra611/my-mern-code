@@ -56,6 +56,10 @@ function App() {
             <Route element={<ManageNews />} path="managenews" />
             <Route element={<AdminLogin />} path="login" />
             <Route element={<ManageReporters />} path="managereporters" />
+            <Route
+              element={<Navigate to="/admin/addreporter" />}
+              path="/admin"
+            />
           </Route>
 
           <Route element={<User />} path="user">
