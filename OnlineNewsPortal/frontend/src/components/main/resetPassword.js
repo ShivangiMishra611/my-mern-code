@@ -13,6 +13,7 @@ import { Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import * as Yup from "yup";
 
 const ResetPassword = () => {
   const [passVisible, setPassVisible] = useState(false);
@@ -119,14 +120,27 @@ const ResetPassword = () => {
         console.log(data);
       });
   };
+  const validationSchema = Yup.object().shape({
+    
+   
+    password: Yup.string()
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+      )
+      .required("Password is Required"),
+    confirm: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .required("Password Confirmation is Required"),
+  });
 
   const showResetForm = () => {
     if (showReset) {
       return (
         <Card className="mt-5" sx={{ width: 451 }} align="center">
           <CardContent align="center">
-            <Formik initialValues={passwordForm} onSubmit={verifyOTP}>
-              {({ values, handleSubmit, handleChange }) => (
+            <Formik initialValues={passwordForm} onSubmit={verifyOTP} validationSchema={validationSchema}>
+              {({ values, handleSubmit, handleChange , errors, }) => (
                 <form onSubmit={handleSubmit}>
                   <TextField
                     className="w-100 mt-3"
@@ -145,6 +159,8 @@ const ResetPassword = () => {
                     id="password"
                     type="password"
                     value={values.password}
+                    error={Boolean(errors.password)}
+                    helperText="Enter your Password please"
                     onChange={handleChange}
                     InputProps={{
                       endAdornment: (
@@ -170,6 +186,8 @@ const ResetPassword = () => {
                     id="confirm"
                     type="password"
                     value={values.confirm}
+                    error={errors.confirm}
+                    helperText={Boolean(errors.confirm)}
                     onChange={handleChange}
                     InputProps={{
                       endAdornment: (
