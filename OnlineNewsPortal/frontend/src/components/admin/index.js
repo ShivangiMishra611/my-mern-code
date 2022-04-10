@@ -24,6 +24,12 @@ const Admin = () => {
       icon: <GroupAddIcon />,
       link: "/admin/managereporters",
     },
+
+    {
+      title: "Manage Users",
+      icon: <GroupAddIcon />,
+      link: "/admin/manageusers",
+    },
   ];
   return (
     <div>

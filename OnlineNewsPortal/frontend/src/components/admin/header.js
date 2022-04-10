@@ -1,12 +1,13 @@
 import { NavLink } from "react-router-dom";
+const url = app_config.api_url;
 const Header = () => {
-  const img1="logo.png";
+  
     return (
       <div>
   <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
     <div className="container-fluid">
       <a className="navbar-brand" href="#">
-      <img src={img1} alt="" width="30" height="24" />
+      <img src={ url +"/images/logo.png"} alt="" width="30" height="24" />
       </a>
       <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>

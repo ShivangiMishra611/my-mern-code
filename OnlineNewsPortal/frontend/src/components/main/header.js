@@ -1,21 +1,21 @@
-import "./header.css";
+import app_config from "../../config";
+
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+
+const url = app_config.api_url;
 const Header = () => {
   const navigate = useNavigate();
-
   const logout = () => {
     sessionStorage.removeItem("user");
     navigate("/main/login");
   };
-
-  const img1 = "logo.png";
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            <img src={img1} alt="" width="30" height="24" />
+            <img src={url + "/images/logo.png"} alt="" width="50" height="35" />
           </a>
           <button
             className="navbar-toggler"
@@ -35,7 +35,6 @@ const Header = () => {
                   Home
                 </a>
               </li>
-
               <li className="nav-item">
                 <NavLink className="nav-link" to="/main/topstories">
                   Top Stories
@@ -53,11 +52,7 @@ const Header = () => {
                 </NavLink>
               </li>
 
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/main/topstories">
-                  Top Stories
-                </NavLink>
-              </li>
+              
 
               <li className="nav-item">
                 <NavLink className="nav-link" to="/admin/managereporters">
@@ -88,42 +83,9 @@ const Header = () => {
                 </Button>
               </li>
 
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Dropdown
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link disabled">Disabled</a>
-              </li>
-            </ul>
+             
+                   
+           </ul>
             <form className="d-flex">
               <input
                 className="form-control me-2"
@@ -141,5 +103,7 @@ const Header = () => {
     </div>
   );
 };
+
+
 
 export default Header;
