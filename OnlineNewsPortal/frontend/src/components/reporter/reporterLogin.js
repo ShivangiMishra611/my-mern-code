@@ -14,7 +14,7 @@ import {
   CardContent,
   CardMedia,
   Grid,
- Container,
+  Container,
   TextField,
   Link,
   Typography,
@@ -25,7 +25,11 @@ import {
 import { useState } from "react";
 
 const ReporterLogin = () => {
-  const avatarStyle = { backgroundColor: "green" ,justifyContent:"center", alignItems:'center'};
+  const avatarStyle = {
+    backgroundColor: "green",
+    justifyContent: "center",
+    alignItems: "center",
+  };
 
   const url = app_config.api_url;
 
@@ -34,7 +38,7 @@ const ReporterLogin = () => {
   const [passVisible, setPassVisible] = useState(false);
 
   const loginForm = {
-    username: "",
+    email: "",
     password: "",
   };
   const loginSubmit = (values) => {
@@ -44,50 +48,44 @@ const ReporterLogin = () => {
     //request method
     //data
     //data format
-    fetch(url + "/user/checklogin", {
+    fetch(url + "/reporter/checklogin", {
       method: "POST",
       body: JSON.stringify(values),
       headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => {
-        console.log(res.status);
-        if (res.status === 200) {
-          setLoggedin(true);
-          Swal.fire({
-            icon: "success",
-            title: "success",
-            text: "Loggedin Successfully",
-          });
-        } else if (res.status === 300) {
-          Swal.fire({
-            icon: "error",
-            title: "failed",
-            text: "loggedin failed",
-          });
-        }
-      })
-      .then((data) => {
-        setCurrentUser(data);
-
-        //storing value in session
-        sessionStorage.setItem("user", JSON.stringify(data));
-      });
+    }).then((res) => {
+      console.log(res.status);
+      if (res.status === 200) {
+        setLoggedin(true);
+        Swal.fire({
+          icon: "success",
+          title: "success",
+          text: "Loggedin Successfully",
+        }).then((data) => {
+          setCurrentUser(data);
+          //storing value in session
+          sessionStorage.setItem("user", JSON.stringify(data));
+        });
+      } else if (res.status === 300) {
+        Swal.fire({
+          icon: "error",
+          title: "failed",
+          text: "loggedin failed",
+        });
+      }
+    });
   };
   const validationSchema = Yup.object().shape({
-    username: Yup.string()
-      .min(2, "Too Short!")
-      .max(50, "Too Long!")
-      .required("FullName is Required"),
-  
-    password: Yup.string()
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-      )
-      .required("Password is Required"),
-   
+    // username: Yup.string()
+    //   .min(2, "Too Short!")
+    //   .max(50, "Too Long!")
+    //   .required("FullName is Required"),
+    // password: Yup.string()
+    //   .matches(
+    //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+    //     "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+    //   )
+    //   .required("Password is Required"),
   });
-
 
   return (
     <div>
@@ -102,24 +100,28 @@ const ReporterLogin = () => {
               />
             </Grid>
             <Grid item xs={6} md={5}>
-              <CardContent sx={{display: 'flex', flexDirection:'column'}}>
+              <CardContent sx={{ display: "flex", flexDirection: "column" }}>
                 <Avatar style={avatarStyle}>
                   <LockIcon />
                 </Avatar>
                 <p className="h3 text-center mb-5 mt-5">Sign In</p>
-                <Formik initialValues={loginForm} onSubmit={loginSubmit} validationSchema={validationSchema}>
+                <Formik
+                  initialValues={loginForm}
+                  onSubmit={loginSubmit}
+                  validationSchema={validationSchema}
+                >
                   {({ values, handleChange, handleSubmit, errors }) => (
                     <form onSubmit={handleSubmit}>
                       <TextField
                         className="w-100 mt-3"
-                        placeholder="Username"
-                        label="Username"
+                        placeholder="Email"
+                        label="Email"
                         variant="outlined"
-                        id="username"
-                        error={Boolean(errors.username)}
-                        helperText={errors.username}
+                        id="email"
+                        error={Boolean(errors.email)}
+                        helperText={errors.email}
                         onChange={handleChange}
-                        value={values.username}
+                        value={values.email}
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">

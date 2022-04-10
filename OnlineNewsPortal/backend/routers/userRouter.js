@@ -70,7 +70,7 @@ router.post("/checklogin", (req, res) => {
         console.log("data found");
         if (data.password === formdata.password) {
           console.log("login successfull");
-          res.status(200).json({ status: "success" });
+          res.status(200).json(data);
         } else {
           console.log("password not matched");
           res.status(300).json(data);
