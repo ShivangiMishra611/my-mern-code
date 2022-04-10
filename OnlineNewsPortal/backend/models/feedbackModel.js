@@ -5,6 +5,8 @@ const mySchema = new mongoose.Schema({
   user: {type : mongoose.Types.ObjectId, ref:'users'},
   text : String,  
   name: String,
+  suggestion: String,
+  compliment: String,
   
   createdAt: { type: Date, default: new Date() },
 });

@@ -6,6 +6,7 @@ const cors = require("cors");
 const userRouter = require("./routers/userRouter");
 const newsRouter = require("./routers/newsRouter");
 const reporterRouter = require("./routers/reporterRouter");
+const feedbackRouter = require("./routers/feedbackRouter");
 
 // const managerRouter = require("./routers/managerRouter");
 
@@ -24,6 +25,7 @@ app.use("/user", userRouter);
 app.use("/util", utilRouter);
 app.use("/news", newsRouter);
 app.use("/reporter", reporterRouter);
+app.use("/feedback", feedbackRouter);
 
 // app.use("/reporter", reporterRouter);
 

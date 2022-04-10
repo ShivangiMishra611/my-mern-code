@@ -20,9 +20,11 @@ import SendIcon from '@mui/icons-material/Send';
 const Feedback = () => {
   const url = app_config.api_url;
 
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')));
+
   // const img1="image1.jpg"
   const feedbackForm = {
-    user: "",
+    user: currentUser._id,
     name:"",
     text:"",
     suggestion:"",
@@ -90,6 +92,7 @@ const Feedback = () => {
         <form onSubmit={handleSubmit}>
         
           <h3 className="card- header">   &nbsp; Your FeedBack  </h3>
+          
           <h6> We would like your feedback to improve our news portal.</h6>
           <div className="mb-4">
           <TextField
@@ -119,14 +122,12 @@ const Feedback = () => {
           
           </div>
      
-    
-
           <div className="card-body">
             <div className="mb-4">
             <h6> Please  leave your feedback below. </h6>
             <TextareaAutosize
             classname="w-100 mt-3"
-            maxRows={4}
+            
             aria-label="maximum height"
             placeholder="Give ur feedback here..."
             variant ="outlined"
