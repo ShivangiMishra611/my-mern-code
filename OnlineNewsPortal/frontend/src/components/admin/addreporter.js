@@ -85,10 +85,10 @@ const AddReporter = () => {
       .max(50, "Too Long!")
       .required("FullName is Required"),
     gender: Yup.string().required("Gender is Required"),
-    number: Yup.number()
-    .min(6)
-    .max(10)
-    .required("Number is Required"),
+    // number: Yup.number()
+    // .min(6)
+    // .max(10)
+    // .required("Number is Required"),
     age: Yup.string().required("Age is Required"),
     email: Yup.string().email("Invalid email").required("Email is Required"),
     password: Yup.string()
@@ -97,9 +97,9 @@ const AddReporter = () => {
       //   "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
       // )
       .required("Password is Required"),
-    confirm: Yup.string()
-      .oneOf([Yup.ref("password"), null], "Passwords must match")
-      .required("Password Confirmation is Required"),
+    // confirm: Yup.string()
+    //   .oneOf([Yup.ref("password"), null], "Passwords must match")
+    //   .required("Password Confirmation is Required"),
   });
 
   return (

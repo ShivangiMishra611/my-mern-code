@@ -60,10 +60,12 @@ const ReporterLogin = () => {
           icon: "success",
           title: "success",
           text: "Loggedin Successfully",
-        }).then((data) => {
-          setCurrentUser(data);
-          //storing value in session
-          sessionStorage.setItem("user", JSON.stringify(data));
+        }).then(() => {
+          res.json().then((data) => {
+            setCurrentUser(data);
+            //storing value in session
+            sessionStorage.setItem("user", JSON.stringify(data));
+          });
         });
       } else if (res.status === 300) {
         Swal.fire({

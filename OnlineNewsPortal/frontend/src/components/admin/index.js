@@ -31,6 +31,7 @@ const Admin = () => {
       link: "/admin/manageusers",
     },
   ];
+
   return (
     <div>
       <Sidebar title={"Admin Dashboard"} sidebarOptions={sidebarOptions}>
