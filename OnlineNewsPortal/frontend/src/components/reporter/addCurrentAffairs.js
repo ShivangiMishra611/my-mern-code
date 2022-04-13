@@ -1,0 +1,282 @@
+import "./news.css";
+import { Formik } from "formik";
+import Swal from "sweetalert2";
+import { useState } from "react";
+import app_config from "../../config";
+import TitleSharpIcon from "@mui/icons-material/TitleSharp";
+import * as Yup from "yup";
+import NewspaperIcon from "@mui/icons-material/Newspaper";
+import CategoryIcon from "@mui/icons-material/Category";
+import StyleIcon from "@mui/icons-material/Style";
+import {
+  MenuItem,
+  Select,
+  InputLabel,
+  FormControl,
+  TextField,
+  Autocomplete,
+  Card,
+  Grid,
+  CardContent,
+  CardMedia,
+  InputAdornment,
+} from "@mui/material";
+
+const CurrentAffairs = () => {
+  const url = app_config.api_url;
+
+  const [thumbnail, setThumbnail] = useState("");
+
+  const currentForm = {
+    title: "",
+
+    categorystate: "",
+    subCategory: "",
+    summary: "",
+    thumbnail: "",
+    tags: "",
+  };
+
+  const newsCategories = [
+    "Uttar Pradesh",
+    "Madhya Pradesh",
+    "Kanpur",
+    "Rajasthan",
+    "Bihar",
+  ];
+
+  const [tags, setTags] = useState([]);
+ 
+
+  const currentSubmit = (values) => {
+    values.thumbnail = thumbnail;
+    console.log(values);
+
+    fetch(url + "/news/add", {
+      method: "POST",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      console.log(res.status);
+      if (res.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "success",
+          text: "Current Affairs  Added Successfully",
+        });
+      }
+      return res.json();
+    });
+  };
+
+  const uploadThumbnail = (e) => {
+    console.log("file selected");
+
+    let file = e.target.files[0];
+    console.log(file.name);
+    setThumbnail(file.name);
+    let form = new FormData();
+    form.append("myfile", file);
+
+    fetch(url + "/util/uploadfile", { method: "POST", body: form }).then(
+      (res) => {
+        console.log(res.status);
+      }
+    );
+  };
+  const validationSchema = Yup.object().shape({
+    title: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Title is Required"),
+    categoryState: Yup.string().required("Gender is Required"),
+    summary: Yup.string().required("News Summary is Required"),
+  });
+
+  return (
+    <div>
+      <Grid container spacing={3}>
+        <Grid item md={9}>
+          <Grid container>
+            <Grid item md={6} xs={6}>
+              <Card className="mt-5" sx={{ display: "flex", width: 1300 }}>
+                <CardMedia
+                  component="img"
+                  height="600"
+                  sx={{ width: 600, m: 1 }}
+                  image={url + "/images/CURRENTAFFAIRS.jpg"}
+                />
+                <Grid item xs={6} md={8}>
+                  <CardContent sx={{ width: 600 }}>
+                    <Formik initialValues={currentForm} onSubmit={currentSubmit}  validationSchema={validationSchema}>
+                      {({ values, handleChange, handleSubmit, errors }) => (
+                        <form onSubmit={handleSubmit}>
+                          <h5 className="card-header">Add Current Affairs</h5>
+
+                          <div className="card-body">
+                            <TextField
+                              className="w-100 mt-3"
+                              placeholder="Title"
+                              label="Title"
+                              variant="outlined"
+                              id="title"
+                              onChange={handleChange}
+                              value={values.title}
+                              error={Boolean(errors.title)}
+                              helperText={errors.title}
+                              InputProps={{
+                                endAdornment: (
+                                  <InputAdornment position="end">
+                                    <TitleSharpIcon
+                                      sx={{
+                                        color: "active.active",
+                                        mr: 1,
+                                        my: 0.5,
+                                      }}
+                                    />
+                                  </InputAdornment>
+                                ),
+                              }}
+                            />
+
+                            <br></br>
+                            <br></br>
+
+                            <FormControl fullWidth>
+                              <InputLabel id="demo-simple-select-label1">
+                                State
+                              </InputLabel>
+                              <Select
+                                labelId="demo-simple-select-label1"
+                                id="categorystate"
+                                name="categorystate"
+                                label="Categorystate"
+                                value={values.categorystate}
+                                error={Boolean(errors.categorystate)}
+                                helperText={errors.categorystate}
+                                onChange={handleChange}
+                                InputProps={{
+                                  endAdornment: (
+                                    <InputAdornment position="end">
+                                      <CategoryIcon
+                                        sx={{
+                                          color: "active.active",
+                                          mr: 1,
+                                          my: 0.5,
+                                        }}
+                                      />
+                                    </InputAdornment>
+                                  ),
+                                }}
+                              >
+                                {newsCategories.map((category) => (
+                                  <MenuItem value={category}>
+                                    {category}
+                                  </MenuItem>
+                                ))}
+                              </Select>
+                            </FormControl>
+                            <br></br>
+                            <br></br>
+
+                            <TextField
+                              className="w-100 mt-3"
+                              label="Add News"
+                              multiline
+                              rows={4}
+                              variant="outlined"
+                              id="summary"
+                              onChange={handleChange}
+                              value={values.summary}
+                              error={Boolean(errors.summary)}
+                              helperText={errors.summary}
+                              aria-label="Add News"
+                              placeholder="Add News"
+                              InputProps={{
+                                endAdornment: (
+                                  <InputAdornment position="end">
+                                    <NewspaperIcon
+                                      sx={{
+                                        color: "active.active",
+                                        mr: 1,
+                                        my: 0.5,
+                                      }}
+                                    />
+                                  </InputAdornment>
+                                ),
+                              }}
+                            />
+
+                            <br></br>
+                            <br></br>
+
+                            <Autocomplete
+                              multiple
+                              id="tags-outlined"
+                              error={Boolean(errors.tags)}
+                              helperText={errors.tags}
+                              options={tags}
+                              InputProps={{
+                                endAdornment: (
+                                  <InputAdornment position="end">
+                                    <StyleIcon
+                                      sx={{
+                                        color: "active.active",
+                                        mr: 1,
+                                        my: 0.5,
+                                      }}
+                                    />
+                                  </InputAdornment>
+                                ),
+                              }}
+                              getOptionLabel={(option) => option}
+                              filterSelectedOptions
+                              renderInput={(params) => (
+                                <TextField
+                                  {...params}
+                                  label="filterSelectedOptions"
+                                  placeholder="Favorites"
+                                />
+                              )}
+                            />
+
+                            <br></br>
+                            <br></br>
+
+                            <div className="mb-3">
+                              <label for="formFile" class="form-label">
+                                Add Image
+                              </label>
+                              <input
+                                className="form-control"
+                                type="file"
+                                id="thumbnail"
+                                value={values.thumbnail}
+                                error={Boolean(errors.thumbnail)}
+                                helperText={errors.thumbnail}
+                                onChange={uploadThumbnail}
+                              />
+                            </div>
+
+                            <button type="submit" className="btn btn-primary">
+                              Submit
+                            </button>
+                          </div>
+                        </form>
+                      )}
+                    </Formik>
+                  </CardContent>
+                </Grid>
+              </Card>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item md={3}></Grid>
+      </Grid>
+    </div>
+  );
+};
+
+export default CurrentAffairs;
