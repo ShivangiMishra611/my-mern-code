@@ -16,7 +16,6 @@ import TopStories from "./components/main/topStories";
 import NewPassword from "./components/main/newpassword";
 import Reporter from "./components/reporter";
 import AddNews from "./components/reporter/addNews";
-
 import ViewArchieve from "./components/main/viewArchieve";
 import ResetPassword from "./components/main/resetPassword";
 
@@ -27,8 +26,9 @@ import AdminLogin from "./components/admin/adminLogin";
 import Authenticator from "./components/authenticator";
 
 function App() {
+
   return (
-    <div>
+    <div >
       <BrowserRouter>
         <Routes>
           <Route

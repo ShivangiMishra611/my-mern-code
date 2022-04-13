@@ -103,7 +103,7 @@ const AddReporter = () => {
   });
 
   return (
-    <div>
+    <div className="addrep-bg">
       <Container maxWidth="xl">
         <Card className="mt-5" sx={{ display: "flex", ml: 3 }}>
           <Grid container>
