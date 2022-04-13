@@ -21,7 +21,13 @@ const Reporter = () => {
     {
       title : 'Add News',
       icon : <BadgeIcon/>,
-      link : '/admin/managenews'
+      link : '/reporter/addnews'
+
+    },
+    {
+      title : 'Add Current Affairs',
+      icon : <BadgeIcon/>,
+      link : '/reporter/addcurrentaffairs'
 
     },
    

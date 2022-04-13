@@ -24,6 +24,7 @@ import Home from "./components/main/home";
 import ReporterLogin from "./components/reporter/reporterLogin";
 import AdminLogin from "./components/admin/adminLogin";
 import Authenticator from "./components/authenticator";
+import AddCurrentAffairs from "./components/reporter/addCurrentAffairs";
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
             path="reporter"
           >
             <Route element={<AddNews />} path="addnews" />
+            <Route element={<AddCurrentAffairs />} path="addcurrentaffairs" />
             <Route element={<ReporterLogin />} path="login" />
           </Route>
 
