@@ -27,16 +27,15 @@ import Authenticator from "./components/authenticator";
 import AddCurrentAffairs from "./components/reporter/addCurrentAffairs";
 
 function App() {
-
   return (
-    <div >
+    <div>
       <BrowserRouter>
         <Routes>
           <Route
             element={
-              <Authenticator>
-                <Reporter />
-              </Authenticator>
+              <Reporter />
+              // <Authenticator>
+              // </Authenticator>
             }
             path="reporter"
           >
@@ -46,6 +45,7 @@ function App() {
           </Route>
 
           <Route element={<Main />} path="main">
+            <Route element={<ReporterLogin />} path="reporterlogin" />
             <Route element={<Home />} path="home" />
             <Route element={<Login />} path="login" />
             <Route element={<Signup />} path="signup" />
@@ -57,9 +57,9 @@ function App() {
 
           <Route
             element={
-              <Authenticator>
-                <Admin />
-              </Authenticator>
+              <Admin />
+              // <Authenticator>
+              // </Authenticator>
             }
             path="admin"
           >
@@ -74,7 +74,6 @@ function App() {
               path="/admin"
             />
           </Route>
-         
 
           <Route element={<User />} path="user">
             <Route element={<Feedback />} path="feedback" />

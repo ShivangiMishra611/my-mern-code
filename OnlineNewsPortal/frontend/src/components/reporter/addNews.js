@@ -20,6 +20,7 @@ import {
   CardContent,
   CardMedia,
   InputAdornment,
+  Chip,
 } from "@mui/material";
 
 const AddNews = () => {
@@ -110,7 +111,11 @@ const AddNews = () => {
                 />
                 <Grid item xs={6} md={8}>
                   <CardContent sx={{ width: 600 }}>
-                    <Formik initialValues={newsForm} onSubmit={newsSubmit}  validationSchema={validationSchema}>
+                    <Formik
+                      initialValues={newsForm}
+                      onSubmit={newsSubmit}
+                      validationSchema={validationSchema}
+                    >
                       {({ values, handleChange, handleSubmit, errors }) => (
                         <form onSubmit={handleSubmit}>
                           <h5 className="card-header">Add News</h5>
@@ -213,31 +218,31 @@ const AddNews = () => {
                             <br></br>
 
                             <Autocomplete
+                              className="mt-5"
                               multiple
-                              id="tags-outlined"
-                              error={Boolean(errors.tags)}
-                              helperText={errors.tags}
-                              options={tags}
-                              InputProps={{
-                                endAdornment: (
-                                  <InputAdornment position="end">
-                                    <StyleIcon
-                                      sx={{
-                                        color: "active.active",
-                                        mr: 1,
-                                        my: 0.5,
-                                      }}
-                                    />
-                                  </InputAdornment>
-                                ),
-                              }}
-                              getOptionLabel={(option) => option}
-                              filterSelectedOptions
+                              id="tags"
+                              options={["crime", "politics", "sports"].map(
+                                (topic) => topic
+                              )}
+                              freeSolo
+                              renderTags={(value, getTagProps) =>
+                                value.map((option, index) => (
+                                  <Chip
+                                    variant="outlined"
+                                    label={option}
+                                    {...getTagProps({ index })}
+                                  />
+                                ))
+                              }
                               renderInput={(params) => (
                                 <TextField
+                                  id="tags"
+                                  value={values.tags}
+                                  onChange={handleChange}
                                   {...params}
-                                  label="filterSelectedOptions"
-                                  placeholder="Favorites"
+                                  variant="filled"
+                                  label="Select Prerequisites for this course"
+                                  placeholder="HTML, CSS etc."
                                 />
                               )}
                             />
