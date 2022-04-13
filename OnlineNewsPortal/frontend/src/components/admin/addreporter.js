@@ -8,6 +8,7 @@ import {
   CardMedia,
   Grid,
   Container,
+  RadioGroup,
 } from "@mui/material";
 import Swal from "sweetalert2";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -31,6 +32,7 @@ const AddReporter = () => {
     gender: "",
     thumbnail: "",
     age: "",
+    confirmpassword:""
   };
 
   const reporterSubmit = (values) => {
@@ -124,7 +126,7 @@ const AddReporter = () => {
                   {({ values, handleChange, handleSubmit, errors }) => (
                     <form onSubmit={handleSubmit}>
                       <h5 className="card-header">Add Reporter</h5>
-                      <div className="card-body">
+                      
                         <div className="mb-3">
                           <TextField
                             className="w-100 mt-3"
@@ -206,13 +208,46 @@ const AddReporter = () => {
                             }}
                             helperText={errors.password}
                           />
+
+                          
+                        <div className="mb-3">
+                        <TextField
+                          className="w-100 mt-3"
+                          placeholder="Password"
+                          label="Confirm Password"
+                          type="password"
+                          variant="outlined"
+                          id="confirmpassword"
+                          onChange={handleChange}
+                          value={values.confirmpassword}
+                          error={errors.confirmpassword}
+                          InputProps={{
+                            endAdornment: (
+                              <InputAdornment position="end">
+                                <KeyIcon
+                                  sx={{
+                                    color: "active.active",
+                                    mr: 1,
+                                    my: 0.5,
+                                  }}
+                                />
+                              </InputAdornment>
+                            ),
+                          }}
+                          helperText={errors.confirmpassword}
+                        />
                           <div className="mb-3">
-                            <TextField
-                              className="w-100 mt-3"
-                              placeholder="gender"
-                              label="Gender"
-                              variant="outlined"
-                              id="gender"
+                          <RadioGroup  
+                          aria-labelledby="demo-radio-buttons-group-label"
+                          label="Gender"
+                          id="gender"
+                          defaultValue="female"
+                          name="gender"
+                        >
+                          <FormControlLabel value="female" control={<Radio />} label="Female" />
+                          <FormControlLabel value="male" control={<Radio />} label="Male" />
+                          <FormControlLabel value="other" control={<Radio />} label="Others" />
+                    
                               onChange={handleChange}
                               value={values.gender}
                               error={errors.gender}
@@ -231,7 +266,7 @@ const AddReporter = () => {
                                 ),
                               }}
                               helperText={errors.gender}
-                            />
+                              </RadioGroup>
                           </div>
                           <div className="mb-3">
                             <TextField

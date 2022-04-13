@@ -21,7 +21,7 @@ const Reporter = () => {
     {
       title : 'Add News',
       icon : <BadgeIcon/>,
-      link : '/admin/managenews'
+      link : '/reporter/addnews'
 
     },
    

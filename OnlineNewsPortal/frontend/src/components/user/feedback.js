@@ -77,7 +77,7 @@ const Feedback = () => {
   return (
     <div>
     <Container maxWidth="xl">
-        <Card className="mt-5" sx={{ display: "flex", ml: 3 }}>
+        <Card className="mt-4" sx={{ display: "flex", ml: 2 }}>
           <Grid container>
             <Grid item xs={6} md={7}>
               <CardMedia
@@ -122,7 +122,7 @@ const Feedback = () => {
           
           </div>
      
-          <div className="card-body">
+           <div className="card-body">
             <div className="mb-4">
             <h6> Please  leave your feedback below. </h6>
             <TextareaAutosize
@@ -148,10 +148,11 @@ const Feedback = () => {
               ),
             }}
           />
+          </div>
 
 
              
-            </div>
+            
             <button
             
               type="submit"
