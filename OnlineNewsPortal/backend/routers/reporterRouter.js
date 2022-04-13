@@ -44,7 +44,7 @@ router.post("/checklogin", (req, res) => {
   Model.findOne({ email: formdata.email })
     .then((data) => {
       if (data) {
-        console.log("data found");
+        console.log(data);
         if (data.password === formdata.password) {
           console.log("login successfull");
           res.status(200).json(data);

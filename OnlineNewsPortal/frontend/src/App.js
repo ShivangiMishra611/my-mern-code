@@ -16,7 +16,6 @@ import TopStories from "./components/main/topStories";
 import NewPassword from "./components/main/newpassword";
 import Reporter from "./components/reporter";
 import AddNews from "./components/reporter/addNews";
-
 import ViewArchieve from "./components/main/viewArchieve";
 import ResetPassword from "./components/main/resetPassword";
 
@@ -33,17 +32,17 @@ function App() {
         <Routes>
           <Route
             element={
-              <Authenticator>
-                <Reporter />
-              </Authenticator>
+              <Reporter />
+              // <Authenticator>
+              // </Authenticator>
             }
             path="reporter"
           >
             <Route element={<AddNews />} path="addnews" />
-            <Route element={<ReporterLogin />} path="login" />
           </Route>
 
           <Route element={<Main />} path="main">
+            <Route element={<ReporterLogin />} path="reporterlogin" />
             <Route element={<Home />} path="home" />
             <Route element={<Login />} path="login" />
             <Route element={<Signup />} path="signup" />
@@ -55,9 +54,9 @@ function App() {
 
           <Route
             element={
-              <Authenticator>
-                <Admin />
-              </Authenticator>
+              <Admin />
+              // <Authenticator>
+              // </Authenticator>
             }
             path="admin"
           >
@@ -72,7 +71,6 @@ function App() {
               path="/admin"
             />
           </Route>
-         
 
           <Route element={<User />} path="user">
             <Route element={<Feedback />} path="feedback" />
