@@ -7,7 +7,7 @@ import TitleSharpIcon from "@mui/icons-material/TitleSharp";
 import * as Yup from "yup";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import CategoryIcon from "@mui/icons-material/Category";
-import StyleIcon from "@mui/icons-material/Style";
+
 import {
   MenuItem,
   Select,
@@ -20,6 +20,7 @@ import {
   CardContent,
   CardMedia,
   InputAdornment,
+  Chip,
 } from "@mui/material";
 
 const CurrentAffairs = () => {
@@ -91,25 +92,26 @@ const CurrentAffairs = () => {
       .min(2, "Too Short!")
       .max(50, "Too Long!")
       .required("Title is Required"),
-    categoryState: Yup.string().required("Gender is Required"),
+    categorystate: Yup.string().required("State is Required"),
     summary: Yup.string().required("News Summary is Required"),
+    tags: Yup.string().required("News Tags is Required"),
   });
 
   return (
     <div>
       <Grid container spacing={3}>
         <Grid item md={9}>
-          <Grid container>
+          <Grid container justifyContent="center">
             <Grid item md={6} xs={6}>
-              <Card className="mt-5" sx={{ display: "flex", width: 1300 }}>
+              <Card className="mt-5" sx={{  width: 650 }} >
                 <CardMedia
                   component="img"
-                  height="600"
-                  sx={{ width: 600, m: 1 }}
+                  height="300"
+                  sx={{ width: 620, m: 2 }}
                   image={url + "/images/CURRENTAFFAIRS.jpg"}
                 />
                 <Grid item xs={6} md={8}>
-                  <CardContent sx={{ width: 600 }}>
+                  <CardContent sx={{ width: 640 }}>
                     <Formik initialValues={currentForm} onSubmit={currentSubmit}  validationSchema={validationSchema}>
                       {({ values, handleChange, handleSubmit, errors }) => (
                         <form onSubmit={handleSubmit}>
@@ -213,34 +215,37 @@ const CurrentAffairs = () => {
                             <br></br>
 
                             <Autocomplete
+                              className="mt-5"
                               multiple
-                              id="tags-outlined"
-                              error={Boolean(errors.tags)}
-                              helperText={errors.tags}
-                              options={tags}
-                              InputProps={{
-                                endAdornment: (
-                                  <InputAdornment position="end">
-                                    <StyleIcon
-                                      sx={{
-                                        color: "active.active",
-                                        mr: 1,
-                                        my: 0.5,
-                                      }}
-                                    />
-                                  </InputAdornment>
-                                ),
-                              }}
-                              getOptionLabel={(option) => option}
-                              filterSelectedOptions
+                              id="tags"
+                              options={["crime", "politics", "sports"].map(
+                                (topic) => topic
+                              )}
+                              freeSolo
+                              renderTags={(value, getTagProps) =>
+                                value.map((option, index) => (
+                                  <Chip
+                                    variant="outlined"
+                                    label={option}
+                                    {...getTagProps({ index })}
+                                  />
+                                ))
+                              }
                               renderInput={(params) => (
                                 <TextField
+                                  id="tags"
+                                  value={values.tags}
+                                  error={Boolean(errors.tags)}
+                              helperText={errors.tags}
+                                  onChange={handleChange}
                                   {...params}
-                                  label="filterSelectedOptions"
-                                  placeholder="Favorites"
+                                  variant="filled"
+                                  label="Add Relevant Tags"
+                                
                                 />
                               )}
                             />
+
 
                             <br></br>
                             <br></br>

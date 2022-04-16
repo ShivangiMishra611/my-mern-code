@@ -7,7 +7,7 @@ import TitleSharpIcon from "@mui/icons-material/TitleSharp";
 import * as Yup from "yup";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
 import CategoryIcon from "@mui/icons-material/Category";
-import StyleIcon from "@mui/icons-material/Style";
+
 import {
   MenuItem,
   Select,
@@ -92,25 +92,26 @@ const AddNews = () => {
       .min(2, "Too Short!")
       .max(50, "Too Long!")
       .required("Title is Required"),
-    category: Yup.string().required("Gender is Required"),
+    category: Yup.string().required("Category is Required"),
     summary: Yup.string().required("News Summary is Required"),
+    tags: Yup.string().required("News Tags is Required"),
   });
 
   return (
     <div>
       <Grid container spacing={3}>
         <Grid item md={9}>
-          <Grid container>
+          <Grid container justifyContent="center">
             <Grid item md={6} xs={6}>
-              <Card className="mt-5" sx={{ display: "flex", width: 1300 }}>
+              <Card className="mt-5" sx={{  width: 670 }}>
                 <CardMedia
                   component="img"
-                  height="600"
-                  sx={{ width: 600, m: 1 }}
+                  height="350"
+                  sx={{ width: 630, m: 2 }}
                   image={url + "/images/add_news.jpg"}
                 />
                 <Grid item xs={6} md={8}>
-                  <CardContent sx={{ width: 600 }}>
+                  <CardContent sx={{ width: 640 }}>
                     <Formik
                       initialValues={newsForm}
                       onSubmit={newsSubmit}
@@ -153,6 +154,7 @@ const AddNews = () => {
                               <InputLabel id="demo-simple-select-label1">
                                 Category
                               </InputLabel>
+                             
                               <Select
                                 labelId="demo-simple-select-label1"
                                 id="category"
@@ -160,7 +162,7 @@ const AddNews = () => {
                                 label="Category"
                                 value={values.category}
                                 error={Boolean(errors.category)}
-                                helperText={errors.category}
+                                helperText="Category is required"
                                 onChange={handleChange}
                                 InputProps={{
                                   endAdornment: (
@@ -238,11 +240,13 @@ const AddNews = () => {
                                 <TextField
                                   id="tags"
                                   value={values.tags}
+                                  error={Boolean(errors.tags)}
+                              helperText={errors.tags}
                                   onChange={handleChange}
                                   {...params}
                                   variant="filled"
-                                  label="Select Prerequisites for this course"
-                                  placeholder="HTML, CSS etc."
+                                  label="Add Relevant Tags"
+                                
                                 />
                               )}
                             />
