@@ -38,8 +38,8 @@ import {
         date.setDate(date.getDate() - days);
         return date;
     }
-      const filtered =  data.filter((news) => {
-        return new Date(news.createdAt) >= new Date().removeDays(1);
+      const filtered =  data.filter((newscurrent) => {
+        return new Date(newscurrent.createdAt) >= new Date().removeDays(1);
       })
   
       console.log(filtered);
@@ -71,8 +71,8 @@ import {
     };
     const applyFilter = (data, filter) => { 
     
-        const filteredArray = data.filter( news => {
-          return filter.toLowerCase() == news.category.toLowerCase();
+        const filteredArray = data.filter( newscurrent => {
+          return filter.toLowerCase() == newscurrent.category.toLowerCase();
         } )
     
         console.log(filteredArray);
@@ -86,6 +86,13 @@ import {
       useEffect(() => {
         fetchData();
       }, []);
+      const displayCategories = () => {
+        return newsCategories.map((categorystate) => (
+          <Button variant="outlined" size="medium" onClick={e => refreshData(categorystate)}>
+            {categorystate}
+          </Button>
+        ));
+      };
     
   
     
@@ -148,6 +155,7 @@ import {
                   justifyContent: "space-between",
                 }}
               >
+                {displayCategories()}
                
               </Box>
             </div>
