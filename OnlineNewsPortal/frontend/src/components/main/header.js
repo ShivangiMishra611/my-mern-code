@@ -40,6 +40,12 @@ const Header = () => {
                   Top Stories
                 </NavLink>
               </li>
+
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/main/currentaffairs">
+                  Current Affairs
+                </NavLink>
+              </li>
              
 
               

@@ -53,7 +53,7 @@ const CurrentAffairs = () => {
     values.thumbnail = thumbnail;
     console.log(values);
 
-    fetch(url + "/news/add", {
+    fetch(url + "/newscurrent/add", {
       method: "POST",
       body: JSON.stringify(values),
       headers: {
@@ -173,9 +173,9 @@ const CurrentAffairs = () => {
                                   ),
                                 }}
                               >
-                                {newsCategories.map((category) => (
-                                  <MenuItem value={category}>
-                                    {category}
+                                {newsCategories.map((categorystate) => (
+                                  <MenuItem value={categorystate}>
+                                    {categorystate}
                                   </MenuItem>
                                 ))}
                               </Select>

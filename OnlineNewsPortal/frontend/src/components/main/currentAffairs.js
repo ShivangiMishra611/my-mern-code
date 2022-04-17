@@ -54,7 +54,7 @@ import {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-         
+          setNewsArray(filterTopStories(data));
           setLoading(false);
         });
     };
@@ -65,6 +65,7 @@ import {
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
+          applyFilter(data, filter)
          
           
         });
@@ -72,7 +73,7 @@ import {
     const applyFilter = (data, filter) => { 
     
         const filteredArray = data.filter( newscurrent => {
-          return filter.toLowerCase() == newscurrent.category.toLowerCase();
+          return filter.toLowerCase() == newscurrent.categorystate.toLowerCase();
         } )
     
         console.log(filteredArray);
@@ -86,6 +87,7 @@ import {
       useEffect(() => {
         fetchData();
       }, []);
+      
       const displayCategories = () => {
         return newsCategories.map((categorystate) => (
           <Button variant="outlined" size="medium" onClick={e => refreshData(categorystate)}>

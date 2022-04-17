@@ -5,6 +5,7 @@ import User from "./components/user";
 import AddReporter from "./components/admin/addreporter";
 import ManageReporters from "./components/admin/manageReporters";
 
+
 import ManageNews from "./components/admin/manageNews";
 
 import ManageUsers from "./components/admin/manageUsers";
@@ -26,6 +27,7 @@ import AdminLogin from "./components/admin/adminLogin";
 import Authenticator from "./components/authenticator";
 import AddCurrentAffairs from "./components/reporter/addCurrentAffairs";
 import CurrentAffairs from "./components/main/currentAffairs";
+import ManageCurrentAffairs from "./components/admin/manageCurrentAffairs";
 
 function App() {
   return (
@@ -68,6 +70,7 @@ function App() {
             <Route element={<AddReporter />} path="addreporter" />
             <Route element={<ManageNews />} path="managenews" />
             <Route element={<ManageUsers />} path="manageusers" />
+            <Route element={<ManageCurrentAffairs />} path="managecurrentaffairs" />
 
             <Route element={<AdminLogin />} path="login" />
             <Route element={<ManageReporters />} path="managereporters" />

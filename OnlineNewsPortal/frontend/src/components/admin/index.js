@@ -19,6 +19,12 @@ const Admin = () => {
       icon: <BadgeIcon />,
       link: "/admin/managenews",
     },
+
+    {
+      title: "Manage Current Affairs",
+      icon: <BadgeIcon />,
+      link: "/admin/managecurrentaffairs",
+    },
     {
       title: "Manage Reporter",
       icon: <GroupAddIcon />,
