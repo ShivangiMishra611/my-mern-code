@@ -18,8 +18,6 @@ import { styled, useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
-
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
