@@ -184,11 +184,7 @@ const ReporterLogin = () => {
                         <Link href="resetPassword">Forgot Password?</Link>
                       </Typography>
 
-                      <Typography>
-                        {" "}
-                        Do'nt have an account?
-                        <Link href="signup">Sign Up</Link>
-                      </Typography>
+                     
                     </form>
                   )}
                 </Formik>

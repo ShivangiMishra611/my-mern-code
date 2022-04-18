@@ -7,6 +7,8 @@ const userRouter = require("./routers/userRouter");
 const newsRouter = require("./routers/newsRouter");
 const reporterRouter = require("./routers/reporterRouter");
 const feedbackRouter = require("./routers/feedbackRouter");
+const currentAffairsRouter = require("./routers/currentAffairsRouter");
+
 
 // const managerRouter = require("./routers/managerRouter");
 
@@ -26,6 +28,7 @@ app.use("/util", utilRouter);
 app.use("/news", newsRouter);
 app.use("/reporter", reporterRouter);
 app.use("/feedback", feedbackRouter);
+app.use("/newscurrent", currentAffairsRouter);
 
 // app.use("/reporter", reporterRouter);
 

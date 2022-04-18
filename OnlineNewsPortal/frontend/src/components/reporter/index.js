@@ -3,46 +3,38 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "../sidebar";
 
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import BadgeIcon from '@mui/icons-material/Badge';
-import GroupAddIcon from '@mui/icons-material/GroupAdd';
-
-
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import BadgeIcon from "@mui/icons-material/Badge";
 
 const Reporter = () => {
   const sidebarOptions = [
+    {
+      title: "Login",
+      icon: <PersonAddIcon />,
+      link: "/reporter/login",
+    },
 
     {
-      title : 'Login',
-      icon : <PersonAddIcon/>,
-      link : '/reporter/login'
+      title: "Add News",
+      icon: <BadgeIcon />,
+      link: "/reporter/addnews",
     },
-    
+
     {
-      title : 'Add News',
-      icon : <BadgeIcon/>,
-      link : '/reporter/addnews'
-
+      title: "Add Current Affairs",
+      icon: <BadgeIcon />,
+      link: "/reporter/addcurrentaffairs",
     },
-   
-   
-
-  ]
+  ];
   return (
     <div>
-        
-
-        <Sidebar title={'Reporter Dashboard'} sidebarOptions = {sidebarOptions} >
+      <Sidebar title={"Reporter Dashboard"} sidebarOptions={sidebarOptions}>
         <Container>
-
-      <Outlet />
+          <Outlet />
         </Container>
       </Sidebar>
     </div>
-  )
+  );
 };
 
 export default Reporter;
-
-
- 
