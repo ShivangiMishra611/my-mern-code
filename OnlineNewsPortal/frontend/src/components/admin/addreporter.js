@@ -18,6 +18,11 @@ import KeyIcon from "@mui/icons-material/Key";
 import WcIcon from "@mui/icons-material/Wc";
 import CallIcon from "@mui/icons-material/Call";
 import * as Yup from "yup";
+import Radio from '@material-ui/core/Radio';
+// import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 const AddReporter = () => {
   const url = app_config.api_url;
@@ -238,34 +243,16 @@ const AddReporter = () => {
                         />
                           <div className="mb-3">
                           <RadioGroup  
-                          aria-labelledby="demo-radio-buttons-group-label"
-                          label="Gender"
-                          id="gender"
-                          defaultValue="female"
-                          name="gender"
+                          
                         >
                           <FormControlLabel value="female" control={<Radio />} label="Female" />
                           <FormControlLabel value="male" control={<Radio />} label="Male" />
                           <FormControlLabel value="other" control={<Radio />} label="Others" />
                     
-                              onChange={handleChange}
-                              value={values.gender}
-                              error={errors.gender}
-                              type="text"
-                              InputProps={{
-                                endAdornment: (
-                                  <InputAdornment position="end">
-                                    <WcIcon
-                                      sx={{
-                                        color: "active.active",
-                                        mr: 1,
-                                        my: 0.5,
-                                      }}
-                                    />
-                                  </InputAdornment>
-                                ),
-                              }}
-                              helperText={errors.gender}
+                            
+                             
+                             
+                            
                               </RadioGroup>
                           </div>
                           <div className="mb-3">
