@@ -39,11 +39,9 @@ const CurrentAffairs = () => {
   };
 
   const newsCategories = [
-    "Uttar Pradesh",
-    "Madhya Pradesh",
-    "Kanpur",
-    "Rajasthan",
-    "Bihar",
+    "National",
+    "International",
+   
   ];
 
   const [tags, setTags] = useState([]);
@@ -90,7 +88,7 @@ const CurrentAffairs = () => {
   const validationSchema = Yup.object().shape({
     title: Yup.string()
       .min(2, "Too Short!")
-      .max(50, "Too Long!")
+      .max(100, "Too Long!")
       .required("Title is Required"),
     categorystate: Yup.string().required("State is Required"),
     summary: Yup.string().required("News Summary is Required"),
@@ -148,7 +146,7 @@ const CurrentAffairs = () => {
 
                             <FormControl fullWidth>
                               <InputLabel id="demo-simple-select-label1">
-                                State
+                               Category
                               </InputLabel>
                               <Select
                                 labelId="demo-simple-select-label1"

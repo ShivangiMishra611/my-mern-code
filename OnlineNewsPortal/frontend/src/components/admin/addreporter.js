@@ -9,7 +9,12 @@ import {
   Grid,
   Container,
   RadioGroup,
+<<<<<<< HEAD
   FormControlLabel,Radio,FormLabel,FormControl,value
+=======
+  FormControlLabel,
+  Radio,
+>>>>>>> 790c6344f0af2c556af1cd89a1ed48db908e771b
 } from "@mui/material";
 import Swal from "sweetalert2";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -35,7 +40,7 @@ const AddReporter = () => {
     gender: "",
     thumbnail: "",
     age: "",
-    confirmpassword:""
+    confirmpassword: "",
   };
 
   const reporterSubmit = (values) => {
@@ -129,101 +134,73 @@ const AddReporter = () => {
                   {({ values, handleChange, handleSubmit, errors }) => (
                     <form onSubmit={handleSubmit}>
                       <h5 className="card-header">Add Reporter</h5>
-                      
-                        <div className="mb-3">
-                          <TextField
-                            className="w-100 mt-3"
-                            placeholder="Name"
-                            label="Name"
-                            variant="outlined"
-                            id="name"
-                            type="text"
-                            onChange={handleChange}
-                            value={values.name}
-                            error={Boolean(errors.name)}
-                            InputProps={{
-                              endAdornment: (
-                                <InputAdornment position="end">
-                                  <AccountCircleIcon
-                                    sx={{
-                                      color: "active.active",
-                                      mr: 1,
-                                      my: 0.5,
-                                    }}
-                                  />
-                                </InputAdornment>
-                              ),
-                            }}
-                            helperText={errors.name}
-                          />
-                        </div>
 
-                        <div className="mb-3">
-                          <TextField
-                            className="w-100 mt-3"
-                            placeholder="email"
-                            label="Email"
-                            variant="outlined"
-                            id="email"
-                            onChange={handleChange}
-                            value={values.email}
-                            error={errors.email}
-                            InputProps={{
-                              endAdornment: (
-                                <InputAdornment position="end">
-                                  <EmailIcon
-                                    sx={{
-                                      color: "active.active",
-                                      mr: 1,
-                                      my: 0.5,
-                                    }}
-                                  />
-                                </InputAdornment>
-                              ),
-                            }}
-                            helperText={errors.email}
-                          />
-                        </div>
+                      <div className="mb-3">
+                        <TextField
+                          className="w-100 mt-3"
+                          placeholder="Name"
+                          label="Name"
+                          variant="outlined"
+                          id="name"
+                          type="text"
+                          onChange={handleChange}
+                          value={values.name}
+                          error={Boolean(errors.name)}
+                          InputProps={{
+                            endAdornment: (
+                              <InputAdornment position="end">
+                                <AccountCircleIcon
+                                  sx={{
+                                    color: "active.active",
+                                    mr: 1,
+                                    my: 0.5,
+                                  }}
+                                />
+                              </InputAdornment>
+                            ),
+                          }}
+                          helperText={errors.name}
+                        />
+                      </div>
 
-                        <div className="mb-3">
-                          <TextField
-                            className="w-100 mt-3"
-                            placeholder="Password"
-                            label="Password"
-                            type="password"
-                            variant="outlined"
-                            id="password"
-                            onChange={handleChange}
-                            value={values.password}
-                            error={errors.password}
-                            InputProps={{
-                              endAdornment: (
-                                <InputAdornment position="end">
-                                  <KeyIcon
-                                    sx={{
-                                      color: "active.active",
-                                      mr: 1,
-                                      my: 0.5,
-                                    }}
-                                  />
-                                </InputAdornment>
-                              ),
-                            }}
-                            helperText={errors.password}
-                          />
+                      <div className="mb-3">
+                        <TextField
+                          className="w-100 mt-3"
+                          placeholder="email"
+                          label="Email"
+                          variant="outlined"
+                          id="email"
+                          onChange={handleChange}
+                          value={values.email}
+                          error={errors.email}
+                          InputProps={{
+                            endAdornment: (
+                              <InputAdornment position="end">
+                                <EmailIcon
+                                  sx={{
+                                    color: "active.active",
+                                    mr: 1,
+                                    my: 0.5,
+                                  }}
+                                />
+                              </InputAdornment>
+                            ),
+                          }}
+                          helperText={errors.email}
+                        />
+                      </div>
 
-                          
-                        <div className="mb-3">
+                      <div className="mb-3">
                         <TextField
                           className="w-100 mt-3"
                           placeholder="Password"
-                          label="Confirm Password"
+                          label="Password"
                           type="password"
                           variant="outlined"
-                          id="confirmpassword"
+                          id="password"
                           onChange={handleChange}
-                          value={values.confirmpassword}
-                          error={errors.confirmpassword}
+                          value={values.password}
+                          error={errors.password}
                           InputProps={{
                             endAdornment: (
                               <InputAdornment position="end">
@@ -237,8 +214,9 @@ const AddReporter = () => {
                               </InputAdornment>
                             ),
                           }}
-                          helperText={errors.confirmpassword}
+                          helperText={errors.password}
                         />
+<<<<<<< HEAD
                           <div className="mt-3">
                           <FormControl component="fieldset">
                           <FormLabel component="legend">Gender</FormLabel>
@@ -253,6 +231,66 @@ const AddReporter = () => {
 
 
                           
+=======
+
+                        <div className="mb-3">
+                          <TextField
+                            className="w-100 mt-3"
+                            placeholder="Password"
+                            label="Confirm Password"
+                            type="password"
+                            variant="outlined"
+                            id="confirmpassword"
+                            onChange={handleChange}
+                            value={values.confirmpassword}
+                            error={errors.confirmpassword}
+                            InputProps={{
+                              endAdornment: (
+                                <InputAdornment position="end">
+                                  <KeyIcon
+                                    sx={{
+                                      color: "active.active",
+                                      mr: 1,
+                                      my: 0.5,
+                                    }}
+                                  />
+                                </InputAdornment>
+                              ),
+                            }}
+                            helperText={errors.confirmpassword}
+                          />
+                          <div className="mb-3">
+                            {/* <RadioGroup  
+                          aria-labelledby="demo-radio-buttons-group-label"
+                          label="Gender"
+                          id="gender"
+                          defaultValue="female"
+                          name="gender"
+                        >
+                          <FormControlLabel value="female" control={<Radio />} label="Female" />
+                          <FormControlLabel value="male" control={<Radio />} label="Male" />
+                          <FormControlLabel value="other" control={<Radio />} label="Others" />
+                    
+                              onChange={handleChange}
+                              value={values.gender}
+                              error={errors.gender}
+                              type="text"
+                              InputProps={{
+                                endAdornment: (
+                                  <InputAdornment position="end">
+                                    <WcIcon
+                                      sx={{
+                                        color: "active.active",
+                                        mr: 1,
+                                        my: 0.5,
+                                      }}
+                                    />
+                                  </InputAdornment>
+                                ),
+                              }}
+                              helperText={errors.gender}
+                              </RadioGroup> */}
+>>>>>>> 790c6344f0af2c556af1cd89a1ed48db908e771b
                           </div>
                           <div className="mb-3">
                             <TextField

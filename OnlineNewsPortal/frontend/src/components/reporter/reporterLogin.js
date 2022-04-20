@@ -23,6 +23,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ReporterLogin = () => {
   const avatarStyle = {
@@ -32,6 +33,8 @@ const ReporterLogin = () => {
   };
 
   const url = app_config.api_url;
+
+  const navigate = useNavigate();
 
   const [currentUser, setCurrentUser] = useState({});
   const [loggedin, setLoggedin] = useState(false);
@@ -65,6 +68,9 @@ const ReporterLogin = () => {
             setCurrentUser(data);
             //storing value in session
             sessionStorage.setItem("user", JSON.stringify(data));
+            if (data.isAdmin) {
+              navigate("/admin");
+            }
           });
         });
       } else if (res.status === 300) {
@@ -183,8 +189,6 @@ const ReporterLogin = () => {
                       <Typography>
                         <Link href="resetPassword">Forgot Password?</Link>
                       </Typography>
-
-                     
                     </form>
                   )}
                 </Formik>

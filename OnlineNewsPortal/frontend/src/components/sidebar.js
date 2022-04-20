@@ -1,9 +1,11 @@
-import { ChevronLeft, ChevronRight, Menu } from "@mui/icons-material";
+import { ChevronLeft, ChevronRight } from "@mui/icons-material";
+import MenuIcon from "@mui/icons-material/Menu";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 
 import {
+  Avatar,
   Box,
   CssBaseline,
   Divider,
@@ -11,7 +13,9 @@ import {
   List,
   ListItemButton,
   ListItemText,
+  Menu,
   Toolbar,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
@@ -114,11 +118,19 @@ export default function Sidebar({ children, sidebarOptions, title }) {
               ...(open && { display: "none" }),
             }}
           >
-            <Menu />
+            <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
             {title}
           </Typography>
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="User Options">
+              <IconButton>
+                <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+              </IconButton>
+            </Tooltip>
+            <Menu></Menu>
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
