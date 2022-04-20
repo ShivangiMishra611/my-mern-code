@@ -9,12 +9,8 @@ import {
   Grid,
   Container,
   RadioGroup,
-<<<<<<< HEAD
-  FormControlLabel,Radio,FormLabel,FormControl,value
-=======
   FormControlLabel,
   Radio,
->>>>>>> 790c6344f0af2c556af1cd89a1ed48db908e771b
 } from "@mui/material";
 import Swal from "sweetalert2";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -23,9 +19,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import KeyIcon from "@mui/icons-material/Key";
 import WcIcon from "@mui/icons-material/Wc";
 import CallIcon from "@mui/icons-material/Call";
-import * as Yup from "yup";;
-
-
+import * as Yup from "yup";
 
 const AddReporter = () => {
   const url = app_config.api_url;
@@ -216,22 +210,6 @@ const AddReporter = () => {
                           }}
                           helperText={errors.password}
                         />
-<<<<<<< HEAD
-                          <div className="mt-3">
-                          <FormControl component="fieldset">
-                          <FormLabel component="legend">Gender</FormLabel>
-                          <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
-                            <FormControlLabel value="female" control={<Radio />} label="Female" />
-                            <FormControlLabel value="male" control={<Radio />} label="Male" />
-                            <FormControlLabel value="other" control={<Radio />} label="Other" />
-                           
-                          </RadioGroup>
-                        </FormControl>
-
-
-
-                          
-=======
 
                         <div className="mb-3">
                           <TextField
@@ -290,7 +268,6 @@ const AddReporter = () => {
                               }}
                               helperText={errors.gender}
                               </RadioGroup> */}
->>>>>>> 790c6344f0af2c556af1cd89a1ed48db908e771b
                           </div>
                           <div className="mb-3">
                             <TextField
