@@ -15,3 +15,8 @@ code {
 .addrep-bg{
   background: url(http://localhost:5000/images/pattern.png);
 }
+.title-current{
+  height: 100px;
+  background-color: blue;
+  background-image: url(http://localhost:5000/images/manage.jpg);
+}

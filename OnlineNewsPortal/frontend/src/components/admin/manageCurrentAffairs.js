@@ -8,12 +8,59 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Stack from "@mui/material/Stack";
+import Fab from '@mui/material/Fab';
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+import BeenhereRoundedIcon from '@mui/icons-material/BeenhereRounded';
+import { styled, alpha } from "@mui/material/styles";
+import SearchIcon from "@mui/icons-material/Search";
+import InputBase from "@mui/material/InputBase";
 
 const ManageCurrentAffairs = () => {
   const [NewsArray, setNewsArray] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const url = app_config.api_url;
+  const Search = styled("div")(({ theme }) => ({
+    position: "relative",
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    "&:hover": {
+      backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing(1),
+      width: "auto",
+    },
+  }));
+  
+  const SearchIconWrapper = styled("div")(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }));
+  const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: "inherit",
+    "& .MuiInputBase-input": {
+      padding: theme.spacing(1, 1, 1, 0),
+      // vertical padding + font size from searchIcon
+      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+      transition: theme.transitions.create("width"),
+      width: "100%",
+      [theme.breakpoints.up("sm")]: {
+        width: "12ch",
+        "&:focus": {
+          width: "20ch",
+        },
+      },
+    },
+  }));
+  
 
   const fetchData = () => {
     fetch(url + "/newscurrent/getall")
@@ -66,34 +113,47 @@ const ManageCurrentAffairs = () => {
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
-            img={newscurrent.thumbnail}
           >
-            <Typography>{newscurrent.title}</Typography>
+            <h4>{newscurrent.title}</h4>
+            <br></br>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>{newscurrent.summary}</Typography>
+            <img src={url + "/" + newscurrent.thumbnail} height="200" />
+            <br></br>
+            <br></br>
+            <h5>{newscurrent.summary}</h5>
 
             <Typography>{newscurrent.categorystate}</Typography>
           </AccordionDetails>
           <Stack direction="row" spacing={2}>
-            <Button
-              disabled={newscurrent.approvenews}
-              variant="contained"
-              color="error"
+            
+            <Fab
+             disabled={newscurrent.approvenews}
+              variant="extended"
+              size="small"
+              color="primary"
               onClick={(e) => approveNews(newscurrent._id)}
+              aria-label="add"
             >
+               < BeenhereRoundedIcon sx={{ mr: 1 }} />
               {newscurrent.approvenews ? "Approved" : "Approve News"}
-              <i class="fa-solid fa-thumbs-up"></i>
-            </Button>
-
-            <Button
-              variant="contained"
-              color="error"
-              onClick={(e) => deleteNews(newscurrent._id)}
-            >
-              Delete News
               
-            </Button>
+           
+            </Fab>
+
+
+            <Fab
+              variant="extended"
+              size="small"
+              color="primary"
+              onClick={(e) => deleteNews(newscurrent._id)}
+              aria-label="add"
+            >
+              < DeleteRoundedIcon sx={{ mr: 1 }} />
+              Delete News
+            </Fab>
+
+           
           </Stack>
         </Accordion>
       ));
@@ -103,6 +163,19 @@ const ManageCurrentAffairs = () => {
   return (
     <div className="container">
       <Toaster position="top-right" reverseOrder={false} />
+      <div className="title-current">
+
+      </div>
+      <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Search>
+
 
       {displayNews()}
     </div>
