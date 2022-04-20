@@ -9,7 +9,7 @@ import {
   Grid,
   Container,
   RadioGroup,
-  FormControlLabel,Radio
+  FormControlLabel,Radio,FormLabel,FormControl,value
 } from "@mui/material";
 import Swal from "sweetalert2";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -18,12 +18,9 @@ import EmailIcon from "@mui/icons-material/Email";
 import KeyIcon from "@mui/icons-material/Key";
 import WcIcon from "@mui/icons-material/Wc";
 import CallIcon from "@mui/icons-material/Call";
-import * as Yup from "yup";
-import Radio from '@material-ui/core/Radio';
-// import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
+import * as Yup from "yup";;
+
+
 
 const AddReporter = () => {
   const url = app_config.api_url;
@@ -242,19 +239,20 @@ const AddReporter = () => {
                           }}
                           helperText={errors.confirmpassword}
                         />
-                          <div className="mb-3">
-                          <RadioGroup  
+                          <div className="mt-3">
+                          <FormControl component="fieldset">
+                          <FormLabel component="legend">Gender</FormLabel>
+                          <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
+                            <FormControlLabel value="female" control={<Radio />} label="Female" />
+                            <FormControlLabel value="male" control={<Radio />} label="Male" />
+                            <FormControlLabel value="other" control={<Radio />} label="Other" />
+                           
+                          </RadioGroup>
+                        </FormControl>
+
+
+
                           
-                        >
-                          <FormControlLabel value="female" control={<Radio />} label="Female" />
-                          <FormControlLabel value="male" control={<Radio />} label="Male" />
-                          <FormControlLabel value="other" control={<Radio />} label="Others" />
-                    
-                            
-                             
-                             
-                            
-                              </RadioGroup>
                           </div>
                           <div className="mb-3">
                             <TextField
