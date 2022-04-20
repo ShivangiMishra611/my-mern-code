@@ -17,6 +17,7 @@ import {
   Tooltip,
 } from "@mui/material";
 import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -76,6 +77,47 @@ export default function Header() {
           >
             Trusted News Tribune
           </Typography>
+          
+
+        
+          <IconButton className="nav-item">
+          <NavLink className="nav-link" to="/main/topstories">
+           Top Stories
+          </NavLink>
+        </IconButton>
+        
+
+       
+
+        
+
+       
+        
+        <IconButton className="nav-item">
+          <NavLink className="nav-link" to="/admin/managenews">
+          Manage News
+          </NavLink>
+        </IconButton>
+
+        <IconButton className="nav-item">
+          <NavLink className="nav-link" to="/main/login">
+           Login
+          </NavLink>
+        </IconButton>
+
+        <IconButton className="nav-item">
+          <NavLink className="nav-link" to="/main/signup">
+           Signup
+          </NavLink>
+        </IconButton>
+
+        <IconButton className="nav-item"  color ="success">
+          <NavLink className="nav-link" to="/main/archieve">
+          Archieves
+          </NavLink>
+        </IconButton>
+
+
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
