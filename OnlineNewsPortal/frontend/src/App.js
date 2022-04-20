@@ -5,7 +5,6 @@ import User from "./components/user";
 import AddReporter from "./components/admin/addreporter";
 import ManageReporters from "./components/admin/manageReporters";
 
-
 import ManageNews from "./components/admin/manageNews";
 
 import ManageUsers from "./components/admin/manageUsers";
@@ -28,10 +27,19 @@ import Authenticator from "./components/authenticator";
 import AddCurrentAffairs from "./components/reporter/addCurrentAffairs";
 import CurrentAffairs from "./components/main/currentAffairs";
 import ManageCurrentAffairs from "./components/admin/manageCurrentAffairs";
+import { createTheme, ThemeProvider } from "@mui/material";
 
 function App() {
+  const theme1 = createTheme({
+    palette: {
+      primary: {
+        main: "#950000",
+      },
+    },
+  });
+
   return (
-    <div>
+    <ThemeProvider theme={theme1}>
       <BrowserRouter>
         <Routes>
           <Route
@@ -70,7 +78,10 @@ function App() {
             <Route element={<AddReporter />} path="addreporter" />
             <Route element={<ManageNews />} path="managenews" />
             <Route element={<ManageUsers />} path="manageusers" />
-            <Route element={<ManageCurrentAffairs />} path="managecurrentaffairs" />
+            <Route
+              element={<ManageCurrentAffairs />}
+              path="managecurrentaffairs"
+            />
 
             <Route element={<AdminLogin />} path="login" />
             <Route element={<ManageReporters />} path="managereporters" />
@@ -87,7 +98,7 @@ function App() {
           <Route element={<Navigate to="/main/home" />} path="/" />
         </Routes>
       </BrowserRouter>
-    </div>
+    </ThemeProvider>
   );
 }
 

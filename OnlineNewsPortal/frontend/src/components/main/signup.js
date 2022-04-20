@@ -9,10 +9,10 @@ import {
   CardMedia,
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
-import EmailIcon from '@mui/icons-material/Email';
-import LockIcon from '@mui/icons-material/Lock';
-import LockOpenIcon from '@mui/icons-material/LockOpen';
-import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+import EmailIcon from "@mui/icons-material/Email";
+import LockIcon from "@mui/icons-material/Lock";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 
 import { Formik } from "formik";
 import app_config from "../../config";
@@ -31,7 +31,7 @@ const Signup = () => {
     confirmPassword: "",
     age: "",
     email: "",
-    number:""
+    number: "",
   };
 
   //submit callback function
@@ -83,11 +83,10 @@ const Signup = () => {
     confirmPassword: Yup.string()
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Password Confirmation is Required"),
-      number: Yup.string()
+    number: Yup.string()
       .min(2, "Too Short!")
       .max(10, "Too Long!")
       .required("Contact is Required"),
-      
   });
 
   return (
@@ -204,27 +203,26 @@ const Signup = () => {
                       />
 
                       <TextField
-                      className="w-100 mt-3"
-                      placeholder="Re -enterPassword"
-                      label="ConfirmPassword"
-                      type="password"
-                      variant="outlined"
-                      id="confirmPassword"
-                      onChange={handleChange}
-                      value={values.confirmPassword}
-                      error={errors.confirmPassword}
-                      helperText={Boolean(errors.confirmPassword)}
-                      InputProps={{
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <LockOpenIcon
-                              sx={{ color: "active.active", mr: 1, my: 0.5 }}
-                            />
-                          </InputAdornment>
-                        ),
-                      }}
-                    />
-
+                        className="w-100 mt-3"
+                        placeholder="Re -enterPassword"
+                        label="ConfirmPassword"
+                        type="password"
+                        variant="outlined"
+                        id="confirmPassword"
+                        onChange={handleChange}
+                        value={values.confirmPassword}
+                        error={errors.confirmPassword}
+                        helperText={Boolean(errors.confirmPassword)}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <LockOpenIcon
+                                sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                              />
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
 
                       <TextField
                         className="w-100 mt-3"
@@ -239,29 +237,28 @@ const Signup = () => {
                         helperText="Enter your correct age please"
                       />
                       <TextField
-                      className="w-100 mt-3"
-                      placeholder="Contact"
-                      label="Contact"
-                      variant="outlined"
-                      id="number"
-                      onChange={handleChange}
-                      value={values.number}
-                      error={Boolean(errors.number)}
-                      
-                      InputProps={{
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <ContactPhoneIcon
-                              sx={{ color: "active.active", mr: 1, my: 0.5 }}
-                            />
-                          </InputAdornment>
-                        ),
-                      }}
-                      helperText="Enter your Contact no. please"
-                    />
-                    
+                        className="w-100 mt-3"
+                        placeholder="Contact"
+                        label="Contact"
+                        variant="outlined"
+                        id="number"
+                        onChange={handleChange}
+                        value={values.number}
+                        error={Boolean(errors.number)}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <ContactPhoneIcon
+                                sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                              />
+                            </InputAdornment>
+                          ),
+                        }}
+                        helperText="Enter your Contact no. please"
+                      />
+
                       <Button
-                        color="success"
+                        color="primary"
                         variant="contained"
                         className=" w-100 mt-5"
                         type="submit"
