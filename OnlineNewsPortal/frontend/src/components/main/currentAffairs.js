@@ -20,11 +20,8 @@ import {
     const [loading, setLoading] = useState(true);
 
     const newsCategories = [
-        "Uttar Pradesh",
-        "Madhya Pradesh",
-        "Kanpur",
-        "Rajasthan",
-        "Bihar",
+      "National",
+      "International",
       ];
   
     
