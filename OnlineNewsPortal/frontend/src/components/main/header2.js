@@ -1,3 +1,4 @@
+import './header2.css';
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -17,7 +18,11 @@ import {
   Tooltip,
 } from "@mui/material";
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+
+
+
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -42,6 +47,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -60,6 +66,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
+
+
+
+
+
+
+
+
 
 export default function Header() {
   const [userMenuPos, setUserMenuPos] = useState(null);

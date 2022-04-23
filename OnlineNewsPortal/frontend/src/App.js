@@ -35,6 +35,7 @@ function App() {
     palette: {
       primary: {
         main: "#950000",
+        contrastText:'#fff'
       },
     },
   });
