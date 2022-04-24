@@ -1,5 +1,15 @@
 import { useEffect, useState } from "react";
-import { Button } from "@mui/material";
+import {  Autocomplete,
+  Button,
+  Card,
+  CardContent,
+  Chip,
+  FormControl,
+  InputAdornment,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,} from "@mui/material";
 import toast, { Toaster } from "react-hot-toast";
 import app_config from "../../config";
 import Accordion from '@mui/material/Accordion';
@@ -11,12 +21,18 @@ import Stack from "@mui/material/Stack";
 import Fab from '@mui/material/Fab';
 import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import BeenhereRoundedIcon from '@mui/icons-material/BeenhereRounded';
+import { Formik } from "formik";
+import Swal from "sweetalert2";
+import { Edit, TitleSharp, Category, Newspaper } from "@mui/icons-material";
 
 
 
 const ManageReporters= () => {
   const [ReporterArray, setReporterArray] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [showUpdateForm, setShowUpdateForm] = useState(false);
+  const [updateFormdata, setUpdateFormdata] = useState({});
 
   const url = app_config.api_url;
 
@@ -133,6 +149,30 @@ const ManageReporters= () => {
        
       ));
     }
+  };
+  const submitNews = (values) => {
+    // values.thumbnail = thumbnail;
+    console.log(values);
+
+    fetch(url + "/reporter/update/" + values._id, {
+      method: "PUT",
+      body: JSON.stringify(values),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      console.log(res.status);
+      if (res.status === 200) {
+        Swal.fire({
+          icon: "success",
+          title: "success",
+          text: "Reporters Updated Successfully",
+        });
+        fetchData();
+        setShowUpdateForm(false);
+      }
+      return res.json();
+    });
   };
 
   return (

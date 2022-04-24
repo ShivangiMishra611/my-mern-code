@@ -11,11 +11,11 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import IconButton from '@mui/material/IconButton';
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ShareIcon from "@mui/icons-material/Share";
+import IconButton from "@mui/material/IconButton";
 
-import "./topstories.css"; 
+import "./topstories.css";
 
 const TopStories = () => {
   const [newsArray, setNewsArray] = useState([]);
@@ -29,24 +29,21 @@ const TopStories = () => {
     "Entertainment",
   ];
 
-  const newssubCategories =[
-
-  ]
+  const newssubCategories = [];
 
   const filterTopStories = (data) => {
-    
-    Date.prototype.removeDays = function(days) {
+    Date.prototype.removeDays = function (days) {
       var date = new Date(this.valueOf());
       date.setDate(date.getDate() - days);
       return date;
-  }
-    const filtered =  data.filter((news) => {
+    };
+    const filtered = data.filter((news) => {
       return new Date(news.createdAt) >= new Date().removeDays(1);
-    })
+    });
 
     console.log(filtered);
     return filtered;
-  }
+  };
 
   const url = app_config.api_url;
 
@@ -67,24 +64,20 @@ const TopStories = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        applyFilter(data, filter)
-        
+        applyFilter(data, filter);
       });
   };
 
-  const applyFilter = (data, filter) => { 
-    
-    const filteredArray = data.filter( news => {
+  const applyFilter = (data, filter) => {
+    const filteredArray = data.filter((news) => {
       return filter.toLowerCase() == news.category.toLowerCase();
-    } )
+    });
 
     console.log(filteredArray);
 
     setNewsArray([...filteredArray]);
     setLoading(false);
-
-
-   };
+  };
 
   useEffect(() => {
     fetchData();
@@ -92,7 +85,11 @@ const TopStories = () => {
 
   const displayCategories = () => {
     return newsCategories.map((category) => (
-      <Button variant="outlined" size="medium" onClick={e => refreshData(category)}>
+      <Button
+        variant="outlined"
+        size="medium"
+        onClick={(e) => refreshData(category)}
+      >
         {category}
       </Button>
     ));
@@ -124,19 +121,15 @@ const TopStories = () => {
                   {news.summary}
                 </Typography>
                 <IconButton aria-label="add to favorites">
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton aria-label="share">
-                <ShareIcon />
-              </IconButton>
-
-           
-
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <ShareIcon />
+                </IconButton>
               </CardContent>
               <CardActions>
-              
-              <Button size="small">Learn More</Button>
-            </CardActions>
+                <Button size="small">Learn More</Button>
+              </CardActions>
             </Grid>
           </Grid>
         </Card>
@@ -147,10 +140,9 @@ const TopStories = () => {
   return (
     <div>
       <header className="stories-header">
-      <h1 className="news-title">Trusted News Tribune</h1>
-      <br></br>
+        <h1 className="news-title">Trusted News Tribune</h1>
+        <br></br>
         <Container>
-         
           <div className="category-header">
             <Box
               sx={{
