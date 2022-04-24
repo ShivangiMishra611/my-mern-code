@@ -20,6 +20,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AccordionDetails from "@mui/material/AccordionDetails";
+import SearchIcon from "@mui/icons-material/Search";
 import Stack from "@mui/material/Stack";
 import Fab from "@mui/material/Fab";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
@@ -35,6 +36,10 @@ const ManageNews = () => {
   const [showUpdateForm, setShowUpdateForm] = useState(false);
   const [updateFormdata, setUpdateFormdata] = useState({});
 
+  const [filter, setFilter] = useState("");
+
+  const [thumbnail, setThumbnail] = useState("");
+
   const url = app_config.api_url;
 
   const fetchData = () => {
@@ -45,6 +50,41 @@ const ManageNews = () => {
         setNewsArray(data);
         setLoading(false);
       });
+  };
+  const filternews = () => {
+    fetch(url + "/news/getall")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const filtered = data.filter(({ title }) => {
+          return title.toLowerCase().includes(filter.toLowerCase());
+        });
+        console.log(filtered);
+        setNewsArray(filtered);
+        setLoading(false);
+      });
+  };
+  const newsCategories = [
+    "Sports",
+    "Politics",
+    "World",
+    "Lifestyle",
+    "Entertainment",
+  ];
+  const uploadThumbnail = (e) => {
+    console.log("file selected");
+
+    let file = e.target.files[0];
+    console.log(file.name);
+    setThumbnail(file.name);
+    let form = new FormData();
+    form.append("myfile", file);
+
+    fetch(url + "/util/uploadfile", { method: "POST", body: form }).then(
+      (res) => {
+        console.log(res.status);
+      }
+    );
   };
 
   const deleteNews = (id) => {
@@ -176,7 +216,7 @@ const ManageNews = () => {
               <Formik
                 initialValues={updateFormdata}
                 onSubmit={submitNews}
-                // validationSchema={validationSchema}
+               
               >
                 {({ values, handleChange, handleSubmit, errors }) => (
                   <form onSubmit={handleSubmit}>
@@ -239,8 +279,10 @@ const ManageNews = () => {
                             ),
                           }}
                         >
-                          {["A", "B", "C"].map((category) => (
-                            <MenuItem value={category}>{category}</MenuItem>
+                          {newsCategories.map((category) => (
+                            <MenuItem value={category}>
+                              {category}
+                            </MenuItem>
                           ))}
                         </Select>
                       </FormControl>
@@ -319,7 +361,12 @@ const ManageNews = () => {
                         <input
                           className="form-control"
                           type="file"
-                          // onChange={uploadThumbnail}
+                          id="thumbnail"
+                          value={values.thumbnail}
+                          error={Boolean(errors.thumbnail)}
+                          helperText={errors.thumbnail}
+                          onChange={uploadThumbnail}
+                        
                         />
                       </div>
 
@@ -347,6 +394,32 @@ const ManageNews = () => {
   return (
     <div className="container">
       <Toaster position="top-right" reverseOrder={false} />
+      <div className="title-current"></div>
+     
+     <TextField
+       className="w-50 mt-5"
+       label="Search Here"
+       value={filter}
+       onChange={(e) => setFilter(e.target.value)}
+       InputProps={{
+         startAdornment: (
+           <InputAdornment position="start">
+             <SearchIcon sx={{ color: "active.active", mr: 1, my: 0.5 }} />
+           </InputAdornment>
+         ),
+       }}
+     />
+
+     <Fab
+       className="w-30 mt-5"
+       variant="extended"
+       color="primary"
+       aria-label="add"
+       type="submit"
+       onClick={filternews}
+     >
+       Search
+     </Fab>
 
       {displayNews()}
 

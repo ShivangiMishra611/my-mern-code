@@ -437,15 +437,7 @@ const ManageCurrentAffairs = () => {
     <div className="container">
       <Toaster position="top-right" reverseOrder={false} />
       <div className="title-current"></div>
-      {/* <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search> */}
+     
       <TextField
         className="w-50 mt-5"
         label="Search Here"
