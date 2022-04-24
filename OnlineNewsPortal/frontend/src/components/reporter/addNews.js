@@ -119,8 +119,7 @@ const AddNews = () => {
                     >
                       {({ values, handleChange, handleSubmit, errors }) => (
                         <form onSubmit={handleSubmit}>
-                          <h5 className="card-header">Add News</h5>
-
+                         
                           <div className="card-body">
                             <TextField
                               className="w-100 mt-3"

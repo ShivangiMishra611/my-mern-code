@@ -39,6 +39,10 @@ color:white;
 .hover{
 color:whitesmoke;
 }
+.back-img{
+  background: url(http://localhost:5000/images/back.webp);
+ min-height: '100vh';
+}
 
 
   
