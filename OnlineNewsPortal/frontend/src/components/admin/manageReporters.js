@@ -8,6 +8,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Stack from "@mui/material/Stack";
+import Fab from '@mui/material/Fab';
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+import BeenhereRoundedIcon from '@mui/icons-material/BeenhereRounded';
 
 
 
@@ -71,39 +74,52 @@ const ManageReporters= () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>{reporter.name}</Typography>
+           <h4>{reporter.name}</h4>
           </AccordionSummary>
+          <img src={url + "/" + reporter.thumbnail} height="200" />
+          <br></br>
+            <br></br>
+         
+
           <AccordionDetails>
-          <Typography>{reporter.email}</Typography>
-          <Typography>{reporter.password}</Typography>
-          <Typography>{reporter.gender}</Typography>
-          <Typography>{reporter.number}</Typography>
-          <Typography>{reporter.age}</Typography>
-          <Typography>{reporter.thumbnail}</Typography>
+        <h2>{reporter.email}</h2>
+        <h2>{reporter.password}</h2>
+        <h2>{reporter.gender}</h2>
+        <h2>{reporter.number}</h2>
+        <h2>{reporter.age}</h2>
+          
           
           
 
 
           </AccordionDetails>
           <Stack direction="row" spacing={2}>
-          <Button
-            disabled={reporter.approvereporter}
-            variant="contained"
-            color="error"
-            onClick={(e) => approveReporter(reporter._id)}
-          >
-            {reporter.approvereporter ? "Approved" : "Approve Reporter"}
-            <i class="fa-solid fa-thumbs-up"></i>
-          </Button>
+          <Fab
+             disabled={reporter.approvereporter}
+              variant="extended"
+              size="small"
+              color="primary"
+              onClick={(e) => approveReporter(reporter._id)}
+              aria-label="add"
+            >
+               < BeenhereRoundedIcon sx={{ mr: 1 }} />
+              {reporter.approvereporter ? "Approved" : "Approve Reporter"}
+              
+           
+            </Fab>
 
-          <Button
-            variant="contained"
-            color="error"
-            onClick={(e) => deleteReporter(reporter._id)}
-          >
-            Delete Reporter
-            
-          </Button>
+
+            <Fab
+              variant="extended"
+              size="small"
+              color="primary"
+              onClick={(e) => deleteReporter(reporter._id)}
+              aria-label="add"
+            >
+              < DeleteRoundedIcon sx={{ mr: 1 }} />
+              Delete 
+            </Fab>
+
         </Stack>
 
           </Accordion>
