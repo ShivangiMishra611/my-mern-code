@@ -27,6 +27,7 @@ import BeenhereRoundedIcon from "@mui/icons-material/BeenhereRounded";
 import { Formik } from "formik";
 import Swal from "sweetalert2";
 import { Edit, TitleSharp, Category, Newspaper } from "@mui/icons-material";
+import { green } from '@mui/material/colors';
 
 const ManageNews = () => {
   const [NewsArray, setNewsArray] = useState([]);
@@ -109,7 +110,7 @@ const ManageNews = () => {
                 aria-label="add"
               >
                 <BeenhereRoundedIcon sx={{ mr: 1 }} />
-                {news.approvenews ? "Approved" : "Approve News"}
+                {news.approvenews ? "Approved" : ""}
               </Fab>
 
               <Fab
@@ -120,7 +121,7 @@ const ManageNews = () => {
                 aria-label="add"
               >
                 <DeleteRoundedIcon sx={{ mr: 1 }} />
-                Delete News
+              
               </Fab>
               <Tooltip title="Update News Article">
                 <Fab
@@ -132,7 +133,10 @@ const ManageNews = () => {
                   }}
                   aria-label="add"
                 >
-                  <Edit sx={{ margin: 1 }} />
+                  <Edit
+                  variant="extended"
+                  size="small"
+                  sx={{ color: green[30] }}   />
                 </Fab>
               </Tooltip>
             </Stack>
@@ -180,8 +184,7 @@ const ManageNews = () => {
               >
                 {({ values, handleChange, handleSubmit, errors }) => (
                   <form onSubmit={handleSubmit}>
-                    <h5 className="card-header">Add News</h5>
-
+                   
                     <div className="card-body">
                       <TextField
                         className="w-100 mt-3"
