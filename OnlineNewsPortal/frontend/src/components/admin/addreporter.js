@@ -114,8 +114,8 @@ const AddReporter = () => {
             <Grid item xs={6} md={7}>
               <CardMedia
                 component="img"
-                height="600"
-                image={url + "/images/news_reporting.webp"}
+                height="750"
+                image={url + "/images/addreporter.jpg"}
               />
             </Grid>
             <Grid item xs={6} md={5}>
@@ -127,7 +127,7 @@ const AddReporter = () => {
                 >
                   {({ values, handleChange, handleSubmit, errors }) => (
                     <form onSubmit={handleSubmit}>
-                      <h5 className="card-header">Add Reporter</h5>
+                     
 
                       <div className="mb-3">
                         <TextField

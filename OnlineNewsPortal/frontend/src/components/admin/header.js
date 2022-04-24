@@ -7,16 +7,17 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { AccountCircle, Campaign, FollowTheSigns } from "@mui/icons-material";
+import { AccountCircle, Campaign, FollowTheSigns, NavigateBefore } from "@mui/icons-material";
 import {
   ListItemIcon,
   ListItemText,
   Menu,
   MenuItem,
   Tooltip,
+  IconButton
 } from "@mui/material";
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -77,14 +78,13 @@ export default function Header() {
             Trusted News Tribune
           </Typography>
 
-          <li className="nav-item">
-          <reactRouterDom.NavLink className="nav-link" to="/main/topstories">
-           Top Stories
-          </reactRouterDom.NavLink>
-        </li>
-        
 
-       
+          <IconButton className="nav-item">
+          <NavLink className="nav-link" to="/main/topstories">
+          Top Stories
+          </NavLink>
+        </IconButton>
+
 
         
 

@@ -11,6 +11,9 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
+import IconButton from '@mui/material/IconButton';
 
 import "./topstories.css"; 
 
@@ -120,11 +123,20 @@ const TopStories = () => {
                 >
                   {news.summary}
                 </Typography>
+                <IconButton aria-label="add to favorites">
+                <FavoriteIcon />
+              </IconButton>
+              <IconButton aria-label="share">
+                <ShareIcon />
+              </IconButton>
+
+           
+
               </CardContent>
               <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
-              </CardActions>
+              
+              <Button size="small">Learn More</Button>
+            </CardActions>
             </Grid>
           </Grid>
         </Card>

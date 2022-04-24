@@ -1,4 +1,4 @@
-import './header2.css';
+
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -78,6 +78,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 export default function Header() {
   const [userMenuPos, setUserMenuPos] = useState(null);
   const userMenuOpen = Boolean(userMenuPos);
+
+  const [repMenuPos, setRepMenuPos] = useState(null);
+  const repMenuOpen = Boolean(repMenuPos);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -170,6 +173,7 @@ export default function Header() {
 
           <Tooltip title="Reporter">
             <IconButton
+            onClick={(e) => setRepMenuPos(e.currentTarget)}
               size="large"
               edge="start"
               color="inherit"
@@ -178,6 +182,21 @@ export default function Header() {
               <Campaign />
             </IconButton>
           </Tooltip>
+
+          <Menu
+          anchorEl={repMenuPos}
+          open={repMenuOpen}
+          onClose={(e) => setRepMenuPos(null)}
+        >
+          <MenuItem>
+            <ListItemIcon>
+              <FollowTheSigns fontSize="small" />
+            </ListItemIcon>
+            <ListItemText>Login</ListItemText>
+          </MenuItem>
+          <MenuItem>Signup</MenuItem>
+        </Menu>
+
         </Toolbar>
       </AppBar>
     </Box>
