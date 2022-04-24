@@ -23,6 +23,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const avatarStyle = {
@@ -36,6 +37,8 @@ const Login = () => {
   const [currentUser, setCurrentUser] = useState({});
   const [loggedin, setLoggedin] = useState(false);
   const [passVisible, setPassVisible] = useState(false);
+
+  const navigate = useNavigate();
 
   const loginForm = {
     username: "",

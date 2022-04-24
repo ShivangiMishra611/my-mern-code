@@ -1,10 +1,13 @@
+// import "../../static/css/bootstrap.min.css";
+// import "./home.css";
+
 import {
   Button,
   Card,
   CardContent,
   CardMedia,
   Grid,
- Container,
+  Container,
   TextField,
   Link,
   Typography,
@@ -18,26 +21,11 @@ import React from "react";
 
 const Home = () => {
   const url = app_config.api_url;
-  return(
-  
-  <div>
-    <Card className="mt-5" sx={{ display: "flex", ml: 1 }}>
-          <Grid container>
-            <Grid item xs={6} md={7}>
-              <CardMedia
-                component="img"
-                height="300"
-               
-                image={url + "/images/logo.png"}
-              />
-            </Grid>
-            <CardContent>
-              Trusted News Tribune
-            </CardContent>
-            </Grid>
-            </Card>
-  </div>
-
-)};
+  return (
+    <div>
+      <h1>Home Page</h1>
+    </div>
+  );
+};
 
 export default Home;

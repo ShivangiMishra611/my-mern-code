@@ -62,7 +62,7 @@ function App() {
             <Route element={<Signup />} path="signup" />
             <Route element={<ResetPassword />} path="resetpassword" />
             <Route element={<ViewArchieve />} path="archieve" />
-            <Route element={<NewPassword />} path="newpassword" />
+            {/* <Route element={<NewPassword />} path="newpassword" /> */}
             <Route element={<TopStories />} path="topstories" />
             <Route element={<CurrentAffairs />} path="currentaffairs" />
           </Route>
