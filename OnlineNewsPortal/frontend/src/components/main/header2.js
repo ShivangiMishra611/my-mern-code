@@ -1,3 +1,4 @@
+
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -5,17 +6,23 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
+
 import SearchIcon from "@mui/icons-material/Search";
 import { AccountCircle, Campaign, FollowTheSigns } from "@mui/icons-material";
 import {
   ListItemIcon,
   ListItemText,
+
   Menu,
   MenuItem,
   Tooltip,
 } from "@mui/material";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
+
+
+
+
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -40,6 +47,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -59,9 +67,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+
+
+
+
+
+
+
+
 export default function Header() {
   const [userMenuPos, setUserMenuPos] = useState(null);
   const userMenuOpen = Boolean(userMenuPos);
+
+  const [repMenuPos, setRepMenuPos] = useState(null);
+  const repMenuOpen = Boolean(repMenuPos);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -75,6 +94,47 @@ export default function Header() {
           >
             Trusted News Tribune
           </Typography>
+          
+
+        
+          <IconButton className="nav-item">
+          <NavLink className="nav-link" to="/main/topstories">
+           Top Stories
+          </NavLink>
+        </IconButton>
+        
+
+       
+
+        
+
+       
+        
+        <IconButton className="nav-item">
+          <NavLink className="nav-link" to="/admin/managenews">
+          Manage News
+          </NavLink>
+        </IconButton>
+
+        <IconButton className="nav-item">
+          <NavLink className="nav-link" to="/main/login">
+           Login
+          </NavLink>
+        </IconButton>
+
+        <IconButton className="nav-item">
+          <NavLink className="nav-link" to="/main/signup">
+           Signup
+          </NavLink>
+        </IconButton>
+
+        <IconButton className="nav-item"  color ="success">
+          <NavLink className="nav-link" to="/main/archieve">
+          Archieves
+          </NavLink>
+        </IconButton>
+
+
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -113,6 +173,7 @@ export default function Header() {
 
           <Tooltip title="Reporter">
             <IconButton
+            onClick={(e) => setRepMenuPos(e.currentTarget)}
               size="large"
               edge="start"
               color="inherit"
@@ -121,6 +182,21 @@ export default function Header() {
               <Campaign />
             </IconButton>
           </Tooltip>
+
+          <Menu
+          anchorEl={repMenuPos}
+          open={repMenuOpen}
+          onClose={(e) => setRepMenuPos(null)}
+        >
+          <MenuItem>
+            <ListItemIcon>
+              <FollowTheSigns fontSize="small" />
+            </ListItemIcon>
+            <ListItemText>Login</ListItemText>
+          </MenuItem>
+          <MenuItem>Signup</MenuItem>
+        </Menu>
+
         </Toolbar>
       </AppBar>
     </Box>

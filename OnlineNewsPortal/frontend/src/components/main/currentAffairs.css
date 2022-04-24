@@ -1,7 +1,11 @@
 .news-title{
     margin-top: -50px;
-    margin-left: 400px;
-    color: blue;
+    margin-left: 500px;
+    color:rgba(255, 0, 0, 0.521);
+    box-sizing:border-box;
+    display:flex;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+
 
 }
 /* .category-header{

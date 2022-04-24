@@ -8,6 +8,9 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Stack from "@mui/material/Stack";
+import Fab from '@mui/material/Fab';
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+import BeenhereRoundedIcon from '@mui/icons-material/BeenhereRounded';
 
 const ManageUsers = () => {
   const [UsersArray, setUsersArray] = useState([]);
@@ -67,34 +70,43 @@ const ManageUsers = () => {
             aria-controls="panel1a-content"
             id="panel1a-header"
                       >
-            <Typography>{user.name}</Typography>
+           <h3>{user.name}</h3>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>{user.username}</Typography>
+           <h3>{user.username}</h3>
 
-            <Typography>{user.email}</Typography>
+           <h3>{user.email}</h3>
 
-            <Typography>{user.password}</Typography>
+           <h3>{user.password}</h3>
           </AccordionDetails>
           <Stack direction="row" spacing={2}>
-            <Button
-              disabled={user.approveusers}
-              variant="contained"
-              color="error"
+          <Fab
+             disabled={user.approveusers}
+              variant="extended"
+              size="small"
+              color="primary"
               onClick={(e) => approveUsers(user._id)}
+              aria-label="add"
             >
+               < BeenhereRoundedIcon sx={{ mr: 1 }} />
               {user.approveusers ? "Approved" : "Approve Users"}
-              <i class="fa-solid fa-thumbs-up"></i>
-            </Button>
-
-            <Button
-              variant="contained"
-              color="error"
-              onClick={(e) => deleteUsers(user._id)}
-            >
-              Delete Users
               
-            </Button>
+           
+            </Fab>
+
+
+            <Fab
+              variant="extended"
+              size="small"
+              color="primary"
+              onClick={(e) => deleteUsers(user._id)}
+              aria-label="add"
+            >
+              < DeleteRoundedIcon sx={{ mr: 1 }} />
+              Delete Users
+            </Fab>
+           
+           
           </Stack>
         </Accordion>
       ));

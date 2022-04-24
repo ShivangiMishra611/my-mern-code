@@ -15,3 +15,30 @@ code {
 .addrep-bg{
   background: url(http://localhost:5000/images/pattern.png);
 }
+.title-current{
+  height: 100px;
+  background-color:blue;
+  background-image: url(http://localhost:5000/images/manage.jpg);
+}
+.nav-link{
+color:white;
+  height:3rem;
+  display: flex;
+  font-size:1rem;
+  max-width: 100%;
+  font-family:"Jost", sans-serif;
+  padding:1rem;
+  box-sizing: border-box;
+  transition:0.5sec;
+
+
+  }
+.active{
+  background-color: rgba(0, 0, 0, 0.192);
+}
+.hover{
+color:whitesmoke;
+}
+
+
+  

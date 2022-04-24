@@ -8,6 +8,9 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Stack from "@mui/material/Stack";
+import Fab from '@mui/material/Fab';
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+import BeenhereRoundedIcon from '@mui/icons-material/BeenhereRounded';
 
 const ManageNews = () => {
   const [NewsArray, setNewsArray] = useState([]);
@@ -68,32 +71,43 @@ const ManageNews = () => {
             id="panel1a-header"
             img={news.thumbnail}
           >
-            <Typography>{news.title}</Typography>
+            <h4>{news.title}</h4>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>{news.summary}</Typography>
+          <img src={url + "/" + news.thumbnail} height="200" />
+          <br></br>
+            <br></br>
+          <h5>{news.summary}</h5>
 
             <Typography>{news.category}</Typography>
           </AccordionDetails>
           <Stack direction="row" spacing={2}>
-            <Button
-              disabled={news.approvenews}
-              variant="contained"
-              color="error"
+          <Fab
+             disabled={news.approvenews}
+              variant="extended"
+              size="small"
+              color="primary"
               onClick={(e) => approveNews(news._id)}
+              aria-label="add"
             >
+               < BeenhereRoundedIcon sx={{ mr: 1 }} />
               {news.approvenews ? "Approved" : "Approve News"}
-              <i class="fa-solid fa-thumbs-up"></i>
-            </Button>
-
-            <Button
-              variant="contained"
-              color="error"
-              onClick={(e) => deleteNews(news._id)}
-            >
-              Delete News
               
-            </Button>
+           
+            </Fab>
+
+
+            <Fab
+              variant="extended"
+              size="small"
+              color="primary"
+              onClick={(e) => deleteNews(news._id)}
+              aria-label="add"
+            >
+              < DeleteRoundedIcon sx={{ mr: 1 }} />
+              Delete News
+            </Fab>
+
           </Stack>
         </Accordion>
       ));

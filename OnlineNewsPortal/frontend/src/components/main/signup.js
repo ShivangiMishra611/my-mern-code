@@ -18,11 +18,13 @@ import { Formik } from "formik";
 import app_config from "../../config";
 import Swal from "sweetalert2";
 import * as Yup from "yup";
+import {useNavigate} from 'react-router-dom';
 
 //form object
 
 const Signup = () => {
   const url = app_config.api_url;
+  const navigate = useNavigate();
   // const img1="image1.jpg"
   const userForm = {
     name: "",
@@ -60,6 +62,7 @@ const Signup = () => {
       })
       .then((data) => {
         console.log(data);
+        navigate('/main/login')
       });
   };
   const validationSchema = Yup.object().shape({
@@ -159,121 +162,1195 @@ const Signup = () => {
                         helperText="Enter your Username please"
                       />
                       <TextField
-                        className="w-100 mt-3"
-                        placeholder="email"
-                        label="Email"
-                        type="email"
-                        variant="outlined"
-                        id="email"
-                        onChange={handleChange}
-                        value={values.email}
-                        error={Boolean(errors.email)}
-                        helperText={errors.email}
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <EmailIcon
-                                sx={{ color: "active.active", mr: 1, my: 0.5 }}
-                              />
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
+                      
+                      className="w-100 mt-3"
+                      placeholder="email"
+                      label="Email"
+                      type="email"
+                      variant="outlined"
+                      id="email"
+                      onChange={handleChange}
+                      value={values.email}
+                      error={Boolean(errors.email)}
+                      helperText={errors.email}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <EmailIcon
+                              sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                            />
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
 
-                      <TextField
-                        className="w-100 mt-3"
-                        placeholder="Password"
-                        label="Password"
-                        type="password"
-                        variant="outlined"
-                        id="password"
-                        onChange={handleChange}
-                        value={values.password}
-                        error={Boolean(errors.password)}
-                        helperText="Enter your Password please"
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <LockIcon
-                                sx={{ color: "active.active", mr: 1, my: 0.5 }}
-                              />
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
+                    <TextField
+                      className="w-100 mt-3"
+                      placeholder="Password"
+                      label="Password"
+                      type="password"
+                      variant="outlined"
+                      id="password"
+                      onChange={handleChange}
+                      value={values.password}
+                      error={Boolean(errors.password)}
+                      helperText="Enter your Password please"
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <LockIcon
+                              sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                            />
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
 
-                      <TextField
-                        className="w-100 mt-3"
-                        placeholder="Re -enterPassword"
-                        label="ConfirmPassword"
-                        type="password"
-                        variant="outlined"
-                        id="confirmPassword"
-                        onChange={handleChange}
-                        value={values.confirmPassword}
-                        error={errors.confirmPassword}
-                        helperText={Boolean(errors.confirmPassword)}
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <LockOpenIcon
-                                sx={{ color: "active.active", mr: 1, my: 0.5 }}
-                              />
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
+                    <TextField
+                      className="w-100 mt-3"
+                      placeholder="Re -enterPassword"
+                      label="ConfirmPassword"
+                      type="password"
+                      variant="outlined"
+                      id="confirmPassword"
+                      onChange={handleChange}
+                      value={values.confirmPassword}
+                      error={errors.confirmPassword}
+                      helperText={Boolean(errors.confirmPassword)}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <LockOpenIcon
+                              sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                            />
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
 
-                      <TextField
-                        className="w-100 mt-3"
-                        placeholder="Age"
-                        label="Age"
-                        type="number"
-                        variant="outlined"
-                        id="age"
-                        onChange={handleChange}
-                        value={values.age}
-                        error={Boolean(errors.age)}
-                        helperText="Enter your correct age please"
-                      />
-                      <TextField
-                        className="w-100 mt-3"
-                        placeholder="Contact"
-                        label="Contact"
-                        variant="outlined"
-                        id="number"
-                        onChange={handleChange}
-                        value={values.number}
-                        error={Boolean(errors.number)}
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <ContactPhoneIcon
-                                sx={{ color: "active.active", mr: 1, my: 0.5 }}
-                              />
-                            </InputAdornment>
-                          ),
-                        }}
-                        helperText="Enter your Contact no. please"
-                      />
+                    <TextField
+                      className="w-100 mt-3"
+                      placeholder="Age"
+                      label="Age"
+                      type="number"
+                      variant="outlined"
+                      id="age"
+                      onChange={handleChange}
+                      value={values.age}
+                      error={Boolean(errors.age)}
+                      helperText="Enter your correct age please"
+                    />
+                    <TextField
+                      className="w-100 mt-3"
+                      placeholder="Contact"
+                      label="Contact"
+                      variant="outlined"
+                      id="number"
+                      onChange={handleChange}
+                      value={values.number}
+                      error={Boolean(errors.number)}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <ContactPhoneIcon
+                              sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                            />
+                          </InputAdornment>
+                        ),
+                      }}
+                      helperText="Enter your Contact no. please"
+                    />
 
-                      <Button
-                        color="primary"
-                        variant="contained"
-                        className=" w-100 mt-5"
-                        type="submit"
-                      >
-                        Signin to Continue
-                      </Button>
-                    </form>
-                  )}
-                </Formik>
-              </CardContent>
-            </Grid>
+                    <Button
+                      color="primary"
+                      variant="contained"
+                      className=" w-100 mt-5"
+                      type="submit"
+                    >
+                      Signin to Continue
+                    </Button>
+                  </form>
+                )}
+              </Formik>
+            </CardContent>
           </Grid>
-        </Card>
-      </Container>
-    </div>
-  );
+        </Grid>
+      </Card>
+    </Container>
+  </div>
+);
 };
 export default Signup;
+
+                     
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+            
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                    
