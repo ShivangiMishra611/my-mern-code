@@ -62,6 +62,16 @@ router.post("/checklogin", (req, res) => {
       res.status(500).json(err);
     });
 });
+router.put("/update/:id", (req, res) => {
+  Model.findByIdAndUpdate(req.params.id, req.body)
+    .then((data) => {
+      res.status(200).json({message : 'success'});
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json(err);
+    });
+});
 
 // for exporting router
 module.exports = router;
