@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Model = require("../models/reporterModel");
+const Model = require("../models/lucknowModel");
 
 router.post("/add", (req, res) => {
   console.log(req.body);
@@ -7,7 +7,7 @@ router.post("/add", (req, res) => {
   new Model(req.body)
     .save()
     .then((data) => {
-      console.log("Reporter data saved successfully..");
+      console.log("News data saved successfully..");
       res.status(200).json(data);
     })
     .catch((err) => {
@@ -19,7 +19,7 @@ router.post("/add", (req, res) => {
 router.get("/getall", (req, res) => {
   Model.find({})
     .then((data) => {
-      console.log("Reporter data fetched successfully..");
+      console.log("News data fetched successfully..");
       res.status(200).json(data);
     })
     .catch((err) => {
@@ -28,10 +28,11 @@ router.get("/getall", (req, res) => {
     });
 });
 
-router.delete("/delete/:id", (req, res) => {
-  Model.findByIdAndDelete(req.params.id)
+router.get("/approvenews", (req, res) => {
+  Model.find({approvenews:true})
     .then((data) => {
-      res.status(200).json({ message: "success" });
+      console.log("News data fetched successfully..");
+      res.status(200).json(data);
     })
     .catch((err) => {
       console.error(err);
@@ -39,29 +40,18 @@ router.delete("/delete/:id", (req, res) => {
     });
 });
 
-router.post("/checklogin", (req, res) => {
-  let formdata = req.body;
-  Model.findOne({ email: formdata.email })
+
+router.delete("/delete/:id", (req, res) => {
+  Model.findByIdAndDelete(req.params.id)
     .then((data) => {
-      if (data) {
-        console.log(data);
-        if (data.password === formdata.password) {
-          console.log("login successfull");
-          res.status(200).json(data);
-        } else {
-          console.log("password not matched");
-          res.status(300).json(data);
-        }
-      } else {
-        console.log("data not found");
-        res.status(300).json({ status: "fail" });
-      }
+      res.status(200).json({message : 'success'});
     })
     .catch((err) => {
       console.error(err);
       res.status(500).json(err);
     });
 });
+
 router.put("/update/:id", (req, res) => {
   Model.findByIdAndUpdate(req.params.id, req.body)
     .then((data) => {

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import {
   Autocomplete,
+  Button,
   Card,
   CardContent,
   Chip,
-  Button,
   FormControl,
   InputAdornment,
   InputLabel,
@@ -30,7 +30,8 @@ import Swal from "sweetalert2";
 import { Edit, TitleSharp, Category, Newspaper } from "@mui/icons-material";
 import { green } from '@mui/material/colors';
 import * as Yup from "yup";
-const ManageCurrentAffairs = () => {
+
+const ManageLucknowNews = () => {
   const [NewsArray, setNewsArray] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -42,11 +43,8 @@ const ManageCurrentAffairs = () => {
 
   const url = app_config.api_url;
 
-  
- 
-
   const fetchData = () => {
-    fetch(url + "/newscurrent/getall")
+    fetch(url + "/newsLucknow/getall")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -54,10 +52,13 @@ const ManageCurrentAffairs = () => {
         setLoading(false);
       });
   };
+ 
   const newsCategories = [
-    "National",
-    "International",
-   
+    "Sports",
+    "Politics",
+    "World",
+    "Lifestyle",
+    "Entertainment",
   ];
   const uploadThumbnail = (e) => {
     console.log("file selected");
@@ -76,7 +77,7 @@ const ManageCurrentAffairs = () => {
   };
 
   const deleteNews = (id) => {
-    fetch(url + "/newscurrent/delete/" + id, { method: "DELETE" })
+    fetch(url + "/newsLucknow/delete/" + id, { method: "DELETE" })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -92,7 +93,7 @@ const ManageCurrentAffairs = () => {
   };
 
   const approveNews = (id) => {
-    fetch(url + "/newscurrent/update/" + id, {
+    fetch(url + "/newsLucknow/update/" + id, {
       method: "PUT",
       body: JSON.stringify({ approvenews: true }),
       headers: { "Content-Type": "application/json" },
@@ -103,9 +104,8 @@ const ManageCurrentAffairs = () => {
         fetchData();
       });
   };
-
   const filternews = () => {
-    fetch(url + "/newscurrent/getall")
+    fetch(url + "/newsLucknow/getall")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -119,81 +119,83 @@ const ManageCurrentAffairs = () => {
   };
  
     
-
   useEffect(() => {
     fetchData();
   }, []);
 
   const displayNews = () => {
     if (!loading) {
-      return NewsArray.map((newscurrent, i) => (
-        <Accordion key={newscurrent._id}>
+      return NewsArray.map((newsLucknow, i) => (
+        <Accordion key={newsLucknow._id}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
+            
           >
-            <h4>{newscurrent.title}</h4>
+            <h4>{newsLucknow.title}</h4>
             <br></br>
           </AccordionSummary>
           <AccordionDetails>
-            <img src={url + "/" + newscurrent.thumbnail} height="200" />
+            <img src={url + "/" + newsLucknow.thumbnail} height="200" />
             <br></br>
             <br></br>
-            <h5>{newscurrent.summary}</h5>
+            <h5>{newsLucknow.summary}</h5>
 
-            <Typography>{newscurrent.categorystate}</Typography>
-         
-          <Stack direction="row" spacing={2}>
-            <Fab
-              disabled={newscurrent.approvenews}
-              variant="extended"
-              size="small"
-              color="primary"
-              onClick={(e) => approveNews(newscurrent._id)}
-              aria-label="add"
-            >
-              <BeenhereRoundedIcon sx={{ mr: 1 }} />
-              {newscurrent.approvenews ? "Approved" : "Approve News"}
-            </Fab>
+            <Typography>{newsLucknow.category}</Typography>
+           
+            <Stack direction="row" spacing={2}>
+              <Fab
+                disabled={newsLucknow.approvenews}
+                variant="extended"
+                size="small"
+                color="primary"
+                onClick={(e) => approveNews(newsLucknow._id)}
+                aria-label="add"
+              >
+                <BeenhereRoundedIcon sx={{ mr: 1 }} />
+                {newsLucknow.approvenews ? "Approved" : ""}
+              </Fab>
 
-            <Fab
-              variant="extended"
-              size="small"
-              color="primary"
-              onClick={(e) => deleteNews(newscurrent._id)}
-              aria-label="add"
-            >
-              <DeleteRoundedIcon sx={{ mr: 1 }} />
-              Delete News
-            </Fab>
-            <Tooltip title="Update News Article">
+              <Fab
+                variant="extended"
+                size="small"
+                color="primary"
+                onClick={(e) => deleteNews(newsLucknow._id)}
+                aria-label="add"
+              >
+                <DeleteRoundedIcon sx={{ mr: 1 }} />
+               
+              
+              </Fab>
+              <Tooltip title="Update News Article">
                 <Fab
                   size="medium"
                   color="success"
                   onClick={(e) => {
-                    setUpdateFormdata(newscurrent);
+                    setUpdateFormdata(newsLucknow);
                     setShowUpdateForm(true);
                   }}
                   aria-label="add"
                 >
-                  <Edit 
+                  <Edit
                   variant="extended"
                   size="small"
-                  sx={{ color: green[30] }} />
+                  sx={{ color: green[30] }}   />
                 </Fab>
               </Tooltip>
-          </Stack>
+            </Stack>
           </AccordionDetails>
         </Accordion>
       ));
     }
   };
+
   const submitNews = (values) => {
     // values.thumbnail = thumbnail;
     console.log(values);
 
-    fetch(url + "/newscurrent/update/" + values._id, {
+    fetch(url + "/newsLucknow/update/" + values._id, {
       method: "PUT",
       body: JSON.stringify(values),
       headers: {
@@ -205,7 +207,7 @@ const ManageCurrentAffairs = () => {
         Swal.fire({
           icon: "success",
           title: "success",
-          text: "Current Affairs Updated Successfully",
+          text: "News Updated Successfully",
         });
         fetchData();
         setShowUpdateForm(false);
@@ -218,10 +220,11 @@ const ManageCurrentAffairs = () => {
       .min(2, "Too Short!")
       .max(100, "Too Long!")
       .required("Title is Required"),
-    categorystate: Yup.string().required("State is Required"),
+    category: Yup.string().required("State is Required"),
     summary: Yup.string().required("News Summary is Required"),
     tags: Yup.string().required("News Tags is Required"),
   });
+
   const updateForm = () => {
     if (showUpdateForm) {
       return (
@@ -237,7 +240,6 @@ const ManageCurrentAffairs = () => {
                 {({ values, handleChange, handleSubmit, errors }) => (
                   <form onSubmit={handleSubmit}>
                    
-
                     <div className="card-body">
                       <TextField
                         className="w-100 mt-3"
@@ -271,14 +273,15 @@ const ManageCurrentAffairs = () => {
                         <InputLabel id="demo-simple-select-label1">
                           Category
                         </InputLabel>
+
                         <Select
                           labelId="demo-simple-select-label1"
-                          id="categorystate"
-                          name="categorystate"
-                          label="Categorystate"
-                          value={values.categorystate}
-                          error={Boolean(errors.categorystate)}
-                          helperText={errors.categorystate}
+                          id="category"
+                          name="category"
+                          label="Category"
+                          value={values.category}
+                          error={Boolean(errors.category)}
+                          helperText={errors.category}
                           onChange={handleChange}
                           InputProps={{
                             endAdornment: (
@@ -294,9 +297,9 @@ const ManageCurrentAffairs = () => {
                             ),
                           }}
                         >
-                          {newsCategories.map((categorystate) => (
-                            <MenuItem value={categorystate}>
-                              {categorystate}
+                          {newsCategories.map((category) => (
+                            <MenuItem value={category}>
+                              {category}
                             </MenuItem>
                           ))}
                         </Select>
@@ -381,6 +384,7 @@ const ManageCurrentAffairs = () => {
                           error={Boolean(errors.thumbnail)}
                           helperText={errors.thumbnail}
                           onChange={uploadThumbnail}
+                        
                         />
                       </div>
 
@@ -410,35 +414,36 @@ const ManageCurrentAffairs = () => {
       <Toaster position="top-right" reverseOrder={false} />
       <div className="title-current"></div>
      
-      <TextField
-        className="w-50 mt-5"
-        label="Search Here"
-        value={filter}
-        onChange={(e) => setFilter(e.target.value)}
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon sx={{ color: "active.active", mr: 1, my: 0.5 }} />
-            </InputAdornment>
-          ),
-        }}
-      />
+     <TextField
+       className="w-50 mt-5"
+       label="Search Here"
+       value={filter}
+       onChange={(e) => setFilter(e.target.value)}
+       InputProps={{
+         startAdornment: (
+           <InputAdornment position="start">
+             <SearchIcon sx={{ color: "active.active", mr: 1, my: 0.5 }} />
+           </InputAdornment>
+         ),
+       }}
+     />
 
-      <Fab
-        className="w-30 mt-5"
-        variant="extended"
-        color="primary"
-        aria-label="add"
-        type="submit"
-        onClick={filternews}
-      >
-        Search
-      </Fab>
+     <Fab
+       className="w-30 mt-5"
+       variant="extended"
+       color="primary"
+       aria-label="add"
+       type="submit"
+       onClick={filternews}
+     >
+       Search
+     </Fab>
 
       {displayNews()}
+
       {updateForm()}
     </div>
   );
 };
 
-export default ManageCurrentAffairs;
+export default ManageLucknowNews;

@@ -8,9 +8,7 @@ import {
   CardMedia,
   Grid,
   Container,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
+ 
 } from "@mui/material";
 import Swal from "sweetalert2";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -96,14 +94,14 @@ const AddReporter = () => {
     age: Yup.string().required("Age is Required"),
     email: Yup.string().email("Invalid email").required("Email is Required"),
     password: Yup.string()
-      // .matches(
-      //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-      //   "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-      // )
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+      )
       .required("Password is Required"),
-    // confirm: Yup.string()
-    //   .oneOf([Yup.ref("password"), null], "Passwords must match")
-    //   .required("Password Confirmation is Required"),
+    confirm: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .required("Password Confirmation is Required"),
   });
 
   return (

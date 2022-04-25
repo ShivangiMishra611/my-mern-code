@@ -23,7 +23,7 @@ import {
   Chip,
 } from "@mui/material";
 
-const AddNews = () => {
+const AddLucknowNews = () => {
   const url = app_config.api_url;
 
   const [thumbnail, setThumbnail] = useState("");
@@ -53,7 +53,7 @@ const AddNews = () => {
     values.thumbnail = thumbnail;
     console.log(values);
 
-    fetch(url + "/news/add", {
+    fetch(url + "/newsLucknow/add", {
       method: "POST",
       body: JSON.stringify(values),
       headers: {
@@ -287,4 +287,4 @@ const AddNews = () => {
   );
 };
 
-export default AddNews;
+export default AddLucknowNews;

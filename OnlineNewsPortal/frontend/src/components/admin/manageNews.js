@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {
-  Autocomplete,
   Button,
+  Autocomplete,
   Card,
   CardContent,
   Chip,
@@ -17,9 +17,10 @@ import toast, { Toaster } from "react-hot-toast";
 import app_config from "../../config";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
-import Typography from "@mui/material/Typography";
+
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AccordionDetails from "@mui/material/AccordionDetails";
+import SearchIcon from "@mui/icons-material/Search";
 import Stack from "@mui/material/Stack";
 import Fab from "@mui/material/Fab";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
@@ -27,6 +28,8 @@ import BeenhereRoundedIcon from "@mui/icons-material/BeenhereRounded";
 import { Formik } from "formik";
 import Swal from "sweetalert2";
 import { Edit, TitleSharp, Category, Newspaper } from "@mui/icons-material";
+import { green } from '@mui/material/colors';
+import * as Yup from "yup";
 
 const ManageNews = () => {
   const [NewsArray, setNewsArray] = useState([]);
@@ -34,6 +37,10 @@ const ManageNews = () => {
 
   const [showUpdateForm, setShowUpdateForm] = useState(false);
   const [updateFormdata, setUpdateFormdata] = useState({});
+
+  const [filter, setFilter] = useState("");
+
+  const [thumbnail, setThumbnail] = useState("");
 
   const url = app_config.api_url;
 
@@ -46,6 +53,29 @@ const ManageNews = () => {
         setLoading(false);
       });
   };
+  
+  const newsCategories = [
+    "Sports",
+    "Politics",
+    "World",
+    "Lifestyle",
+    "Entertainment",
+  ];
+  const uploadThumbnail = (e) => {
+    console.log("file selected");
+
+    let file = e.target.files[0];
+    console.log(file.name);
+    setThumbnail(file.name);
+    let form = new FormData();
+    form.append("myfile", file);
+
+    fetch(url + "/util/uploadfile", { method: "POST", body: form }).then(
+      (res) => {
+        console.log(res.status);
+      }
+    );
+  };
 
   const deleteNews = (id) => {
     fetch(url + "/news/delete/" + id, { method: "DELETE" })
@@ -54,6 +84,7 @@ const ManageNews = () => {
         console.log(data);
         fetchData();
         toast.success("News Successfully Deleted!!", {
+
           style: {
             borderRadius: "10px",
             background: "#333",
@@ -75,6 +106,20 @@ const ManageNews = () => {
         fetchData();
       });
   };
+  const filternews = () => {
+    fetch(url + "/news/getall")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const filtered = data.filter(({ title }) => {
+          return title.toLowerCase().includes(filter.toLowerCase());
+        });
+        console.log(filtered);
+        setNewsArray(filtered);
+        setLoading(false);
+      });
+  };
+
 
   useEffect(() => {
     fetchData();
@@ -88,7 +133,7 @@ const ManageNews = () => {
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
-            img={news.thumbnail}
+           
           >
             <h4>{news.title}</h4>
           </AccordionSummary>
@@ -98,7 +143,7 @@ const ManageNews = () => {
             <br></br>
             <h5>{news.summary}</h5>
 
-            <Typography>{news.category}</Typography>
+            <h5>{news.category}</h5>
             <Stack direction="row" spacing={2}>
               <Fab
                 disabled={news.approvenews}
@@ -109,7 +154,7 @@ const ManageNews = () => {
                 aria-label="add"
               >
                 <BeenhereRoundedIcon sx={{ mr: 1 }} />
-                {news.approvenews ? "Approved" : "Approve News"}
+                {news.approvenews ? "Approved" : ""}
               </Fab>
 
               <Fab
@@ -117,10 +162,11 @@ const ManageNews = () => {
                 size="small"
                 color="primary"
                 onClick={(e) => deleteNews(news._id)}
-                aria-label="add"
+               
+              aria-label="add"
               >
                 <DeleteRoundedIcon sx={{ mr: 1 }} />
-                Delete News
+              
               </Fab>
               <Tooltip title="Update News Article">
                 <Fab
@@ -132,7 +178,10 @@ const ManageNews = () => {
                   }}
                   aria-label="add"
                 >
-                  <Edit sx={{ margin: 1 }} />
+                  <Edit
+                  variant="extended"
+                  size="small"
+                  sx={{ color: green[30] }}   />
                 </Fab>
               </Tooltip>
             </Stack>
@@ -166,6 +215,15 @@ const ManageNews = () => {
       return res.json();
     });
   };
+  const validationSchema = Yup.object().shape({
+    title: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("Title is Required"),
+    category: Yup.string().required("Category is Required"),
+    summary: Yup.string().required("News Summary is Required"),
+    tags: Yup.string().required("News Tags is Required"),
+  });
 
   const updateForm = () => {
     if (showUpdateForm) {
@@ -176,12 +234,13 @@ const ManageNews = () => {
               <Formik
                 initialValues={updateFormdata}
                 onSubmit={submitNews}
-                // validationSchema={validationSchema}
+                validationSchema={validationSchema}
+               
               >
                 {({ values, handleChange, handleSubmit, errors }) => (
                   <form onSubmit={handleSubmit}>
-                    <h5 className="card-header">Add News</h5>
-
+                   
+                   
                     <div className="card-body">
                       <TextField
                         className="w-100 mt-3"
@@ -189,6 +248,7 @@ const ManageNews = () => {
                         label="Title"
                         variant="outlined"
                         id="title"
+                        type="text"
                         onChange={handleChange}
                         value={values.title}
                         error={Boolean(errors.title)}
@@ -223,7 +283,7 @@ const ManageNews = () => {
                           label="Category"
                           value={values.category}
                           error={Boolean(errors.category)}
-                          helperText="Category is required"
+                          helperText={errors.category}
                           onChange={handleChange}
                           InputProps={{
                             endAdornment: (
@@ -239,8 +299,10 @@ const ManageNews = () => {
                             ),
                           }}
                         >
-                          {["A", "B", "C"].map((category) => (
-                            <MenuItem value={category}>{category}</MenuItem>
+                          {newsCategories.map((category) => (
+                            <MenuItem value={category}>
+                              {category}
+                            </MenuItem>
                           ))}
                         </Select>
                       </FormControl>
@@ -319,20 +381,27 @@ const ManageNews = () => {
                         <input
                           className="form-control"
                           type="file"
-                          // onChange={uploadThumbnail}
+                          id="thumbnail"
+                          value={values.thumbnail}
+                          error={Boolean(errors.thumbnail)}
+                          helperText={errors.thumbnail}
+                          onChange={uploadThumbnail}
+                        
                         />
                       </div>
 
-                      <button type="submit" className="btn btn-primary">
+                      <Button type="submit" className="btn btn-primary"
+                       color="success"
+                       variant="contained">
                         Submit
-                      </button>
-                      <button
+                      </Button>
+                      <Button
                         onClick={(e) => setShowUpdateForm(false)}
                         type="button"
                         className="btn btn-primary"
                       >
                         Cancel
-                      </button>
+                      </Button>
                     </div>
                   </form>
                 )}
@@ -347,6 +416,32 @@ const ManageNews = () => {
   return (
     <div className="container">
       <Toaster position="top-right" reverseOrder={false} />
+      <div className="title-current"></div>
+     
+     <TextField sx={{ borderRadius:'16px'}}
+       className="w-50 mt-5 "
+       label="Search Here"
+       value={filter}
+       onChange={(e) => setFilter(e.target.value)}
+       InputProps={{
+         startAdornment: (
+           <InputAdornment position="start">
+             <SearchIcon sx={{ color: "active.active", mr: 1, my: 0.5 }} />
+           </InputAdornment>
+         ),
+       }}
+     />
+
+     <Fab
+       className="w-30 mt-5"
+       variant="extended"
+       color="primary"
+       aria-label="add"
+       type="submit"
+       onClick={filternews}
+     >
+       Search
+     </Fab>
 
       {displayNews()}
 

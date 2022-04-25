@@ -96,7 +96,7 @@ const ReporterLogin = () => {
   });
 
   return (
-    <div>
+    <div  classname="back-img">
       <Container maxWidth="xl">
         <Card className="mt-5" sx={{ display: "flex", ml: 3 }}>
           <Grid container>
