@@ -1043,7 +1043,7 @@ const Home = () => {
     }
   };
 
-  return displayStories();
+  return <div>{displayStories()}</div>;
 };
 
 export default Home;
