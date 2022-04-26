@@ -106,7 +106,7 @@ const Signup = () => {
             </Grid>
             <Grid item xs={6} md={5}>
               <CardContent sx={{ display: "flex", flexDirection: "column" }}>
-                <p className="h3 text-center mb-5 mt-5">Signup Here</p>
+               
                 <Formik
                   initialValues={userForm}
                   onSubmit={userSubmit}

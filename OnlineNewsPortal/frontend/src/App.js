@@ -6,6 +6,7 @@ import AddReporter from "./components/admin/addreporter";
 import ManageReporters from "./components/admin/manageReporters";
 
 import ManageNews from "./components/admin/manageNews";
+import ManageLucknowNews from "./components/admin/manageLucknowNews";
 
 import ManageUsers from "./components/admin/manageUsers";
 
@@ -13,9 +14,11 @@ import Main from "./components/main";
 import Login from "./components/main/login";
 import Signup from "./components/main/signup";
 import TopStories from "./components/main/topStories";
-import NewPassword from "./components/main/newpassword";
+import LucknowNews from "./components/main/lucknowNews";
+
 import Reporter from "./components/reporter";
 import AddNews from "./components/reporter/addNews";
+import AddLucknowNews from "./components/reporter/addLucknowNews";
 import ViewArchieve from "./components/main/viewArchieve";
 import ResetPassword from "./components/main/resetPassword";
 import Sidebar from "./components/reporter/sidebar";
@@ -53,6 +56,7 @@ function App() {
             path="reporter"
           >
             <Route element={<AddNews />} path="addnews" />
+            <Route element={<AddLucknowNews />} path="addlucknownews" />
             <Route element={<AddCurrentAffairs />} path="addcurrentaffairs" />
             <Route element={<ReporterLogin />} path="login" />
             <Route element={<Sidebar />} path="reporter" />
@@ -67,6 +71,7 @@ function App() {
             <Route element={<ViewArchieve />} path="archieve" />
             {/* <Route element={<NewPassword />} path="newpassword" /> */}
             <Route element={<TopStories />} path="topstories" />
+            <Route element={<LucknowNews />} path="lucknownews" />
             <Route element={<CurrentAffairs />} path="currentaffairs" />
           </Route>
 
@@ -81,6 +86,7 @@ function App() {
             <Route element={<AddReporter />} path="addreporter" />
             <Route element={<ManageNews />} path="managenews" />
             <Route element={<ManageUsers />} path="manageusers" />
+            <Route element={<ManageLucknowNews />} path="managelucknownews" />
             <Route
               element={<ManageCurrentAffairs />}
               path="managecurrentaffairs"

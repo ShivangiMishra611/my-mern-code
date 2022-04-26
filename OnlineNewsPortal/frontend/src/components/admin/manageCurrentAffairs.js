@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import {
   Autocomplete,
-  Button,
   Card,
   CardContent,
   Chip,
+  Button,
   FormControl,
   InputAdornment,
   InputLabel,
@@ -20,22 +20,16 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AccordionDetails from "@mui/material/AccordionDetails";
+import SearchIcon from "@mui/icons-material/Search";
 import Stack from "@mui/material/Stack";
 import Fab from "@mui/material/Fab";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import BeenhereRoundedIcon from "@mui/icons-material/BeenhereRounded";
-import { styled, alpha } from "@mui/material/styles";
-import SearchIcon from "@mui/icons-material/Search";
-import InputBase from "@mui/material/InputBase";
 import { Formik } from "formik";
 import Swal from "sweetalert2";
 import { Edit, TitleSharp, Category, Newspaper } from "@mui/icons-material";
-import TitleSharpIcon from "@mui/icons-material/TitleSharp";
-
-import NewspaperIcon from "@mui/icons-material/Newspaper";
-import CategoryIcon from "@mui/icons-material/Category";
-
-
+import { green } from '@mui/material/colors';
+import * as Yup from "yup";
 const ManageCurrentAffairs = () => {
   const [NewsArray, setNewsArray] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -44,50 +38,12 @@ const ManageCurrentAffairs = () => {
   const [updateFormdata, setUpdateFormdata] = useState({});
 
   const [filter, setFilter] = useState("");
+  const [thumbnail, setThumbnail] = useState("");
 
   const url = app_config.api_url;
 
-  const [thumbnail, setThumbnail] = useState("");
-  // const Search = styled("div")(({ theme }) => ({
-  //   position: "relative",
-  //   borderRadius: theme.shape.borderRadius,
-  //   backgroundColor: alpha(theme.palette.common.white, 0.15),
-  //   "&:hover": {
-  //     backgroundColor: alpha(theme.palette.common.white, 0.25),
-  //   },
-  //   marginLeft: 0,
-  //   width: "100%",
-  //   [theme.breakpoints.up("sm")]: {
-  //     marginLeft: theme.spacing(1),
-  //     width: "auto",
-  //   },
-  // }));
-
-  // const SearchIconWrapper = styled("div")(({ theme }) => ({
-  //   padding: theme.spacing(0, 2),
-  //   height: "100%",
-  //   position: "absolute",
-  //   pointerEvents: "none",
-  //   display: "flex",
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  // }));
-  // const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  //   color: "inherit",
-  //   "& .MuiInputBase-input": {
-  //     padding: theme.spacing(1, 1, 1, 0),
-  //     // vertical padding + font size from searchIcon
-  //     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-  //     transition: theme.transitions.create("width"),
-  //     width: "100%",
-  //     [theme.breakpoints.up("sm")]: {
-  //       width: "12ch",
-  //       "&:focus": {
-  //         width: "20ch",
-  //       },
-  //     },
-  //   },
-  // }));
+  
+ 
 
   const fetchData = () => {
     fetch(url + "/newscurrent/getall")
@@ -103,6 +59,21 @@ const ManageCurrentAffairs = () => {
     "International",
    
   ];
+  const uploadThumbnail = (e) => {
+    console.log("file selected");
+
+    let file = e.target.files[0];
+    console.log(file.name);
+    setThumbnail(file.name);
+    let form = new FormData();
+    form.append("myfile", file);
+
+    fetch(url + "/util/uploadfile", { method: "POST", body: form }).then(
+      (res) => {
+        console.log(res.status);
+      }
+    );
+  };
 
   const deleteNews = (id) => {
     fetch(url + "/newscurrent/delete/" + id, { method: "DELETE" })
@@ -146,21 +117,8 @@ const ManageCurrentAffairs = () => {
         setLoading(false);
       });
   };
-  const uploadThumbnail = (e) => {
-    console.log("file selected");
-
-    let file = e.target.files[0];
-    console.log(file.name);
-    setThumbnail(file.name);
-    let form = new FormData();
-    form.append("myfile", file);
-
-    fetch(url + "/util/uploadfile", { method: "POST", body: form }).then(
-      (res) => {
-        console.log(res.status);
-      }
-    );
-  };
+ 
+    
 
   useEffect(() => {
     fetchData();
@@ -185,7 +143,7 @@ const ManageCurrentAffairs = () => {
             <h5>{newscurrent.summary}</h5>
 
             <Typography>{newscurrent.categorystate}</Typography>
-          </AccordionDetails>
+         
           <Stack direction="row" spacing={2}>
             <Fab
               disabled={newscurrent.approvenews}
@@ -219,10 +177,14 @@ const ManageCurrentAffairs = () => {
                   }}
                   aria-label="add"
                 >
-                  <Edit sx={{ margin: 1 }} />
+                  <Edit 
+                  variant="extended"
+                  size="small"
+                  sx={{ color: green[30] }} />
                 </Fab>
               </Tooltip>
           </Stack>
+          </AccordionDetails>
         </Accordion>
       ));
     }
@@ -251,6 +213,15 @@ const ManageCurrentAffairs = () => {
       return res.json();
     });
   };
+  const validationSchema = Yup.object().shape({
+    title: Yup.string()
+      .min(2, "Too Short!")
+      .max(100, "Too Long!")
+      .required("Title is Required"),
+    categorystate: Yup.string().required("State is Required"),
+    summary: Yup.string().required("News Summary is Required"),
+    tags: Yup.string().required("News Tags is Required"),
+  });
   const updateForm = () => {
     if (showUpdateForm) {
       return (
@@ -260,11 +231,12 @@ const ManageCurrentAffairs = () => {
               <Formik
                 initialValues={updateFormdata}
                 onSubmit={submitNews}
+                validationSchema={validationSchema}
                
               >
                 {({ values, handleChange, handleSubmit, errors }) => (
                   <form onSubmit={handleSubmit}>
-                    <h5 className="card-header">Add Current Affairs</h5>
+                   
 
                     <div className="card-body">
                       <TextField
@@ -280,7 +252,7 @@ const ManageCurrentAffairs = () => {
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
-                              <TitleSharpIcon
+                              <TitleSharp
                                 sx={{
                                   color: "active.active",
                                   mr: 1,
@@ -311,7 +283,7 @@ const ManageCurrentAffairs = () => {
                           InputProps={{
                             endAdornment: (
                               <InputAdornment position="end">
-                                <CategoryIcon
+                                <Category
                                   sx={{
                                     color: "active.active",
                                     mr: 1,
@@ -348,7 +320,7 @@ const ManageCurrentAffairs = () => {
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
-                              <NewspaperIcon
+                              <Newspaper
                                 sx={{
                                   color: "active.active",
                                   mr: 1,
@@ -374,7 +346,7 @@ const ManageCurrentAffairs = () => {
                         renderTags={(value, getTagProps) =>
                           value.map((option, index) => (
                             <Chip
-                              variant="outlined"
+                              variant="filled"
                               label={option}
                               {...getTagProps({ index })}
                             />
@@ -412,16 +384,16 @@ const ManageCurrentAffairs = () => {
                         />
                       </div>
 
-                      <button type="submit" className="btn btn-primary">
+                      <Button type="submit" className="btn btn-primary">
                         Submit
-                      </button>
-                      <button
+                      </Button>
+                      <Button
                         onClick={(e) => setShowUpdateForm(false)}
                         type="button"
                         className="btn btn-primary"
                       >
                         Cancel
-                      </button>
+                      </Button>
                     </div>
                   </form>
                 )}
@@ -437,15 +409,7 @@ const ManageCurrentAffairs = () => {
     <div className="container">
       <Toaster position="top-right" reverseOrder={false} />
       <div className="title-current"></div>
-      {/* <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search> */}
+     
       <TextField
         className="w-50 mt-5"
         label="Search Here"

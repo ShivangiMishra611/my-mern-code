@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import {
-  Button,
   Autocomplete,
+  Button,
   Card,
   CardContent,
   Chip,
@@ -17,7 +17,7 @@ import toast, { Toaster } from "react-hot-toast";
 import app_config from "../../config";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
-
+import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import SearchIcon from "@mui/icons-material/Search";
@@ -31,7 +31,7 @@ import { Edit, TitleSharp, Category, Newspaper } from "@mui/icons-material";
 import { green } from '@mui/material/colors';
 import * as Yup from "yup";
 
-const ManageNews = () => {
+const ManageLucknowNews = () => {
   const [NewsArray, setNewsArray] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -39,13 +39,12 @@ const ManageNews = () => {
   const [updateFormdata, setUpdateFormdata] = useState({});
 
   const [filter, setFilter] = useState("");
-
   const [thumbnail, setThumbnail] = useState("");
 
   const url = app_config.api_url;
 
   const fetchData = () => {
-    fetch(url + "/news/getall")
+    fetch(url + "/newsLucknow/getall")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -53,7 +52,7 @@ const ManageNews = () => {
         setLoading(false);
       });
   };
-  
+ 
   const newsCategories = [
     "Sports",
     "Politics",
@@ -78,13 +77,12 @@ const ManageNews = () => {
   };
 
   const deleteNews = (id) => {
-    fetch(url + "/news/delete/" + id, { method: "DELETE" })
+    fetch(url + "/newsLucknow/delete/" + id, { method: "DELETE" })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         fetchData();
         toast.success("News Successfully Deleted!!", {
-
           style: {
             borderRadius: "10px",
             background: "#333",
@@ -95,7 +93,7 @@ const ManageNews = () => {
   };
 
   const approveNews = (id) => {
-    fetch(url + "/news/update/" + id, {
+    fetch(url + "/newsLucknow/update/" + id, {
       method: "PUT",
       body: JSON.stringify({ approvenews: true }),
       headers: { "Content-Type": "application/json" },
@@ -107,7 +105,7 @@ const ManageNews = () => {
       });
   };
   const filternews = () => {
-    fetch(url + "/news/getall")
+    fetch(url + "/newsLucknow/getall")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -119,53 +117,55 @@ const ManageNews = () => {
         setLoading(false);
       });
   };
-
-
+ 
+    
   useEffect(() => {
     fetchData();
   }, []);
 
   const displayNews = () => {
     if (!loading) {
-      return NewsArray.map((news, i) => (
-        <Accordion key={news._id}>
+      return NewsArray.map((newsLucknow, i) => (
+        <Accordion key={newsLucknow._id}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
-           
+            
           >
-            <h4>{news.title}</h4>
+            <h4>{newsLucknow.title}</h4>
+            <br></br>
           </AccordionSummary>
           <AccordionDetails>
-            <img src={url + "/" + news.thumbnail} height="200" />
+            <img src={url + "/" + newsLucknow.thumbnail} height="200" />
             <br></br>
             <br></br>
-            <h5>{news.summary}</h5>
+            <h5>{newsLucknow.summary}</h5>
 
-            <h5>{news.category}</h5>
+            <Typography>{newsLucknow.category}</Typography>
+           
             <Stack direction="row" spacing={2}>
               <Fab
-                disabled={news.approvenews}
+                disabled={newsLucknow.approvenews}
                 variant="extended"
                 size="small"
                 color="primary"
-                onClick={(e) => approveNews(news._id)}
+                onClick={(e) => approveNews(newsLucknow._id)}
                 aria-label="add"
               >
                 <BeenhereRoundedIcon sx={{ mr: 1 }} />
-                {news.approvenews ? "Approved" : ""}
+                {newsLucknow.approvenews ? "Approved" : ""}
               </Fab>
 
               <Fab
                 variant="extended"
                 size="small"
                 color="primary"
-                onClick={(e) => deleteNews(news._id)}
-               
-              aria-label="add"
+                onClick={(e) => deleteNews(newsLucknow._id)}
+                aria-label="add"
               >
-                <DeleteRoundedIcon sx={{ mr: 1}} />
+                <DeleteRoundedIcon sx={{ mr: 1 }} />
+               
               
               </Fab>
               <Tooltip title="Update News Article">
@@ -173,7 +173,7 @@ const ManageNews = () => {
                   size="medium"
                   color="success"
                   onClick={(e) => {
-                    setUpdateFormdata(news);
+                    setUpdateFormdata(newsLucknow);
                     setShowUpdateForm(true);
                   }}
                   aria-label="add"
@@ -195,7 +195,7 @@ const ManageNews = () => {
     // values.thumbnail = thumbnail;
     console.log(values);
 
-    fetch(url + "/news/update/" + values._id, {
+    fetch(url + "/newsLucknow/update/" + values._id, {
       method: "PUT",
       body: JSON.stringify(values),
       headers: {
@@ -218,9 +218,9 @@ const ManageNews = () => {
   const validationSchema = Yup.object().shape({
     title: Yup.string()
       .min(2, "Too Short!")
-      .max(50, "Too Long!")
+      .max(100, "Too Long!")
       .required("Title is Required"),
-    category: Yup.string().required("Category is Required"),
+    category: Yup.string().required("State is Required"),
     summary: Yup.string().required("News Summary is Required"),
     tags: Yup.string().required("News Tags is Required"),
   });
@@ -240,7 +240,6 @@ const ManageNews = () => {
                 {({ values, handleChange, handleSubmit, errors }) => (
                   <form onSubmit={handleSubmit}>
                    
-                   
                     <div className="card-body">
                       <TextField
                         className="w-100 mt-3"
@@ -248,7 +247,6 @@ const ManageNews = () => {
                         label="Title"
                         variant="outlined"
                         id="title"
-                        type="text"
                         onChange={handleChange}
                         value={values.title}
                         error={Boolean(errors.title)}
@@ -390,9 +388,7 @@ const ManageNews = () => {
                         />
                       </div>
 
-                      <Button type="submit" className="btn btn-primary"
-                       color="success"
-                       variant="contained">
+                      <Button type="submit" className="btn btn-primary">
                         Submit
                       </Button>
                       <Button
@@ -418,8 +414,8 @@ const ManageNews = () => {
       <Toaster position="top-right" reverseOrder={false} />
       <div className="title-current"></div>
      
-     <TextField sx={{ borderRadius:'16px'}}
-       className="w-50 mt-5 "
+     <TextField
+       className="w-50 mt-5"
        label="Search Here"
        value={filter}
        onChange={(e) => setFilter(e.target.value)}
@@ -450,4 +446,4 @@ const ManageNews = () => {
   );
 };
 
-export default ManageNews;
+export default ManageLucknowNews;
