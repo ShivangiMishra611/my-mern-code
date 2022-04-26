@@ -13,7 +13,7 @@ code {
 }
 
 .addrep-bg{
-  background: url(http://localhost:5000/images/pattern.png);
+  background: url(http://localhost:5000/images/backpattern.png);
 }
 .title-current{
   height: 100px;
@@ -43,6 +43,25 @@ color:whitesmoke;
   background: url(http://localhost:5000/images/back.webp);
  min-height: '100vh';
 }
+.manage-users{
+  background: url(http://localhost:5000/images/backpattern.png);
+  max-width: 5rem;
+}
+.login{
+  background: url(http://localhost:5000/images/background.jpg);
+  padding-left: 200px;
+  padding-top: 40px;
+  padding-bottom:90px;
+  padding-right: 50px;
+  
+}
+.logg{
+ max-width:850px;
+ padding-right: 0px;
 
+
+
+
+}
 
   

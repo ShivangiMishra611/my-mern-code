@@ -108,18 +108,20 @@ const AddReporter = () => {
 
   return (
     <div className="addrep-bg">
-      <Container maxWidth="xl">
-        <Card className="mt-5" sx={{ display: "flex", ml: 3 }}>
-          <Grid container>
-            <Grid item xs={6} md={7}>
-              <CardMedia
-                component="img"
-                height="750"
-                image={url + "/images/addreporter.jpg"}
-              />
-            </Grid>
-            <Grid item xs={6} md={5}>
-              <CardContent>
+    <Grid container spacing={3}>
+        <Grid item md={9}>
+          <Grid container justifyContent="center">
+            <Grid item md={6} xs={6}>
+              <Card className="mt-5" sx={{  width: 670 }}>
+                <CardMedia
+                  component="img"
+                  height="350"
+                  sx={{ width: 630, m: 2 }}
+                  image={url + "/images/addreporter.jpg"}
+                />
+                <Grid item xs={6} md={8}>
+                  <CardContent sx={{ width: 640 }}>
+      
                 <Formik
                   initialValues={reporterForm}
                   onSubmit={reporterSubmit}
@@ -338,9 +340,14 @@ const AddReporter = () => {
                 </Formik>
               </CardContent>
             </Grid>
+            </Card>
           </Grid>
-        </Card>
-      </Container>
+          </Grid>
+          </Grid>
+          <Grid item md={3}></Grid>
+          </Grid>
+          
+        
     </div>
   );
 };

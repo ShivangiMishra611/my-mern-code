@@ -93,15 +93,16 @@ const Login = () => {
   });
 
   return (
-    <div>
+    <div className="login">
       <Container maxWidth="xl">
-        <Card className="mt-5" sx={{ display: "flex", ml: 3 }}>
+        <Card className="logg" sx={{ display: "flex", ml: 3 }}>
           <Grid container>
-            <Grid item xs={6} md={7}>
+            <Grid item xs={4} md={5}>
               <CardMedia
                 component="img"
                 height="600"
-                image={url + "/images/user_login.jpg"}
+                image={url + "/images/upsign.webp"}
+            
               />
             </Grid>
             <Grid item xs={6} md={5}>
