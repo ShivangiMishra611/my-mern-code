@@ -213,8 +213,8 @@ const Home = () => {
                     <div class="position-relative">
                       <img
                         src={url + "/images/dashboard/banner.jpg"}
-                        alt="banner"
-                        class="img-fluid"
+                        alt=""
+                      
                       />
                       <div class="banner-content">
                         <div class="badge badge-danger fs-12 font-weight-bold mb-3">
@@ -1043,7 +1043,9 @@ const Home = () => {
     }
   };
 
-  return displayStories();
+  return <>
+  displayStories();
+  </>
 };
 
 export default Home;
