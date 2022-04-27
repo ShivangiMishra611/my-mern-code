@@ -1,5 +1,6 @@
 // import "../../static/css/bootstrap.min.css";
 import "./home.css";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import {
   Button,
@@ -82,10 +83,12 @@ const Home = () => {
                             <i className="mdi mdi-magnify"></i>
                           </a>
                         </li>
+                        
                         <li className="nav-item">
-                          <a href="#" className="nav-link">
-                            Login
-                          </a>
+                        <NavLink className="nav-link" to="/main/login">
+                       Login
+                      </NavLink>
+                        
                         </li>
                         <li className="nav-item">
                           <a href="#" className="nav-link">
@@ -212,6 +215,7 @@ const Home = () => {
                   <div className="col-xl-8 stretch-card grid-margin">
                     <div className="position-relative">
                       <img
+                      className="img-fluid"
                         src={url + "/images/dashboard/banner.jpg"}
                         alt=""
                       
