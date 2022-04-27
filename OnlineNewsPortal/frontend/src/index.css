@@ -40,11 +40,11 @@ color:white;
 color:whitesmoke;
 }
 .back-img{
-  background: url(http://localhost:5000/images/back.webp);
- min-height: '100vh';
+  background: url(http://localhost:5000/images/patternback.png);
+ height: 800px;
 }
 .manage-users{
-  background: url(http://localhost:5000/images/backpattern.png);
+  background: url(http://localhost:5000/images/patternback.png);
   max-width: 5rem;
 }
 .login{
@@ -58,7 +58,10 @@ color:whitesmoke;
 .logg{
  max-width:850px;
  padding-right: 0px;
-
+}
+.signup{
+  max-width:850px;
+  background-position: set;
 
 }
 

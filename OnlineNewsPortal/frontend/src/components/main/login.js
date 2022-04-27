@@ -97,11 +97,12 @@ const Login = () => {
       <Container maxWidth="xl">
         <Card className="logg" sx={{ display: "flex", ml: 3 }}>
           <Grid container>
-            <Grid item xs={4} md={5}>
+            <Grid item xs={4} md={7}>
               <CardMedia
                 component="img"
-                height="600"
-                image={url + "/images/signin.png"}
+                height="500"
+                width="200"
+                image={url + "/images/logg.jpg"}
             
               />
             </Grid>

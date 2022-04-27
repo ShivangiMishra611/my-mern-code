@@ -93,14 +93,14 @@ const Signup = () => {
   });
 
   return (
-    <div classname="login">
+    <div className="login">
       <Container maxWidth="xl">
         <Card className="signup" sx={{ display: "flex", ml: 3 }}>
           <Grid container>
             <Grid item xs={6} md={7}>
               <CardMedia
                 component="img"
-                height="600"
+                height="800"
                 image={url + "/images/signupp.webp"}
               />
             </Grid>
