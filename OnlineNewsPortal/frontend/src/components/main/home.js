@@ -211,11 +211,7 @@ const Home = () => {
                 <div class="row" data-aos="fade-up">
                   <div class="col-xl-8 stretch-card grid-margin">
                     <div class="position-relative">
-                      <img
-                        src={url + "/images/dashboard/banner.jpg"}
-                        alt="banner"
-                        class="img-fluid"
-                      />
+                      <img src={url + "/images/dashboard/banner.jpg"} alt="" />
                       <div class="banner-content">
                         <div class="badge badge-danger fs-12 font-weight-bold mb-3">
                           global news
@@ -347,7 +343,7 @@ const Home = () => {
                             <div class="position-relative">
                               <div class="rotate-img">
                                 <img
-                                  src="assets/images/dashboard/home_4.jpg"
+                                  src={url + "/images/dashboard/home_4.jpg"}
                                   alt="thumb"
                                   class="img-fluid"
                                 />
@@ -379,7 +375,7 @@ const Home = () => {
                             <div class="position-relative">
                               <div class="rotate-img">
                                 <img
-                                  src="assets/images/dashboard/home_5.jpg"
+                                  src={url + "/images/dashboard/home_5.jpg"}
                                   alt="thumb"
                                   class="img-fluid"
                                 />
@@ -410,7 +406,7 @@ const Home = () => {
                             <div class="position-relative">
                               <div class="rotate-img">
                                 <img
-                                  src="assets/images/dashboard/home_6.jpg"
+                                  src={url + "/images/dashboard/home_6.jpg"}
                                   alt="thumb"
                                   class="img-fluid"
                                 />
@@ -451,7 +447,7 @@ const Home = () => {
                                 <div class="position-relative">
                                   <div class="rotate-img">
                                     <img
-                                      src="assets/images/dashboard/home_7.jpg"
+                                      src={url + "/images/dashboard/home_7.jpg"}
                                       alt="thumb"
                                       class="img-fluid"
                                     />
@@ -473,7 +469,7 @@ const Home = () => {
                                 <div class="position-relative">
                                   <div class="rotate-img">
                                     <img
-                                      src="assets/images/dashboard/home_8.jpg"
+                                      src={url + "/images/dashboard/home_8.jpg"}
                                       alt="thumb"
                                       class="img-fluid"
                                     />
@@ -496,7 +492,7 @@ const Home = () => {
                                 <div class="position-relative">
                                   <div class="rotate-img">
                                     <img
-                                      src="assets/images/dashboard/home_9.jpg"
+                                      src={url + "/images/dashboard/home_9.jpg"}
                                       alt="thumb"
                                       class="img-fluid"
                                     />
@@ -518,7 +514,9 @@ const Home = () => {
                                 <div class="position-relative">
                                   <div class="rotate-img">
                                     <img
-                                      src="assets/images/dashboard/home_10.jpg"
+                                      src={
+                                        url + "/images/dashboard/home_10.jpg"
+                                      }
                                       alt="thumb"
                                       class="img-fluid"
                                     />
@@ -546,7 +544,7 @@ const Home = () => {
                               <div class="div-w-80 mr-3">
                                 <div class="rotate-img">
                                   <img
-                                    src="assets/images/dashboard/home_11.jpg"
+                                    src={url + "/images/dashboard/home_11.jpg"}
                                     alt="thumb"
                                     class="img-fluid"
                                   />
@@ -560,7 +558,7 @@ const Home = () => {
                               <div class="div-w-80 mr-3">
                                 <div class="rotate-img">
                                   <img
-                                    src="assets/images/dashboard/home_12.jpg"
+                                    src={url + "/images/dashboard/home_12.jpg"}
                                     alt="thumb"
                                     class="img-fluid"
                                   />
@@ -574,7 +572,7 @@ const Home = () => {
                               <div class="div-w-80 mr-3">
                                 <div class="rotate-img">
                                   <img
-                                    src="assets/images/dashboard/home_13.jpg"
+                                    src={url + "/images/dashboard/home_13.jpg"}
                                     alt="thumb"
                                     class="img-fluid"
                                   />
@@ -588,7 +586,7 @@ const Home = () => {
                               <div class="div-w-80 mr-3">
                                 <div class="rotate-img">
                                   <img
-                                    src="assets/images/dashboard/home_14.jpg"
+                                    src={url + "/images/dashboard/home_14.jpg"}
                                     alt="thumb"
                                     class="img-fluid"
                                   />
@@ -602,7 +600,7 @@ const Home = () => {
                               <div class="div-w-80 mr-3">
                                 <div class="rotate-img">
                                   <img
-                                    src="assets/images/dashboard/home_15.jpg"
+                                    src={url + "/images/dashboard/home_15.jpg"}
                                     alt="thumb"
                                     class="img-fluid"
                                   />
@@ -629,7 +627,7 @@ const Home = () => {
                               <div class="col-xl-6 col-lg-8 col-sm-6">
                                 <div class="rotate-img">
                                   <img
-                                    src="assets/images/dashboard/home_16.jpg"
+                                    src={url + "/images/dashboard/home_16.jpg"}
                                     alt="thumb"
                                     class="img-fluid"
                                   />
@@ -711,7 +709,9 @@ const Home = () => {
                                 <div class="border-bottom pb-3">
                                   <div class="rotate-img">
                                     <img
-                                      src="assets/images/dashboard/home_17.jpg"
+                                      src={
+                                        url + "/images/dashboard/home_17.jpg"
+                                      }
                                       alt="thumb"
                                       class="img-fluid"
                                     />
@@ -727,7 +727,9 @@ const Home = () => {
                                 <div class="pt-3 pb-3">
                                   <div class="rotate-img">
                                     <img
-                                      src="assets/images/dashboard/home_18.jpg"
+                                      src={
+                                        url + "/images/dashboard/home_18.jpg"
+                                      }
                                       alt="thumb"
                                       class="img-fluid"
                                     />
@@ -750,7 +752,10 @@ const Home = () => {
                                         <div class="col-sm-5 pr-2">
                                           <div class="rotate-img">
                                             <img
-                                              src="assets/images/dashboard/home_19.jpg"
+                                              src={
+                                                url +
+                                                "/images/dashboard/home_19.jpg"
+                                              }
                                               alt="thumb"
                                               class="img-fluid w-100"
                                             />
@@ -779,7 +784,10 @@ const Home = () => {
                                         <div class="col-sm-5 pr-2">
                                           <div class="rotate-img">
                                             <img
-                                              src="assets/images/dashboard/home_20.jpg"
+                                              src={
+                                                url +
+                                                "/images/dashboard/home_20.jpg"
+                                              }
                                               alt="thumb"
                                               class="img-fluid w-100"
                                             />
@@ -808,7 +816,10 @@ const Home = () => {
                                         <div class="col-sm-5 pr-2">
                                           <div class="rotate-img">
                                             <img
-                                              src="assets/images/dashboard/home_21.jpg"
+                                              src={
+                                                url +
+                                                "/images/dashboard/home_21.jpg"
+                                              }
                                               alt="thumb"
                                               class="img-fluid w-100"
                                             />
@@ -837,7 +848,10 @@ const Home = () => {
                                         <div class="col-sm-5 pr-2">
                                           <div class="rotate-img">
                                             <img
-                                              src="assets/images/dashboard/home_22.jpg"
+                                              src={
+                                                url +
+                                                "/images/dashboard/home_22.jpg"
+                                              }
                                               alt="thumb"
                                               class="img-fluid w-100"
                                             />
@@ -875,7 +889,7 @@ const Home = () => {
                   <div class="row">
                     <div class="col-sm-5">
                       <img
-                        src="assets/images/logo.svg"
+                        src={url + "/images/logo.svg"}
                         class="footer-logo"
                         alt=""
                       />
@@ -910,7 +924,7 @@ const Home = () => {
                             <div class="row">
                               <div class="col-3">
                                 <img
-                                  src="assets/images/dashboard/home_1.jpg"
+                                  src={url + "/images/dashboard/home_1.jpg"}
                                   alt="thumb"
                                   class="img-fluid"
                                 />
@@ -931,7 +945,7 @@ const Home = () => {
                             <div class="row">
                               <div class="col-3">
                                 <img
-                                  src="assets/images/dashboard/home_2.jpg"
+                                  src={url + "/images/dashboard/home_2.jpg"}
                                   alt="thumb"
                                   class="img-fluid"
                                 />
