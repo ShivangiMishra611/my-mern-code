@@ -9696,6 +9696,7 @@
     font-weight: 300;
     font-style: normal;
   }
+
   
   @font-face {
     font-family: "Source Sans Pro";
@@ -10488,7 +10489,7 @@
   }
   
   .img-lg {
-    width: 138px;
+    width: 300px;
   }
   
   .img-sm {

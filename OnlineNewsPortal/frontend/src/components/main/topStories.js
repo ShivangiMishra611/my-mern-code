@@ -73,6 +73,7 @@ const TopStories = () => {
         applyFilter(data, filter);
       });
   };
+  
 
   const applyFilter = (data, filter) => {
     const filteredArray = data.filter((news) => {
