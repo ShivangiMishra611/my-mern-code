@@ -40,7 +40,7 @@ color:white;
 color:whitesmoke;
 }
 .back-img{
-  background: url(http://localhost:5000/images/patternback.png);
+  background: url(http://localhost:5000/images/background.jpg);
  height: 800px;
 }
 .manage-users{
@@ -60,10 +60,22 @@ color:whitesmoke;
  padding-right: 0px;
 }
 .signup{
-  max-width:850px;
+  max-width:800px;
   background-position: set;
 
 }
-
-
+.signback{
+  background: url(http://localhost:5000/images/backcover.webp);
+  padding-left: 200px;
+  padding-top: 40px;
+  padding-bottom:90px;
+  padding-right: 50px;
   
+}
+.addrep-bg{
+  background: url(http://localhost:5000/images/backcover.webp);
+  box-shadow: 10px;
+  padding-left: 45px;
+  padding-right: 5px;
+
+}

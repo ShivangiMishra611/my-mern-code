@@ -102,7 +102,7 @@ const Login = () => {
                 component="img"
                 height="500"
                 width="200"
-                image={url + "/images/logg.jpg"}
+                image={url + "/images/loginn.png"}
             
               />
             </Grid>

@@ -1044,7 +1044,7 @@ const Home = () => {
   };
 
   return <>
-  displayStories();
+  {displayStories()};
   </>
 };
 

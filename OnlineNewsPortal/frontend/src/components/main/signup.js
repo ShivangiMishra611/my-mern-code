@@ -93,15 +93,15 @@ const Signup = () => {
   });
 
   return (
-    <div className="login">
+    <div className="signback">
       <Container maxWidth="xl">
         <Card className="signup" sx={{ display: "flex", ml: 3 }}>
           <Grid container>
             <Grid item xs={6} md={7}>
               <CardMedia
                 component="img"
-                height="800"
-                image={url + "/images/signupp.webp"}
+                height="700"
+                image={url + "/images/sss.jpg"}
               />
             </Grid>
             <Grid item xs={6} md={5}>
