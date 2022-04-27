@@ -79,3 +79,10 @@ color:whitesmoke;
   padding-right: 5px;
 
 }
+.manage-rep{
+  background: url(http://localhost:5000/images/reporter.jpg);
+  height: 100px;
+  background-color:blue;
+  
+
+}

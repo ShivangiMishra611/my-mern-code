@@ -495,7 +495,7 @@ const ManageReporters= () => {
   return (
     <div className="container">
       <Toaster position="top-right" reverseOrder={false} />
-      <div className="title-current"></div>
+      <div className="manage-rep"></div>
       <TextField
        className="w-50 mt-5"
        label="Search Here"
