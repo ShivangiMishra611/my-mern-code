@@ -32,13 +32,19 @@ const TopStories = () => {
   const newssubCategories = [];
 
   const filterTopStories = (data) => {
-    Date.prototype.removeDays = function (days) {
-      var date = new Date(this.valueOf());
-      date.setDate(date.getDate() - days);
-      return date;
-    };
+    // Date.prototype.removeDays = function(days) {
+    //   var date = new Date(this.valueOf());
+    //   date.setDate(date.getDate() - days);
+    //   return date;
+    // }
+    const currentDate = new Date();
     const filtered = data.filter((news) => {
-      return new Date(news.createdAt) >= new Date().removeDays(1);
+      const newsDate = new Date(news.createdAt);
+      return (
+        newsDate.getFullYear() === currentDate.getFullYear() &&
+        newsDate.getMonth() === currentDate.getMonth() &&
+        newsDate.getDate() === currentDate.getDate()
+      );
     });
 
     console.log(filtered);
