@@ -65,7 +65,6 @@ function App() {
 
           <Route element={<Main />} path="main">
             <Route element={<ReporterLogin />} path="reporterlogin" />
-            <Route element={<Home />} path="home" />
             <Route element={<Login />} path="login" />
             <Route element={<Signup />} path="signup" />
             <Route element={<ResetPassword />} path="resetpassword" />
@@ -74,9 +73,10 @@ function App() {
             <Route element={<TopStories />} path="topstories" />
             <Route element={<LucknowNews />} path="lucknownews" />
             <Route element={<CurrentAffairs />} path="currentaffairs" />
-            {/* <Route element={<ViewNews />} path="viewnews/:id" /> */}
-            <Route element={<ViewNews />} path="viewnews" />
+            <Route element={<ViewNews />} path="viewnews/:id" />
+            {/* <Route element={<ViewNews />} path="viewnews" /> */}
           </Route>
+          <Route element={<Home />} path="home" />
 
           <Route
             element={
