@@ -39,11 +39,14 @@ const AddLucknowNews = () => {
   };
 
   const newsCategories = [
-    "Sports",
+    "Civic Issues",
+    "Crime",
     "Politics",
-    "World",
-    "Lifestyle",
-    "Entertainment",
+    "School And Colleges",
+    "UP Elections",
+    "Pollution News",
+    "Events"
+
   ];
 
   const [tags, setTags] = useState([]);

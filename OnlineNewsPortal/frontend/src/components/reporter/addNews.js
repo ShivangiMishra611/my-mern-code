@@ -44,6 +44,12 @@ const AddNews = () => {
     "World",
     "Lifestyle",
     "Entertainment",
+    "Health",
+    "Business",
+    "Education",
+    "Technology",
+    "Jobs"
+    
   ];
 
   const [tags, setTags] = useState([]);
@@ -52,6 +58,7 @@ const AddNews = () => {
   const newsSubmit = (values) => {
     values.thumbnail = thumbnail;
     console.log(values);
+
 
     fetch(url + "/news/add", {
       method: "POST",

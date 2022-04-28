@@ -14,12 +14,15 @@ import app_config from "../../config";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import IconButton from "@mui/material/IconButton";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import "./topstories.css";
 
 const TopStories = () => {
   const [newsArray, setNewsArray] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
 
   const newsCategories = [
     "Sports",
@@ -27,6 +30,11 @@ const TopStories = () => {
     "World",
     "Lifestyle",
     "Entertainment",
+    "Health",
+    "Business",
+    "Education",
+    "Technology",
+    "Jobs"
   ];
 
   const newssubCategories = [];
@@ -107,7 +115,7 @@ const TopStories = () => {
   const displaynews = () => {
     if (!loading) {
       return newsArray.map((news) => (
-        <Card className="mt-5">
+        <Card className="mt-5"onClick={e => navigate('/main/viewnews/'+newsArray._id)}>
           <Grid container>
             <Grid item xs={6} md={4}>
               <CardMedia
