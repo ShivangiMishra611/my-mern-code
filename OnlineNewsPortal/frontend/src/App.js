@@ -74,7 +74,8 @@ function App() {
             <Route element={<TopStories />} path="topstories" />
             <Route element={<LucknowNews />} path="lucknownews" />
             <Route element={<CurrentAffairs />} path="currentaffairs" />
-            <Route element={<ViewNews />} path="viewnews/:id" />
+            {/* <Route element={<ViewNews />} path="viewnews/:id" /> */}
+            <Route element={<ViewNews />} path="viewnews" />
           </Route>
 
           <Route

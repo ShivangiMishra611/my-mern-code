@@ -47,15 +47,7 @@ const Home = () => {
   };
 
 
-  // const fetchData = () => {
-  //   fetch(url + "/news/getall")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setNewsList(data);
-  //       setLoading(false);
-  //     });
-  // };
+ 
 
   useEffect(() => {
     fetchData();
