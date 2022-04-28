@@ -410,10 +410,9 @@ const ManageLucknowNews = () => {
   };
 
   return (
-    <div className="container">
+    <div className="lko">
       <Toaster position="top-right" reverseOrder={false} />
-      <div className="title-current"></div>
-     
+      <div className="managelko"></div>
      <TextField
        className="w-50 mt-5"
        label="Search Here"

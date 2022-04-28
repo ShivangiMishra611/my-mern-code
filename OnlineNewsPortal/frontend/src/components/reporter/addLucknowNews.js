@@ -98,17 +98,17 @@ const AddLucknowNews = () => {
   });
 
   return (
-    <div>
+    <div className="lucknow">
       <Grid container spacing={3}>
         <Grid item md={9}>
           <Grid container justifyContent="center">
             <Grid item md={6} xs={6}>
-              <Card className="mt-5" sx={{  width: 670 }}>
+              <Card className="mt-5" sx={{  width: 650 }}>
                 <CardMedia
                   component="img"
                   height="350"
-                  sx={{ width: 630, m: 2 }}
-                  image={url + "/images/add_news.jpg"}
+                  // sx={{ width: 630, m: 2 }}
+                  image={url + "/images/lucknow.webp"}
                 />
                 <Grid item xs={6} md={8}>
                   <CardContent sx={{ width: 640 }}>
@@ -125,7 +125,7 @@ const AddLucknowNews = () => {
                               className="w-100 mt-3"
                               placeholder="Title"
                               label="Title"
-                              variant="outlined"
+                              variant="filled"
                               id="title"
                               onChange={handleChange}
                               value={values.title}
@@ -268,7 +268,7 @@ const AddLucknowNews = () => {
                               />
                             </div>
 
-                            <button type="submit" className="btn btn-primary">
+                            <button type="submit" className=" w-100 btn btn-primary">
                               Submit
                             </button>
                           </div>
