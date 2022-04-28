@@ -223,7 +223,11 @@ const Home = () => {
                 <div className="row" data-aos="fade-up">
                   <div className="col-xl-8 stretch-card grid-margin">
                     <div className="position-relative">
-                      <img src={url + "/images/dashboard/banner.jpg"} alt="" />
+                      <img
+                        className="img-fluid"
+                        src={url + "/images/dashboard/banner.jpg"}
+                        alt=""
+                      />
                       <div className="banner-content">
                         <div className="badge badge-danger fs-12 font-weight-bold mb-3">
                           global news
