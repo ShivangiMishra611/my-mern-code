@@ -312,8 +312,12 @@ const Home = () => {
                       <div className="card-body">
                         <h2>Category</h2>
                         <ul className="vertical-menu">
+                        
                           <li>
-                            <a href="#">MY CITY MY STATE</a>
+                          <NavLink href="#" className="nav-link" to="/main/lucknownews">
+                            MYCITY
+                          </NavLink>
+                           
                           </li>
                           <li>
                             <a href="#">LIFESTYLE</a>

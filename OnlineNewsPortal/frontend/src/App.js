@@ -107,7 +107,7 @@ function App() {
             <Route element={<Feedback />} path="feedback" />
           </Route>
 
-          <Route element={<Navigate to="/main/home" />} path="/" />
+          <Route element={<Navigate to="home" />} path="/" />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
