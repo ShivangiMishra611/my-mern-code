@@ -93,15 +93,17 @@ const Login = () => {
   });
 
   return (
-    <div>
+    <div className="login">
       <Container maxWidth="xl">
-        <Card className="mt-5" sx={{ display: "flex", ml: 3 }}>
+        <Card className="logg" sx={{ display: "flex", ml: 3 }}>
           <Grid container>
-            <Grid item xs={6} md={7}>
+            <Grid item xs={4} md={7}>
               <CardMedia
                 component="img"
-                height="600"
-                image={url + "/images/user_login.jpg"}
+                height="500"
+                width="200"
+                image={url + "/images/loginn.png"}
+            
               />
             </Grid>
             <Grid item xs={6} md={5}>
@@ -118,6 +120,7 @@ const Login = () => {
                   {({ values, handleChange, handleSubmit, errors }) => (
                     <form onSubmit={handleSubmit}>
                       <TextField
+                     
                         className="w-100 mt-3"
                         placeholder="Username"
                         label="Username"
@@ -127,6 +130,7 @@ const Login = () => {
                         helperText={errors.username}
                         onChange={handleChange}
                         value={values.username}
+                       
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
@@ -140,7 +144,9 @@ const Login = () => {
                             </InputAdornment>
                           ),
                         }}
+                        
                       />
+                      
 
                       <TextField
                         className="w-100 mt-3"

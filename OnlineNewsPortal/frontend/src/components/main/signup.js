@@ -93,15 +93,15 @@ const Signup = () => {
   });
 
   return (
-    <div>
+    <div className="signback">
       <Container maxWidth="xl">
-        <Card className="mt-5" sx={{ display: "flex", ml: 3 }}>
+        <Card className="signup" sx={{ display: "flex", ml: 3 }}>
           <Grid container>
             <Grid item xs={6} md={7}>
               <CardMedia
                 component="img"
-                height="800"
-                image={url + "/images/sign-up.png"}
+                height="700"
+                image={url + "/images/sss.jpg"}
               />
             </Grid>
             <Grid item xs={6} md={5}>
@@ -264,7 +264,7 @@ const Signup = () => {
                     <Button
                       color="primary"
                       variant="contained"
-                      className=" w-100 mt-5"
+                      className=" w-100 mt-3"
                       type="submit"
                     >
                       Signin to Continue

@@ -13,7 +13,7 @@ code {
 }
 
 .addrep-bg{
-  background: url(http://localhost:5000/images/pattern.png);
+  background: url(http://localhost:5000/images/backpattern.png);
 }
 .title-current{
   height: 100px;
@@ -40,9 +40,49 @@ color:white;
 color:whitesmoke;
 }
 .back-img{
-  background: url(http://localhost:5000/images/back.webp);
- min-height: '100vh';
+  background: url(http://localhost:5000/images/background.jpg);
+ height: 800px;
 }
-
-
+.manage-users{
+  background: url(http://localhost:5000/images/patternback.png);
+  max-width: 5rem;
+}
+.login{
+  background: url(http://localhost:5000/images/background.jpg);
+  padding-left: 200px;
+  padding-top: 40px;
+  padding-bottom:90px;
+  padding-right: 50px;
   
+}
+.logg{
+ max-width:850px;
+ padding-right: 0px;
+}
+.signup{
+  max-width:800px;
+  background-position: set;
+
+}
+.signback{
+  background: url(http://localhost:5000/images/backcover.webp);
+  padding-left: 200px;
+  padding-top: 40px;
+  padding-bottom:90px;
+  padding-right: 50px;
+  
+}
+.addrep-bg{
+  background: url(http://localhost:5000/images/backcover.webp);
+  box-shadow: 10px;
+  padding-left: 45px;
+  padding-right: 5px;
+
+}
+.manage-rep{
+  background: url(http://localhost:5000/images/reporter.jpg);
+  height: 100px;
+  background-color:blue;
+  
+
+}

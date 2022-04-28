@@ -73,6 +73,7 @@ const TopStories = () => {
         applyFilter(data, filter);
       });
   };
+  
 
   const applyFilter = (data, filter) => {
     const filteredArray = data.filter((news) => {
@@ -94,6 +95,8 @@ const TopStories = () => {
       <Button
         variant="outlined"
         size="medium"
+        
+        
         onClick={(e) => refreshData(category)}
       >
         {category}
@@ -144,7 +147,7 @@ const TopStories = () => {
   };
 
   return (
-    <div classname="back-img">
+    <div className="back-img">
       <header className="stories-header">
         <h1 className="news-title">Trusted News Tribune</h1>
         <br></br>

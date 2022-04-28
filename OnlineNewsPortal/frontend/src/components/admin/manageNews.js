@@ -165,7 +165,7 @@ const ManageNews = () => {
                
               aria-label="add"
               >
-                <DeleteRoundedIcon sx={{ mr: 1 }} />
+                <DeleteRoundedIcon sx={{ mr: 1}} />
               
               </Fab>
               <Tooltip title="Update News Article">

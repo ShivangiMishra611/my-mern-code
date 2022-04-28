@@ -98,7 +98,7 @@ const AddNews = () => {
   });
 
   return (
-    <div>
+    <div className="addrep-bg">
       <Grid container spacing={3}>
         <Grid item md={9}>
           <Grid container justifyContent="center">
@@ -107,10 +107,10 @@ const AddNews = () => {
                 <CardMedia
                   component="img"
                   height="350"
-                  sx={{ width: 630, m: 2 }}
-                  image={url + "/images/add_news.jpg"}
+                  sx={{ width: 630, m: 2 ,}}
+                  image={url + "/images/addnews.jpg"}
                 />
-                <Grid item xs={6} md={8}>
+                <Grid item xs={6} md={7}>
                   <CardContent sx={{ width: 640 }}>
                     <Formik
                       initialValues={newsForm}

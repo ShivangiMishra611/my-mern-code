@@ -1,5 +1,6 @@
 // import "../../static/css/bootstrap.min.css";
 import "./home.css";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import {
   Button,
@@ -22,18 +23,37 @@ import React from "react";
 
 const Home = () => {
   const url = app_config.api_url;
-  const [newsList, setNewsList] = useState([]);
+  const [newsArray, setNewsArray] = useState([]);
+  // const [newsList, setNewsList] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchData = () => {
-    fetch(url + "/news/getall")
+    fetch(url + "/news/approvenews")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setNewsList(data);
+        setNewsArray(data);
         setLoading(false);
       });
   };
+  const refreshData = (filter) => {
+    setLoading(true);
+    fetch(url + "/news/approvenews")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
+
+  // const fetchData = () => {
+  //   fetch(url + "/news/getall")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setNewsList(data);
+  //       setLoading(false);
+  //     });
+  // };
 
   useEffect(() => {
     fetchData();
@@ -82,15 +102,20 @@ const Home = () => {
                             <i className="mdi mdi-magnify"></i>
                           </a>
                         </li>
+
                         <li className="nav-item">
-                          <a href="#" className="nav-link">
+                          <NavLink className="nav-link" to="/main/login">
                             Login
-                          </a>
+                          </NavLink>
                         </li>
                         <li className="nav-item">
-                          <a href="#" className="nav-link">
+                          <NavLink
+                            href="#"
+                            className="nav-link"
+                            to="/main/signup"
+                          >
                             Sign in
-                          </a>
+                          </NavLink>
                         </li>
                       </ul>
                     </div>
@@ -206,10 +231,7 @@ const Home = () => {
                 <div className="d-lg-flex align-items-center justify-content-between">
                   <div className="d-flex align-items-center">
                     <span className="badge badge-dark mr-3">Flash news</span>
-                    <p className="mb-0">
-                      Lorem Ipsum has been the industry's standard dummy text
-                      ever since the 1500s.
-                    </p>
+                    <p className="mb-0"></p>
                   </div>
                   <div className="d-flex">
                     <span className="mr-3 text-danger">Wed, March 4, 2020</span>
@@ -250,16 +272,14 @@ const Home = () => {
 
                         <div className="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between">
                           <div className="pr-3">
-                            <h5>
-                              Virus Kills Member Of Advising Iran’s Supreme
-                            </h5>
+                            <h5>{newsArray[0].title}</h5>
                             <div className="fs-12">
                               <span className="mr-2">Photo </span>10 Minutes ago
                             </div>
                           </div>
                           <div className="rotate-img">
                             <img
-                              src={url + "/images/dashboard/home_1.jpg"}
+                              src={url + "/" + newsArray[0].thumbnail}
                               alt="thumb"
                               className="img-fluid img-lg"
                             />
@@ -268,16 +288,14 @@ const Home = () => {
 
                         <div className="d-flex border-bottom-blue pb-4 pt-4 align-items-center justify-content-between">
                           <div className="pr-3">
-                            <h5>
-                              Virus Kills Member Of Advising Iran’s Supreme
-                            </h5>
+                            <h5>{newsArray[1].title}</h5>
                             <div className="fs-12">
                               <span className="mr-2">Photo </span>10 Minutes ago
                             </div>
                           </div>
                           <div className="rotate-img">
                             <img
-                              src={url + "/images/dashboard/home_2.jpg"}
+                              src={url + "/" + newsArray[1].thumbnail}
                               alt="thumb"
                               className="img-fluid img-lg"
                             />
@@ -286,16 +304,14 @@ const Home = () => {
 
                         <div className="d-flex pt-4 align-items-center justify-content-between">
                           <div className="pr-3">
-                            <h5>
-                              Virus Kills Member Of Advising Iran’s Supreme
-                            </h5>
+                            <h5>{newsArray[2].title}</h5>
                             <div className="fs-12">
                               <span className="mr-2">Photo </span>10 Minutes ago
                             </div>
                           </div>
                           <div className="rotate-img">
                             <img
-                              src={url + "/images/dashboard/home_3.jpg"}
+                              src={url + "/" + newsArray[2].thumbnail}
                               alt="thumb"
                               className="img-fluid img-lg"
                             />
@@ -312,40 +328,31 @@ const Home = () => {
                         <h2>Category</h2>
                         <ul className="vertical-menu">
                           <li>
-                            <a href="#">Politics</a>
+                            <a href="#">MY CITY MY STATE</a>
                           </li>
                           <li>
-                            <a href="#">International</a>
+                            <a href="#">LIFESTYLE</a>
                           </li>
                           <li>
-                            <a href="#">Finance</a>
+                            <a href="#">SPORTS</a>
                           </li>
                           <li>
-                            <a href="#">Health care</a>
+                            <a href="#">HEALTH</a>
                           </li>
                           <li>
-                            <a href="#">Technology</a>
+                            <a href="#">ENTERTAINMENT</a>
                           </li>
                           <li>
-                            <a href="#">Jobs</a>
+                            <a href="#">BUSINESS</a>
                           </li>
                           <li>
-                            <a href="#">Media</a>
+                            <a href="#">EDUCATION</a>
                           </li>
                           <li>
-                            <a href="#">Administration</a>
+                            <a href="#">JOBS</a>
                           </li>
                           <li>
-                            <a href="#">Sports</a>
-                          </li>
-                          <li>
-                            <a href="#">Game</a>
-                          </li>
-                          <li>
-                            <a href="#">Art</a>
-                          </li>
-                          <li>
-                            <a href="#">Kids</a>
+                            <a href="#">WORLD</a>
                           </li>
                         </ul>
                       </div>

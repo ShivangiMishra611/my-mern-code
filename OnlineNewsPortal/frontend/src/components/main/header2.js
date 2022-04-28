@@ -93,7 +93,9 @@ export default function Header() {
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
             Trusted News Tribune
+
           </Typography>
+         
           
 
         
