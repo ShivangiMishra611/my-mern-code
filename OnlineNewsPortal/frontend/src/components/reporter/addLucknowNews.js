@@ -125,7 +125,7 @@ const AddLucknowNews = () => {
                               className="w-100 mt-3"
                               placeholder="Title"
                               label="Title"
-                              variant="outlined"
+                              variant="filled"
                               id="title"
                               onChange={handleChange}
                               value={values.title}

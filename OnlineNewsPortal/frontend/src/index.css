@@ -16,9 +16,9 @@ code {
   background: url(http://localhost:5000/images/backpattern.png);
 }
 .title-current{
-  height: 100px;
+  height: 168px;
   background-color:blue;
-  background-image: url(http://localhost:5000/images/manage.jpg);
+  background-image: url(http://localhost:5000/images/ca.png);
 }
 .nav-link{
 color:white;
@@ -54,6 +54,7 @@ color:whitesmoke;
   padding-bottom:90px;
   padding-right: 50px;
   background-position: set;
+  background:no-repeat;
   
 }
 .logg{
@@ -82,9 +83,10 @@ color:whitesmoke;
 
 }
 .manage-rep{
-  background: url(http://localhost:5000/images/reporter.jpg);
-  height: 100px;
+  background: url(http://localhost:5000/images/newsreporter.jpg);
+  height: 275px;
   background-color:blue;
+  padding-right:10rem;
   
 
 }
@@ -96,6 +98,7 @@ color:whitesmoke;
   padding-right: 50px;
   
   
+  
 
 }
 .current{
@@ -104,10 +107,10 @@ color:whitesmoke;
 
 }
 .lucknow{
-  background: url(http://localhost:5000/images/lko.jpg) no-repeat center center fixed;
+  background: url(http://localhost:5000/images/lko.jpg) ;
   padding-left: 6rem;
   /* background-repeat: no-repeat; */
-  background-size: cover;
+  background-size:cover ;
   
  
 
@@ -122,6 +125,17 @@ color:whitesmoke;
     height: 100px;
     background-color:blue;
     
+
+  }
+  .cardview{
+    margin:auto;
+  }
+  .manage-news{
+    background: url(http://localhost:5000/images/managenews.jpeg);
+    height: 300px;
+    background-position: top;
+    padding-right:5rem;
+    margin-top: 2rem;
 
   }
   
