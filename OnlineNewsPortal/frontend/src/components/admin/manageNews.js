@@ -416,7 +416,7 @@ const ManageNews = () => {
   return (
     <div className="container">
       <Toaster position="top-right" reverseOrder={false} />
-      <div className="title-current"></div>
+      <div className="manage-news"></div>
      
      <TextField sx={{ borderRadius:'16px'}}
        className="w-50 mt-5 "

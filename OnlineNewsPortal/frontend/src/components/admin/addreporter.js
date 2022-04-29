@@ -114,11 +114,11 @@ const AddReporter = () => {
                 <CardMedia
                   component="img"
                   height="350"
-                  sx={{ width: 630, m: 2 }}
+                  // sx={{ width: 630, m: 2.5 }}
                   image={url + "/images/addreporter.jpg"}
                 />
                 <Grid item xs={6} md={8}>
-                  <CardContent sx={{ width: 640 }}>
+                  <CardContent sx={{ width: 650 }}>
       
                 <Formik
                   initialValues={reporterForm}
@@ -326,7 +326,7 @@ const AddReporter = () => {
 
                         <button
                           type="submit"
-                          className="btn btn-primary"
+                          className=" w-100 btn btn-primary"
                           color="success"
                           variant="contained"
                         >

@@ -25,7 +25,7 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const ReporterLogin = () => {
+const Login = () => {
   const avatarStyle = {
     backgroundColor: "green",
     justifyContent: "center",
@@ -34,14 +34,14 @@ const ReporterLogin = () => {
 
   const url = app_config.api_url;
 
-  const navigate = useNavigate();
-
   const [currentUser, setCurrentUser] = useState({});
   const [loggedin, setLoggedin] = useState(false);
   const [passVisible, setPassVisible] = useState(false);
 
+  const navigate = useNavigate();
+
   const loginForm = {
-    email: "",
+    username: "",
     password: "",
   };
   const loginSubmit = (values) => {
@@ -51,7 +51,7 @@ const ReporterLogin = () => {
     //request method
     //data
     //data format
-    fetch(url + "/reporter/checklogin", {
+    fetch(url + "/user/checklogin", {
       method: "POST",
       body: JSON.stringify(values),
       headers: { "Content-Type": "application/json" },
@@ -63,15 +63,11 @@ const ReporterLogin = () => {
           icon: "success",
           title: "success",
           text: "Loggedin Successfully",
-        }).then(() => {
-          res.json().then((data) => {
-            setCurrentUser(data);
-            //storing value in session
-            sessionStorage.setItem("user", JSON.stringify(data));
-            if (data.isAdmin) {
-              navigate("/admin");
-            }
-          });
+        }).then((data) => {
+          setCurrentUser(data);
+          //storing value in session
+          sessionStorage.setItem("user", JSON.stringify(data));
+          sessionStorage.setItem("loginStatus", JSON.stringify(true));
         });
       } else if (res.status === 300) {
         Swal.fire({
@@ -83,28 +79,31 @@ const ReporterLogin = () => {
     });
   };
   const validationSchema = Yup.object().shape({
-    // username: Yup.string()
-    //   .min(2, "Too Short!")
-    //   .max(50, "Too Long!")
-    //   .required("FullName is Required"),
-    // password: Yup.string()
-    //   .matches(
-    //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-    //     "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-    //   )
-    //   .required("Password is Required"),
+    username: Yup.string()
+      .min(2, "Too Short!")
+      .max(50, "Too Long!")
+      .required("FullName is Required"),
+
+    password: Yup.string()
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+      )
+      .required("Password is Required"),
   });
 
   return (
-    <div  classname="back-img">
-      <Container maxWidth="xl">
-        <Card className="mt-5" sx={{ display: "flex", ml: 3 }}>
+    <div className="login">
+      <div maxWidth="xl">
+        <Card className="logg" sx={{ display: "flex", ml: 3 }}>
           <Grid container>
-            <Grid item xs={6} md={7}>
+            <Grid item xs={4} md={7}>
               <CardMedia
                 component="img"
-                height="600"
-                image={url + "/images/reporter_login.jpg"}
+                height="500"
+                width="200"
+                image={url + "/images/report.jpg"}
+            
               />
             </Grid>
             <Grid item xs={6} md={5}>
@@ -121,15 +120,17 @@ const ReporterLogin = () => {
                   {({ values, handleChange, handleSubmit, errors }) => (
                     <form onSubmit={handleSubmit}>
                       <TextField
+                     
                         className="w-100 mt-3"
-                        placeholder="Email"
-                        label="Email"
+                        placeholder="Username"
+                        label="Username"
                         variant="outlined"
-                        id="email"
-                        error={Boolean(errors.email)}
-                        helperText={errors.email}
+                        id="username"
+                        error={Boolean(errors.username)}
+                        helperText={errors.username}
                         onChange={handleChange}
-                        value={values.email}
+                        value={values.username}
+                       
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
@@ -143,7 +144,9 @@ const ReporterLogin = () => {
                             </InputAdornment>
                           ),
                         }}
+                        
                       />
+                      
 
                       <TextField
                         className="w-100 mt-3"
@@ -177,10 +180,10 @@ const ReporterLogin = () => {
                         }}
                       />
 
-                      <Button
+                      <Button 
                         color="success"
                         variant="contained"
-                        className="mt-5"
+                        className=" w-100 mt-5"
                         type="submit"
                         fullWidth
                       >
@@ -189,6 +192,12 @@ const ReporterLogin = () => {
                       <Typography>
                         <Link href="resetPassword">Forgot Password?</Link>
                       </Typography>
+
+                      <Typography>
+                        {" "}
+                        Do'nt have an account?
+                        <Link href="signup">Sign Up</Link>
+                      </Typography>
                     </form>
                   )}
                 </Formik>
@@ -196,9 +205,9 @@ const ReporterLogin = () => {
             </Grid>
           </Grid>
         </Card>
-      </Container>
+      </div>
     </div>
   );
 };
 
-export default ReporterLogin;
+export default Login;

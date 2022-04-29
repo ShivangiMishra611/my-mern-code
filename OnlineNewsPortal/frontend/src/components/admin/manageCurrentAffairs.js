@@ -165,7 +165,7 @@ const ManageCurrentAffairs = () => {
               aria-label="add"
             >
               <DeleteRoundedIcon sx={{ mr: 1 }} />
-              Delete News
+              
             </Fab>
             <Tooltip title="Update News Article">
                 <Fab
@@ -406,7 +406,7 @@ const ManageCurrentAffairs = () => {
   };
 
   return (
-    <div className="container">
+    <div className="managec">
       <Toaster position="top-right" reverseOrder={false} />
       <div className="title-current"></div>
      

@@ -1,4 +1,3 @@
-
 import { Formik } from "formik";
 import app_config from "../../config";
 import Swal from "sweetalert2";
@@ -15,7 +14,7 @@ import {
   CardContent,
   CardMedia,
   Grid,
- Container,
+  Container,
   TextField,
   Link,
   Typography,
@@ -24,15 +23,22 @@ import {
   IconButton,
 } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const AdminLogin = () => {
-  const avatarStyle = { backgroundColor: "green" ,justifyContent:"center", alignItems:'center'};
+const Login = () => {
+  const avatarStyle = {
+    backgroundColor: "green",
+    justifyContent: "center",
+    alignItems: "center",
+  };
 
   const url = app_config.api_url;
 
   const [currentUser, setCurrentUser] = useState({});
   const [loggedin, setLoggedin] = useState(false);
   const [passVisible, setPassVisible] = useState(false);
+
+  const navigate = useNavigate();
 
   const loginForm = {
     username: "",
@@ -49,68 +55,72 @@ const AdminLogin = () => {
       method: "POST",
       body: JSON.stringify(values),
       headers: { "Content-Type": "application/json" },
-    })
-      .then((res) => {
-        console.log(res.status);
-        if (res.status === 200) {
-          setLoggedin(true);
-          Swal.fire({
-            icon: "success",
-            title: "success",
-            text: "Loggedin Successfully",
-          });
-        } else if (res.status === 300) {
-          Swal.fire({
-            icon: "error",
-            title: "failed",
-            text: "loggedin failed",
-          });
-        }
-      })
-      .then((data) => {
-        setCurrentUser(data);
-
-        //storing value in session
-        sessionStorage.setItem("user", JSON.stringify(data));
-      });
+    }).then((res) => {
+      console.log(res.status);
+      if (res.status === 200) {
+        setLoggedin(true);
+        Swal.fire({
+          icon: "success",
+          title: "success",
+          text: "Loggedin Successfully",
+        }).then((data) => {
+          setCurrentUser(data);
+          //storing value in session
+          sessionStorage.setItem("user", JSON.stringify(data));
+          sessionStorage.setItem("loginStatus", JSON.stringify(true));
+        });
+      } else if (res.status === 300) {
+        Swal.fire({
+          icon: "error",
+          title: "failed",
+          text: "loggedin failed",
+        });
+      }
+    });
   };
   const validationSchema = Yup.object().shape({
     username: Yup.string()
       .min(2, "Too Short!")
       .max(50, "Too Long!")
       .required("FullName is Required"),
-  
+
     password: Yup.string()
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
         "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
       )
       .required("Password is Required"),
-   
   });
 
   return (
-    <div>
+    <div className="loginn">
       <Container maxWidth="xl">
-        <Card className="mt-5" sx={{ display: "flex", ml: 3 }}>
+        <Card className="logg" sx={{ display: "flex", ml: 3 }}>
           <Grid container>
-            <Grid item xs={6} md={7}>
+            <Grid item xs={4} md={7}>
               <CardMedia
                 component="img"
-                height="600"
-                image={url + "/images/admin_login.png"}
+                height="500"
+                width="200"
+                image={url + "/images/adminn.jpg"}
+            
               />
             </Grid>
             <Grid item xs={6} md={5}>
-              <CardContent sx={{display: 'flex', flexDirection:'column'}}>
+              <CardContent sx={{ display: "flex", flexDirection: "column" }}>
                 <Avatar style={avatarStyle}>
                   <LockIcon />
                 </Avatar>
                 <p className="h3 text-center mb-5 mt-5">Sign In</p>
-                <Formik initialValues={loginForm} onSubmit={loginSubmit}  validationSchema={validationSchema}>
+                <Formik
+                  initialValues={loginForm}
+                  onSubmit={loginSubmit}
+                  validationSchema={validationSchema}
+                >
                   {({ values, handleChange, handleSubmit, errors }) => (
                     <form onSubmit={handleSubmit}>
                       <TextField
+                     
                         className="w-100 mt-3"
                         placeholder="Username"
                         label="Username"
@@ -120,6 +130,7 @@ const AdminLogin = () => {
                         helperText={errors.username}
                         onChange={handleChange}
                         value={values.username}
+                       
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
@@ -133,7 +144,9 @@ const AdminLogin = () => {
                             </InputAdornment>
                           ),
                         }}
+                        
                       />
+                      
 
                       <TextField
                         className="w-100 mt-3"
@@ -197,4 +210,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default Login;

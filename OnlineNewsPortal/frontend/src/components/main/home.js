@@ -26,6 +26,7 @@ const Home = () => {
   const [newsArray, setNewsArray] = useState([]);
   // const [newsList, setNewsList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const fetchData = () => {
     fetch(url + "/news/approvenews")
@@ -44,17 +45,6 @@ const Home = () => {
         console.log(data);
       });
   };
-
-  // const fetchData = () => {
-  //   fetch(url + "/news/getall")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //       setNewsList(data);
-  //       setLoading(false);
-  //     });
-  // };
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -250,7 +240,12 @@ const Home = () => {
                         src={url + "/images/dashboard/banner.jpg"}
                         alt=""
                       />
-                      <div className="banner-content">
+                      <div
+                        className="banner-content"
+                        onClick={(e) =>
+                          navigate("/main/viewnews/" + newsArray[0]._id)
+                        }
+                      >
                         <div className="badge badge-danger fs-12 font-weight-bold mb-3">
                           global news
                         </div>

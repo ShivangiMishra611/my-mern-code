@@ -147,7 +147,7 @@ const TopStories = () => {
   };
 
   return (
-    <div className="back-img">
+    <div className="top-stories">
       <header className="stories-header">
         <h1 className="news-title">Trusted News Tribune</h1>
         <br></br>
