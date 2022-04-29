@@ -121,8 +121,6 @@ const ResetPassword = () => {
       });
   };
   const validationSchema = Yup.object().shape({
-    
-   
     password: Yup.string()
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
@@ -139,8 +137,12 @@ const ResetPassword = () => {
       return (
         <Card className="mt-5" sx={{ width: 451 }} align="center">
           <CardContent align="center">
-            <Formik initialValues={passwordForm} onSubmit={verifyOTP} validationSchema={validationSchema}>
-              {({ values, handleSubmit, handleChange , errors, }) => (
+            <Formik
+              initialValues={passwordForm}
+              onSubmit={verifyOTP}
+              validationSchema={validationSchema}
+            >
+              {({ values, handleSubmit, handleChange, errors }) => (
                 <form onSubmit={handleSubmit}>
                   <TextField
                     className="w-100 mt-3"
@@ -157,7 +159,7 @@ const ResetPassword = () => {
                     label="Password"
                     variant="outlined"
                     id="password"
-                    type="password"
+                    type={passVisible ? "text" : "password"}
                     value={values.password}
                     error={Boolean(errors.password)}
                     helperText="Enter your Password please"
