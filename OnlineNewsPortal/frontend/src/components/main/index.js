@@ -9,7 +9,7 @@ import GroupAddIcon from "@mui/icons-material/GroupAdd";
 const Main = () => {
   return (
     <div>
-      {/* <Header /> */}
+      <Header />
       <Outlet />
     </div>
   );

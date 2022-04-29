@@ -26,6 +26,7 @@ const Home = () => {
   const [newsArray, setNewsArray] = useState([]);
   // const [newsList, setNewsList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const fetchData = () => {
     fetch(url + "/news/approvenews")
@@ -45,10 +46,6 @@ const Home = () => {
        
       });
   };
-
-
- 
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -232,7 +229,7 @@ const Home = () => {
                         alt=""
                       
                       />
-                      <div className="banner-content">
+                      <div className="banner-content" onClick={e => navigate('/main/viewnews/'+newsArray[0]._id)}>
                         <div className="badge badge-danger fs-12 font-weight-bold mb-3">
                           global news
                         </div>
