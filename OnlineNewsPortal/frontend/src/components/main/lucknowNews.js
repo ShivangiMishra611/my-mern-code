@@ -11,6 +11,7 @@ import {
   } from "@mui/material";
   import { useEffect, useState } from "react";
   import app_config from "../../config";
+  import { NavLink, useNavigate } from "react-router-dom";
   
   import "./currentAffairs.css"; 
   
@@ -18,13 +19,16 @@ import {
   
     const [newsArray, setNewsArray] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     const newsCategories = [
-        "Sports",
-        "Politics",
-        "World",
-        "Lifestyle",
-        "Entertainment",
+      "Civic Issues",
+      "Crime",
+      "Politics",
+      "School And Colleges",
+      "UP Elections",
+      "Pollution News",
+      "Events"
       ];
   
     
@@ -108,7 +112,7 @@ import {
     const displaynews = () => {
       if (!loading) {
         return newsArray.map((newsLucknow) => (
-          <Card className="mt-5">
+          <Card className="mt-5" onClick={e => navigate('/main/viewnews/'+newsArray._id)}>
             <Grid container>
               <Grid item xs={6} md={4}>
                 <CardMedia

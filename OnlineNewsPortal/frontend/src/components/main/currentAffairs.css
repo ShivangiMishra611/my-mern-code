@@ -4,7 +4,8 @@
     color:rgba(255, 0, 0, 0.521);
     box-sizing:border-box;
     display:flex;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+     background-color: white;
 
 
 }
@@ -18,4 +19,8 @@
 
 .stories-header{
     padding: 5% 0;
+    background-color: white;
+
+
 }
+    
