@@ -20,6 +20,7 @@ import Reporter from "./components/reporter";
 import AddNews from "./components/reporter/addNews";
 import AddLucknowNews from "./components/reporter/addLucknowNews";
 import ViewArchieve from "./components/main/viewArchieve";
+import ViewNews from "./components/main/viewNews";
 import ResetPassword from "./components/main/resetPassword";
 import Sidebar from "./components/reporter/sidebar";
 
@@ -73,6 +74,8 @@ function App() {
             <Route element={<TopStories />} path="topstories" />
             <Route element={<LucknowNews />} path="lucknownews" />
             <Route element={<CurrentAffairs />} path="currentaffairs" />
+            {/* <Route element={<ViewNews />} path="viewnews/:id" /> */}
+            <Route element={<ViewNews />} path="viewnews" />
           </Route>
 
           <Route
