@@ -253,7 +253,6 @@ const Home = () => {
                         <h1 className="mb-2">
                           Coronavirus Outbreak LIVE Updates: ICSE, CBSE Exams
                           Postponed, 168 Trains
-
                         </h1>
                         <div className="fs-12">
                           <span className="mr-2">Photo </span>10 Minutes ago
@@ -267,15 +266,13 @@ const Home = () => {
                         <h2>Latest news</h2>
 
                         <div className="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between">
-<<<<<<< HEAD
-                          <div className="pr-3">
+                          <div
+                            className="pr-3"
+                            onClick={(e) =>
+                              navigate("/main/viewnews/" + newsArray[0]._id)
+                            }
+                          >
                             <h5>{newsArray[0].title}</h5>
-=======
-                          <div className="pr-3" onClick={e => navigate('/main/viewnews/'+newsArray[0]._id)}>
-                            <h5>
-                            {newsArray[0].title}
-                            </h5>
->>>>>>> e658b0a4858cf789d415a5a032f71af9074aa8d3
                             <div className="fs-12">
                               <span className="mr-2">Photo </span>10 Minutes ago
                             </div>
@@ -290,15 +287,13 @@ const Home = () => {
                         </div>
 
                         <div className="d-flex border-bottom-blue pb-4 pt-4 align-items-center justify-content-between">
-<<<<<<< HEAD
-                          <div className="pr-3">
+                          <div
+                            className="pr-3"
+                            onClick={(e) =>
+                              navigate("/main/viewnews/" + newsArray[1]._id)
+                            }
+                          >
                             <h5>{newsArray[1].title}</h5>
-=======
-                          <div className="pr-3" onClick={e => navigate('/main/viewnews/'+newsArray[1]._id)}>
-                            <h5>
-                            {newsArray[1].title}
-                            </h5>
->>>>>>> e658b0a4858cf789d415a5a032f71af9074aa8d3
                             <div className="fs-12">
                               <span className="mr-2">Photo </span>10 Minutes ago
                             </div>
@@ -313,15 +308,13 @@ const Home = () => {
                         </div>
 
                         <div className="d-flex pt-4 align-items-center justify-content-between">
-<<<<<<< HEAD
-                          <div className="pr-3">
+                          <div
+                            className="pr-3"
+                            onClick={(e) =>
+                              navigate("/main/viewnews/" + newsArray[2]._id)
+                            }
+                          >
                             <h5>{newsArray[2].title}</h5>
-=======
-                          <div className="pr-3" onClick={e => navigate('/main/viewnews/'+newsArray[2]._id)}>
-                            <h5>
-                            {newsArray[2].title}
-                            </h5>
->>>>>>> e658b0a4858cf789d415a5a032f71af9074aa8d3
                             <div className="fs-12">
                               <span className="mr-2">Photo </span>10 Minutes ago
                             </div>
@@ -344,12 +337,14 @@ const Home = () => {
                       <div className="card-body">
                         <h2>Category</h2>
                         <ul className="vertical-menu">
-                        
                           <li>
-                          <NavLink href="#" className="nav-link" to="/main/lucknownews">
-                            MYCITY
-                          </NavLink>
-                           
+                            <NavLink
+                              href="#"
+                              className="nav-link"
+                              to="/main/lucknownews"
+                            >
+                              MYCITY
+                            </NavLink>
                           </li>
                           <li>
                             <a href="#">LIFESTYLE</a>
