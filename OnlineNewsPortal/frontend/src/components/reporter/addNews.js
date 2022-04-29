@@ -107,11 +107,13 @@ const AddNews = () => {
                 <CardMedia
                   component="img"
                   height="350"
-                  sx={{ width: 630, m: 2 ,}}
+                  // sx={{ width: 630, m: 0}}
                   image={url + "/images/addnews.jpg"}
                 />
                 <Grid item xs={6} md={7}>
-                  <CardContent sx={{ width: 640 }}>
+                <CardContent sx={{ width: 650 }}>
+                  
+                  
                     <Formik
                       initialValues={newsForm}
                       onSubmit={newsSubmit}
@@ -268,7 +270,7 @@ const AddNews = () => {
                               />
                             </div>
 
-                            <button type="submit" className="btn btn-primary">
+                            <button type="submit" className="w-100 btn btn-primary">
                               Submit
                             </button>
                           </div>

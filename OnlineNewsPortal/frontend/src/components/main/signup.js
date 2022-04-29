@@ -101,7 +101,7 @@ const Signup = () => {
               <CardMedia
                 component="img"
                 height="700"
-                image={url + "/images/sss.jpg"}
+                image={url + "/images/lock.jpg"}
               />
             </Grid>
             <Grid item xs={6} md={5}>
@@ -121,7 +121,7 @@ const Signup = () => {
                   }) => (
                     <form onSubmit={handleSubmit}>
                       <TextField
-                        className="w-100 mt-3"
+                        className="w-100 "
                         placeholder="Name"
                         label="name"
                         variant="outlined"

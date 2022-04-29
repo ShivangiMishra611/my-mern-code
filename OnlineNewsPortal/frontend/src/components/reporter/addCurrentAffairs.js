@@ -96,7 +96,7 @@ const CurrentAffairs = () => {
   });
 
   return (
-    <div>
+    <div className="current">
       <Grid container spacing={3}>
         <Grid item md={9}>
           <Grid container justifyContent="center">
@@ -105,15 +105,15 @@ const CurrentAffairs = () => {
                 <CardMedia
                   component="img"
                   height="300"
-                  sx={{ width: 620, m: 2 }}
-                  image={url + "/images/CURRENTAFFAIRS.jpg"}
+                  // sx={{ width: 620, m: 2 }}
+                  image={url + "/images/affair.jpg"}
                 />
                 <Grid item xs={6} md={8}>
-                  <CardContent sx={{ width: 640 }}>
+                  <CardContent sx={{ width: 650 }}>
                     <Formik initialValues={currentForm} onSubmit={currentSubmit}  validationSchema={validationSchema}>
                       {({ values, handleChange, handleSubmit, errors }) => (
                         <form onSubmit={handleSubmit}>
-                          <h5 className="card-header">Add Current Affairs</h5>
+                         
 
                           <div className="card-body">
                             <TextField
@@ -263,7 +263,7 @@ const CurrentAffairs = () => {
                               />
                             </div>
 
-                            <button type="submit" className="btn btn-primary">
+                            <button type="submit" className=" w-100 btn btn-primary">
                               Submit
                             </button>
                           </div>

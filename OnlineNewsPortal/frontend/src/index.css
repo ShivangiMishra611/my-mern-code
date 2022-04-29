@@ -53,6 +53,7 @@ color:whitesmoke;
   padding-top: 40px;
   padding-bottom:90px;
   padding-right: 50px;
+  background-position: set;
   
 }
 .logg{
@@ -62,6 +63,7 @@ color:whitesmoke;
 .signup{
   max-width:800px;
   background-position: set;
+  padding-top: 1rem;
 
 }
 .signback{
@@ -86,3 +88,42 @@ color:whitesmoke;
   
 
 }
+.loginn{
+  background: url(http://localhost:5000/images/backk.jpg);
+  padding-left: 10rem;
+  padding-top: 40px;
+  padding-bottom:15rem;
+  padding-right: 50px;
+  
+  
+
+}
+.current{
+  background: url(http://localhost:5000/images/backcurrent.webp);
+  padding-left: 6rem;
+
+}
+.lucknow{
+  background: url(http://localhost:5000/images/lko.jpg) no-repeat center center fixed;
+  padding-left: 6rem;
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+  
+ 
+
+}
+.top-stories{
+  
+    background: url(http://localhost:5000/images/patterntop.png);
+  }
+  .lko{
+    
+    background: url(http://localhost:5000/images/patterntop.png);
+    height: 100px;
+    background-color:blue;
+    
+
+  }
+  
+  
+

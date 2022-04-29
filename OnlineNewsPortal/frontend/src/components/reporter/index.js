@@ -29,9 +29,8 @@ const Reporter = () => {
   return (
     <div>
       <Sidebar title={"Reporter Dashboard"} sidebarOptions={sidebarOptions}>
-        <Container>
-          <Outlet />
-        </Container>
+      <Outlet />
+        
       </Sidebar>
     </div>
   );
