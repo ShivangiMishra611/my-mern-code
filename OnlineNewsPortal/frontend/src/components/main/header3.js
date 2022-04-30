@@ -219,7 +219,7 @@ const Header = () => {
             open={Boolean(userMenuPos)}
             onClose={(e) => setUserMenuPos(null)}
           >
-            <MenuItem>
+            <MenuItem >
               <ListItemIcon>
                 <FollowTheSigns fontSize="small" />
               </ListItemIcon>

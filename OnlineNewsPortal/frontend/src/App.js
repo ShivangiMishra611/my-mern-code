@@ -51,8 +51,6 @@ function App() {
           <Route
             element={
               <Reporter />
-              // <Authenticator>
-              // </Authenticator>
             }
             path="reporter"
           >

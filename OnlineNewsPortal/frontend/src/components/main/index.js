@@ -11,7 +11,6 @@ const Main = () => {
   return (
     <div>
       <Header />
-      <Header2 />
       <Outlet />
     </div>
   );
