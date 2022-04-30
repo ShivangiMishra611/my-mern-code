@@ -95,7 +95,7 @@ const Login = () => {
   });
 
   return (
-    <div className="login">
+    <div className="rep-login">
       <div maxWidth="xl">
         <Card className="logg" sx={{ display: "flex", ml: 3 }}>
           <Grid container>

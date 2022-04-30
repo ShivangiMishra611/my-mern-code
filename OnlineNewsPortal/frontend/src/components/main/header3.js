@@ -10,6 +10,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import {
   AccountCircle,
   AppRegistration,
@@ -146,13 +147,18 @@ const Header = () => {
             open={Boolean(repMenuPos)}
             onClose={(e) => setRepMenuPos(null)}
           >
-            <MenuItem>
+            <MenuItem onClick={(e)=>navigate("/reporter/login")}>
               <ListItemIcon>
                 <FollowTheSigns fontSize="small" />
               </ListItemIcon>
               <ListItemText>Login</ListItemText>
             </MenuItem>
-            <MenuItem>Signup</MenuItem>
+            <MenuItem onClick={(e)=>navigate("/main/signup")}>
+            <ListItemIcon>
+            <ExitToAppIcon  fontSize="small" />
+            </ListItemIcon>
+            <ListItemText>Signup</ListItemText>
+            </MenuItem>
           </Menu>
         </Box>
       );
@@ -219,13 +225,18 @@ const Header = () => {
             open={Boolean(userMenuPos)}
             onClose={(e) => setUserMenuPos(null)}
           >
-            <MenuItem >
-              <ListItemIcon>
+            <MenuItem onClick={(e)=>navigate("/main/login")}>
+              <ListItemIcon >
                 <FollowTheSigns fontSize="small" />
               </ListItemIcon>
               <ListItemText>Register as User</ListItemText>
             </MenuItem>
-            <MenuItem>Signup</MenuItem>
+            <MenuItem  onClick={(e)=>navigate("/main/signup")}> 
+            <ListItemIcon>
+            <ExitToAppIcon  fontSize="small"  />
+            </ListItemIcon>
+            <ListItemText>Signup</ListItemText>
+            </MenuItem>
           </Menu>
         </Box>
       );

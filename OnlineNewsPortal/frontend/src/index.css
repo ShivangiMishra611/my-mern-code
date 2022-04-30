@@ -138,6 +138,13 @@ color:whitesmoke;
     margin-top: 2rem;
 
   }
+  .rep-login{
+    background: url(https://i.pinimg.com/736x/4f/96/1d/4f961dac467855fe2ad7bc042d34809b.jpg);
+    background-size: cover;
+    /* padding-left: 10rem;
+    padding-right: 40px; */
+    height: 100vh;
+  }
   
   
 
