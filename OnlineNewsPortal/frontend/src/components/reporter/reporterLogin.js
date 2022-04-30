@@ -63,10 +63,12 @@ const Login = () => {
           icon: "success",
           title: "success",
           text: "Loggedin Successfully",
-        }).then((data) => {
+        });
+        res.json().then((data) => {
           setCurrentUser(data);
+          console.log(data);
           //storing value in session
-          sessionStorage.setItem("user", JSON.stringify(data));
+          sessionStorage.setItem("reporter", JSON.stringify(data));
           sessionStorage.setItem("loginStatus", JSON.stringify(true));
         });
       } else if (res.status === 300) {
@@ -85,10 +87,10 @@ const Login = () => {
       .required("FullName is Required"),
 
     password: Yup.string()
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-      )
+      // .matches(
+      //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+      //   "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+      // )
       .required("Password is Required"),
   });
 
@@ -103,7 +105,6 @@ const Login = () => {
                 height="500"
                 width="200"
                 image={url + "/images/report.jpg"}
-            
               />
             </Grid>
             <Grid item xs={6} md={5}>
@@ -120,7 +121,6 @@ const Login = () => {
                   {({ values, handleChange, handleSubmit, errors }) => (
                     <form onSubmit={handleSubmit}>
                       <TextField
-                     
                         className="w-100 mt-3"
                         placeholder="Username"
                         label="Username"
@@ -130,7 +130,6 @@ const Login = () => {
                         helperText={errors.username}
                         onChange={handleChange}
                         value={values.username}
-                       
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
@@ -144,9 +143,7 @@ const Login = () => {
                             </InputAdornment>
                           ),
                         }}
-                        
                       />
-                      
 
                       <TextField
                         className="w-100 mt-3"
@@ -180,7 +177,7 @@ const Login = () => {
                         }}
                       />
 
-                      <Button 
+                      <Button
                         color="success"
                         variant="contained"
                         className=" w-100 mt-5"

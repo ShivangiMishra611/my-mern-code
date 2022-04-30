@@ -67,23 +67,19 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/slick.min.js"></script>
-    <script src="assets/js/jquery.li-scroller.1.0.js"></script>
-    <script src="assets/js/jquery.newsTicker.min.js"></script>
-    <script src="assets/js/jquery.fancybox.pack.js"></script>
-    <script src="assets/js/custom.js"></script> -->
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-      
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-        
-        To begin the development, run `npm start` or `yarn start`.
-        To create a production bundle, use `npm run build` or `yarn build`.
-      -->
+    <script
+      type="text/babel"
+      src="assets/vendors/js/vendor.bundle.base.js"
+    ></script>
+    <!-- endinject -->
+    <!-- plugin js for this page -->
+    <script
+      type="text/babel"
+      src="assets/vendors/aos/dist/aos.js/aos.js"
+    ></script>
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page-->
+    <script type="text/babel" src="assets/js/demo.js"></script>
+    <script type="text/babel" src="assets/js/jquery.easeScroll.js"></script>
   </body>
 </html>

@@ -19,7 +19,7 @@ import { styled } from "@mui/material/styles";
 import { useEffect, useState } from "react";
 
 const ViewNews = () => {
-  const {id} = useParams();
+  const { id } = useParams();
   const url = app_config.api_url;
 
   const [newsData, setNewsData] = React.useState({});
@@ -90,13 +90,7 @@ const ViewNews = () => {
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
-              <Typography>
-              {newsData.summary}
-                
-
-              </Typography>
-              
-              
+              <Typography>{newsData.summary}</Typography>
             </CardContent>
           </Collapse>
         </Card>

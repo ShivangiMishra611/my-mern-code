@@ -1,6 +1,7 @@
 // import "../../static/css/bootstrap.min.css";
 import "./home.css";
 import { NavLink, useNavigate } from "react-router-dom";
+import format from "date-fns/format";
 
 import {
   Button,
@@ -43,7 +44,6 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-       
       });
   };
   useEffect(() => {
@@ -55,7 +55,7 @@ const Home = () => {
       return (
         <div className="container-scroller">
           <div className="main-panel">
-            <header id="header">
+            {/* <header id="header">
               <div className="container">
                 <nav className="navbar navbar-expand-lg navbar-light">
                   <div className="navbar-top">
@@ -93,15 +93,18 @@ const Home = () => {
                             <i className="mdi mdi-magnify"></i>
                           </a>
                         </li>
-                        
+
                         <li className="nav-item">
-                        <NavLink className="nav-link" to="/main/login">
-                       Login
-                      </NavLink>
-                        
+                          <NavLink className="nav-link" to="/main/login">
+                            Login
+                          </NavLink>
                         </li>
                         <li className="nav-item">
-                          <NavLink href="#" className="nav-link" to="/main/signup">
+                          <NavLink
+                            href="#"
+                            className="nav-link"
+                            to="/main/signup"
+                          >
                             Sign in
                           </NavLink>
                         </li>
@@ -142,12 +145,18 @@ const Home = () => {
                               </a>
                             </li>
                             <li className="nav-item">
-                              <a className="nav-link" href="pages/magazine.html">
+                              <a
+                                className="nav-link"
+                                href="pages/magazine.html"
+                              >
                                 MAGAZINE
                               </a>
                             </li>
                             <li className="nav-item">
-                              <a className="nav-link" href="pages/business.html">
+                              <a
+                                className="nav-link"
+                                href="pages/business.html"
+                              >
                                 Business
                               </a>
                             </li>
@@ -162,7 +171,10 @@ const Home = () => {
                               </a>
                             </li>
                             <li className="nav-item">
-                              <a className="nav-link" href="pages/politics.html">
+                              <a
+                                className="nav-link"
+                                href="pages/politics.html"
+                              >
                                 POLITICS
                               </a>
                             </li>
@@ -172,7 +184,10 @@ const Home = () => {
                               </a>
                             </li>
                             <li className="nav-item">
-                              <a className="nav-link" href="pages/contactus.html">
+                              <a
+                                className="nav-link"
+                                href="pages/contactus.html"
+                              >
                                 Contact
                               </a>
                             </li>
@@ -200,20 +215,26 @@ const Home = () => {
                   </div>
                 </nav>
               </div>
-            </header>
+            </header> */}
 
             <div className="flash-news-banner">
               <div className="container">
                 <div className="d-lg-flex align-items-center justify-content-between">
                   <div className="d-flex align-items-center">
-                    <span className="badge badge-dark mr-3">Flash news</span>
-                    <p className="mb-0">
-                     
-                    </p>
+                    <span
+                      className="badge badge-dark mr-3"
+                      style={{ cursor: "pointer" }}
+                      onClick={(e) => navigate("/main/topstories")}
+                    >
+                      View Top Stories
+                    </span>
+                    <p className="mb-0"></p>
                   </div>
                   <div className="d-flex">
-                    <span className="mr-3 text-danger">Wed, March 4, 2020</span>
-                    <span className="text-danger">30°C,London</span>
+                    <span className="mr-3 text-danger">
+                      {format(new Date(), "PPPP")}
+                    </span>
+                    {/* <span className="text-danger">30°C,London</span> */}
                   </div>
                 </div>
               </div>
@@ -224,12 +245,16 @@ const Home = () => {
                   <div className="col-xl-8 stretch-card grid-margin">
                     <div className="position-relative">
                       <img
-                      className="img-fluid"
+                        className="img-fluid"
                         src={url + "/images/dashboard/banner.jpg"}
                         alt=""
-                      
                       />
-                      <div className="banner-content" onClick={e => navigate('/main/viewnews/'+newsArray[0]._id)}>
+                      <div
+                        className="banner-content"
+                        onClick={(e) =>
+                          navigate("/main/viewnews/" + newsArray[0]._id)
+                        }
+                      >
                         <div className="badge badge-danger fs-12 font-weight-bold mb-3">
                           global news
                         </div>
@@ -237,7 +262,6 @@ const Home = () => {
                         <h1 className="mb-2">
                           Coronavirus Outbreak LIVE Updates: ICSE, CBSE Exams
                           Postponed, 168 Trains
-
                         </h1>
                         <div className="fs-12">
                           <span className="mr-2">Photo </span>10 Minutes ago
@@ -251,10 +275,13 @@ const Home = () => {
                         <h2>Latest news</h2>
 
                         <div className="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between">
-                          <div className="pr-3" onClick={e => navigate('/main/viewnews/'+newsArray[0]._id)}>
-                            <h5>
-                            {newsArray[0].title}
-                            </h5>
+                          <div
+                            className="pr-3"
+                            onClick={(e) =>
+                              navigate("/main/viewnews/" + newsArray[0]._id)
+                            }
+                          >
+                            <h5>{newsArray[0].title}</h5>
                             <div className="fs-12">
                               <span className="mr-2">Photo </span>10 Minutes ago
                             </div>
@@ -269,10 +296,13 @@ const Home = () => {
                         </div>
 
                         <div className="d-flex border-bottom-blue pb-4 pt-4 align-items-center justify-content-between">
-                          <div className="pr-3" onClick={e => navigate('/main/viewnews/'+newsArray[1]._id)}>
-                            <h5>
-                            {newsArray[1].title}
-                            </h5>
+                          <div
+                            className="pr-3"
+                            onClick={(e) =>
+                              navigate("/main/viewnews/" + newsArray[1]._id)
+                            }
+                          >
+                            <h5>{newsArray[1].title}</h5>
                             <div className="fs-12">
                               <span className="mr-2">Photo </span>10 Minutes ago
                             </div>
@@ -287,10 +317,13 @@ const Home = () => {
                         </div>
 
                         <div className="d-flex pt-4 align-items-center justify-content-between">
-                          <div className="pr-3" onClick={e => navigate('/main/viewnews/'+newsArray[2]._id)}>
-                            <h5>
-                            {newsArray[2].title}
-                            </h5>
+                          <div
+                            className="pr-3"
+                            onClick={(e) =>
+                              navigate("/main/viewnews/" + newsArray[2]._id)
+                            }
+                          >
+                            <h5>{newsArray[2].title}</h5>
                             <div className="fs-12">
                               <span className="mr-2">Photo </span>10 Minutes ago
                             </div>
@@ -313,12 +346,14 @@ const Home = () => {
                       <div className="card-body">
                         <h2>Category</h2>
                         <ul className="vertical-menu">
-                        
                           <li>
-                          <NavLink href="#" className="nav-link" to="/main/lucknownews">
-                            MYCITY
-                          </NavLink>
-                           
+                            <NavLink
+                              href="#"
+                              className="nav-link"
+                              to="/main/lucknownews"
+                            >
+                              MYCITY
+                            </NavLink>
                           </li>
                           <li>
                             <a href="#">LIFESTYLE</a>
@@ -344,7 +379,6 @@ const Home = () => {
                           <li>
                             <a href="#">WORLD</a>
                           </li>
-                         
                         </ul>
                       </div>
                     </div>
@@ -528,7 +562,9 @@ const Home = () => {
                                 <div className="position-relative">
                                   <div className="rotate-img">
                                     <img
-                                      src={url + "/images/dashboard/home_10.jpg"}
+                                      src={
+                                        url + "/images/dashboard/home_10.jpg"
+                                      }
                                       alt="thumb"
                                       className="img-fluid"
                                     />
@@ -648,7 +684,8 @@ const Home = () => {
                                   Newsrooms exercise..
                                 </h2>
                                 <p className="fs-13 mb-1 text-muted">
-                                  <span className="mr-2">Photo </span>10 Minutes ago
+                                  <span className="mr-2">Photo </span>10 Minutes
+                                  ago
                                 </p>
                                 <p className="my-3 fs-15">
                                   Lorem Ipsum has been the industry's standard
@@ -668,8 +705,8 @@ const Home = () => {
                                     Social distancing is ..
                                   </h3>
                                   <p className="fs-13 text-muted mb-0">
-                                    <span className="mr-2">Photo </span>10 Minutes
-                                    ago
+                                    <span className="mr-2">Photo </span>10
+                                    Minutes ago
                                   </p>
                                   <p className="mb-0">
                                     Lorem Ipsum has been the industry's
@@ -680,8 +717,8 @@ const Home = () => {
                                     Panic buying is forcing..
                                   </h3>
                                   <p className="fs-13 text-muted mb-0">
-                                    <span className="mr-2">Photo </span>10 Minutes
-                                    ago
+                                    <span className="mr-2">Photo </span>10
+                                    Minutes ago
                                   </p>
                                   <p className="mb-0">
                                     Lorem Ipsum has been the industry's
@@ -692,8 +729,8 @@ const Home = () => {
                                     Businesses ask hundreds..
                                   </h3>
                                   <p className="fs-13 text-muted mb-0">
-                                    <span className="mr-2">Photo </span>10 Minutes
-                                    ago
+                                    <span className="mr-2">Photo </span>10
+                                    Minutes ago
                                   </p>
                                   <p className="mb-0">
                                     Lorem Ipsum has been the industry's
@@ -704,8 +741,8 @@ const Home = () => {
                                     Tesla's California factory..
                                   </h3>
                                   <p className="fs-13 text-muted mb-0">
-                                    <span className="mr-2">Photo </span>10 Minutes
-                                    ago
+                                    <span className="mr-2">Photo </span>10
+                                    Minutes ago
                                   </p>
                                   <p className="mb-0">
                                     Lorem Ipsum has been the industry's
@@ -721,7 +758,9 @@ const Home = () => {
                                 <div className="border-bottom pb-3">
                                   <div className="rotate-img">
                                     <img
-                                      src={url + "/images/dashboard/home_17.jpg"}
+                                      src={
+                                        url + "/images/dashboard/home_17.jpg"
+                                      }
                                       alt="thumb"
                                       className="img-fluid"
                                     />
@@ -730,14 +769,16 @@ const Home = () => {
                                     Kaine: Trump Jr. may have
                                   </p>
                                   <p className="fs-13 text-muted mb-0">
-                                    <span className="mr-2">Photo </span>10 Minutes
-                                    ago
+                                    <span className="mr-2">Photo </span>10
+                                    Minutes ago
                                   </p>
                                 </div>
                                 <div className="pt-3 pb-3">
                                   <div className="rotate-img">
                                     <img
-                                      src={url + "/images/dashboard/home_18.jpg"}
+                                      src={
+                                        url + "/images/dashboard/home_18.jpg"
+                                      }
                                       alt="thumb"
                                       className="img-fluid"
                                     />
@@ -746,8 +787,8 @@ const Home = () => {
                                     Kaine: Trump Jr. may have
                                   </p>
                                   <p className="fs-13 text-muted mb-0">
-                                    <span className="mr-2">Photo </span>10 Minutes
-                                    ago
+                                    <span className="mr-2">Photo </span>10
+                                    Minutes ago
                                   </p>
                                 </div>
                               </div>
@@ -760,7 +801,10 @@ const Home = () => {
                                         <div className="col-sm-5 pr-2">
                                           <div className="rotate-img">
                                             <img
-                                              src={url + "/images/dashboard/home_19.jpg"}
+                                              src={
+                                                url +
+                                                "/images/dashboard/home_19.jpg"
+                                              }
                                               alt="thumb"
                                               className="img-fluid w-100"
                                             />
@@ -771,8 +815,8 @@ const Home = () => {
                                             Online shopping ..
                                           </p>
                                           <p className="fs-13 text-muted mb-0">
-                                            <span className="mr-2">Photo </span>10
-                                            Minutes ago
+                                            <span className="mr-2">Photo </span>
+                                            10 Minutes ago
                                           </p>
                                           <p className="mb-0 fs-13">
                                             Lorem Ipsum has been
@@ -789,7 +833,10 @@ const Home = () => {
                                         <div className="col-sm-5 pr-2">
                                           <div className="rotate-img">
                                             <img
-                                              src={url + "/images/dashboard/home_20.jpg"}
+                                              src={
+                                                url +
+                                                "/images/dashboard/home_20.jpg"
+                                              }
                                               alt="thumb"
                                               className="img-fluid w-100"
                                             />
@@ -800,8 +847,8 @@ const Home = () => {
                                             Online shopping ..
                                           </p>
                                           <p className="fs-13 text-muted mb-0">
-                                            <span className="mr-2">Photo </span>10
-                                            Minutes ago
+                                            <span className="mr-2">Photo </span>
+                                            10 Minutes ago
                                           </p>
                                           <p className="mb-0 fs-13">
                                             Lorem Ipsum has been
@@ -818,7 +865,10 @@ const Home = () => {
                                         <div className="col-sm-5 pr-2">
                                           <div className="rotate-img">
                                             <img
-                                              src={url + "/images/dashboard/home_21.jpg"}
+                                              src={
+                                                url +
+                                                "/images/dashboard/home_21.jpg"
+                                              }
                                               alt="thumb"
                                               className="img-fluid w-100"
                                             />
@@ -829,8 +879,8 @@ const Home = () => {
                                             Online shopping ..
                                           </p>
                                           <p className="fs-13 text-muted mb-0">
-                                            <span className="mr-2">Photo </span>10
-                                            Minutes ago
+                                            <span className="mr-2">Photo </span>
+                                            10 Minutes ago
                                           </p>
                                           <p className="mb-0 fs-13">
                                             Lorem Ipsum has been
@@ -847,7 +897,10 @@ const Home = () => {
                                         <div className="col-sm-5 pr-2">
                                           <div className="rotate-img">
                                             <img
-                                              src={url + "/images/dashboard/home_22.jpg"}
+                                              src={
+                                                url +
+                                                "/images/dashboard/home_22.jpg"
+                                              }
                                               alt="thumb"
                                               className="img-fluid w-100"
                                             />
@@ -858,8 +911,8 @@ const Home = () => {
                                             Online shopping ..
                                           </p>
                                           <p className="fs-13 text-muted mb-0">
-                                            <span className="mr-2">Photo </span>10
-                                            Minutes ago
+                                            <span className="mr-2">Photo </span>
+                                            10 Minutes ago
                                           </p>
                                           <p className="mb-0 fs-13">
                                             Lorem Ipsum has been
@@ -1053,10 +1106,7 @@ const Home = () => {
     }
   };
 
-  return <>
-  {displayStories()};
-  </>
-  
+  return <>{displayStories()};</>;
 };
 
 export default Home;

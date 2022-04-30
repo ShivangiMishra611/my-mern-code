@@ -67,7 +67,7 @@ router.post("/checklogin", (req, res) => {
   Model.findOne({ username: formdata.username })
     .then((data) => {
       if (data) {
-        console.log("data found");
+        console.log(data);
         if (data.password === formdata.password) {
           console.log("login successfull");
           res.status(200).json(data);
@@ -88,7 +88,7 @@ router.post("/checklogin", (req, res) => {
 router.put("/update/:id", (req, res) => {
   Model.findByIdAndUpdate(req.params.id, req.body)
     .then((data) => {
-      res.status(200).json({message : 'success'});
+      res.status(200).json({ message: "success" });
     })
     .catch((err) => {
       console.error(err);

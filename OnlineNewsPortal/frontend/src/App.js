@@ -39,7 +39,7 @@ function App() {
     palette: {
       primary: {
         main: "#950000",
-        contrastText:'#fff'
+        contrastText: "#fff",
       },
     },
   });
@@ -75,8 +75,8 @@ function App() {
             <Route element={<CurrentAffairs />} path="currentaffairs" />
             <Route element={<ViewNews />} path="viewnews/:id" />
             {/* <Route element={<ViewNews />} path="viewnews" /> */}
+            <Route element={<Home />} path="home" />
           </Route>
-          <Route element={<Home />} path="home" />
 
           <Route
             element={
@@ -107,7 +107,7 @@ function App() {
             <Route element={<Feedback />} path="feedback" />
           </Route>
 
-          <Route element={<Navigate to="home" />} path="/" />
+          <Route element={<Navigate to="/main/home" />} path="/" />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
