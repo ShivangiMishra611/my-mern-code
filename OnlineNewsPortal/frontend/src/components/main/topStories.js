@@ -5,24 +5,26 @@ import {
   Grid,
   Box,
   Button,
-  Typography,
+  
+  
   CardActions,
   Container,
+  Tooltip,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import IconButton from "@mui/material/IconButton";
-import { NavLink, useNavigate } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 
 import "./topstories.css";
 
 const TopStories = () => {
   const [newsArray, setNewsArray] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { category } = useParams();
   const navigate = useNavigate();
-
 
   const newsCategories = [
     "Sports",
@@ -34,7 +36,7 @@ const TopStories = () => {
     "Business",
     "Education",
     "Technology",
-    "Jobs"
+    "Jobs",
   ];
 
   const newssubCategories = [];
@@ -46,6 +48,7 @@ const TopStories = () => {
     //   return date;
     // }
     const currentDate = new Date();
+    // return data;
     const filtered = data.filter((news) => {
       const newsDate = new Date(news.createdAt);
       return (
@@ -67,7 +70,12 @@ const TopStories = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setNewsArray(filterTopStories(data));
+
+        if (category) {
+          applyFilter(filterTopStories(data), category);
+        } else {
+          setNewsArray(filterTopStories(data));
+        }
         setLoading(false);
       });
   };
@@ -78,11 +86,14 @@ const TopStories = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        applyFilter(data, filter);
+        applyFilter(filterTopStories(data), filter);
       });
   };
 
   const applyFilter = (data, filter) => {
+    // if(!filter){
+    //   return data;
+    // }
     const filteredArray = data.filter((news) => {
       return filter.toLowerCase() == news.category.toLowerCase();
     });
@@ -96,6 +107,9 @@ const TopStories = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  const truncate = (text, n) => {
+    return text.substring(0, n) + "...";
+  };
 
   const displayCategories = () => {
     return newsCategories.map((category) => (
@@ -112,28 +126,44 @@ const TopStories = () => {
   const displaynews = () => {
     if (!loading) {
       return newsArray.map((news) => (
-        <Card className="mt-5"onClick={e => navigate('/main/viewnews/'+newsArray._id)}>
+        <Card className="mt-5">
           <Grid container>
             <Grid item xs={6} md={4}>
               <CardMedia
                 component="img"
-                height="200"
+                height="250"
                 image={url + "/" + news.thumbnail}
                 alt={news.title}
               />
             </Grid>
             <Grid item xs={6} md={8}>
               <CardContent>
-                <Typography component="div" variant="h5">
-                  {news.title}
-                </Typography>
-                <Typography
+                <Tooltip title={news.title}>
+                  <h2
+                    component="div"
+                    variant="h5"
+                    onClick={(e) => navigate("/main/viewnews/" + news._id)}
+                    style={{
+                      cursor: "pointer",
+                      color: "#950000",
+                      fontWeight: "bolder",
+                    }}
+                  >
+                    {truncate(news.title, 65)}
+                  </h2>
+                </Tooltip>
+                <h4
                   variant="subtitle1"
                   color="text.secondary"
                   component="div"
+                  style={{
+                    cursor: "pointer",
+                    color: "black",
+                    fontWeight: "bolder",
+                  }}
                 >
-                  {news.summary}
-                </Typography>
+                  {truncate(news.summary, 100)}
+                </h4>
                 <IconButton aria-label="add to favorites">
                   <FavoriteIcon />
                 </IconButton>
@@ -142,7 +172,14 @@ const TopStories = () => {
                 </IconButton>
               </CardContent>
               <CardActions>
-                <Button size="small">Learn More</Button>
+                <Button
+                  size="small"
+                  color="primary"
+                  variant="contained"
+                  onClick={(e) => navigate("/main/viewnews/" + news._id)}
+                >
+                  Learn More
+                </Button>
               </CardActions>
             </Grid>
           </Grid>
@@ -152,8 +189,8 @@ const TopStories = () => {
   };
 
   return (
-    <div className="top-stories">
-      <header className="stories-header bg-light">
+    <div>
+      <header className="stories-header">
         <h1 className="news-title">Trusted News Tribune</h1>
         <br></br>
         <Container>
@@ -163,6 +200,7 @@ const TopStories = () => {
                 "& button": { m: 1 },
                 display: "flex",
                 justifyContent: "space-between",
+               
               }}
             >
               {displayCategories()}

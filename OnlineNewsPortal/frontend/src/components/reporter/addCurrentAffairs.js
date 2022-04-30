@@ -1,4 +1,4 @@
-import "./news.css";
+
 import { Formik } from "formik";
 import Swal from "sweetalert2";
 import { useState } from "react";

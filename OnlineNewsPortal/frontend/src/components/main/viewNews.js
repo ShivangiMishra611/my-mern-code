@@ -8,7 +8,7 @@ import {
   CardMedia,
   Collapse,
   IconButton,
-  Typography,
+  Tooltip,
   CardActions,
 } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -68,9 +68,22 @@ const ViewNews = () => {
             alt="sports news"
           />
           <CardContent>
-            <Typography variant="body2" color="text.secondary">
-              {newsData.title}
-            </Typography>
+           
+            <Tooltip title={newsData.title}>
+                  <h2
+                    component="div"
+                    variant="h5"
+                   
+                    style={{
+                      cursor: "pointer",
+                      color: "#950000",
+                      fontWeight: "bolder",
+                    }}
+                  >
+                     {newsData.title}
+                   
+                  </h2>
+                </Tooltip>
           </CardContent>
           <CardActions disableSpacing>
             <IconButton aria-label="add to favorites">
@@ -90,7 +103,19 @@ const ViewNews = () => {
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
-              <Typography>{newsData.summary}</Typography>
+            <h5
+                    component="div"
+                    variant="h5"
+                   
+                    style={{
+                      cursor: "pointer",
+                      color: "black",
+                      fontWeight: "bold",
+                    }}
+                  >
+                     {newsData.summary}
+                   
+                  </h5>
             </CardContent>
           </Collapse>
         </Card>
