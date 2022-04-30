@@ -1,4 +1,3 @@
-
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -12,17 +11,12 @@ import { AccountCircle, Campaign, FollowTheSigns } from "@mui/icons-material";
 import {
   ListItemIcon,
   ListItemText,
-
   Menu,
   MenuItem,
   Tooltip,
 } from "@mui/material";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-
-
-
-
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -47,7 +41,6 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -67,15 +60,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-
-
-
-
-
-
-
-
-export default function Header() {
+export default function Header2() {
   const [userMenuPos, setUserMenuPos] = useState(null);
   const userMenuOpen = Boolean(userMenuPos);
 
@@ -93,49 +78,37 @@ export default function Header() {
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
             Trusted News Tribune
-
           </Typography>
-         
-          
 
-        
           <IconButton className="nav-item">
-          <NavLink className="nav-link" to="/main/topstories">
-           Top Stories
-          </NavLink>
-        </IconButton>
-        
+            <NavLink className="nav-link" to="/main/topstories">
+              Top Stories
+            </NavLink>
+          </IconButton>
 
-       
+          <IconButton className="nav-item">
+            <NavLink className="nav-link" to="/admin/managenews">
+              Manage News
+            </NavLink>
+          </IconButton>
 
-        
+          <IconButton className="nav-item">
+            <NavLink className="nav-link" to="/main/login">
+              Login
+            </NavLink>
+          </IconButton>
 
-       
-        
-        <IconButton className="nav-item">
-          <NavLink className="nav-link" to="/admin/managenews">
-          Manage News
-          </NavLink>
-        </IconButton>
+          <IconButton className="nav-item">
+            <NavLink className="nav-link" to="/main/signup">
+              Signup
+            </NavLink>
+          </IconButton>
 
-        <IconButton className="nav-item">
-          <NavLink className="nav-link" to="/main/login">
-           Login
-          </NavLink>
-        </IconButton>
-
-        <IconButton className="nav-item">
-          <NavLink className="nav-link" to="/main/signup">
-           Signup
-          </NavLink>
-        </IconButton>
-
-        <IconButton className="nav-item"  color ="success">
-          <NavLink className="nav-link" to="/main/archieve">
-          Archieves
-          </NavLink>
-        </IconButton>
-
+          <IconButton className="nav-item" color="success">
+            <NavLink className="nav-link" to="/main/archieve">
+              Archieves
+            </NavLink>
+          </IconButton>
 
           <Search>
             <SearchIconWrapper>
@@ -147,7 +120,7 @@ export default function Header() {
             />
           </Search>
 
-          <Tooltip title="User Actions">
+          <Tooltip title="User">
             <IconButton
               onClick={(e) => setUserMenuPos(e.currentTarget)}
               size="large"
@@ -175,7 +148,7 @@ export default function Header() {
 
           <Tooltip title="Reporter">
             <IconButton
-            onClick={(e) => setRepMenuPos(e.currentTarget)}
+              onClick={(e) => setRepMenuPos(e.currentTarget)}
               size="large"
               edge="start"
               color="inherit"
@@ -186,19 +159,18 @@ export default function Header() {
           </Tooltip>
 
           <Menu
-          anchorEl={repMenuPos}
-          open={repMenuOpen}
-          onClose={(e) => setRepMenuPos(null)}
-        >
-          <MenuItem>
-            <ListItemIcon>
-              <FollowTheSigns fontSize="small" />
-            </ListItemIcon>
-            <ListItemText>Login</ListItemText>
-          </MenuItem>
-          <MenuItem>Signup</MenuItem>
-        </Menu>
-
+            anchorEl={repMenuPos}
+            open={repMenuOpen}
+            onClose={(e) => setRepMenuPos(null)}
+          >
+            <MenuItem>
+              <ListItemIcon>
+                <FollowTheSigns fontSize="small" />
+              </ListItemIcon>
+              <ListItemText>Login</ListItemText>
+            </MenuItem>
+            <MenuItem>Signup</MenuItem>
+          </Menu>
         </Toolbar>
       </AppBar>
     </Box>

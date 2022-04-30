@@ -63,8 +63,10 @@ const Login = () => {
           icon: "success",
           title: "success",
           text: "Loggedin Successfully",
-        }).then((data) => {
+        });
+        res.json().then((data) => {
           setCurrentUser(data);
+          console.log(data);
           //storing value in session
           sessionStorage.setItem("user", JSON.stringify(data));
           sessionStorage.setItem("loginStatus", JSON.stringify(true));
@@ -103,7 +105,6 @@ const Login = () => {
                 height="500"
                 width="200"
                 image={url + "/images/loginn.png"}
-            
               />
             </Grid>
             <Grid item xs={6} md={5}>
@@ -120,7 +121,6 @@ const Login = () => {
                   {({ values, handleChange, handleSubmit, errors }) => (
                     <form onSubmit={handleSubmit}>
                       <TextField
-                     
                         className="w-100 mt-3"
                         placeholder="Username"
                         label="Username"
@@ -130,7 +130,6 @@ const Login = () => {
                         helperText={errors.username}
                         onChange={handleChange}
                         value={values.username}
-                       
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
@@ -144,9 +143,7 @@ const Login = () => {
                             </InputAdornment>
                           ),
                         }}
-                        
                       />
-                      
 
                       <TextField
                         className="w-100 mt-3"

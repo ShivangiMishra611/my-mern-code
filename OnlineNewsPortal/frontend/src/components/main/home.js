@@ -1,6 +1,7 @@
 // import "../../static/css/bootstrap.min.css";
 import "./home.css";
 import { NavLink, useNavigate } from "react-router-dom";
+import format from "date-fns/format";
 
 import {
   Button,
@@ -54,7 +55,7 @@ const Home = () => {
       return (
         <div className="container-scroller">
           <div className="main-panel">
-            <header id="header">
+            {/* <header id="header">
               <div className="container">
                 <nav className="navbar navbar-expand-lg navbar-light">
                   <div className="navbar-top">
@@ -214,18 +215,26 @@ const Home = () => {
                   </div>
                 </nav>
               </div>
-            </header>
+            </header> */}
 
             <div className="flash-news-banner">
               <div className="container">
                 <div className="d-lg-flex align-items-center justify-content-between">
                   <div className="d-flex align-items-center">
-                    <span className="badge badge-dark mr-3">Flash news</span>
+                    <span
+                      className="badge badge-dark mr-3"
+                      style={{ cursor: "pointer" }}
+                      onClick={(e) => navigate("/main/topstories")}
+                    >
+                      View Top Stories
+                    </span>
                     <p className="mb-0"></p>
                   </div>
                   <div className="d-flex">
-                    <span className="mr-3 text-danger">Wed, March 4, 2020</span>
-                    <span className="text-danger">30°C,London</span>
+                    <span className="mr-3 text-danger">
+                      {format(new Date(), "PPPP")}
+                    </span>
+                    {/* <span className="text-danger">30°C,London</span> */}
                   </div>
                 </div>
               </div>
