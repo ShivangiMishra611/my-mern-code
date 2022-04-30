@@ -58,8 +58,9 @@ const ViewNews = () => {
   const displayNews = () => {
     if (!loading) {
       return (
+    
         <Card className="cardview" sx={{ maxWidth: 700, mt: 5 }}>
-          <h1>Display News</h1>
+         
           <CardMedia
             component="img"
             height="350"
