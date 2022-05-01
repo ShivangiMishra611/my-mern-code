@@ -7,6 +7,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import * as React from "react";
 import * as Yup from "yup";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import {
   Button,
@@ -23,7 +24,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
   const avatarStyle = {
@@ -64,6 +65,7 @@ const Login = () => {
           title: "success",
           text: "Loggedin Successfully",
         });
+        navigate('/reporter/addnews');
         res.json().then((data) => {
           setCurrentUser(data);
           console.log(data);

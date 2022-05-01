@@ -406,7 +406,7 @@ const ManageUsers = () => {
 };
 
   return (
-    <div className="manage-users">
+    <div >
       <Toaster position="top-right" reverseOrder={false} />
       <div className="title-current"></div>
      

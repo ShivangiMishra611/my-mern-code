@@ -58,12 +58,16 @@ const Login = () => {
     }).then((res) => {
       console.log(res.status);
       if (res.status === 200) {
+
         setLoggedin(true);
         Swal.fire({
           icon: "success",
           title: "success",
           text: "Loggedin Successfully",
-        }).then((data) => {
+        })
+        navigate('/admin/addreporter');
+        
+        res.json().then((data) => {
           setCurrentUser(data);
           //storing value in session
           sessionStorage.setItem("user", JSON.stringify(data));

@@ -32,11 +32,15 @@ const pages = [
   },
   {
     name: "News Archives",
-    link: "/main/topstories",
+    link: "/main/archieve",
   },
   {
-    name: "Top Stories",
-    link: "/main/topstories",
+    name: "Lucknow News",
+    link: "/main/lucknownews",
+  },
+  {
+    name: "Current Affairs",
+    link: "/main/currentaffairs",
   },
 ];
 
