@@ -17,6 +17,7 @@ import {
   InputAdornment,
   IconButton,
   AppBar,
+  Tooltip,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
@@ -28,6 +29,18 @@ const Home = () => {
   // const [newsList, setNewsList] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const categories = [
+    "Sports",
+    "Politics",
+    "World",
+    "Lifestyle",
+    "Entertainment",
+    "Health",
+    "Business",
+    "Education",
+    "Technology",
+    "Jobs",
+  ];
 
   const fetchData = () => {
     fetch(url + "/news/approvenews")
@@ -50,173 +63,15 @@ const Home = () => {
     fetchData();
   }, []);
 
+  const truncate = (text, n) => {
+    return text.substring(0, n) + "...";
+  };
+
   const displayStories = () => {
     if (!loading) {
       return (
         <div className="container-scroller">
           <div className="main-panel">
-            {/* <header id="header">
-              <div className="container">
-                <nav className="navbar navbar-expand-lg navbar-light">
-                  <div className="navbar-top">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <ul className="navbar-top-left-menu">
-                        <li className="nav-item">
-                          <a href="pages/index-inner.html" className="nav-link">
-                            Advertise
-                          </a>
-                        </li>
-                        <li className="nav-item">
-                          <a href="pages/aboutus.html" className="nav-link">
-                            About
-                          </a>
-                        </li>
-                        <li className="nav-item">
-                          <a href="#" className="nav-link">
-                            Events
-                          </a>
-                        </li>
-                        <li className="nav-item">
-                          <a href="#" className="nav-link">
-                            Write for Us
-                          </a>
-                        </li>
-                        <li className="nav-item">
-                          <a href="#" className="nav-link">
-                            In the Press
-                          </a>
-                        </li>
-                      </ul>
-                      <ul className="navbar-top-right-menu">
-                        <li className="nav-item">
-                          <a href="#" className="nav-link">
-                            <i className="mdi mdi-magnify"></i>
-                          </a>
-                        </li>
-
-                        <li className="nav-item">
-                          <NavLink className="nav-link" to="/main/login">
-                            Login
-                          </NavLink>
-                        </li>
-                        <li className="nav-item">
-                          <NavLink
-                            href="#"
-                            className="nav-link"
-                            to="/main/signup"
-                          >
-                            Sign in
-                          </NavLink>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="navbar-bottom">
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div>
-                        <a className="navbar-brand" href="#">
-                          <img src={url + "/images/logo.svg"} alt="" />
-                        </a>
-                      </div>
-                      <div>
-                        <button
-                          className="navbar-toggler"
-                          type="button"
-                          data-target="#navbarSupportedContent"
-                          aria-controls="navbarSupportedContent"
-                          aria-expanded="false"
-                          aria-label="Toggle navigation"
-                        >
-                          <span className="navbar-toggler-icon"></span>
-                        </button>
-                        <div
-                          className="navbar-collapse justify-content-center collapse"
-                          id="navbarSupportedContent"
-                        >
-                          <ul className="navbar-nav d-lg-flex justify-content-between align-items-center">
-                            <li>
-                              <button className="navbar-close">
-                                <i className="mdi mdi-close"></i>
-                              </button>
-                            </li>
-                            <li className="nav-item active">
-                              <a className="nav-link" href="index.html">
-                                Home
-                              </a>
-                            </li>
-                            <li className="nav-item">
-                              <a
-                                className="nav-link"
-                                href="pages/magazine.html"
-                              >
-                                MAGAZINE
-                              </a>
-                            </li>
-                            <li className="nav-item">
-                              <a
-                                className="nav-link"
-                                href="pages/business.html"
-                              >
-                                Business
-                              </a>
-                            </li>
-                            <li className="nav-item">
-                              <a className="nav-link" href="pages/sports.html">
-                                Sports
-                              </a>
-                            </li>
-                            <li className="nav-item">
-                              <a className="nav-link" href="pages/art.html">
-                                Art
-                              </a>
-                            </li>
-                            <li className="nav-item">
-                              <a
-                                className="nav-link"
-                                href="pages/politics.html"
-                              >
-                                POLITICS
-                              </a>
-                            </li>
-                            <li className="nav-item">
-                              <a className="nav-link" href="pages/travel.html">
-                                Travel
-                              </a>
-                            </li>
-                            <li className="nav-item">
-                              <a
-                                className="nav-link"
-                                href="pages/contactus.html"
-                              >
-                                Contact
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <ul className="social-media">
-                        <li>
-                          <a href="#">
-                            <i className="mdi mdi-facebook"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i className="mdi mdi-youtube"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i className="mdi mdi-twitter"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </nav>
-              </div>
-            </header> */}
-
             <div className="flash-news-banner">
               <div className="container">
                 <div className="d-lg-flex align-items-center justify-content-between">
@@ -259,10 +114,7 @@ const Home = () => {
                           global news
                         </div>
                         <h1 className="mb-0">GLOBAL PANDEMIC</h1>
-                        <h1 className="mb-2">
-                          Coronavirus Outbreak LIVE Updates: ICSE, CBSE Exams
-                          Postponed, 168 Trains
-                        </h1>
+                        <h1 className="mb-2"></h1>
                         <div className="fs-12">
                           <span className="mr-2">Photo </span>10 Minutes ago
                         </div>
@@ -275,15 +127,26 @@ const Home = () => {
                         <h2>Latest news</h2>
 
                         <div className="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between">
-                          <div
-                            className="pr-3"
-                            onClick={(e) =>
-                              navigate("/main/viewnews/" + newsArray[0]._id)
-                            }
-                          >
-                            <h5>{newsArray[0].title}</h5>
+                          <div className="pr-3">
+                            <Tooltip title={newsArray[0].title}>
+                              <h5
+                                onClick={(e) =>
+                                  navigate("/main/viewnews/" + newsArray[0]._id)
+                                }
+                                style={{
+                                  cursor: "pointer",
+
+                                  fontWeight: "bolder",
+                                }}
+                              >
+                                {truncate(newsArray[0].title, 30)}
+                              </h5>
+                            </Tooltip>
                             <div className="fs-12">
-                              <span className="mr-2">Photo </span>10 Minutes ago
+                              <span className="mr-2">
+                                {newsArray[0].category}
+                              </span>
+                              10 Minutes ago
                             </div>
                           </div>
                           <div className="rotate-img">
@@ -296,15 +159,26 @@ const Home = () => {
                         </div>
 
                         <div className="d-flex border-bottom-blue pb-4 pt-4 align-items-center justify-content-between">
-                          <div
-                            className="pr-3"
-                            onClick={(e) =>
-                              navigate("/main/viewnews/" + newsArray[1]._id)
-                            }
-                          >
-                            <h5>{newsArray[1].title}</h5>
+                          <div className="pr-3">
+                            <Tooltip title={newsArray[1].title}>
+                              <h5
+                                onClick={(e) =>
+                                  navigate("/main/viewnews/" + newsArray[1]._id)
+                                }
+                                style={{
+                                  cursor: "pointer",
+
+                                  fontWeight: "bolder",
+                                }}
+                              >
+                                {truncate(newsArray[1].title, 30)}
+                              </h5>
+                            </Tooltip>
                             <div className="fs-12">
-                              <span className="mr-2">Photo </span>10 Minutes ago
+                              <span className="mr-2">
+                                {newsArray[1].category}
+                              </span>
+                              10 Minutes ago
                             </div>
                           </div>
                           <div className="rotate-img">
@@ -317,15 +191,26 @@ const Home = () => {
                         </div>
 
                         <div className="d-flex pt-4 align-items-center justify-content-between">
-                          <div
-                            className="pr-3"
-                            onClick={(e) =>
-                              navigate("/main/viewnews/" + newsArray[2]._id)
-                            }
-                          >
-                            <h5>{newsArray[2].title}</h5>
+                          <div className="pr-3">
+                            <Tooltip title={newsArray[2].title}>
+                              <h5
+                                onClick={(e) =>
+                                  navigate("/main/viewnews/" + newsArray[2]._id)
+                                }
+                                style={{
+                                  cursor: "pointer",
+
+                                  fontWeight: "bolder",
+                                }}
+                              >
+                                {truncate(newsArray[2].title, 30)}
+                              </h5>
+                            </Tooltip>
                             <div className="fs-12">
-                              <span className="mr-2">Photo </span>10 Minutes ago
+                              <span className="mr-2">
+                                {newsArray[2].category}
+                              </span>
+                              10 Minutes ago
                             </div>
                           </div>
                           <div className="rotate-img">
@@ -348,37 +233,22 @@ const Home = () => {
                         <ul className="vertical-menu">
                           <li>
                             <NavLink
-                              href="#"
                               className="nav-link"
-                              to="/main/lucknownews"
+                              to="/main/topstories/"
                             >
                               MYCITY
                             </NavLink>
                           </li>
-                          <li>
-                            <a href="#">LIFESTYLE</a>
-                          </li>
-                          <li>
-                            <a href="#">SPORTS</a>
-                          </li>
-                          <li>
-                            <a href="#">HEALTH</a>
-                          </li>
-                          <li>
-                            <a href="#">ENTERTAINMENT</a>
-                          </li>
-                          <li>
-                            <a href="#">BUSINESS</a>
-                          </li>
-                          <li>
-                            <a href="#">EDUCATION</a>
-                          </li>
-                          <li>
-                            <a href="#">JOBS</a>
-                          </li>
-                          <li>
-                            <a href="#">WORLD</a>
-                          </li>
+                          {categories.map((category) => (
+                            <li>
+                              <NavLink
+                                className="nav-link"
+                                to={"/main/topstories/" + category}
+                              >
+                                {category.toUpperCase()}
+                              </NavLink>
+                            </li>
+                          ))}
                         </ul>
                       </div>
                     </div>
@@ -386,284 +256,89 @@ const Home = () => {
                   <div className="col-lg-9 stretch-card grid-margin">
                     <div className="card">
                       <div className="card-body">
-                        <div className="row">
-                          <div className="col-sm-4 grid-margin">
-                            <div className="position-relative">
-                              <div className="rotate-img">
-                                <img
-                                  src={url + "/images/dashboard/home_4.jpg"}
-                                  alt="thumb"
-                                  className="img-fluid"
-                                />
-                              </div>
-                              <div className="badge-positioned">
-                                <span className="badge badge-danger font-weight-bold">
-                                  Flash news
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-sm-8  grid-margin">
-                            <h2 className="mb-2 font-weight-600">
-                              South Korea’s Moon Jae-in sworn in vowing to
-                              address North
-                            </h2>
-                            <div className="fs-13 mb-2">
-                              <span className="mr-2">Photo </span>10 Minutes ago
-                            </div>
-                            <p className="mb-0">
-                              Lorem Ipsum has been the industry's standard dummy
-                              text ever since the 1500s, when an
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="row">
-                          <div className="col-sm-4 grid-margin">
-                            <div className="position-relative">
-                              <div className="rotate-img">
-                                <img
-                                  src={url + "/images/dashboard/home_5.jpg"}
-                                  alt="thumb"
-                                  className="img-fluid"
-                                />
-                              </div>
-                              <div className="badge-positioned">
-                                <span className="badge badge-danger font-weight-bold">
-                                  Flash news
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-sm-8  grid-margin">
-                            <h2 className="mb-2 font-weight-600">
-                              No charges over 2017 Conservative battle bus cases
-                            </h2>
-                            <div className="fs-13 mb-2">
-                              <span className="mr-2">Photo </span>10 Minutes ago
-                            </div>
-                            <p className="mb-0">
-                              Lorem Ipsum has been the industry's standard dummy
-                              text ever since the 1500s, when an
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="row">
-                          <div className="col-sm-4">
-                            <div className="position-relative">
-                              <div className="rotate-img">
-                                <img
-                                  src={url + "/images/dashboard/home_6.jpg"}
-                                  alt="thumb"
-                                  className="img-fluid"
-                                />
-                              </div>
-                              <div className="badge-positioned">
-                                <span className="badge badge-danger font-weight-bold">
-                                  Flash news
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-sm-8">
-                            <h2 className="mb-2 font-weight-600">
-                              Kaine: Trump Jr. may have committed treason
-                            </h2>
-                            <div className="fs-13 mb-2">
-                              <span className="mr-2">Photo </span>10 Minutes ago
-                            </div>
-                            <p className="mb-0">
-                              Lorem Ipsum has been the industry's standard dummy
-                              text ever since the 1500s, when an
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="row" data-aos="fade-up">
-                  <div className="col-sm-12 grid-margin">
-                    <div className="card">
-                      <div className="card-body">
-                        <div className="row">
-                          <div className="col-lg-8">
-                            <div className="card-title">Video</div>
-                            <div className="row">
-                              <div className="col-sm-6 grid-margin">
-                                <div className="position-relative">
-                                  <div className="rotate-img">
-                                    <img
-                                      src={url + "/images/dashboard/home_7.jpg"}
-                                      alt="thumb"
-                                      className="img-fluid"
-                                    />
-                                  </div>
-                                  <div className="badge-positioned w-90">
-                                    <div className="d-flex justify-content-between align-items-center">
+                        {newsArray
+                          .slice(0, 6)
+                          .map(
+                            ({
+                              _id,
+                              title,
+                              thumbnail,
+                              category,
+                              summary,
+                              createdAt,
+                            }) => (
+                              <div className="row">
+                                <div className="col-sm-4 grid-margin">
+                                  <div className="position-relative">
+                                    <div className="rotate-img">
+                                      <img
+                                        src={url + "/" + thumbnail}
+                                        alt="thumb"
+                                        className="img-fluid"
+                                      />
+                                    </div>
+                                    <div className="badge-positioned">
                                       <span className="badge badge-danger font-weight-bold">
-                                        Lifestyle
+                                        Trusted News Tribune
                                       </span>
-                                      <div className="video-icon">
-                                        <i className="mdi mdi-play"></i>
-                                      </div>
                                     </div>
                                   </div>
                                 </div>
-                              </div>
-
-                              <div className="col-sm-6 grid-margin">
-                                <div className="position-relative">
-                                  <div className="rotate-img">
-                                    <img
-                                      src={url + "/images/dashboard/home_8.jpg"}
-                                      alt="thumb"
-                                      className="img-fluid"
-                                    />
-                                  </div>
-                                  <div className="badge-positioned w-90">
-                                    <div className="d-flex justify-content-between align-items-center">
-                                      <span className="badge badge-danger font-weight-bold">
-                                        National News
-                                      </span>
-                                      <div className="video-icon">
-                                        <i className="mdi mdi-play"></i>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="row">
-                              <div className="col-sm-6 grid-margin">
-                                <div className="position-relative">
-                                  <div className="rotate-img">
-                                    <img
-                                      src={url + "/images/dashboard/home_9.jpg"}
-                                      alt="thumb"
-                                      className="img-fluid"
-                                    />
-                                  </div>
-                                  <div className="badge-positioned w-90">
-                                    <div className="d-flex justify-content-between align-items-center">
-                                      <span className="badge badge-danger font-weight-bold">
-                                        Lifestyle
-                                      </span>
-                                      <div className="video-icon">
-                                        <i className="mdi mdi-play"></i>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className="col-sm-6 grid-margin">
-                                <div className="position-relative">
-                                  <div className="rotate-img">
-                                    <img
-                                      src={
-                                        url + "/images/dashboard/home_10.jpg"
+                                <div className="col-sm-8  grid-margin">
+                                  <Tooltip title={title}>
+                                    <h2
+                                      className="mb-2 font-weight-600"
+                                      style={{
+                                        cursor: "pointer",
+                                        color: "#950000",
+                                        fontWeight: "bolder",
+                                      }}
+                                      onClick={(e) =>
+                                        navigate("/main/viewnews/" + _id)
                                       }
-                                      alt="thumb"
-                                      className="img-fluid"
-                                    />
+                                    >
+                                      {truncate(title, 65)}
+                                    </h2>
+                                  </Tooltip>
+                                  <div
+                                    className="fs-13 mb-2"
+                                    style={{
+                                     
+                                      color: "black",
+                                      fontWeight: "bolder",
+                                    }}
+                                  >
+                                    <span
+                                      className="mr-2"
+                                      style={{
+                                       
+                                        color: "black",
+                                        fontWeight: "bolder",
+                                      }}
+                                    >
+                                      {category}{" "}
+                                    </span>
+                                    10 Minutes ago
                                   </div>
-                                  <div className="badge-positioned w-90">
-                                    <div className="d-flex justify-content-between align-items-center">
-                                      <span className="badge badge-danger font-weight-bold">
-                                        National News
-                                      </span>
-                                      <div className="video-icon">
-                                        <i className="mdi mdi-play"></i>
-                                      </div>
-                                    </div>
-                                  </div>
+                                  <p
+                                    className="mb-0"
+                                    style={{
+                                     
+                                      color: "black",
+                                      fontWeight: "bolder",
+                                    }}
+                                  >
+                                    {truncate(summary, 100)}
+                                  </p>
                                 </div>
                               </div>
-                            </div>
-                          </div>
-                          <div className="col-lg-4">
-                            <div className="d-flex justify-content-between align-items-center">
-                              <div className="card-title">Latest Video</div>
-                              <p className="mb-3">See all</p>
-                            </div>
-                            <div className="d-flex justify-content-between align-items-center border-bottom pb-2">
-                              <div className="div-w-80 mr-3">
-                                <div className="rotate-img">
-                                  <img
-                                    src={url + "/images/dashboard/home_11.jpg"}
-                                    alt="thumb"
-                                    className="img-fluid"
-                                  />
-                                </div>
-                              </div>
-                              <h3 className="font-weight-600 mb-0">
-                                Apple Introduces Apple Watch
-                              </h3>
-                            </div>
-                            <div className="d-flex justify-content-between align-items-center border-bottom pt-3 pb-2">
-                              <div className="div-w-80 mr-3">
-                                <div className="rotate-img">
-                                  <img
-                                    src={url + "/images/dashboard/home_12.jpg"}
-                                    alt="thumb"
-                                    className="img-fluid"
-                                  />
-                                </div>
-                              </div>
-                              <h3 className="font-weight-600 mb-0">
-                                SEO Strategy & Google Search
-                              </h3>
-                            </div>
-                            <div className="d-flex justify-content-between align-items-center border-bottom pt-3 pb-2">
-                              <div className="div-w-80 mr-3">
-                                <div className="rotate-img">
-                                  <img
-                                    src={url + "/images/dashboard/home_13.jpg"}
-                                    alt="thumb"
-                                    className="img-fluid"
-                                  />
-                                </div>
-                              </div>
-                              <h3 className="font-weight-600 mb-0">
-                                Cycling benefit & disadvantag
-                              </h3>
-                            </div>
-                            <div className="d-flex justify-content-between align-items-center border-bottom pt-3 pb-2">
-                              <div className="div-w-80 mr-3">
-                                <div className="rotate-img">
-                                  <img
-                                    src={url + "/images/dashboard/home_14.jpg"}
-                                    alt="thumb"
-                                    className="img-fluid"
-                                  />
-                                </div>
-                              </div>
-                              <h3 className="font-weight-600">
-                                The Major Health Benefits of
-                              </h3>
-                            </div>
-                            <div className="d-flex justify-content-between align-items-center pt-3">
-                              <div className="div-w-80 mr-3">
-                                <div className="rotate-img">
-                                  <img
-                                    src={url + "/images/dashboard/home_15.jpg"}
-                                    alt="thumb"
-                                    className="img-fluid"
-                                  />
-                                </div>
-                              </div>
-                              <h3 className="font-weight-600 mb-0">
-                                Powerful Moments of Peace
-                              </h3>
-                            </div>
-                          </div>
-                        </div>
+                            )
+                          )}
                       </div>
                     </div>
                   </div>
                 </div>
+
                 <div className="row" data-aos="fade-up">
                   <div className="col-sm-12">
                     <div className="card">

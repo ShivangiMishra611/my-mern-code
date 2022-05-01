@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Authenticator = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
@@ -11,6 +12,11 @@ const Authenticator = ({ children }) => {
   console.log(currentUser);
 
   if (!currentUser) {
+    Swal.fire({
+      icon : 'info',
+      title : 'OOops!!',
+      text : 'You need to be logged in'
+    })
     return <Navigate to="/main/login" />;
   } else if (currentUser) {
     console.log(currentUser);

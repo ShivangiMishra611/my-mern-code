@@ -66,6 +66,7 @@ function App() {
             <Route element={<ViewArchieve />} path="archieve" />
             {/* <Route element={<NewPassword />} path="newpassword" /> */}
             <Route element={<TopStories />} path="topstories" />
+            <Route element={<TopStories />} path="topstories/:category" />
             <Route element={<LucknowNews />} path="lucknownews" />
             <Route element={<CurrentAffairs />} path="currentaffairs" />
             <Route element={<ViewNews />} path="viewnews/:id" />
