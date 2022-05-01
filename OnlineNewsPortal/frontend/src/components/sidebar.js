@@ -7,6 +7,7 @@ import MuiAppBar from "@mui/material/AppBar";
 import {
   Avatar,
   Box,
+  Button,
   CssBaseline,
   Divider,
   IconButton,
@@ -123,6 +124,21 @@ export default function Sidebar({ children, sidebarOptions, title }) {
           <Typography variant="h6" noWrap component="div">
             {title}
           </Typography>
+          <Box sx={{flexGrow : 1}}>
+            <Button sx={{ml : 3}} color="inherit" onClick={e => navigate('/main/topstories')}>
+              Top Stories
+            </Button>
+          </Box>
+          <Box sx={{flexGrow : 1}}>
+          <Button sx={{ml : 3}} color="inherit" onClick={e => navigate('/main/archieve')}>
+            Archieves
+          </Button>
+        </Box>
+
+       
+
+
+
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="User Options">
               <IconButton>

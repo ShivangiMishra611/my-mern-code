@@ -49,10 +49,7 @@ color:whitesmoke;
 }
 .login{
   background: url(http://localhost:5000/images/background.jpg);
-  padding-left: 200px;
-  padding-top: 40px;
-  padding-bottom:90px;
-  padding-right: 50px;
+ 
   background-position: set;
   background:no-repeat;
   
@@ -76,26 +73,33 @@ color:whitesmoke;
   
 }
 .addrep-bg{
-  background: url(http://localhost:5000/images/backcover.webp);
-  box-shadow: 10px;
-  padding-left: 45px;
-  padding-right: 5px;
+  background:  url(http://localhost:5000/images/backcover.webp);
+  background-position: top;
+  box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.329);
+  /* padding-left: 45px;
+  padding-right: 5px; */
+  padding-top: 2rem;
 
+}
+
+.add-news-top{
+  padding: 4rem;
+  text-align: center;
+  color: white;
+  background: linear-gradient(to right, #0000006e, #0000006e), url(http://localhost:5000/images/addnews.jpg);
+  background-size: cover;
+  background-position: top;
 }
 .manage-rep{
   background: url(http://localhost:5000/images/newsreporter.jpg);
   height: 275px;
   background-color:blue;
-  padding-right:10rem;
-  
+  /* padding-right:10rem;
+   */
 
 }
 .loginn{
   background: url(http://localhost:5000/images/backk.jpg);
-  padding-left: 10rem;
-  padding-top: 40px;
-  padding-bottom:15rem;
-  padding-right: 50px;
   
   
   
@@ -103,12 +107,11 @@ color:whitesmoke;
 }
 .current{
   background: url(http://localhost:5000/images/backcurrent.webp);
-  padding-left: 6rem;
-
+ 
 }
 .lucknow{
   background: url(http://localhost:5000/images/lko.jpg) ;
-  padding-left: 6rem;
+  
   /* background-repeat: no-repeat; */
   background-size:cover ;
   
@@ -134,7 +137,7 @@ color:whitesmoke;
     background: url(http://localhost:5000/images/managenews.jpeg);
     height: 300px;
     background-position: top;
-    padding-right:5rem;
+   
     margin-top: 2rem;
 
   }

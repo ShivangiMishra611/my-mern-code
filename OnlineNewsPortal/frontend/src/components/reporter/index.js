@@ -8,11 +8,7 @@ import BadgeIcon from "@mui/icons-material/Badge";
 
 const Reporter = () => {
   const sidebarOptions = [
-    {
-      title: "Login",
-      icon: <PersonAddIcon />,
-      link: "/reporter/login",
-    },
+    
 
     {
       title: "Add News",

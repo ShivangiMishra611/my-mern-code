@@ -107,19 +107,15 @@ export default function Header() {
           </IconButton>
 
 
-            
-            
-            
+             
+          <IconButton className="nav-item">
+          <NavLink className="nav-link" to="/main/login">
+           Login
+          </NavLink>
+        </IconButton>
 
 
-
-            
-            <IconButton className="nav-item">
-              <NavLink className="nav-link" to="/main/login">
-               Login
-              </NavLink>
-            </IconButton>
-
+           
             <IconButton className="nav-item">
               <NavLink className="nav-link" to="/main/signup">
                Signup

@@ -8,7 +8,7 @@ import {
   CardMedia,
   Grid,
   Container,
- 
+  Typography,
 } from "@mui/material";
 import Swal from "sweetalert2";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -18,6 +18,7 @@ import KeyIcon from "@mui/icons-material/Key";
 import WcIcon from "@mui/icons-material/Wc";
 import CallIcon from "@mui/icons-material/Call";
 import * as Yup from "yup";
+
 
 const AddReporter = () => {
   const url = app_config.api_url;
@@ -106,30 +107,24 @@ const AddReporter = () => {
 
   return (
     <div className="addrep-bg">
-    <Grid container spacing={3}>
-        <Grid item md={9}>
-          <Grid container justifyContent="center">
-            <Grid item md={6} xs={6}>
-              <Card className="mt-5" sx={{  width: 670 }}>
-                <CardMedia
-                  component="img"
-                  height="350"
-                  // sx={{ width: 630, m: 2.5 }}
-                  image={url + "/images/addreporter.jpg"}
-                />
-                <Grid item xs={6} md={8}>
-                  <CardContent sx={{ width: 650 }}>
-      
-                <Formik
-                  initialValues={reporterForm}
-                  onSubmit={reporterSubmit}
-                  validationSchema={validationSchema}
-                >
-                  {({ values, handleChange, handleSubmit, errors }) => (
-                    <form onSubmit={handleSubmit}>
-                     
-
-                      <div className="mb-3">
+      <Container maxWidth="lg">
+        <div className="add-news-top">
+          <Typography variant="h2" sx={{ fontWeight: 900 }}>
+            ADD REPORTER
+          </Typography>
+        </div>
+        <Card>
+          <CardContent>
+            <Formik
+              initialValues={reporterForm}
+              onSubmit={reporterSubmit}
+              validationSchema={validationSchema}
+            >
+              {({ values, handleChange, handleSubmit, errors }) => (
+                <form onSubmit={handleSubmit}>
+                  <div className="Card-body">
+                     <Grid container spacing={5}>
+                      <Grid item sm={6} xs={12}>
                         <TextField
                           className="w-100 mt-3"
                           placeholder="Name"
@@ -155,9 +150,9 @@ const AddReporter = () => {
                           }}
                           helperText={errors.name}
                         />
-                      </div>
-
-                      <div className="mb-3">
+                      </Grid>
+                      <Grid item sm={6} xs={12}>
+                      
                         <TextField
                           className="w-100 mt-3"
                           placeholder="email"
@@ -182,170 +177,137 @@ const AddReporter = () => {
                           }}
                           helperText={errors.email}
                         />
-                      </div>
+                      </Grid>
+                    </Grid>
 
-                      <div className="mb-3">
-                        <TextField
-                          className="w-100 mt-3"
-                          placeholder="Password"
-                          label="Password"
-                          type="password"
-                          variant="outlined"
-                          id="password"
-                          onChange={handleChange}
-                          value={values.password}
-                          error={errors.password}
-                          InputProps={{
-                            endAdornment: (
-                              <InputAdornment position="end">
-                                <KeyIcon
-                                  sx={{
-                                    color: "active.active",
-                                    mr: 1,
-                                    my: 0.5,
-                                  }}
-                                />
-                              </InputAdornment>
-                            ),
-                          }}
-                          helperText={errors.password}
-                        />
-
-                        <div className="mb-3">
-                          <TextField
-                            className="w-100 mt-3"
-                            placeholder="Password"
-                            label="Confirm Password"
-                            type="password"
-                            variant="outlined"
-                            id="confirmpassword"
-                            onChange={handleChange}
-                            value={values.confirmpassword}
-                            error={errors.confirmpassword}
-                            InputProps={{
-                              endAdornment: (
-                                <InputAdornment position="end">
-                                  <KeyIcon
-                                    sx={{
-                                      color: "active.active",
-                                      mr: 1,
-                                      my: 0.5,
-                                    }}
-                                  />
-                                </InputAdornment>
-                              ),
-                            }}
-                            helperText={errors.confirmpassword}
-                          />
-                          <div className="mb-3">
-                            {/* <RadioGroup  
-                          aria-labelledby="demo-radio-buttons-group-label"
-                          label="Gender"
-                          id="gender"
-                          defaultValue="female"
-                          name="gender"
-                        >
-                          <FormControlLabel value="female" control={<Radio />} label="Female" />
-                          <FormControlLabel value="male" control={<Radio />} label="Male" />
-                          <FormControlLabel value="other" control={<Radio />} label="Others" />
+                    <div className="mb-3">
+                      <TextField
+                        className="w-100 mt-3"
+                        placeholder="Password"
+                        label="Password"
+                        type="password"
+                        variant="outlined"
+                        id="password"
+                        onChange={handleChange}
+                        value={values.password}
+                        error={errors.password}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <KeyIcon
+                                sx={{
+                                  color: "active.active",
+                                  mr: 1,
+                                  my: 0.5,
+                                }}
+                              />
+                            </InputAdornment>
+                          ),
+                        }}
+                        helperText={errors.password}
+                      />
+                    </div>
                     
-                              onChange={handleChange}
-                              value={values.gender}
-                              error={errors.gender}
-                              type="text"
-                              InputProps={{
-                                endAdornment: (
-                                  <InputAdornment position="end">
-                                    <WcIcon
-                                      sx={{
-                                        color: "active.active",
-                                        mr: 1,
-                                        my: 0.5,
-                                      }}
-                                    />
-                                  </InputAdornment>
-                                ),
-                              }}
-                              helperText={errors.gender}
-                              </RadioGroup> */}
-                          </div>
-                          <div className="mb-3">
-                            <TextField
-                              className="w-100 mt-3"
-                              placeholder="Contact"
-                              label="Contact"
-                              variant="outlined"
-                              id="number"
-                              type="number"
-                              onChange={handleChange}
-                              value={values.number}
-                              error={errors.number}
-                              InputProps={{
-                                endAdornment: (
-                                  <InputAdornment position="end">
-                                    <CallIcon
-                                      sx={{
-                                        color: "active.active",
-                                        mr: 1,
-                                        my: 0.5,
-                                      }}
-                                    />
-                                  </InputAdornment>
-                                ),
-                              }}
-                              helperText={errors.number}
-                            />
-                          </div>
-                        </div>
-                        <div className="mb-3">
-                          <TextField
-                            className="w-100 mt-3"
-                            placeholder="Age"
-                            label="Age"
-                            variant="outlined"
-                            id="age"
-                            type="number"
-                            onChange={handleChange}
-                            value={values.age}
-                            error={errors.age}
-                            helperText={errors.age}
-                          />
-                        </div>
+                    
 
-                        <div className="mb-3">
-                          <label htmlFor="formFile" className="form-label">
-                            Add Image
-                          </label>
-                          <input
-                            className="form-control"
-                            type="file"
-                            id="thumbnail"
-                            onChange={uploadThumbnail}
-                          />
-                        </div>
+                    <div className="mb-3">
+                      <TextField
+                        className="w-100 mt-3"
+                        placeholder="Password"
+                        label="Confirm Password"
+                        type="password"
+                        variant="outlined"
+                        id="confirmpassword"
+                        onChange={handleChange}
+                        value={values.confirmpassword}
+                        error={errors.confirmpassword}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <KeyIcon
+                                sx={{
+                                  color: "active.active",
+                                  mr: 1,
+                                  my: 0.5,
+                                }}
+                              />
+                            </InputAdornment>
+                          ),
+                        }}
+                        helperText={errors.confirmpassword}
+                      />
+                    </div>
 
-                        <button
-                          type="submit"
-                          className=" w-100 btn btn-primary"
-                          color="success"
-                          variant="contained"
-                        >
-                          Submit
-                        </button>
-                      </div>
-                    </form>
-                  )}
-                </Formik>
-              </CardContent>
-            </Grid>
-            </Card>
-          </Grid>
-          </Grid>
-          </Grid>
-          <Grid item md={3}></Grid>
-          </Grid>
-          
-        
+                    <div className="mb-3">
+                      <TextField
+                        className="w-100 mt-3"
+                        placeholder="Contact"
+                        label="Contact"
+                        variant="outlined"
+                        id="number"
+                        type="number"
+                        onChange={handleChange}
+                        value={values.number}
+                        error={errors.number}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <CallIcon
+                                sx={{
+                                  color: "active.active",
+                                  mr: 1,
+                                  my: 0.5,
+                                }}
+                              />
+                            </InputAdornment>
+                          ),
+                        }}
+                        helperText={errors.number}
+                      />
+                    </div>
+
+                    <div className="mb-3">
+                      <TextField
+                        className="w-100 mt-3"
+                        placeholder="Age"
+                        label="Age"
+                        variant="outlined"
+                        id="age"
+                        type="number"
+                        onChange={handleChange}
+                        value={values.age}
+                        error={errors.age}
+                        helperText={errors.age}
+                      />
+                    </div>
+
+                    <div className="mb-3">
+                      <label htmlFor="formFile" className="form-label">
+                        Add Image
+                      </label>
+                      <input
+                        className="form-control"
+                        type="file"
+                        id="thumbnail"
+                        onChange={uploadThumbnail}
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className=" w-100 btn btn-primary"
+                      color="success"
+                      variant="contained"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              )}
+            </Formik>
+          </CardContent>
+        </Card>
+      </Container>
     </div>
   );
 };
