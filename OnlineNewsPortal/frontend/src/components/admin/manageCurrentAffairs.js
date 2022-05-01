@@ -145,7 +145,7 @@ const ManageCurrentAffairs = () => {
             <Typography>{newscurrent.categorystate}</Typography>
          
           <Stack direction="row" spacing={2}>
-            {/* <Fab
+            <Fab
               disabled={newscurrent.approvenews}
               variant="extended"
               size="small"
@@ -155,7 +155,7 @@ const ManageCurrentAffairs = () => {
             >
               <BeenhereRoundedIcon sx={{ mr: 1 }} />
               {newscurrent.approvenews ? "Approved" : "Approve News"}
-            </Fab> */}
+            </Fab>
 
             <Fab
               variant="extended"
