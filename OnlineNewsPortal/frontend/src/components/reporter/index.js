@@ -6,6 +6,7 @@ import Sidebar from "../sidebar";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import BadgeIcon from "@mui/icons-material/Badge";
 
+
 const Reporter = () => {
   const sidebarOptions = [
     
@@ -21,6 +22,20 @@ const Reporter = () => {
       icon: <BadgeIcon />,
       link: "/reporter/addcurrentaffairs",
     },
+
+    {
+      title:"Manage News",
+      icon:<BadgeIcon  />,
+      link:"/reporter/managenews",
+    },
+
+    {
+      title:"Manage Current Affairs",
+      icon:<BadgeIcon  />,
+      link:"/reporter/managecurrentaffairs",
+    }
+
+
   ];
   return (
     <div>

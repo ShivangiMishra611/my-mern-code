@@ -414,7 +414,7 @@ const ManageNews = () => {
   };
 
   return (
-    <div className="container">
+    <div className="newsmanage">
       <Toaster position="top-right" reverseOrder={false} />
       <div className="manage-news"></div>
      

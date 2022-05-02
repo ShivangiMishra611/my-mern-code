@@ -135,13 +135,11 @@ const ManageCurrentAffairs = () => {
           >
             <h4>{newscurrent.title}</h4>
             <br></br>
-            <br></br>
-            
           </AccordionSummary>
           <AccordionDetails>
             <img src={url + "/" + newscurrent.thumbnail} height="200" />
             <br></br>
-            
+            <br></br>
             <h5>{newscurrent.summary}</h5>
 
             <Typography>{newscurrent.categorystate}</Typography>
@@ -191,7 +189,6 @@ const ManageCurrentAffairs = () => {
       ));
     }
   };
-  
   const submitNews = (values) => {
     // values.thumbnail = thumbnail;
     console.log(values);
@@ -230,7 +227,7 @@ const ManageCurrentAffairs = () => {
       return (
         <div>
           <Card>
-            <CardContent sx={{ width: 700}}>
+            <CardContent sx={{ width: 640 }}>
               <Formik
                 initialValues={updateFormdata}
                 onSubmit={submitNews}
@@ -427,9 +424,6 @@ const ManageCurrentAffairs = () => {
         }}
       />
 
-      <b></b>
-      <b></b>
-
       <Fab
         className="w-30 mt-5"
         variant="extended"
@@ -440,11 +434,6 @@ const ManageCurrentAffairs = () => {
       >
         Search
       </Fab>
-
-      <br></br>
-      <br></br>
-      
-      <br></br>
 
       {displayNews()}
       {updateForm()}

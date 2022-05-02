@@ -90,14 +90,7 @@ color:whitesmoke;
   background-size: cover;
   background-position: top;
 }
-.manage-rep{
-  background: url(http://localhost:5000/images/newsreporter.jpg);
-  height: 275px;
-  background-color:blue;
-  /* padding-right:10rem;
-   */
 
-}
 .loginn{
   background: url(http://localhost:5000/images/backk.jpg);
   
@@ -148,6 +141,27 @@ color:whitesmoke;
     padding-right: 40px; */
     height: 100vh;
   }
+  .container{
+    padding: 4rem;
+  text-align: center;
+  color: white;
+  /* background: linear-gradient(to left, #0000006e, #0000006e), url(http://localhost:5000/images/backimage.jpg); */
+  background-size: cover;
+  background-position: top;
+  width:100%;
+  background:#0000006e
+
+  }
+  
+   
+    
+    
+  
+
+    
+  
+
+
   
   
 

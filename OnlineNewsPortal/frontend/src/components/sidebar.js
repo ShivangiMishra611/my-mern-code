@@ -129,11 +129,15 @@ export default function Sidebar({ children, sidebarOptions, title }) {
               Top Stories
             </Button>
           </Box>
-          <Box sx={{flexGrow : 1}}>
+          <Box sx={{flexGrow : 5}}>
           <Button sx={{ml : 3}} color="inherit" onClick={e => navigate('/main/archieve')}>
             Archieves
           </Button>
         </Box>
+      
+       
+        
+
 
        
 

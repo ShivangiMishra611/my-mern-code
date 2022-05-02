@@ -56,6 +56,8 @@ function App() {
             <Route element={<AddNews />} path="addnews" />
             <Route element={<AddLucknowNews />} path="addlucknownews" />
             <Route element={<AddCurrentAffairs />} path="addcurrentaffairs" />
+            <Route element={<ManageNews />} path="managenews" />
+            <Route element={<ManageCurrentAffairs />} path="managecurrentaffairs" />
           </Route>
 
           <Route element={<Main />} path="main">
