@@ -123,7 +123,7 @@ const ManageReporters= () => {
     if (!loading) {
       return ReporterArray.map((reporter, i) => (
         <Accordion key={reporter._id}>
-        <AccordionSummary
+        <AccordionSummary  sx={{ml:2,mr:3}}
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
@@ -493,7 +493,7 @@ const ManageReporters= () => {
 
 
   return (
-    <div className="repmanage">
+    <div className="newsmanage">
       <Toaster position="top-right" reverseOrder={false} />
       <div className="manage-rep"></div>
       <TextField
@@ -510,8 +510,7 @@ const ManageReporters= () => {
        }}
      />
 
-     <br></br>
-     <br></br>
+    
 
      <Fab
        className="w-30 mt-5"
@@ -523,6 +522,9 @@ const ManageReporters= () => {
      >
        Search
      </Fab>
+
+     <br></br>
+     <br></br>
 
      
       {displayReporters()} 

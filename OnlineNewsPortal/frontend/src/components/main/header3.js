@@ -74,7 +74,7 @@ const Header = () => {
   const reporterLogout = () => {
     // setAnchorElUser(null);
     sessionStorage.removeItem("reporter");
-    navigate("/main/rlogin");
+    navigate("/main/reporterlogin");
   };
 
   const userMenu = [

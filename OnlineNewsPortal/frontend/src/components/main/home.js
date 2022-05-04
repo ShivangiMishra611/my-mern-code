@@ -4,20 +4,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import format from "date-fns/format";
 
 import {
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Grid,
-  Container,
-  TextField,
-  Link,
-  Typography,
-  Avatar,
-  InputAdornment,
-  IconButton,
-  AppBar,
-  Tooltip,
+ 
+  Tooltip
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
@@ -57,6 +45,7 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+
       });
   };
   useEffect(() => {

@@ -12,9 +12,7 @@ code {
     monospace;
 }
 
-.addrep-bg{
-  background: url(http://localhost:5000/images/backpattern.png);
-}
+
 .title-current{
   height: 168px;
   background-color:blue;
@@ -112,16 +110,11 @@ color:whitesmoke;
 }
 .top-stories{
   
-    background: url(http://localhost:5000/images/patterntop.png);
+    /* background: url(http://localhost:5000/images/patterntop.png); */
+    background-size: cover;
   }
-  .lko{
-    
-    background: url(http://localhost:5000/images/patterntop.png);
-    height: 100px;
-    background-color:blue;
-    
-
-  }
+ 
+  
   .cardview{
     margin:auto;
   }
@@ -142,17 +135,14 @@ color:whitesmoke;
     height: 100vh;
   }
   .newsmanage{
-    background: url(http://localhost:5000/images/backimage.jpg);
+    
     text-align: center;
     color: white;
   background-size: cover;
   background-position: top;
 
-  
-
   }
-  
-   
+
     
     
   
