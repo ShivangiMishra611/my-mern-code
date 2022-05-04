@@ -142,12 +142,21 @@ color:whitesmoke;
   background-position: top;
 
   }
+<<<<<<< HEAD
 .managec{
   padding-left: 2px;
 }
     
     
   
+=======
+
+  .caffairs-header{
+    background: linear-gradient(to right, #0000009b, #000000ad), url(https://akm-img-a-in.tosshub.com/indiatoday/images/story/201909/current_affairs_new_0.png?8dmp2f4HrwVzAaVuMKuF9RJ_HkBmoZGT&size=1200:675) ;
+    padding: 2rem;
+    text-shadow: 2px 2px 3px #0000005c;
+  }
+>>>>>>> 87cfcf435a6ac8b3ac6167c5e89b0d3b557f0fdb
 
     
   
