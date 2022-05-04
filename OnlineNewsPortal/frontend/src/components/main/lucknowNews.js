@@ -5,6 +5,8 @@ import {
   Grid,
   Box,
   Button,
+  InputAdornment,
+ 
   Typography,
   CardActions,
   Container,
@@ -16,6 +18,7 @@ import { useNavigate ,useParams} from "react-router-dom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
 
 
 import "./currentAffairs.css";
@@ -23,6 +26,7 @@ import "./currentAffairs.css";
 const LucknowNews = () => {
   const [newsArray, setNewsArray] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState("");
   const { category } = useParams();
   const navigate = useNavigate();
 
@@ -37,13 +41,21 @@ const LucknowNews = () => {
   ];
 
   const filterTopStories = (data) => {
-    Date.prototype.removeDays = function (days) {
-      var date = new Date(this.valueOf());
-      date.setDate(date.getDate() - days);
-      return date;
-    };
-    const filtered = data.filter((newsLucknow) => {
-      return new Date(newsLucknow.createdAt) >= new Date().removeDays(1);
+    // Date.prototype.removeDays = function (days) {
+    //   var date = new Date(this.valueOf());
+    //   date.setDate(date.getDate() - days);
+    //   return date;
+    // };
+    
+      const currentDate = new Date();
+      return data;
+      const filtered = data.filter((newsLucknow) => {
+        const newsDate = new Date(newsLucknow.createdAt);
+        return (
+          newsDate.getFullYear() === currentDate.getFullYear() &&
+          newsDate.getMonth() === currentDate.getMonth() &&
+          newsDate.getDate() === currentDate.getDate()
+        );
     });
 
     console.log(filtered);
@@ -86,6 +98,20 @@ const LucknowNews = () => {
     setNewsArray([...filteredArray]);
     setLoading(false);
   };
+  const filternews = () => {
+    fetch(url + "/newsLucknow/getall")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const filtered = data.filter(({ title }) => {
+          return title.toLowerCase().includes(filter.toLowerCase());
+        });
+        console.log(filtered);
+        setNewsArray(filtered);
+        setLoading(false);
+      });
+  };
+
 
   useEffect(() => {
     fetchData();
@@ -193,8 +219,20 @@ const LucknowNews = () => {
         </Typography>
         <div className="col-6 mx-auto">
           <div className="input-group mt-5">
-            <input className="form-control" />
-            <Button variant="contained">Search</Button>
+            <input className="form-control"
+             value={filter}
+             label="Search Here"
+             onChange={(e) => setFilter(e.target.value)}
+             InputProps={{
+               startAdornment: (
+                 <InputAdornment position="start">
+                   <SearchIcon
+                     sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                   />
+                 </InputAdornment>
+               ),
+             }} />
+            <Button variant="contained"  onClick={filternews} type="submit">Search</Button>
           </div>
         </div>
         <br></br>

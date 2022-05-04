@@ -5,6 +5,7 @@ import {
   Grid,
   Box,
   Button,
+  InputAdornment,
   
   Typography,
   CardActions,
@@ -16,13 +17,15 @@ import app_config from "../../config";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
 import {  useNavigate, useParams } from "react-router-dom";
 
 import "./topstories.css";
 
 const TopStories = () => {
-  const [newsArray, setNewsArray] = useState([]);
+  const [NewsArray, setNewsArray] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState("");
   const { category } = useParams();
   const navigate = useNavigate();
 
@@ -104,6 +107,20 @@ const TopStories = () => {
     setNewsArray([...filteredArray]);
     setLoading(false);
   };
+  const filternews = () => {
+    fetch(url + "/news/getall")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const filtered = data.filter(({ title }) => {
+          return title.toLowerCase().includes(filter.toLowerCase());
+        });
+        console.log(filtered);
+        setNewsArray(filtered);
+        setLoading(false);
+      });
+  };
+
 
   useEffect(() => {
     fetchData();
@@ -127,7 +144,7 @@ const TopStories = () => {
 
   const displaynews = () => {
     if (!loading) {
-      return newsArray.map((news) => (
+      return NewsArray.map((news) => (
         <Card className="mt-5">
           <Grid container>
             <Grid item xs={6} md={4}>
@@ -201,8 +218,20 @@ const TopStories = () => {
     </Typography>
     <div className="col-6 mx-auto">
       <div className="input-group mt-5">
-        <input className="form-control" />
-        <Button variant="contained">Search</Button>
+        <input className="form-control"
+          value={filter}
+          label="Search Here"
+          onChange={(e) => setFilter(e.target.value)}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon
+                  sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                />
+              </InputAdornment>
+            ),
+          }} />
+        <Button variant="contained"  onClick={filternews} type="submit">Search</Button>
       </div>
     </div>
     <br></br>

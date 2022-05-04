@@ -5,36 +5,49 @@ import {
   Grid,
   Box,
   Button,
+  InputAdornment,
+  
+  Typography,
   CardActions,
   Container,
   Tooltip,
-  Typography
+ 
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate, useParams } from "react-router-dom";
 
 import "./currentAffairs.css";
 
 const CurrentAffairs = () => {
-  const [newsArray, setNewsArray] = useState([]);
+  const [NewsArray, setNewsArray] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState("");
   const { categorystate } = useParams();
   const navigate = useNavigate();
 
   const newsCategories = ["National", "International"];
 
   const filterTopStories = (data) => {
-    Date.prototype.removeDays = function (days) {
-      var date = new Date(this.valueOf());
-      date.setDate(date.getDate() - days);
-      return date;
-    };
+    // Date.prototype.removeDays = function (days) {
+    //   var date = new Date(this.valueOf());
+    //   date.setDate(date.getDate() - days);
+    //   return date;
+    // };
+    const currentDate = new Date();
+    return data;
     const filtered = data.filter((newscurrent) => {
-      return new Date(newscurrent.createdAt) >= new Date().removeDays(1);
+      const newsDate = new Date(newscurrent.createdAt);
+      return (
+        newsDate.getFullYear() === currentDate.getFullYear() &&
+        newsDate.getMonth() === currentDate.getMonth() &&
+        newsDate.getDate() === currentDate.getDate()
+      );
+    
     });
 
     console.log(filtered);
@@ -77,6 +90,19 @@ const CurrentAffairs = () => {
     setNewsArray([...filteredArray]);
     setLoading(false);
   };
+  const filternews = () => {
+    fetch(url + "/newscurrent/getall")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const filtered = data.filter(({ title }) => {
+          return title.toLowerCase().includes(filter.toLowerCase());
+        });
+        console.log(filtered);
+        setNewsArray(filtered);
+        setLoading(false);
+      });
+  };
 
   useEffect(() => {
     fetchData();
@@ -100,7 +126,7 @@ const CurrentAffairs = () => {
 
   const displaynews = () => {
     if (!loading) {
-      return newsArray.map((newscurrent) => (
+      return NewsArray.map((newscurrent) => (
         <Card className="mt-5">
           <Grid container>
             <Grid item xs={6} md={4}>
@@ -176,8 +202,20 @@ const CurrentAffairs = () => {
         </Typography>
         <div className="col-6 mx-auto">
           <div className="input-group mt-5">
-            <input className="form-control" />
-            <Button variant="contained">Search</Button>
+            <input className="form-control"
+             value={filter}
+             label="Search Here"
+             onChange={(e) => setFilter(e.target.value)}
+             InputProps={{
+               startAdornment: (
+                 <InputAdornment position="start">
+                   <SearchIcon
+                     sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                   />
+                 </InputAdornment>
+               ),
+             }} />
+            <Button variant="contained" onClick={filternews} type="submit">Search</Button>
           </div>
         </div>
         <br></br>
