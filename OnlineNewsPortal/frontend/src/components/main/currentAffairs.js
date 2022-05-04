@@ -8,6 +8,10 @@ import {
   CardActions,
   Container,
   Tooltip,
+<<<<<<< HEAD
+=======
+  Typography,
+>>>>>>> 87cfcf435a6ac8b3ac6167c5e89b0d3b557f0fdb
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
@@ -165,8 +169,19 @@ const CurrentAffairs = () => {
  
   return (
     <div>
-      <header className="stories-header">
-        <h1 className="news-title">Trusted News Tribune</h1>
+      <header className="caffairs-header">
+        <Typography className="text-center text-white" variant="h5">
+          Trusted News Tribune
+        </Typography>
+        <Typography className="text-center text-white" variant="h2">
+          Current Affairs
+        </Typography>
+        <div className="col-6 mx-auto">
+          <div className="input-group mt-5">
+            <input className="form-control" />
+            <Button variant="contained">Search</Button>
+          </div>
+        </div>
         <br></br>
         <Container>
           <div className="category-header">

@@ -19,7 +19,6 @@ import WcIcon from "@mui/icons-material/Wc";
 import CallIcon from "@mui/icons-material/Call";
 import * as Yup from "yup";
 
-
 const AddReporter = () => {
   const url = app_config.api_url;
 
@@ -87,7 +86,7 @@ const AddReporter = () => {
       .min(2, "Too Short!")
       .max(50, "Too Long!")
       .required("FullName is Required"),
-    gender: Yup.string().required("Gender is Required"),
+    // gender: Yup.string().required("Gender is Required"),
     // number: Yup.number()
     // .min(6)
     // .max(10)
@@ -118,12 +117,12 @@ const AddReporter = () => {
             <Formik
               initialValues={reporterForm}
               onSubmit={reporterSubmit}
-              validationSchema={validationSchema}
+              // validationSchema={validationSchema}
             >
               {({ values, handleChange, handleSubmit, errors }) => (
                 <form onSubmit={handleSubmit}>
                   <div className="Card-body">
-                     <Grid container spacing={5}>
+                    <Grid container spacing={5}>
                       <Grid item sm={6} xs={12}>
                         <TextField
                           className="w-100 mt-3"
@@ -152,7 +151,6 @@ const AddReporter = () => {
                         />
                       </Grid>
                       <Grid item sm={6} xs={12}>
-                      
                         <TextField
                           className="w-100 mt-3"
                           placeholder="email"
@@ -207,8 +205,6 @@ const AddReporter = () => {
                         helperText={errors.password}
                       />
                     </div>
-                    
-                    
 
                     <div className="mb-3">
                       <TextField
@@ -293,12 +289,7 @@ const AddReporter = () => {
                       />
                     </div>
 
-                    <button
-                      type="submit"
-                      className=" w-100 btn btn-primary"
-                      color="success"
-                      variant="contained"
-                    >
+                    <button type="submit" className=" w-100 btn btn-primary">
                       Submit
                     </button>
                   </div>

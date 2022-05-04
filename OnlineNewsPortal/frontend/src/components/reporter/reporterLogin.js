@@ -25,7 +25,6 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-
 const Login = () => {
   const avatarStyle = {
     backgroundColor: "green",
@@ -42,7 +41,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const loginForm = {
-    username: "",
+    email: "",
     password: "",
   };
   const loginSubmit = (values) => {
@@ -52,7 +51,7 @@ const Login = () => {
     //request method
     //data
     //data format
-    fetch(url + "/user/checklogin", {
+    fetch(url + "/reporter/checklogin", {
       method: "POST",
       body: JSON.stringify(values),
       headers: { "Content-Type": "application/json" },
@@ -65,13 +64,18 @@ const Login = () => {
           title: "success",
           text: "Loggedin Successfully",
         });
-        navigate('/reporter/addnews');
+        navigate("/reporter/addnews");
         res.json().then((data) => {
           setCurrentUser(data);
           console.log(data);
           //storing value in session
           sessionStorage.setItem("reporter", JSON.stringify(data));
           sessionStorage.setItem("loginStatus", JSON.stringify(true));
+          if (data.isAdmin) {
+            navigate("/admin/addreporter");
+          } else {
+            navigate("/reporter/addnews");
+          }
         });
       } else if (res.status === 300) {
         Swal.fire({
@@ -83,7 +87,7 @@ const Login = () => {
     });
   };
   const validationSchema = Yup.object().shape({
-    username: Yup.string()
+    email: Yup.string()
       .min(2, "Too Short!")
       .max(50, "Too Long!")
       .required("FullName is Required"),
@@ -99,7 +103,7 @@ const Login = () => {
   return (
     <div className="signback">
       <div maxWidth="xl">
-        <Card className="logg" sx={{ display: "flex", ml: 3,mb :5}}>
+        <Card className="logg" sx={{ display: "flex", ml: 3, mb: 5 }}>
           <Grid container>
             <Grid item xs={4} md={7}>
               <CardMedia
@@ -124,14 +128,14 @@ const Login = () => {
                     <form onSubmit={handleSubmit}>
                       <TextField
                         className="w-100 mt-3"
-                        placeholder="Username"
-                        label="Username"
+                        placeholder="Email"
+                        label="Email"
                         variant="outlined"
-                        id="username"
-                        error={Boolean(errors.username)}
-                        helperText={errors.username}
+                        id="email"
+                        error={Boolean(errors.email)}
+                        helperText={errors.email}
                         onChange={handleChange}
-                        value={values.username}
+                        value={values.email}
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
