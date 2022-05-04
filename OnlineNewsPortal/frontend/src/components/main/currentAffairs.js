@@ -8,6 +8,7 @@ import {
   CardActions,
   Container,
   Tooltip,
+  Typography
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
