@@ -5,11 +5,9 @@ import {
   Grid,
   Box,
   Button,
- 
   CardActions,
   Container,
   Tooltip,
-  
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
@@ -98,8 +96,6 @@ const CurrentAffairs = () => {
     ));
   };
 
- 
-
   const displaynews = () => {
     if (!loading) {
       return newsArray.map((newscurrent) => (
@@ -114,12 +110,14 @@ const CurrentAffairs = () => {
               />
             </Grid>
             <Grid item xs={6} md={8}>
-            <CardContent>
-            <Tooltip title={newscurrent.title}>
+              <CardContent>
+                <Tooltip title={newscurrent.title}>
                   <h2
                     component="div"
                     variant="h5"
-                    onClick={(e) => navigate("/main/viewnews/" + newscurrent._id)}
+                    onClick={(e) =>
+                      navigate("/main/viewnews/" + newscurrent._id)
+                    }
                     style={{
                       cursor: "pointer",
                       color: "#950000",
@@ -149,7 +147,7 @@ const CurrentAffairs = () => {
                 </IconButton>
               </CardContent>
               <CardActions>
-              <Button
+                <Button
                   size="small"
                   color="primary"
                   variant="contained"
@@ -164,7 +162,7 @@ const CurrentAffairs = () => {
       ));
     }
   };
-
+ 
   return (
     <div>
       <header className="stories-header">
@@ -194,6 +192,19 @@ const CurrentAffairs = () => {
       </Container>
     </div>
   );
+
+  // return (
+  //   <div>
+  //     <Card sx={{ minWidth: 100 }}>
+  //       <CardContent>
+  //         <h3 sx={{ fontSize: 14 }} color="black" gutterBottom>
+  //           Current Affairs May 2022
+  //         </h3>
+  //       </CardContent>
+  //     </Card>
+  //   </div>
+  // );
+
 };
 
 export default CurrentAffairs;
