@@ -42,16 +42,8 @@ const CurrentAffairs = () => {
   };
 
   const newsCategories = [
-    "Sports",
-    "Politics",
-    "World",
-    "Lifestyle",
-    "Entertainment",
-    "Health",
-    "Business",
-    "Education",
-    "Technology",
-    "Jobs"
+   "National",
+   "International"
     
   ];
 

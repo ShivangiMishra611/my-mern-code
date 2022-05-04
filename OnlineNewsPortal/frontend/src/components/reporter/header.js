@@ -133,7 +133,7 @@ export default function Header() {
             />
           </Search>
 
-          <Tooltip title="User Actions">
+          <Tooltip title="Reporter Actions">
             <IconButton
             onClick={(e) => setUserMenuPos(e.currentTarget)}
               size="large"
