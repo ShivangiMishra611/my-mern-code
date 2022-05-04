@@ -8,6 +8,7 @@ import {
   CardActions,
   Container,
   Tooltip,
+  Typography
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
@@ -87,7 +88,8 @@ const CurrentAffairs = () => {
   const displayCategories = () => {
     return newsCategories.map((categorystate) => (
       <Button
-        variant="outlined"
+      color="primary"
+        variant="contained"
         size="medium"
         onClick={(e) => refreshData(categorystate)}
       >

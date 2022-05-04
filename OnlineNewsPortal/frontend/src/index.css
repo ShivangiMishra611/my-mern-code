@@ -142,10 +142,33 @@ color:whitesmoke;
   background-position: top;
 
   }
-.managec{
-  padding-left: 2px;
-}
-    
+  .caffairs-header{
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/caffair.jpg);
+    padding: 2rem;
+    text-shadow: 2px 2px 3px #0000005c;
+  }
+  .lucknow-header{
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/wall.jpg);
+    padding: 2rem;
+    text-shadow: 2px 2px 3px #0000005c;
+  }
+  .archieve-header{
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/archieve.jpg);
+    padding: 2rem;
+    text-shadow: 2px 2px 3px #0000005c;
+  }
+  .stories-header{
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/topstories.jpg);
+    padding: 2rem;
+    text-shadow: 2px 2px 3px #0000005c;
+  }
+  .reporters{
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/topstories.jpg);
+    padding: 2rem;
+    text-shadow: 2px 2px 3px #0000005c;
+
+  }
+
     
   
 

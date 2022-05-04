@@ -493,42 +493,38 @@ const ManageReporters= () => {
 
 
   return (
-    <div className="newsmanage">
+    <div>
       <Toaster position="top-right" reverseOrder={false} />
-      <div className="manage-rep"></div>
-      <TextField
-       className="w-50 mt-5"
-       label="Search Here"
-       value={filter}
-       onChange={(e) => setFilter(e.target.value)}
-       InputProps={{
-         startAdornment: (
-           <InputAdornment position="start">
-             <SearchIcon sx={{ color: "active.active", mr: 1, my: 0.5 }} />
-           </InputAdornment>
-         ),
-       }}
-     />
+     
+      <header className="reporters">
+        <Typography className="text-center text-white" variant="h5">
+          Trusted News Tribune
+        </Typography>
+        <Typography className="text-center text-white" variant="h2">
+          Manage Reporters
+        </Typography>
+        <div className="col-6 mx-auto">
+          <div className="input-group mt-5">
+            <input className="form-control" />
+            <Button variant="contained"  onClick={filternews}
+            type="Submit">Search
+            
+            </Button>
+          </div>
+        </div>
+        <br></br>
+
+     
+    
 
     
 
-     <Fab
-       className="w-30 mt-5"
-       variant="extended"
-       color="primary"
-       aria-label="add"
-       type="submit"
-       onClick={filternews}
-     >
-       Search
-     </Fab>
-
-     <br></br>
-     <br></br>
+    
 
      
       {displayReporters()} 
       {updateForm()}
+      </header>
     </div>
   );
 };
