@@ -5,11 +5,10 @@ import {
   Grid,
   Box,
   Button,
- 
   CardActions,
   Container,
   Tooltip,
-  
+  Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
@@ -98,8 +97,6 @@ const CurrentAffairs = () => {
     ));
   };
 
- 
-
   const displaynews = () => {
     if (!loading) {
       return newsArray.map((newscurrent) => (
@@ -114,12 +111,14 @@ const CurrentAffairs = () => {
               />
             </Grid>
             <Grid item xs={6} md={8}>
-            <CardContent>
-            <Tooltip title={newscurrent.title}>
+              <CardContent>
+                <Tooltip title={newscurrent.title}>
                   <h2
                     component="div"
                     variant="h5"
-                    onClick={(e) => navigate("/main/viewnews/" + newscurrent._id)}
+                    onClick={(e) =>
+                      navigate("/main/viewnews/" + newscurrent._id)
+                    }
                     style={{
                       cursor: "pointer",
                       color: "#950000",
@@ -149,7 +148,7 @@ const CurrentAffairs = () => {
                 </IconButton>
               </CardContent>
               <CardActions>
-              <Button
+                <Button
                   size="small"
                   color="primary"
                   variant="contained"
@@ -167,8 +166,19 @@ const CurrentAffairs = () => {
 
   return (
     <div>
-      <header className="stories-header">
-        <h1 className="news-title">Trusted News Tribune</h1>
+      <header className="caffairs-header">
+        <Typography className="text-center text-white" variant="h5">
+          Trusted News Tribune
+        </Typography>
+        <Typography className="text-center text-white" variant="h2">
+          Current Affairs
+        </Typography>
+        <div className="col-6 mx-auto">
+          <div className="input-group mt-5">
+            <input className="form-control" />
+            <Button variant="contained">Search</Button>
+          </div>
+        </div>
         <br></br>
         <Container>
           <div className="category-header">
