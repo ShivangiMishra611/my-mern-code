@@ -493,7 +493,7 @@ const ManageReporters= () => {
 
 
   return (
-    <div>
+    <div className="rep-back">
       <Toaster position="top-right" reverseOrder={false} />
      
       <header className="reporters">

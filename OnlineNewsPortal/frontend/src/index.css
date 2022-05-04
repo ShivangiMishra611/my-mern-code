@@ -163,12 +163,34 @@ color:whitesmoke;
     text-shadow: 2px 2px 3px #0000005c;
   }
   .reporters{
-    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/topstories.jpg);
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/managereporters.webp);
     padding: 2rem;
     text-shadow: 2px 2px 3px #0000005c;
+    height: 800px;
 
   }
+  .news-back{
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/managenews.jpg);
+    padding: 2rem;
+    text-shadow: 2px 2px 3px #0000005c;
+    height: 800px;
 
+  }
+  .lkonews-back{
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/luckk.jpg);
+    padding: 2rem;
+    text-shadow: 2px 2px 3px #0000005c;
+    height: 800px;
+
+  }
+ .current-back{
+  background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/luckk.jpg);
+  padding: 2rem;
+  text-shadow: 2px 2px 3px #0000005c;
+  height: 800px;
+
+
+ }
     
   
 
