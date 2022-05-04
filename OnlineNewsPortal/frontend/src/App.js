@@ -32,8 +32,14 @@ import AddCurrentAffairs from "./components/reporter/addCurrentAffairs";
 import CurrentAffairs from "./components/main/currentAffairs";
 import ManageCurrentAffairs from "./components/admin/manageCurrentAffairs";
 import { createTheme, ThemeProvider } from "@mui/material";
+import TimeAgo from 'javascript-time-ago'
+import en from 'javascript-time-ago/locale/en.json'
 
 function App() {
+
+
+TimeAgo.addDefaultLocale(en)
+
   const theme1 = createTheme({
     palette: {
       primary: {
