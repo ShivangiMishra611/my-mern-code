@@ -423,7 +423,6 @@ const ManageNews = () => {
 
     const filtered = masterArray.filter((news) => {
       const newsDate = new Date(news.createdAt);
-      console.log(newsDate.getMonth());
       return newsDate.getMonth() == selDate;
     });
     console.log(filtered);
