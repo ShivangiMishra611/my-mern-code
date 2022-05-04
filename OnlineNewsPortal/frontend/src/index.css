@@ -142,12 +142,65 @@ color:whitesmoke;
   background-position: top;
 
   }
-
   .caffairs-header{
-    background: linear-gradient(to right, #0000009b, #000000ad), url(https://akm-img-a-in.tosshub.com/indiatoday/images/story/201909/current_affairs_new_0.png?8dmp2f4HrwVzAaVuMKuF9RJ_HkBmoZGT&size=1200:675) ;
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/caffair.jpg);
     padding: 2rem;
     text-shadow: 2px 2px 3px #0000005c;
   }
+  .lucknow-header{
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/wall.jpg);
+    padding: 2rem;
+    text-shadow: 2px 2px 3px #0000005c;
+  }
+  .archieve-header{
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/archieve.jpg);
+    padding: 2rem;
+    text-shadow: 2px 2px 3px #0000005c;
+  }
+  .stories-header{
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/topstories.jpg);
+    padding: 2rem;
+    text-shadow: 2px 2px 3px #0000005c;
+  }
+  .reporters{
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/managereporters.webp);
+    padding: 2rem;
+    text-shadow: 2px 2px 3px #0000005c;
+    height: 800px;
+
+  }
+  .news-back{
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/managenews.jpg);
+    padding: 2rem;
+    text-shadow: 2px 2px 3px #0000005c;
+    height: 800px;
+
+  }
+  .lkonews-back{
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/luckk.jpg);
+    padding: 2rem;
+    text-shadow: 2px 2px 3px #0000005c;
+    height: 800px;
+
+  }
+ .current-back{
+  background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/currentaffair.jpg);
+  padding: 2rem;
+  text-shadow: 2px 2px 3px #0000005c;
+  height: 800px;
+
+
+ }
+ .users-back{
+  background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/users.png);
+  padding: 2rem;
+  text-shadow: 2px 2px 3px #0000005c;
+  height: 800px;
+
+
+ }
+    
+  
 
     
   

@@ -41,16 +41,13 @@ const AddLucknowNews = () => {
   };
 
   const newsCategories = [
-    "Sports",
+    "Civic Issues",
+    "Crime",
     "Politics",
-    "World",
-    "Lifestyle",
-    "Entertainment",
-    "Health",
-    "Business",
-    "Education",
-    "Technology",
-    "Jobs"
+    "School And Colleges",
+    "UP Elections",
+    "Pollution News",
+    "Events",
     
   ];
 

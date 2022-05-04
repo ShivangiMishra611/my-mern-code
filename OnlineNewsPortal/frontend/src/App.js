@@ -31,6 +31,8 @@ import Authenticator from "./components/authenticator";
 import AddCurrentAffairs from "./components/reporter/addCurrentAffairs";
 import CurrentAffairs from "./components/main/currentAffairs";
 import ManageCurrentAffairs from "./components/admin/manageCurrentAffairs";
+import RManageCurrentAffairs from "./components/reporter/manageCurrentAffairs";
+import RManageNews from "./components/reporter/manageNews";
 import { createTheme, ThemeProvider } from "@mui/material";
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en.json'
@@ -62,8 +64,8 @@ TimeAgo.addDefaultLocale(en)
             <Route element={<AddNews />} path="addnews" />
             <Route element={<AddLucknowNews />} path="addlucknownews" />
             <Route element={<AddCurrentAffairs />} path="addcurrentaffairs" />
-            <Route element={<ManageNews />} path="managenews" />
-            <Route element={<ManageCurrentAffairs />} path="managecurrentaffairs" />
+            <Route element={<RManageNews />} path="managenews" />
+            <Route element={<RManageCurrentAffairs />} path="managecurrentaffairs" />
           </Route>
 
           <Route element={<Main />} path="main">

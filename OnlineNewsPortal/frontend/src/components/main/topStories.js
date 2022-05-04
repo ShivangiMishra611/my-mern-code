@@ -6,7 +6,7 @@ import {
   Box,
   Button,
   
-  
+  Typography,
   CardActions,
   Container,
   Tooltip,
@@ -27,8 +27,9 @@ const TopStories = () => {
   const navigate = useNavigate();
 
   const newsCategories = [
+   
     "Sports",
-    "Politics",
+  
     "World",
     "Lifestyle",
     "Entertainment",
@@ -36,7 +37,7 @@ const TopStories = () => {
     "Business",
     "Education",
     "Technology",
-    "Jobs",
+  
   ];
 
   const newssubCategories = [];
@@ -114,7 +115,8 @@ const TopStories = () => {
   const displayCategories = () => {
     return newsCategories.map((category) => (
       <Button
-        variant="outlined"
+        color="primary"
+        variant="contained"
         size="medium"
         onClick={(e) => refreshData(category)}
       >
@@ -191,8 +193,20 @@ const TopStories = () => {
   return (
     <div>
       <header className="stories-header">
-        <h1 className="news-title">Trusted News Tribune</h1>
-        <br></br>
+      <Typography className="text-center text-white" variant="h5">
+      Trusted News Tribune
+    </Typography>
+    <Typography className="text-center text-white" variant="h2">
+      Top Stories
+    </Typography>
+    <div className="col-6 mx-auto">
+      <div className="input-group mt-5">
+        <input className="form-control" />
+        <Button variant="contained">Search</Button>
+      </div>
+    </div>
+    <br></br>
+        
         <Container>
           <div className="category-header">
             <Box

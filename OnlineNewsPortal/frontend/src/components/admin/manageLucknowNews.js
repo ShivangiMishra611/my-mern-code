@@ -12,6 +12,7 @@ import {
   Select,
   TextField,
   Tooltip,
+  
 } from "@mui/material";
 import toast, { Toaster } from "react-hot-toast";
 import app_config from "../../config";
@@ -410,37 +411,35 @@ const ManageLucknowNews = () => {
   };
 
   return (
-    <div className="lko">
-      <Toaster position="top-right" reverseOrder={false} />
-      <div className="managelko"></div>
-     <TextField
-       className="w-50 mt-5"
-       label="Search Here"
-       value={filter}
-       onChange={(e) => setFilter(e.target.value)}
-       InputProps={{
-         startAdornment: (
-           <InputAdornment position="start">
-             <SearchIcon sx={{ color: "active.active", mr: 1, my: 0.5 }} />
-           </InputAdornment>
-         ),
-       }}
-     />
+    <div className="">
+    <Toaster position="top-right" reverseOrder={false} />
+   
+    <header className="lkonews-back">
+      <Typography className="text-center text-white" variant="h5">
+        Trusted News Tribune
+      </Typography>
+      <Typography className="text-center text-white" variant="h2">
+        Manage Lucknow  News
+      </Typography>
+      <div className="col-6 mx-auto">
+        <div className="input-group mt-5">
+          <input className="form-control" />
+          <Button variant="contained"  onClick={filternews}
+          type="Submit">Search
+          
+          </Button>
+        </div>
+      </div>
+      <br></br>
 
-     <Fab
-       className="w-30 mt-5"
-       variant="extended"
-       color="primary"
-       aria-label="add"
-       type="submit"
-       onClick={filternews}
-     >
-       Search
-     </Fab>
+
+
+    
 
       {displayNews()}
 
       {updateForm()}
+      </header>
     </div>
   );
 };

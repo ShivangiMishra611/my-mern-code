@@ -1,27 +1,24 @@
 import { useEffect, useState } from "react";
-import { 
+import {
   Button,
- 
   Card,
   CardContent,
- 
   InputAdornment,
-  
   TextField,
-  Tooltip, 
-  } from "@mui/material";
+  Tooltip,
+} from "@mui/material";
 import toast, { Toaster } from "react-hot-toast";
 import app_config from "../../config";
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import AccordionDetails from '@mui/material/AccordionDetails';
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import Typography from "@mui/material/Typography";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import AccordionDetails from "@mui/material/AccordionDetails";
 import SearchIcon from "@mui/icons-material/Search";
 import Stack from "@mui/material/Stack";
-import Fab from '@mui/material/Fab';
-import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
-import BeenhereRoundedIcon from '@mui/icons-material/BeenhereRounded';
+import Fab from "@mui/material/Fab";
+import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
+import BeenhereRoundedIcon from "@mui/icons-material/BeenhereRounded";
 import { Formik } from "formik";
 import Swal from "sweetalert2";
 import { Edit } from "@mui/icons-material";
@@ -30,9 +27,9 @@ import KeyIcon from "@mui/icons-material/Key";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import CallIcon from "@mui/icons-material/Call";
 import * as Yup from "yup";
-import { green } from '@mui/material/colors';
+import { green } from "@mui/material/colors";
 
-const ManageReporters= () => {
+const ManageReporters = () => {
   const [ReporterArray, setReporterArray] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -51,7 +48,6 @@ const ManageReporters= () => {
         console.log(data);
         setReporterArray(data);
         setLoading(false);
-        
       });
   };
   const uploadThumbnail = (e) => {
@@ -77,8 +73,6 @@ const ManageReporters= () => {
         console.log(data);
         fetchData();
         toast.success("Reporter Successfully Deleted!!", {
-        
-        
           style: {
             borderRadius: "10px",
             background: "#333",
@@ -105,15 +99,14 @@ const ManageReporters= () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        const filtered = data.filter(({ title }) => {
-          return title.toLowerCase().includes(filter.toLowerCase());
+        const filtered = data.filter(({ name }) => {
+          return name.toLowerCase().includes(filter.toLowerCase());
         });
         console.log(filtered);
         setReporterArray(filtered);
         setLoading(false);
       });
   };
-
 
   useEffect(() => {
     fetchData();
@@ -123,55 +116,47 @@ const ManageReporters= () => {
     if (!loading) {
       return ReporterArray.map((reporter, i) => (
         <Accordion key={reporter._id}>
-        <AccordionSummary  sx={{ml:2,mr:3}}
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-           <h4>{reporter.name}</h4>
+          <AccordionSummary
+            sx={{ ml: 2, mr: 3 }}
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <h4>{reporter.name}</h4>
           </AccordionSummary>
           <AccordionDetails>
-          <img src={url + "/" + reporter.thumbnail} height="200" />
-          <br></br>
-          <br></br>
-        <h2>{reporter.email}</h2>
-        <h2>{reporter.password}</h2>
-        <h2>{reporter.gender}</h2>
-        <h2>{reporter.number}</h2>
-        <h2>{reporter.age}</h2>
-          
-          
-          
+            <img src={url + "/" + reporter.thumbnail} height="200" />
+            <br></br>
+            <br></br>
+            <h2>{reporter.email}</h2>
+            <h2>{reporter.password}</h2>
+            <h2>{reporter.gender}</h2>
+            <h2>{reporter.number}</h2>
+            <h2>{reporter.age}</h2>
 
+            <Stack direction="row" spacing={2}>
+              <Fab
+                disabled={reporter.approvereporter}
+                variant="extended"
+                size="small"
+                color="primary"
+                onClick={(e) => approveReporter(reporter._id)}
+                aria-label="add"
+              >
+                <BeenhereRoundedIcon sx={{ mr: 1 }} />
+                {reporter.approvereporter ? "Approved" : "Approve Reporter"}
+              </Fab>
 
-         
-          <Stack direction="row" spacing={2}>
-          <Fab
-             disabled={reporter.approvereporter}
-              variant="extended"
-              size="small"
-              color="primary"
-              onClick={(e) => approveReporter(reporter._id)}
-              aria-label="add"
-            >
-               < BeenhereRoundedIcon sx={{ mr: 1 }} />
-              {reporter.approvereporter ? "Approved" : "Approve Reporter"}
-              
-           
-            </Fab>
-
-
-            <Fab
-              variant="extended"
-              size="small"
-              color="primary"
-              onClick={(e) => deleteReporter(reporter._id)}
-              aria-label="add"
-            >
-              <DeleteRoundedIcon sx={{ mr: 1 }} />
-       
-            </Fab>
-            <Tooltip title="Update News Article">
+              <Fab
+                variant="extended"
+                size="small"
+                color="primary"
+                onClick={(e) => deleteReporter(reporter._id)}
+                aria-label="add"
+              >
+                <DeleteRoundedIcon sx={{ mr: 1 }} />
+              </Fab>
+              <Tooltip title="Update News Article">
                 <Fab
                   size="medium"
                   color="success"
@@ -182,24 +167,15 @@ const ManageReporters= () => {
                   aria-label="add"
                 >
                   <Edit
-                  variant="extended"
-                  size="small"
-                  sx={{ color: green[30] }}   />
+                    variant="extended"
+                    size="small"
+                    sx={{ color: green[30] }}
+                  />
                 </Fab>
               </Tooltip>
-
-        </Stack>
-        </AccordionDetails>
-
-          </Accordion>
-
-      
-
-          
-          
-        
-
-       
+            </Stack>
+          </AccordionDetails>
+        </Accordion>
       ));
     }
   };
@@ -254,83 +230,107 @@ const ManageReporters= () => {
       return (
         <div>
           <Card>
-          <CardContent sx={{ width: 640 }}>
-          <Formik
-                  initialValues={updateFormdata}
-                  onSubmit={submitReporter}
-                  validationSchema={validationSchema}
-                >
-                  {({ values, handleChange, handleSubmit, errors }) => (
-                    <form onSubmit={handleSubmit}>
-                     
+            <CardContent sx={{ width: 640 }}>
+              <Formik
+                initialValues={updateFormdata}
+                onSubmit={submitReporter}
+                validationSchema={validationSchema}
+              >
+                {({ values, handleChange, handleSubmit, errors }) => (
+                  <form onSubmit={handleSubmit}>
+                    <div className="card-body">
+                      <TextField
+                        className="w-100 mt-3"
+                        placeholder="Name"
+                        label="Name"
+                        variant="outlined"
+                        id="name"
+                        type="text"
+                        onChange={handleChange}
+                        value={values.name}
+                        error={Boolean(errors.name)}
+                        helperText={errors.name}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <AccountCircleIcon
+                                sx={{
+                                  color: "active.active",
+                                  mr: 1,
+                                  my: 0.5,
+                                }}
+                              />
+                            </InputAdornment>
+                          ),
+                        }}
+                      />
+                    </div>
 
-                      <div className="card-body">
-                        <TextField
-                          className="w-100 mt-3"
-                          placeholder="Name"
-                          label="Name"
-                          variant="outlined"
-                          id="name"
-                          type="text"
-                          onChange={handleChange}
-                          value={values.name}
-                          error={Boolean(errors.name)}
-                          helperText={errors.name}
-                          InputProps={{
-                            endAdornment: (
-                              <InputAdornment position="end">
-                                <AccountCircleIcon
-                                  sx={{
-                                    color: "active.active",
-                                    mr: 1,
-                                    my: 0.5,
-                                  }}
-                                />
-                              </InputAdornment>
-                            ),
-                          }}
-                          
-                        />
-                      </div>
+                    <div className="mb-3">
+                      <TextField
+                        className="w-100 mt-3"
+                        placeholder="email"
+                        label="Email"
+                        variant="outlined"
+                        id="email"
+                        onChange={handleChange}
+                        value={values.email}
+                        error={errors.email}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <EmailIcon
+                                sx={{
+                                  color: "active.active",
+                                  mr: 1,
+                                  my: 0.5,
+                                }}
+                              />
+                            </InputAdornment>
+                          ),
+                        }}
+                        helperText={errors.email}
+                      />
+                    </div>
 
-                      <div className="mb-3">
-                        <TextField
-                          className="w-100 mt-3"
-                          placeholder="email"
-                          label="Email"
-                          variant="outlined"
-                          id="email"
-                          onChange={handleChange}
-                          value={values.email}
-                          error={errors.email}
-                          InputProps={{
-                            endAdornment: (
-                              <InputAdornment position="end">
-                                <EmailIcon
-                                  sx={{
-                                    color: "active.active",
-                                    mr: 1,
-                                    my: 0.5,
-                                  }}
-                                />
-                              </InputAdornment>
-                            ),
-                          }}
-                          helperText={errors.email}
-                        />
-                      </div>
+                    <div className="mb-3">
+                      <TextField
+                        className="w-100 mt-3"
+                        placeholder="Password"
+                        label="Password"
+                        type="password"
+                        variant="outlined"
+                        id="password"
+                        onChange={handleChange}
+                        value={values.password}
+                        error={errors.password}
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <KeyIcon
+                                sx={{
+                                  color: "active.active",
+                                  mr: 1,
+                                  my: 0.5,
+                                }}
+                              />
+                            </InputAdornment>
+                          ),
+                        }}
+                        helperText={errors.password}
+                      />
 
                       <div className="mb-3">
                         <TextField
                           className="w-100 mt-3"
                           placeholder="Password"
-                          label="Password"
+                          label="Confirm Password"
                           type="password"
                           variant="outlined"
-                          id="password"
+                          id="confirmpassword"
                           onChange={handleChange}
-                          value={values.password}
-                          error={errors.password}
+                          value={values.confirmpassword}
+                          error={errors.confirmpassword}
                           InputProps={{
                             endAdornment: (
                               <InputAdornment position="end">
@@ -344,37 +344,10 @@ const ManageReporters= () => {
                               </InputAdornment>
                             ),
                           }}
-                          helperText={errors.password}
+                          helperText={errors.confirmpassword}
                         />
-
                         <div className="mb-3">
-                          <TextField
-                            className="w-100 mt-3"
-                            placeholder="Password"
-                            label="Confirm Password"
-                            type="password"
-                            variant="outlined"
-                            id="confirmpassword"
-                            onChange={handleChange}
-                            value={values.confirmpassword}
-                            error={errors.confirmpassword}
-                            InputProps={{
-                              endAdornment: (
-                                <InputAdornment position="end">
-                                  <KeyIcon
-                                    sx={{
-                                      color: "active.active",
-                                      mr: 1,
-                                      my: 0.5,
-                                    }}
-                                  />
-                                </InputAdornment>
-                              ),
-                            }}
-                            helperText={errors.confirmpassword}
-                          />
-                          <div className="mb-3">
-                            {/* <RadioGroup  
+                          {/* <RadioGroup  
                           aria-labelledby="demo-radio-buttons-group-label"
                           label="Gender"
                           id="gender"
@@ -404,133 +377,147 @@ const ManageReporters= () => {
                               }}
                               helperText={errors.gender}
                               </RadioGroup> */}
-                          </div>
-                          <div className="mb-3">
-                            <TextField
-                              className="w-100 mt-3"
-                              placeholder="Contact"
-                              label="Contact"
-                              variant="outlined"
-                              id="number"
-                              type="number"
-                              onChange={handleChange}
-                              value={values.number}
-                              error={errors.number}
-                              InputProps={{
-                                endAdornment: (
-                                  <InputAdornment position="end">
-                                    <CallIcon
-                                      sx={{
-                                        color: "active.active",
-                                        mr: 1,
-                                        my: 0.5,
-                                      }}
-                                    />
-                                  </InputAdornment>
-                                ),
-                              }}
-                              helperText={errors.number}
-                            />
-                          </div>
                         </div>
                         <div className="mb-3">
                           <TextField
                             className="w-100 mt-3"
-                            placeholder="Age"
-                            label="Age"
+                            placeholder="Contact"
+                            label="Contact"
                             variant="outlined"
-                            id="age"
+                            id="number"
                             type="number"
                             onChange={handleChange}
-                            value={values.age}
-                            error={errors.age}
-                            helperText={errors.age}
+                            value={values.number}
+                            error={errors.number}
+                            InputProps={{
+                              endAdornment: (
+                                <InputAdornment position="end">
+                                  <CallIcon
+                                    sx={{
+                                      color: "active.active",
+                                      mr: 1,
+                                      my: 0.5,
+                                    }}
+                                  />
+                                </InputAdornment>
+                              ),
+                            }}
+                            helperText={errors.number}
                           />
                         </div>
+                      </div>
+                      <div className="mb-3">
+                        <TextField
+                          className="w-100 mt-3"
+                          placeholder="Age"
+                          label="Age"
+                          variant="outlined"
+                          id="age"
+                          type="number"
+                          onChange={handleChange}
+                          value={values.age}
+                          error={errors.age}
+                          helperText={errors.age}
+                        />
+                      </div>
 
-                        <div className="mb-3">
-                          <label htmlFor="formFile" className="form-label">
-                            Add Image
-                          </label>
-                          <input
-                            className="form-control"
-                            type="file"
-                            id="thumbnail"
-                            value={values.thumbnail}
-                            error={Boolean(errors.thumbnail)}
-                            helperText={errors.thumbnail}
-                            onChange={uploadThumbnail}
-                          />
-                        </div>
+                      <div className="mb-3">
+                        <label htmlFor="formFile" className="form-label">
+                          Add Image
+                        </label>
+                        <input
+                          className="form-control"
+                          type="file"
+                          id="thumbnail"
+                          value={values.thumbnail}
+                          error={Boolean(errors.thumbnail)}
+                          helperText={errors.thumbnail}
+                          onChange={uploadThumbnail}
+                        />
+                      </div>
 
-                        <Button
-                          type="submit"
-                          className="btn btn-primary"
-                          color="success"
-                          variant="contained"
-                        >
-                          Submit
-                        </Button>
-                        <Button
+                      <Button
+                        type="submit"
+                        className="btn btn-primary"
+                        color="success"
+                        variant="contained"
+                      >
+                        Submit
+                      </Button>
+                      <Button
                         onClick={(e) => setShowUpdateForm(false)}
                         type="button"
                         className="btn btn-primary"
                       >
                         Cancel
                       </Button>
-                      </div>
-                    </form>
-                  )}
-                </Formik>
-              </CardContent>
-           
-        </Card>
-    
-    </div>
-  );
- }
-};
-
+                    </div>
+                  </form>
+                )}
+              </Formik>
+            </CardContent>
+          </Card>
+        </div>
+      );
+    }
+  };
 
   return (
-    <div className="newsmanage">
+    <div className="rep-back">
       <Toaster position="top-right" reverseOrder={false} />
-      <div className="manage-rep"></div>
-      <TextField
-       className="w-50 mt-5"
-       label="Search Here"
-       value={filter}
-       onChange={(e) => setFilter(e.target.value)}
-       InputProps={{
-         startAdornment: (
-           <InputAdornment position="start">
-             <SearchIcon sx={{ color: "active.active", mr: 1, my: 0.5 }} />
-           </InputAdornment>
-         ),
-       }}
-     />
 
-    
+      <header className="reporters">
+        <Typography className="text-center text-white" variant="h5">
+          Trusted News Tribune
+        </Typography>
+        <Typography className="text-center text-white" variant="h2">
+          Manage Reporters
+        </Typography>
+        <div className="col-6 mx-auto">
+          <div className="input-group mt-5">
+            {/* <TextField
+              sx={{ borderRadius: "16px" }}
+              className="w-50 mt-5 "
+              label="Search Here"
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon
+                      sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                    />
+                  </InputAdornment>
+                ),
+              }}
+            /> */}
+            <input
+              className="form-control"
+              value={filter}
+              label="Search Here"
+              onChange={(e) => setFilter(e.target.value)}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon
+                      sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                    />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <Button variant="contained" onClick={filternews} type="submit">
+              Search
+            </Button>
+          </div>
+        </div>
+        <br></br>
 
-     <Fab
-       className="w-30 mt-5"
-       variant="extended"
-       color="primary"
-       aria-label="add"
-       type="submit"
-       onClick={filternews}
-     >
-       Search
-     </Fab>
-
-     <br></br>
-     <br></br>
-
-     
-      {displayReporters()} 
-      {updateForm()}
+        {displayReporters()}
+        {updateForm()}
+      </header>
     </div>
   );
 };
 
-export default ManageReporters; 
+export default ManageReporters;

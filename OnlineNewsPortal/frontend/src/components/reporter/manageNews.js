@@ -31,7 +31,7 @@ import { Edit, TitleSharp, Category, Newspaper } from "@mui/icons-material";
 import { green } from '@mui/material/colors';
 import * as Yup from "yup";
 
-const ManageNews = () => {
+const RManageNews = () => {
   const [NewsArray, setNewsArray] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -447,4 +447,4 @@ const ManageNews = () => {
   );
 };
 
-export default ManageNews;
+export default RManageNews;

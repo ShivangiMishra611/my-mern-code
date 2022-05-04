@@ -12,7 +12,7 @@ import {
   Select,
   TextField,
   Tooltip,
-  Grid,
+  Typography
 } from "@mui/material";
 import toast, { Toaster } from "react-hot-toast";
 import app_config from "../../config";
@@ -444,7 +444,7 @@ const ManageNews = () => {
   };
 
   return (
-    <div className="newsmanage">
+    <div className="">
       <Toaster position="top-right" reverseOrder={false} />
       <div className="manage-news"></div>
 
@@ -514,8 +514,8 @@ const ManageNews = () => {
       </Grid>
 
       {displayNews()}
-
       {updateForm()}
+      </div>
     </div>
   );
 };

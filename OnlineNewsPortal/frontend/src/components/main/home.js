@@ -18,7 +18,7 @@ const Home = () => {
   const navigate = useNavigate();
   const categories = [
     "Sports",
-    "Politics",
+  
     "World",
     "Lifestyle",
     "Entertainment",
@@ -26,7 +26,7 @@ const Home = () => {
     "Business",
     "Education",
     "Technology",
-    "Jobs",
+   
   ];
 
   const fetchData = () => {

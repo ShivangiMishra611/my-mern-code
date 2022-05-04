@@ -12,6 +12,7 @@ import {
   Select,
   TextField,
   Tooltip,
+  Container,
 } from "@mui/material";
 import toast, { Toaster } from "react-hot-toast";
 import app_config from "../../config";
@@ -30,7 +31,7 @@ import Swal from "sweetalert2";
 import { Edit, TitleSharp, Category, Newspaper } from "@mui/icons-material";
 import { green } from '@mui/material/colors';
 import * as Yup from "yup";
-const ManageCurrentAffairs = () => {
+const RManageCurrentAffairs = () => {
   const [NewsArray, setNewsArray] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -125,8 +126,10 @@ const ManageCurrentAffairs = () => {
   }, []);
 
   const displayNews = () => {
+    
     if (!loading) {
       return NewsArray.map((newscurrent, i) => (
+        
         <Accordion key={newscurrent._id}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -187,8 +190,11 @@ const ManageCurrentAffairs = () => {
           </AccordionDetails>
         </Accordion>
       ));
+      
     }
+    
   };
+  
   const submitNews = (values) => {
     // values.thumbnail = thumbnail;
     console.log(values);
@@ -245,7 +251,7 @@ const ManageCurrentAffairs = () => {
                         label="Title"
                         variant="outlined"
                         id="title"
-                        onChange={handleChange}
+                          onChange={handleChange}
                         value={values.title}
                         error={Boolean(errors.title)}
                         helperText={errors.title}
@@ -412,7 +418,7 @@ const ManageCurrentAffairs = () => {
      
       <TextField
         className="w-50 mt-5"
-        label="Search Here"
+        label="Search Here" 
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
         InputProps={{
@@ -435,10 +441,13 @@ const ManageCurrentAffairs = () => {
         Search
       </Fab>
 
+      <Container>
       {displayNews()}
+      </Container>
       {updateForm()}
     </div>
   );
 };
 
-export default ManageCurrentAffairs;
+export default RManageCurrentAffairs;
+  
