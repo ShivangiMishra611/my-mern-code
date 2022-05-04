@@ -70,6 +70,11 @@ const Login = () => {
           //storing value in session
           sessionStorage.setItem("reporter", JSON.stringify(data));
           sessionStorage.setItem("loginStatus", JSON.stringify(true));
+          if (data.isAdmin) {
+            navigate("/admin/addreporter");
+          } else {
+            navigate("/reporter/addnews");
+          }
         });
       } else if (res.status === 300) {
         Swal.fire({
