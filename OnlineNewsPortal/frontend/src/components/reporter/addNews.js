@@ -1,4 +1,3 @@
-
 import { Formik } from "formik";
 import Swal from "sweetalert2";
 import { useState } from "react";
@@ -32,7 +31,6 @@ const AddNews = () => {
 
   const newsForm = {
     title: "",
-
     category: "",
     subCategory: "",
     summary: "",
@@ -40,19 +38,19 @@ const AddNews = () => {
     tags: "",
   };
 
-  const newsCategories = [
-    "Sports",
-    "Politics",
-    "World",
-    "Lifestyle",
-    "Entertainment",
-    "Health",
-    "Business",
-    "Education",
-    "Technology",
-    "Jobs"
-    
-  ];
+  const newsCategories = {
+    Sports: ["Cricket", "Football", "Basketball", "IPL"],
+    Politics: ["State", "Country"],
+
+    // "World",
+    // "Lifestyle",
+    // "Entertainment",
+    // "Health",
+    // "Business",
+    // "Education",
+    // "Technology",
+    // "Jobs"
+  };
 
   const [tags, setTags] = useState([]);
   const img1 = "ADDNEWS.jpeg";
@@ -60,7 +58,6 @@ const AddNews = () => {
   const newsSubmit = (values) => {
     values.thumbnail = thumbnail;
     console.log(values);
-
 
     fetch(url + "/news/add", {
       method: "POST",
@@ -109,70 +106,141 @@ const AddNews = () => {
   return (
     <div className="addrep-bg">
       <Container maxWidth="lg">
-      <div className="add-news-top">
-        <Typography variant="h2" sx={{fontWeight : 900}}>ADD LATEST NEWS</Typography>
-      </div>
-      <Card>
-      
-      <CardContent>
-        
-        
-          <Formik
-            initialValues={newsForm}
-            onSubmit={newsSubmit}
-            validationSchema={validationSchema}
-          >
-            {({ values, handleChange, handleSubmit, errors }) => (
-              <form onSubmit={handleSubmit}>
-               
-                <div className="card-body">
-                  
-                  <Grid container spacing={5}>
-                    <Grid item sm={6} xs={12}  >
-                    <TextField
-                    className="w-100 mt-3"
-                    placeholder="Title"
-                    label="Title"
-                    variant="outlined"
-                    id="title"
-                    onChange={handleChange}
-                    value={values.title}
-                    error={Boolean(errors.title)}
-                    helperText={errors.title}
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <TitleSharpIcon
-                            sx={{
-                              color: "active.active",
-                              mr: 1,
-                              my: 0.5,
+        <div className="add-news-top">
+          <Typography variant="h2" sx={{ fontWeight: 900 }}>
+            ADD LATEST NEWS
+          </Typography>
+        </div>
+        <Card>
+          <CardContent>
+            <Formik
+              initialValues={newsForm}
+              onSubmit={newsSubmit}
+              validationSchema={validationSchema}
+            >
+              {({ values, handleChange, handleSubmit, errors }) => (
+                <form onSubmit={handleSubmit}>
+                  <div className="card-body">
+                    <Grid container spacing={5}>
+                      <Grid item sm={12} xs={12}>
+                        <TextField
+                          className="w-100 mt-3"
+                          placeholder="Title"
+                          label="Title"
+                          variant="outlined"
+                          id="title"
+                          onChange={handleChange}
+                          value={values.title}
+                          error={Boolean(errors.title)}
+                          helperText={errors.title}
+                          InputProps={{
+                            endAdornment: (
+                              <InputAdornment position="end">
+                                <TitleSharpIcon
+                                  sx={{
+                                    color: "active.active",
+                                    mr: 1,
+                                    my: 0.5,
+                                  }}
+                                />
+                              </InputAdornment>
+                            ),
+                          }}
+                        />
+                      </Grid>
+
+                      <Grid item sm={6} xs={12}>
+                        <FormControl fullWidth className="mt-3">
+                          <InputLabel id="demo-simple-select-label1">
+                            Category
+                          </InputLabel>
+
+                          <Select
+                            labelId="demo-simple-select-label1"
+                            id="category"
+                            name="category"
+                            label="Category"
+                            value={values.category}
+                            error={Boolean(errors.category)}
+                            helperText="Category is required"
+                            onChange={handleChange}
+                            InputProps={{
+                              endAdornment: (
+                                <InputAdornment position="end">
+                                  <CategoryIcon
+                                    sx={{
+                                      color: "active.active",
+                                      mr: 1,
+                                      my: 0.5,
+                                    }}
+                                  />
+                                </InputAdornment>
+                              ),
                             }}
-                          />
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
+                          >
+                            {Object.keys(newsCategories).map((category) => (
+                              <MenuItem value={category}>{category}</MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
+                      </Grid>
+                      <Grid item sm={6} xs={12}>
+                        <FormControl fullWidth className="mt-3">
+                          <InputLabel id="demo-simple-select-label1">
+                            Sub Category
+                          </InputLabel>
+
+                          <Select
+                            labelId="demo-simple-select-label1"
+                            id="subCategory"
+                            name="subCategory"
+                            label="Sub Category"
+                            value={values.subCategory}
+                            error={Boolean(errors.subCategory)}
+                            helperText="Sub-Category is required"
+                            onChange={handleChange}
+                            InputProps={{
+                              endAdornment: (
+                                <InputAdornment position="end">
+                                  <CategoryIcon
+                                    sx={{
+                                      color: "active.active",
+                                      mr: 1,
+                                      my: 0.5,
+                                    }}
+                                  />
+                                </InputAdornment>
+                              ),
+                            }}
+                          >
+                            {(newsCategories[values.category]
+                              ? newsCategories[values.category]
+                              : []
+                            ).map((category) => (
+                              <MenuItem value={category}>{category}</MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
+                      </Grid>
                     </Grid>
-                    <Grid item sm={6} xs={12}  >
-                    <FormControl fullWidth className="mt-3">
-                    <InputLabel id="demo-simple-select-label1">
-                      Category
-                    </InputLabel>
-                   
-                    <Select
-                      labelId="demo-simple-select-label1"
-                      id="category"
-                      name="category"
-                      label="Category"
-                      value={values.category}
-                      error={Boolean(errors.category)}
-                      helperText="Category is required"
+
+                    <TextField
+                      className="w-100 mt-3"
+                      label="Add News"
+                      multiline
+                      rows={4}
+                      variant="outlined"
+                      id="summary"
                       onChange={handleChange}
+                      value={values.summary}
+                      error={Boolean(errors.summary)}
+                      helperText={errors.summary}
+                      aria-label="Add News"
+                      placeholder="Add News"
                       InputProps={{
                         endAdornment: (
                           <InputAdornment position="end">
-                            <CategoryIcon
+                            <NewspaperIcon
                               sx={{
                                 color: "active.active",
                                 mr: 1,
@@ -182,128 +250,69 @@ const AddNews = () => {
                           </InputAdornment>
                         ),
                       }}
-                    >
-                      {newsCategories.map((category) => (
-                        <MenuItem value={category}>
-                          {category}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                    </Grid>
-                  </Grid>
-
-                 
-                  <TextField
-                    className="w-100 mt-3"
-                    label="Add News"
-                    multiline
-                    rows={4}
-                    variant="outlined"
-                    id="summary"
-                    onChange={handleChange}
-                    value={values.summary}
-                    error={Boolean(errors.summary)}
-                    helperText={errors.summary}
-                    aria-label="Add News"
-                    placeholder="Add News"
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <NewspaperIcon
-                            sx={{
-                              color: "active.active",
-                              mr: 1,
-                              my: 0.5,
-                            }}
-                          />
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
-                  
-
-                  <br></br>
-                  <br></br>
-
-                  <Autocomplete
-                 
-                 
-                    className="mt-5"
-
-                    multiple
-                    id="tags"
-                    options={["crime", "politics", "sports"].map(
-                      (topic) => topic
-                    )}
-                    freeSolo
-                    renderTags={(value, getTagProps) =>
-                      value.map((option, index) => (
-                        <Chip
-                          variant="outlined"
-                          label={option}
-                          {...getTagProps({ index })}
-                        />
-                      ))
-                    }
-                    
-                    renderInput={(params) => (
-
-                      <TextField
-                      
-                        id="tags"
-                        value={values.tags}
-                        error={Boolean(errors.tags)}
-                    helperText={errors.tags}
-                        onChange={handleChange}
-                        {...params}
-                        variant="filled"
-                        label="Add Relevant Tags"
-                      
-                      />
-                    )}
-                  />
-                 
-                 
-                  
-
-                  <br></br>
-                  <br></br>
-                  
-                  
-
-                  <div className="mb-3">
-
-                  
-                    <label for="formFile" class="form-label">
-                      Add Image
-                    </label>
-                    <input
-                      className="form-control"
-                      type="file"
-                      id="thumbnail"
-                      value={values.thumbnail}
-                      error={Boolean(errors.thumbnail)}
-                      helperText={errors.thumbnail}
-                      onChange={uploadThumbnail}
                     />
-                  
-                    
-                    
-                    
-                  
-                  </div>
-                  
 
-                  <button type="submit" className="w-100 btn btn-primary">
-                    Submit
-                  </button>
-                </div>
-              </form>
-            )}
-          </Formik>
-        </CardContent>
-    </Card>
+                    <br></br>
+                    <br></br>
+
+                    <Autocomplete
+                      className="mt-5"
+                      multiple
+                      id="tags"
+                      options={["crime", "politics", "sports"].map(
+                        (topic) => topic
+                      )}
+                      freeSolo
+                      renderTags={(value, getTagProps) =>
+                        value.map((option, index) => (
+                          <Chip
+                            variant="outlined"
+                            label={option}
+                            {...getTagProps({ index })}
+                          />
+                        ))
+                      }
+                      renderInput={(params) => (
+                        <TextField
+                          id="tags"
+                          value={values.tags}
+                          error={Boolean(errors.tags)}
+                          helperText={errors.tags}
+                          onChange={handleChange}
+                          {...params}
+                          variant="filled"
+                          label="Add Relevant Tags"
+                        />
+                      )}
+                    />
+
+                    <br></br>
+                    <br></br>
+
+                    <div className="mb-3">
+                      <label for="formFile" class="form-label">
+                        Add Image
+                      </label>
+                      <input
+                        className="form-control"
+                        type="file"
+                        id="thumbnail"
+                        value={values.thumbnail}
+                        error={Boolean(errors.thumbnail)}
+                        helperText={errors.thumbnail}
+                        onChange={uploadThumbnail}
+                      />
+                    </div>
+
+                    <button type="submit" className="w-100 btn btn-primary">
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              )}
+            </Formik>
+          </CardContent>
+        </Card>
       </Container>
     </div>
   );
