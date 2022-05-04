@@ -409,7 +409,7 @@ const ManageCurrentAffairs = () => {
   };
 
   return (
-    <div className="managec">
+    <div className="newsmanage">
       <Toaster position="top-right" reverseOrder={false} />
       <div className="title-current"></div>
      
@@ -444,7 +444,6 @@ const ManageCurrentAffairs = () => {
       <br></br>
       <br></br>
       
-      <br></br>
 
       {displayNews()}
       {updateForm()}
