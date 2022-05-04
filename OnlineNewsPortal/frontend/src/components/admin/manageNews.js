@@ -418,8 +418,8 @@ const ManageNews = () => {
       <Toaster position="top-right" reverseOrder={false} />
       <div className="manage-news"></div>
      
-     <TextField sx={{ borderRadius:'16px'}}
-       className="w-50 mt-5 "
+     <input 
+       className="form-control"
        label="Search Here"
        value={filter}
        onChange={(e) => setFilter(e.target.value)}
@@ -431,8 +431,11 @@ const ManageNews = () => {
          ),
        }}
      />
+      <Button variant="contained" onClick={filternews} type="submit">
+              Search
+            </Button>
 
-     <Fab
+     {/* <Fab
        className="w-30 mt-5"
        variant="extended"
        color="primary"
@@ -441,7 +444,7 @@ const ManageNews = () => {
        onClick={filternews}
      >
        Search
-     </Fab>
+     </Fab> */}
 
       {displayNews()}
 
