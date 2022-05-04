@@ -8,7 +8,6 @@ import {
   CardActions,
   Container,
   Tooltip,
-  Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
@@ -163,7 +162,7 @@ const CurrentAffairs = () => {
       ));
     }
   };
-
+ 
   return (
     <div>
       <header className="caffairs-header">
@@ -204,6 +203,19 @@ const CurrentAffairs = () => {
       </Container>
     </div>
   );
+
+  // return (
+  //   <div>
+  //     <Card sx={{ minWidth: 100 }}>
+  //       <CardContent>
+  //         <h3 sx={{ fontSize: 14 }} color="black" gutterBottom>
+  //           Current Affairs May 2022
+  //         </h3>
+  //       </CardContent>
+  //     </Card>
+  //   </div>
+  // );
+
 };
 
 export default CurrentAffairs;
