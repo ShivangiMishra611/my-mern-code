@@ -47,21 +47,19 @@ color:whitesmoke;
   background: url(http://localhost:5000/images/patternback.png);
   max-width: 5rem;
 }
-.login{
-  background: url(http://localhost:5000/images/background.jpg);
- 
-  background-position: set;
-  background:no-repeat;
-  
-}
+
 .logg{
  max-width:850px;
- padding-right: 0px;
+ margin-top:2rem;
+ margin-left:10rem;
+ margin-bottom: 5rem;
+
 }
 .signup{
   max-width:800px;
   background-position: set;
-  padding-top: 1rem;
+  padding-top:1rem;
+  margin-bottom: 5rem;
 
 }
 .signback{
@@ -70,6 +68,7 @@ color:whitesmoke;
   padding-top: 40px;
   padding-bottom:90px;
   padding-right: 50px;
+  background-size:cover
   
 }
 .addrep-bg{
@@ -90,14 +89,7 @@ color:whitesmoke;
   background-size: cover;
   background-position: top;
 }
-.manage-rep{
-  background: url(http://localhost:5000/images/newsreporter.jpg);
-  height: 275px;
-  background-color:blue;
-  /* padding-right:10rem;
-   */
 
-}
 .loginn{
   background: url(http://localhost:5000/images/backk.jpg);
   
@@ -135,11 +127,12 @@ color:whitesmoke;
   }
   .manage-news{
     background: url(http://localhost:5000/images/managenews.jpeg);
-    height: 300px;
+    height: 250px;
     background-position: top;
-   
-    margin-top: 2rem;
-
+    align-content: center;
+    margin-top: rem;
+    margin-left:3rem;
+    margin-right:3rem;
   }
   .rep-login{
     background: url(https://i.pinimg.com/736x/4f/96/1d/4f961dac467855fe2ad7bc042d34809b.jpg);
@@ -148,6 +141,26 @@ color:whitesmoke;
     padding-right: 40px; */
     height: 100vh;
   }
+  .newsmanage{
+    background: url(http://localhost:5000/images/backimage.jpg);
+    text-align: center;
+    color: white;
+  background-size: cover;
+  background-position: top;
+
+  
+
+  }
+  
+   
+    
+    
+  
+
+    
+  
+
+
   
   
 

@@ -32,11 +32,15 @@ const pages = [
   },
   {
     name: "News Archives",
-    link: "/main/topstories",
+    link: "/main/archieve",
   },
   {
-    name: "Top Stories",
-    link: "/main/topstories",
+    name: "Lucknow News",
+    link: "/main/lucknownews",
+  },
+  {
+    name: "Current Affairs",
+    link: "/main/currentaffairs",
   },
 ];
 
@@ -147,7 +151,7 @@ const Header = () => {
             open={Boolean(repMenuPos)}
             onClose={(e) => setRepMenuPos(null)}
           >
-            <MenuItem onClick={(e)=>navigate("/reporter/login")}>
+            <MenuItem onClick={(e)=>navigate("/main/reporterlogin")}>
               <ListItemIcon>
                 <FollowTheSigns fontSize="small" />
               </ListItemIcon>

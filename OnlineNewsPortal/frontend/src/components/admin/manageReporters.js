@@ -493,7 +493,7 @@ const ManageReporters= () => {
 
 
   return (
-    <div className="container">
+    <div className="repmanage">
       <Toaster position="top-right" reverseOrder={false} />
       <div className="manage-rep"></div>
       <TextField
@@ -509,6 +509,9 @@ const ManageReporters= () => {
          ),
        }}
      />
+
+     <br></br>
+     <br></br>
 
      <Fab
        className="w-30 mt-5"

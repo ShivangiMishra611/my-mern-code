@@ -48,7 +48,7 @@ const TopStories = () => {
     //   return date;
     // }
     const currentDate = new Date();
-    // return data;
+    return data;
     const filtered = data.filter((news) => {
       const newsDate = new Date(news.createdAt);
       return (

@@ -273,11 +273,7 @@ const AddNews = () => {
                   
 
                   <div className="mb-3">
-                 
-                  <Grid item sm={6}  xs={12}>
-                  
-                 
-                  
+
                   
                     <label for="formFile" class="form-label">
                       Add Image
@@ -291,7 +287,7 @@ const AddNews = () => {
                       helperText={errors.thumbnail}
                       onChange={uploadThumbnail}
                     />
-                    </Grid>
+                  
                     
                     
                     

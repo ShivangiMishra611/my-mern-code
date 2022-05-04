@@ -234,7 +234,7 @@ const Home = () => {
                           <li>
                             <NavLink
                               className="nav-link"
-                              to="/main/topstories/"
+                              to="/main/lucknownews"
                             >
                               MYCITY
                             </NavLink>
@@ -290,8 +290,11 @@ const Home = () => {
                                       className="mb-2 font-weight-600"
                                       style={{
                                         cursor: "pointer",
-                                        color: "#950000",
+                                        color: "black",
                                         fontWeight: "bolder",
+                                        '&:hover': {
+                                          color: 'red'
+                                        }
                                       }}
                                       onClick={(e) =>
                                         navigate("/main/viewnews/" + _id)
