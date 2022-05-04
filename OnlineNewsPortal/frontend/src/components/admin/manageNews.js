@@ -427,9 +427,21 @@ const ManageNews = () => {
         </Typography>
         <div className="col-6 mx-auto">
           <div className="input-group mt-5">
-            <input className="form-control" />
+            <input className="form-control"
+             value={filter}
+             label="Search Here"
+             onChange={(e) => setFilter(e.target.value)}
+             InputProps={{
+               startAdornment: (
+                 <InputAdornment position="start">
+                   <SearchIcon
+                     sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                   />
+                 </InputAdornment>
+               ),
+             }} />
             <Button variant="contained"  onClick={filternews}
-            type="Submit">Search
+            type="submit">Search
             
             </Button>
           </div>
