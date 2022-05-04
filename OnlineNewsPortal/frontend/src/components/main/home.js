@@ -7,11 +7,11 @@ import { Tooltip } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
 import React from "react";
-import TimeAgo from "javascript-time-ago";
+import  TimeAgo  from "javascript-time-ago";
 
 const Home = () => {
   const url = app_config.api_url;
-  const timeAgo = new TimeAgo("en-US");
+  // const timeAgo = new TimeAgo("en-US");
   const [newsArray, setNewsArray] = useState([]);
   // const [newsList, setNewsList] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -306,7 +306,7 @@ const Home = () => {
                                     >
                                       {category}{" "}
                                     </span>
-                                    {timeAgo.format(new Date(createdAt))}
+                                    {/* {timeAgo.format(new Date(createdAt))} */}
                                   </div>
                                   <p
                                     className="mb-0"

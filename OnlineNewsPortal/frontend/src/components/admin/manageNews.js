@@ -12,7 +12,8 @@ import {
   Select,
   TextField,
   Tooltip,
-  Typography
+  Typography,
+  Grid,
 } from "@mui/material";
 import toast, { Toaster } from "react-hot-toast";
 import app_config from "../../config";
@@ -63,6 +64,11 @@ const ManageNews = () => {
     "World",
     "Lifestyle",
     "Entertainment",
+    "Health",
+    "Business",
+    "Education",
+    "Technology",
+    "Jobs",
   ];
   const uploadThumbnail = (e) => {
     console.log("file selected");
@@ -409,40 +415,7 @@ const ManageNews = () => {
     }
   };
 
-  // return (
-  //   <div className="">
-  //     <Toaster position="top-right" reverseOrder={false} />
-     
-  //     <header className="news-back">
-  //       <Typography className="text-center text-white" variant="h5">
-  //         Trusted News Tribune
-  //       </Typography>
-  //       <Typography className="text-center text-white" variant="h2">
-  //         Manage News
-  //       </Typography>
-  //       <div className="col-6 mx-auto">
-  //         <div className="input-group mt-5">
-  //           <input className="form-control"
-  //            value={filter}
-  //            label="Search Here"
-  //            onChange={(e) => setFilter(e.target.value)}
-  //            InputProps={{
-  //              startAdornment: (
-  //                <InputAdornment position="start">
-  //                  <SearchIcon
-  //                    sx={{ color: "active.active", mr: 1, my: 0.5 }}
-  //                  />
-  //                </InputAdornment>
-  //              ),
-  //            }} />
-  //           <Button variant="contained"  onClick={filternews}
-  //           type="submit">Search
-            
-  //           </Button>
-  //         </header>
-  //       </div>
-  //       );
-  //       <br></br>
+  //
   const filterByDate = (e) => {
     const selDate = e.target.value;
 
@@ -480,77 +453,86 @@ const ManageNews = () => {
   return (
     <div className="">
       <Toaster position="top-right" reverseOrder={false} />
-      <div className="manage-news"></div>
-
+      <header className="news-back">
       <Grid container spacing={5}>
         <Grid item md={6}>
-          <TextField
-            sx={{ borderRadius: "16px" }}
-            className="w-50 mt-5 "
-            label="Search Here"
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon sx={{ color: "active.active", mr: 1, my: 0.5 }} />
-                </InputAdornment>
-              ),
-            }}
-          />
-          <Fab
-            className="w-30 mt-5"
-            variant="extended"
-            color="primary"
-            aria-label="add"
-            type="submit"
-            onClick={filternews}
-          >
-            Search
-          </Fab>
-        </Grid>
-        <Grid item md={2}>
-          <select
-            class="form-select mt-5"
-            aria-label="Default select example"
-            onChange={filterByYear}
-          >
-            <option selected>Select a Year</option>
-            {[2021, 2022].map((year) => (
-              <option value={year}>{year}</option>
-            ))}
-          </select>
-        </Grid>
-        <Grid item md={2}>
-          <select
-            class="form-select mt-5"
-            aria-label="Default select example"
-            onChange={filterByMonth}
-          >
-            <option selected>Select a Month</option>
-            {["Jan", "Feb", "Mar", "Apr"].map((mon, i) => (
-              <option value={i}>{mon}</option>
-            ))}
-          </select>
-        </Grid>
-        <Grid item md={2}>
-          <select
-            class="form-select mt-5"
-            aria-label="Default select example"
-            onChange={filterByDate}
-          >
-            <option selected>Select a Date</option>
-            {Array.from({ length: 31 }, (_, i) => i + 1).map((date) => (
-              <option value={date}>{date}</option>
-            ))}
-          </select>
-        </Grid>
-      </Grid>
+       
+            <Typography className="text-center text-white" variant="h5">
+              Trusted News Tribune
+            </Typography>
+            <Typography className="text-center text-white" variant="h2">
+              Manage News
+            </Typography>
+          
+              <div className="input-group mt-5">
+                <input
+                  className="form-control"
+                  value={filter}
+                  label="Search Here"
+                  onChange={(e) => setFilter(e.target.value)}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon
+                          sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                        />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                <Button variant="contained" onClick={filternews} type="submit">
+                  Search
+                </Button>
+             
+            </div>
+            </Grid>
+           
 
-      {displayNews()}
-      {updateForm()}
-      </div>
-    // </div>
+            <Grid item md={2}>
+              <select
+                class="form-select mt-5"
+                aria-label="Default select example"
+                onChange={filterByYear}
+              >
+                <option selected>Select a Year</option>
+                {[2021, 2022].map((year) => (
+                  <option value={year}>{year}</option>
+                ))}
+              </select>
+            </Grid>
+
+            <Grid item md={2}>
+              <select
+                class="form-select mt-5"
+                aria-label="Default select example"
+                onChange={filterByMonth}
+              >
+                <option selected>Select a Month</option>
+                {["Jan", "Feb", "Mar", "Apr"].map((mon, i) => (
+                  <option value={i}>{mon}</option>
+                ))}
+              </select>
+            </Grid>
+            <Grid item md={2}>
+              <select
+                class="form-select mt-5"
+                aria-label="Default select example"
+                onChange={filterByDate}
+              >
+                <option selected>Select a Date</option>
+                {Array.from({ length: 31 }, (_, i) => i + 1).map((date) => (
+                  <option value={date}>{date}</option>
+                ))}
+              </select>
+            </Grid>
+            </Grid>
+
+            {displayNews()}
+            {updateForm()}
+         
+       
+       </header>
+    </div>
   );
 };
 

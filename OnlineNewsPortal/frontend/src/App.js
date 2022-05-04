@@ -40,7 +40,7 @@ import en from 'javascript-time-ago/locale/en.json'
 function App() {
 
 
-TimeAgo.addDefaultLocale(en)
+// TimeAgo.addDefaultLocale(en)
 
   const theme1 = createTheme({
     palette: {
