@@ -74,7 +74,7 @@ const Header = () => {
   const reporterLogout = () => {
     // setAnchorElUser(null);
     sessionStorage.removeItem("reporter");
-    navigate("/main/rlogin");
+    navigate("/main/reporterlogin");
   };
 
   const userMenu = [
@@ -151,7 +151,7 @@ const Header = () => {
             open={Boolean(repMenuPos)}
             onClose={(e) => setRepMenuPos(null)}
           >
-            <MenuItem onClick={(e)=>navigate("/reporter/login")}>
+            <MenuItem onClick={(e)=>navigate("/main/reporterlogin")}>
               <ListItemIcon>
                 <FollowTheSigns fontSize="small" />
               </ListItemIcon>

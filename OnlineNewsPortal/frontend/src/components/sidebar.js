@@ -126,12 +126,23 @@ export default function Sidebar({ children, sidebarOptions, title }) {
           </Typography>
           <Box sx={{flexGrow : 1}}>
             <Button sx={{ml : 3}} color="inherit" onClick={e => navigate('/main/topstories')}>
-              Top Stories
+             TOP STORIES
             </Button>
           </Box>
-          <Box sx={{flexGrow : 5}}>
+          <Box sx={{flexGrow : 1}}>
           <Button sx={{ml : 3}} color="inherit" onClick={e => navigate('/main/archieve')}>
-            Archieves
+            NEWS ARCHIVES
+          </Button>
+        </Box>
+        <Box sx={{flexGrow : 1}}>
+          <Button sx={{ml : 3}} color="inherit" onClick={e => navigate('/main/lucknownews')}>
+            LUCKNOW NEWS
+          </Button>
+        </Box>
+
+        <Box sx={{flexGrow : 1}}>
+          <Button sx={{ml : 3}} color="inherit" onClick={e => navigate('/main/currentaffairs')}>
+            CURRENT AFFAIRS
           </Button>
         </Box>
       
