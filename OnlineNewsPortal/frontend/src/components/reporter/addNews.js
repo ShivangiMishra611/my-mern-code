@@ -39,17 +39,38 @@ const AddNews = () => {
   };
 
   const newsCategories = {
-    Sports: ["Cricket", "Football", "Basketball", "IPL"],
-    Politics: ["State", "Country"],
+    Sports: ["CRICKET", "FOOTBALL", "BASKETBALL", "HOCKEY"],
 
-    // "World",
-    // "Lifestyle",
-    // "Entertainment",
-    // "Health",
-    // "Business",
-    // "Education",
-    // "Technology",
-    // "Jobs"
+    Lifestyle: [
+      "STYLE",
+      "BEAUTY",
+      "RELATIONSHIPS",
+      "HOME AND GARDEN",
+      "ASTROLOGY",
+    ],
+
+    Entertainment: ["CELEBRITY", "TV", "MOVIES", "SOUTH CINEMA"],
+
+    Health: ["CORONAVIRUS", "FITNESS", "DIET", "WEIGHT LOSS", "FOOD"],
+
+    Business: [
+      "INDIAN BUSINESS",
+      "CRYPTOCURRENCY",
+      "INTERNATIONAL BUSINESS",
+      "GST",
+      "BUDGET",
+      "BANKING",
+    ],
+
+    Education: ["BOARD EXAMS", "ENTRANCE EXAMS", "ADMISSION", "CBSE"],
+
+    Technolog: ["TECH NEWS", "GADGETS"],
+
+    World: ["US", "PAKISTAN", "CHINA", "UK", "SOUTH ASIA", "REST OF  WORLD"],
+
+  
+
+   
   };
 
   const [tags, setTags] = useState([]);

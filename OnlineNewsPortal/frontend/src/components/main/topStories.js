@@ -27,8 +27,9 @@ const TopStories = () => {
   const navigate = useNavigate();
 
   const newsCategories = [
+   
     "Sports",
-    "Politics",
+  
     "World",
     "Lifestyle",
     "Entertainment",
@@ -36,7 +37,7 @@ const TopStories = () => {
     "Business",
     "Education",
     "Technology",
-    "Jobs",
+  
   ];
 
   const newssubCategories = [];
