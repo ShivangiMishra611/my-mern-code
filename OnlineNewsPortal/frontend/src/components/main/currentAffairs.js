@@ -8,10 +8,6 @@ import {
   CardActions,
   Container,
   Tooltip,
-<<<<<<< HEAD
-=======
-  Typography,
->>>>>>> 87cfcf435a6ac8b3ac6167c5e89b0d3b557f0fdb
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
