@@ -95,12 +95,12 @@ const Login = () => {
   });
 
   return (
-    <div className="login">
+    <div className="signback">
       <Container maxWidth="xl">
-        <Card className="logg" sx={{ display: "flex", ml: 3 }}>
+        <Card className="logg" sx={{ display: "flex", ml: 3,mt:2,mb:5 }}>
           <Grid container>
             <Grid item xs={4} md={7}>
-              <CardMedia
+              <CardMedia sx={{mr:5}}
                 component="img"
                 height="500"
                 width="200"

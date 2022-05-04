@@ -95,9 +95,9 @@ const Login = () => {
   });
 
   return (
-    <div className="rep-login">
+    <div className="signback">
       <div maxWidth="xl">
-        <Card className="logg" sx={{ display: "flex", ml: 3 }}>
+        <Card className="logg" sx={{ display: "flex", ml: 3,mb :5}}>
           <Grid container>
             <Grid item xs={4} md={7}>
               <CardMedia

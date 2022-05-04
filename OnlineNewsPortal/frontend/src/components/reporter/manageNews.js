@@ -145,6 +145,8 @@ const ManageNews = () => {
 
             <h5>{news.category}</h5>
             <Stack direction="row" spacing={2}>
+            <br></br>
+            <br></br>
               
               <Fab
                 variant="extended"
@@ -403,7 +405,7 @@ const ManageNews = () => {
   };
 
   return (
-    <div className="container">
+    <div className="newsmanage">
       <Toaster position="top-right" reverseOrder={false} />
       <div className="manage-news"></div>
      
@@ -420,8 +422,9 @@ const ManageNews = () => {
          ),
        }}
      />
+    
 
-     <Fab
+     <Fab 
        className="w-30 mt-5"
        variant="extended"
        color="primary"
@@ -434,6 +437,8 @@ const ManageNews = () => {
 
      <br></br>
      <br></br>
+     <br></br>
+  
 
       {displayNews()}
 
