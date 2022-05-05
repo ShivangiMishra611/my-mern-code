@@ -3,16 +3,15 @@ import "./home.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import format from "date-fns/format";
 
-import {
- 
-  Tooltip
-} from "@mui/material";
+import { Tooltip } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
 import React from "react";
+import  TimeAgo  from "javascript-time-ago";
 
 const Home = () => {
   const url = app_config.api_url;
+  // const timeAgo = new TimeAgo("en-US");
   const [newsArray, setNewsArray] = useState([]);
   // const [newsList, setNewsList] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -45,7 +44,6 @@ const Home = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-
       });
   };
   useEffect(() => {
@@ -281,9 +279,9 @@ const Home = () => {
                                         cursor: "pointer",
                                         color: "black",
                                         fontWeight: "bolder",
-                                        '&:hover': {
-                                          color: 'red'
-                                        }
+                                        "&:hover": {
+                                          color: "red",
+                                        },
                                       }}
                                       onClick={(e) =>
                                         navigate("/main/viewnews/" + _id)
@@ -295,7 +293,6 @@ const Home = () => {
                                   <div
                                     className="fs-13 mb-2"
                                     style={{
-                                     
                                       color: "black",
                                       fontWeight: "bolder",
                                     }}
@@ -303,19 +300,17 @@ const Home = () => {
                                     <span
                                       className="mr-2"
                                       style={{
-                                       
                                         color: "black",
                                         fontWeight: "bolder",
                                       }}
                                     >
                                       {category}{" "}
                                     </span>
-                                    10 Minutes ago
+                                    {/* {timeAgo.format(new Date(createdAt))} */}
                                   </div>
                                   <p
                                     className="mb-0"
                                     style={{
-                                     
                                       color: "black",
                                       fontWeight: "bolder",
                                     }}

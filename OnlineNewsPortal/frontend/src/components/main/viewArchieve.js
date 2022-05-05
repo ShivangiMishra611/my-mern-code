@@ -8,6 +8,7 @@ import {
   Typography,
   CardActions,
   Container,
+  InputAdornment,
   
   Tooltip,
 } from "@mui/material";
@@ -17,12 +18,15 @@ import {  useNavigate } from "react-router-dom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
 
 import "./topstories.css";
 
 const ViewArchieve = () => {
-  const [newsArray, setNewsArray] = useState([]);
+  const [NewsArray, setNewsArray] = useState([]);
+  const [masterArray, setMasterArray] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState("");
   const navigate = useNavigate();
 
   const newsCategories = [
@@ -73,6 +77,19 @@ const ViewArchieve = () => {
     setNewsArray([...filteredArray]);
     setLoading(false);
   };
+  const filternews = () => {
+    fetch(url + "/news/getall")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        const filtered = data.filter(({ title }) => {
+          return title.toLowerCase().includes(filter.toLowerCase());
+        });
+        console.log(filtered);
+        setNewsArray(filtered);
+        setLoading(false);
+      });
+  };
 
   useEffect(() => {
     fetchData();
@@ -96,7 +113,7 @@ const ViewArchieve = () => {
 
   const displaynews = () => {
     if (!loading) {
-      return newsArray.map((news) => (
+      return NewsArray.map((news) => (
         <Card className="mt-5">
           <Grid container>
             <Grid item xs={6} md={4}>
@@ -159,36 +176,137 @@ const ViewArchieve = () => {
     }
   };
 
+  const filterByDate = (e) => {
+    const selDate = e.target.value;
+
+    const filtered = masterArray.filter((news) => {
+      const newsDate = new Date(news.createdAt);
+      return newsDate.getDate() == selDate;
+    });
+    setNewsArray(filtered);
+  };
+  const filterByMonth = (e) => {
+    const selDate = e.target.value;
+
+    const filtered = masterArray.filter((news) => {
+      const newsDate = new Date(news.createdAt);
+      return newsDate.getMonth() == selDate;
+    });
+    console.log(filtered);
+    setNewsArray(filtered);
+  };
+
+  const filterByYear = (e) => {
+    const selYear = e.target.value;
+    console.log(e.target.value);
+
+    const filtered = masterArray.filter((news) => {
+      const newsDate = new Date(news.createdAt);
+      // console.log(newsDate.getFullYear());
+      return newsDate.getFullYear() == selYear;
+    });
+    console.log(filtered);
+    setNewsArray([...filtered]);
+    console.log(NewsArray);
+  };
+  
+
   return (
-    <div>
+    <div className="" >
+   
       <header className="archieve-header">
+      <Grid container spacing={5}>
+        <Grid item md={6}>
+
+
+
       <Typography className="text-center text-white" variant="h5">
       Trusted News Tribune
     </Typography>
     <Typography className="text-center text-white" variant="h2">
       News Archieves
     </Typography>
-    <div className="col-6 mx-auto">
+   
       <div className="input-group mt-5">
-        <input className="form-control" />
-        <Button variant="contained">Search</Button>
-      </div>
+        <input className="form-control"
+        value={filter}
+        label="Search Here"
+        onChange={(e) => setFilter(e.target.value)}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon
+                sx={{ color: "active.active", mr: 1, my: 0.5 }}
+              />
+            </InputAdornment>
+          ),
+        }}
+         />
+        <Button variant="contained" onClick={filternews} type="submit">Search</Button>
+      
     </div>
-    <br></br>
-        <Container>
+    </Grid>
+   
+    <Grid item md={2}>
+              <select
+                class="form-select mt-5"
+                aria-label="Default select example"
+                onChange={filterByYear}
+              >
+                <option selected>Select a Year</option>
+                {[2021, 2022].map((year) => (
+                  <option value={year}>{year}</option>
+                ))}
+              </select>
+            </Grid>
+
+            <Grid item md={2}>
+              <select
+                class="form-select mt-5"
+                aria-label="Default select example"
+                onChange={filterByMonth}
+              >
+                <option selected>Select a Month</option>
+                {["Jan", "Feb", "Mar", "Apr"].map((mon, i) => (
+                  <option value={i}>{mon}</option>
+                ))}
+              </select>
+            </Grid>
+            <Grid item md={2}>
+              <select
+                class="form-select mt-5"
+                aria-label="Default select example"
+                onChange={filterByDate}
+              >
+                <option selected>Select a Date</option>
+                {Array.from({ length: 31 }, (_, i) => i + 1).map((date) => (
+                  <option value={date}>{date}</option>
+                ))}
+              </select>
+            </Grid>
+            </Grid>
+    <Container>
           <div className="category-header">
             <Box
               sx={{
                 "& button": { m: 1 },
                 display: "flex",
                 justifyContent: "space-between",
+               
               }}
             >
               {displayCategories()}
             </Box>
           </div>
         </Container>
-      </header>
+     
+   
+
+
+       
+              
+           
+      
       <Container>
         <Grid container spacing={3}>
           <Grid item md={9}>
@@ -197,6 +315,7 @@ const ViewArchieve = () => {
           <Grid item md={3}></Grid>
         </Grid>
       </Container>
+      </header>
     </div>
   );
 };

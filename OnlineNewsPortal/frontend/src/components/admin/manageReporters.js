@@ -6,6 +6,7 @@ import {
   InputAdornment,
   TextField,
   Tooltip,
+  Grid,
 } from "@mui/material";
 import toast, { Toaster } from "react-hot-toast";
 import app_config from "../../config";
@@ -512,6 +513,7 @@ const ManageReporters = () => {
           </div>
         </div>
         <br></br>
+       
 
         {displayReporters()}
         {updateForm()}
