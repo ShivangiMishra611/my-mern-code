@@ -123,7 +123,7 @@ const TopStories = () => {
   };
 
   const refreshSubData = (filter) => {
-    setCurrentCategory(filter);
+    // setCurrentCategory(filter);
     setLoading(true);
     fetch(url + "/news/approvenews")
       .then((res) => res.json())
@@ -198,6 +198,7 @@ const TopStories = () => {
   };
 
   const displaySubCategories = () => {
+    if(category || currentCategory)
     return newsCategories[category ? category : currentCategory].map((cate) => (
       <Button
         color="warning"

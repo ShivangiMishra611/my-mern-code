@@ -165,6 +165,7 @@ color:whitesmoke;
     text-shadow: 2px 2px 3px #0000005c;
     height: 800px;
     background-size: cover;
+  
 
   }
   .lkonews-back{
@@ -172,6 +173,7 @@ color:whitesmoke;
     padding: 2rem;
     text-shadow: 2px 2px 3px #0000005c;
     height: 800px;
+    background-size: cover;
 
   }
  .current-back{
@@ -188,6 +190,18 @@ color:whitesmoke;
   text-shadow: 2px 2px 3px #0000005c;
   height: 800px;
 
+
+ }
+ .nmanage{
+   color: white;
+   padding-left: 18rem; 
+   
+ }
+ .lnmanage{
+  color: white;
+  padding-left: 18rem; 
+  
+  
 
  }
     
