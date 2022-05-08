@@ -455,12 +455,12 @@ const ManageNews = () => {
       <Toaster position="top-right" reverseOrder={false} />
       <header className="news-back">
       <Grid container spacing={5}>
-        <Grid item md={6}>
+        <Grid item md={6} >
        
-            <Typography className="text-center text-white" variant="h5">
+            <Typography className="text-center text-white" variant="h5"  align="center" >
               Trusted News Tribune
             </Typography>
-            <Typography className="text-center text-white" variant="h2">
+            <Typography className="text-center text-white" variant="h2" align="center">
               Manage News
             </Typography>
           
@@ -488,7 +488,7 @@ const ManageNews = () => {
             </Grid>
            
 
-            <Grid item md={2}>
+            <Grid item md={2} sx={{mt:  6}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -501,7 +501,7 @@ const ManageNews = () => {
               </select>
             </Grid>
 
-            <Grid item md={2}>
+            <Grid item md={2}  sx={{mt: 6}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -513,7 +513,7 @@ const ManageNews = () => {
                 ))}
               </select>
             </Grid>
-            <Grid item md={2}>
+            <Grid item md={2} sx={{mt: 6}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
