@@ -6,7 +6,6 @@ import {
   Box,
   Button,
   InputAdornment,
-  
   Typography,
   CardActions,
   Container,
@@ -18,7 +17,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
-import {  useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import "./topstories.css";
 
@@ -26,13 +25,13 @@ const TopStories = () => {
   const [NewsArray, setNewsArray] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("");
+  const [currentCategory, setCurrentCategory] = useState("");
   const { category } = useParams();
   const navigate = useNavigate();
 
-  const newsCategories = [
-   
+  const newsCategories2 = [
     "Sports",
-  
+
     "World",
     "Lifestyle",
     "Entertainment",
@@ -40,10 +39,38 @@ const TopStories = () => {
     "Business",
     "Education",
     "Technology",
-  
   ];
 
-  const newssubCategories = [];
+  const newsCategories = {
+    Sports: ["CRICKET", "FOOTBALL", "BASKETBALL", "HOCKEY"],
+
+    Lifestyle: [
+      "STYLE",
+      "BEAUTY",
+      "RELATIONSHIPS",
+      "HOME AND GARDEN",
+      "ASTROLOGY",
+    ],
+
+    Entertainment: ["CELEBRITY", "TV", "MOVIES", "SOUTH CINEMA"],
+
+    Health: ["CORONAVIRUS", "FITNESS", "DIET", "WEIGHT LOSS", "FOOD"],
+
+    Business: [
+      "INDIAN BUSINESS",
+      "CRYPTOCURRENCY",
+      "INTERNATIONAL BUSINESS",
+      "GST",
+      "BUDGET",
+      "BANKING",
+    ],
+
+    Education: ["BOARD EXAMS", "ENTRANCE EXAMS", "ADMISSION", "CBSE"],
+
+    Technolog: ["TECH NEWS", "GADGETS"],
+
+    World: ["US", "PAKISTAN", "CHINA", "UK", "SOUTH ASIA", "REST OF  WORLD"],
+  };
 
   const filterTopStories = (data) => {
     // Date.prototype.removeDays = function(days) {
@@ -85,12 +112,24 @@ const TopStories = () => {
   };
 
   const refreshData = (filter) => {
+    setCurrentCategory(filter);
     setLoading(true);
     fetch(url + "/news/approvenews")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         applyFilter(filterTopStories(data), filter);
+      });
+  };
+
+  const refreshSubData = (filter) => {
+    setCurrentCategory(filter);
+    setLoading(true);
+    fetch(url + "/news/approvenews")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        applySubFilter(filterTopStories(data), filter);
       });
   };
 
@@ -107,6 +146,21 @@ const TopStories = () => {
     setNewsArray([...filteredArray]);
     setLoading(false);
   };
+
+  const applySubFilter = (data, filter) => {
+    // if(!filter){
+    //   return data;
+    // }
+    const filteredArray = data.filter((news) => {
+      return filter.toLowerCase() == news.subCategory.toLowerCase();
+    });
+
+    console.log(filteredArray);
+
+    setNewsArray([...filteredArray]);
+    setLoading(false);
+  };
+
   const filternews = () => {
     fetch(url + "/news/getall")
       .then((res) => res.json())
@@ -121,7 +175,6 @@ const TopStories = () => {
       });
   };
 
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -130,14 +183,29 @@ const TopStories = () => {
   };
 
   const displayCategories = () => {
-    return newsCategories.map((category) => (
+    return Object.keys(newsCategories).map((cate) => (
       <Button
-        color="primary"
+        color={
+          currentCategory === cate || category === cate ? "warning" : "primary"
+        }
         variant="contained"
         size="medium"
-        onClick={(e) => refreshData(category)}
+        onClick={(e) => refreshData(cate)}
       >
-        {category}
+        {cate}
+      </Button>
+    ));
+  };
+
+  const displaySubCategories = () => {
+    return newsCategories[category ? category : currentCategory].map((cate) => (
+      <Button
+        color="warning"
+        variant="contained"
+        size="small"
+        onClick={(e) => refreshSubData(cate)}
+      >
+        {cate}
       </Button>
     ));
   };
@@ -210,32 +278,36 @@ const TopStories = () => {
   return (
     <div>
       <header className="stories-header">
-      <Typography className="text-center text-white" variant="h5">
-      Trusted News Tribune
-    </Typography>
-    <Typography className="text-center text-white" variant="h2">
-      Top Stories
-    </Typography>
-    <div className="col-6 mx-auto">
-      <div className="input-group mt-5">
-        <input className="form-control"
-          value={filter}
-          label="Search Here"
-          onChange={(e) => setFilter(e.target.value)}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon
-                  sx={{ color: "active.active", mr: 1, my: 0.5 }}
-                />
-              </InputAdornment>
-            ),
-          }} />
-        <Button variant="contained"  onClick={filternews} type="submit">Search</Button>
-      </div>
-    </div>
-    <br></br>
-        
+        <Typography className="text-center text-white" variant="h5">
+          Trusted News Tribune
+        </Typography>
+        <Typography className="text-center text-white" variant="h2">
+          Top Stories
+        </Typography>
+        <div className="col-6 mx-auto">
+          <div className="input-group mt-5">
+            <input
+              className="form-control"
+              value={filter}
+              label="Search Here"
+              onChange={(e) => setFilter(e.target.value)}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon
+                      sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                    />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <Button variant="contained" onClick={filternews} type="submit">
+              Search
+            </Button>
+          </div>
+        </div>
+        <br></br>
+
         <Container>
           <div className="category-header">
             <Box
@@ -243,10 +315,18 @@ const TopStories = () => {
                 "& button": { m: 1 },
                 display: "flex",
                 justifyContent: "space-between",
-               
               }}
             >
               {displayCategories()}
+            </Box>
+            <Box
+              sx={{
+                "& button": { m: 1 },
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              {displaySubCategories()}
             </Box>
           </div>
         </Container>

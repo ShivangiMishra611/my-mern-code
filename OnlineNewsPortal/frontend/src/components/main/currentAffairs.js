@@ -6,12 +6,10 @@ import {
   Box,
   Button,
   InputAdornment,
-  
   Typography,
   CardActions,
   Container,
   Tooltip,
- 
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
@@ -29,8 +27,24 @@ const CurrentAffairs = () => {
   const [filter, setFilter] = useState("");
   const { categorystate } = useParams();
   const navigate = useNavigate();
+  const [dateFilters, setDateFilters] = useState([]);
+  const [currentDateFilter, setCurrentDateFilter] = useState(null);
 
   const newsCategories = ["National", "International"];
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
 
   const filterTopStories = (data) => {
     // Date.prototype.removeDays = function (days) {
@@ -47,7 +61,6 @@ const CurrentAffairs = () => {
         newsDate.getMonth() === currentDate.getMonth() &&
         newsDate.getDate() === currentDate.getDate()
       );
-    
     });
 
     console.log(filtered);
@@ -56,12 +69,32 @@ const CurrentAffairs = () => {
 
   const url = app_config.api_url;
 
+  const storeDateFilters = (data) => {
+    let filteredDates = [];
+    for (let { createdAt } of data) {
+      let date = new Date(createdAt);
+      let exists = filteredDates.filter(
+        (d) =>
+          d.getFullYear() === date.getFullYear() &&
+          d.getMonth() === date.getMonth()
+      );
+
+      if (!(exists.length > 0)) {
+        filteredDates.push(date);
+      }
+    }
+
+    console.log(filteredDates);
+    setDateFilters([...filteredDates]);
+  };
+
   // Step 1 : Fetch Data from server
   const fetchData = () => {
     fetch(url + "/newscurrent/approvenews")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        storeDateFilters(data);
         if (categorystate) {
           applyFilter(filterTopStories(data), categorystate);
         } else {
@@ -69,6 +102,33 @@ const CurrentAffairs = () => {
         }
         setLoading(false);
       });
+  };
+
+  const displayDateFilters = () => {
+    if (!loading) {
+      return (
+        <ul className="list-group mt-5">
+          {dateFilters.map((date) => (
+            <li
+              className={
+                date === currentDateFilter
+                  ? "list-group-item active"
+                  : "list-group-item"
+              }
+              style={{ fontWeight: "600", cursor: "pointer" }}
+              onClick={(e) => applyDateFilter(date)}
+            >
+              {monthNames[date.getMonth()]} {date.getFullYear()}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+  };
+
+  const applyDateFilter = (date) => {
+    setCurrentDateFilter(date);
+    refreshData2(date);
   };
 
   const refreshData = (filter) => {
@@ -80,6 +140,17 @@ const CurrentAffairs = () => {
         applyFilter(filterTopStories(data), filter);
       });
   };
+
+  const refreshData2 = (filter) => {
+    setLoading(true);
+    fetch(url + "/newscurrent/approvenews")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        dateFilter(filterTopStories(data), filter);
+      });
+  };
+
   const applyFilter = (data, filter) => {
     const filteredArray = data.filter((newscurrent) => {
       return filter.toLowerCase() == newscurrent.categorystate.toLowerCase();
@@ -90,6 +161,21 @@ const CurrentAffairs = () => {
     setNewsArray([...filteredArray]);
     setLoading(false);
   };
+
+  const dateFilter = (data, filter) => {
+    const filteredArray = data.filter(({ createdAt }) => {
+      return (
+        filter.getFullYear() === new Date(createdAt).getFullYear() &&
+        filter.getMonth() === new Date(createdAt).getMonth()
+      );
+    });
+
+    console.log(filteredArray);
+
+    setNewsArray([...filteredArray]);
+    setLoading(false);
+  };
+
   const filternews = () => {
     fetch(url + "/newscurrent/getall")
       .then((res) => res.json())
@@ -114,7 +200,7 @@ const CurrentAffairs = () => {
   const displayCategories = () => {
     return newsCategories.map((categorystate) => (
       <Button
-      color="primary"
+        color="primary"
         variant="contained"
         size="medium"
         onClick={(e) => refreshData(categorystate)}
@@ -190,7 +276,7 @@ const CurrentAffairs = () => {
       ));
     }
   };
- 
+
   return (
     <div>
       <header className="caffairs-header">
@@ -202,20 +288,24 @@ const CurrentAffairs = () => {
         </Typography>
         <div className="col-6 mx-auto">
           <div className="input-group mt-5">
-            <input className="form-control"
-             value={filter}
-             label="Search Here"
-             onChange={(e) => setFilter(e.target.value)}
-             InputProps={{
-               startAdornment: (
-                 <InputAdornment position="start">
-                   <SearchIcon
-                     sx={{ color: "active.active", mr: 1, my: 0.5 }}
-                   />
-                 </InputAdornment>
-               ),
-             }} />
-            <Button variant="contained" onClick={filternews} type="submit">Search</Button>
+            <input
+              className="form-control"
+              value={filter}
+              label="Search Here"
+              onChange={(e) => setFilter(e.target.value)}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon
+                      sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                    />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <Button variant="contained" onClick={filternews} type="submit">
+              Search
+            </Button>
           </div>
         </div>
         <br></br>
@@ -238,7 +328,9 @@ const CurrentAffairs = () => {
           <Grid item md={9}>
             {displaynews()}
           </Grid>
-          <Grid item md={3}></Grid>
+          <Grid item md={3}>
+            {displayDateFilters()}
+          </Grid>
         </Grid>
       </Container>
     </div>
@@ -255,7 +347,6 @@ const CurrentAffairs = () => {
   //     </Card>
   //   </div>
   // );
-
 };
 
 export default CurrentAffairs;
