@@ -12,6 +12,7 @@ import {
   Select,
   TextField,
   Tooltip,
+  Grid,
 } from "@mui/material";
 import toast, { Toaster } from "react-hot-toast";
 import app_config from "../../config";
@@ -32,6 +33,7 @@ import { green } from '@mui/material/colors';
 import * as Yup from "yup";
 const ManageCurrentAffairs = () => {
   const [NewsArray, setNewsArray] = useState([]);
+  const [masterArray, setMasterArray] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [showUpdateForm, setShowUpdateForm] = useState(false);
@@ -51,6 +53,7 @@ const ManageCurrentAffairs = () => {
       .then((data) => {
         console.log(data);
         setNewsArray(data);
+        setMasterArray(data);
         setLoading(false);
       });
   };
@@ -221,7 +224,7 @@ const ManageCurrentAffairs = () => {
       .min(2, "Too Short!")
       .max(100, "Too Long!")
       .required("Title is Required"),
-    categorystate: Yup.string().required("State is Required"),
+    categorystate: Yup.string().required("Category is Required"),
     summary: Yup.string().required("News Summary is Required"),
     tags: Yup.string().required("News Tags is Required"),
   });
@@ -248,6 +251,7 @@ const ManageCurrentAffairs = () => {
                         label="Title"
                         variant="outlined"
                         id="title"
+                        type="text"
                         onChange={handleChange}
                         value={values.title}
                         error={Boolean(errors.title)}
@@ -387,7 +391,9 @@ const ManageCurrentAffairs = () => {
                         />
                       </div>
 
-                      <Button type="submit" className="btn btn-primary">
+                      <Button type="submit" className="btn btn-primary"
+                      color="success"
+                      variant="contained">
                         Submit
                       </Button>
                       <Button
@@ -407,28 +413,114 @@ const ManageCurrentAffairs = () => {
       );
     }
   };
+  const filterByDate = (e) => {
+    const selDate = e.target.value;
+
+    const filtered = masterArray.filter((newscurrent) => {
+      const newsDate = new Date(newscurrent.createdAt);
+      return newsDate.getDate() == selDate;
+    });
+    setNewsArray(filtered);
+  };
+  const filterByMonth = (e) => {
+    const selDate = e.target.value;
+
+    const filtered = masterArray.filter((newscurrent) => {
+      const newsDate = new Date(newscurrent.createdAt);
+      return newsDate.getMonth() == selDate;
+    });
+    console.log(filtered);
+    setNewsArray(filtered);
+  };
+
+  const filterByYear = (e) => {
+    const selYear = e.target.value;
+    console.log(e.target.value);
+
+    const filtered = masterArray.filter((newscurrent) => {
+      const newsDate = new Date(newscurrent.createdAt);
+      // console.log(newsDate.getFullYear());
+      return newsDate.getFullYear() == selYear;
+    });
+    console.log(filtered);
+    setNewsArray([...filtered]);
+    console.log(NewsArray);
+  };
+
 
   return (
     <div className="">
       <Toaster position="top-right" reverseOrder={false} />
      
       <header className="current-back">
+      <Grid container spacing={5}>
+        <Grid item md={6}>
         <Typography className="text-center text-white" variant="h5">
           Trusted News Tribune
         </Typography>
         <Typography className="text-center text-white" variant="h2">
           Manage Current Affairs
         </Typography>
-        <div className="col-6 mx-auto">
+        
           <div className="input-group mt-5">
-            <input className="form-control" />
+            <input className="form-control" 
+            value={filter}
+            label="Search Here"
+            onChange={(e) => setFilter(e.target.value)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon
+                    sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                  />
+                </InputAdornment>
+              ),
+            }}/>
             <Button variant="contained"  onClick={filternews}
-            type="Submit">Search
+            type="submit">Search
             
             </Button>
           </div>
-        </div>
-        <br></br>
+          </Grid>
+          <Grid item md={2}>
+              <select
+                class="form-select mt-5"
+                aria-label="Default select example"
+                onChange={filterByYear}
+              >
+                <option selected>Select a Year</option>
+                {[2021, 2022].map((year) => (
+                  <option value={year}>{year}</option>
+                ))}
+              </select>
+            </Grid>
+
+            <Grid item md={2}>
+              <select
+                class="form-select mt-5"
+                aria-label="Default select example"
+                onChange={filterByMonth}
+              >
+                <option selected>Select a Month</option>
+                {["Jan", "Feb", "Mar", "Apr"].map((mon, i) => (
+                  <option value={i}>{mon}</option>
+                ))}
+              </select>
+            </Grid>
+            <Grid item md={2}>
+              <select
+                class="form-select mt-5"
+                aria-label="Default select example"
+                onChange={filterByDate}
+              >
+                <option selected>Select a Date</option>
+                {Array.from({ length: 31 }, (_, i) => i + 1).map((date) => (
+                  <option value={date}>{date}</option>
+                ))}
+              </select>
+            </Grid>
+            </Grid>
+       
 
 
 

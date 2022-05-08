@@ -32,6 +32,7 @@ import { green } from "@mui/material/colors";
 
 const ManageReporters = () => {
   const [ReporterArray, setReporterArray] = useState([]);
+  const [masterArray, setMasterArray] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [showUpdateForm, setShowUpdateForm] = useState(false);
@@ -48,6 +49,7 @@ const ManageReporters = () => {
       .then((data) => {
         console.log(data);
         setReporterArray(data);
+        setMasterArray(data);
         setLoading(false);
       });
   };
@@ -462,6 +464,7 @@ const ManageReporters = () => {
       );
     }
   };
+  
 
   return (
     <div className="rep-back">
