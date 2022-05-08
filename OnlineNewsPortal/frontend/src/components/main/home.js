@@ -7,7 +7,7 @@ import { Tooltip } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
 import React from "react";
-import  TimeAgo  from "javascript-time-ago";
+import TimeAgo from "javascript-time-ago";
 
 const Home = () => {
   const url = app_config.api_url;
@@ -18,7 +18,7 @@ const Home = () => {
   const navigate = useNavigate();
   const categories = [
     "Sports",
-  
+
     "World",
     "Lifestyle",
     "Entertainment",
@@ -26,7 +26,6 @@ const Home = () => {
     "Business",
     "Education",
     "Technology",
-   
   ];
 
   const fetchData = () => {
@@ -83,6 +82,62 @@ const Home = () => {
             </div>
             <div className="content-wrapper">
               <div className="container">
+                {/* <div
+                  id="carouselExampleIndicators"
+                  className="carousel slide"
+                  data-ride="carousel"
+                >
+                  <ol className="carousel-indicators">
+                    <li
+                      data-target="#carouselExampleIndicators"
+                      data-slide-to="0"
+                      className="active"
+                    ></li>
+                    <li
+                      data-target="#carouselExampleIndicators"
+                      data-slide-to="1"
+                    ></li>
+                    <li
+                      data-target="#carouselExampleIndicators"
+                      data-slide-to="2"
+                    ></li>
+                  </ol>
+                  <div className="carousel-inner">
+                    <div className="carousel-item active">
+                      <img className="img-fluid" src="..." alt="First slide" />
+                    </div>
+                    <div className="carousel-item">
+                      <img className="img-fluid" src="..." alt="Second slide" />
+                    </div>
+                    <div className="carousel-item">
+                      <img className="img-fluid" src="..." alt="Third slide" />
+                    </div>
+                  </div>
+                  <a
+                    className="carousel-control-prev"
+                    href="#carouselExampleIndicators"
+                    role="button"
+                    data-slide="prev"
+                  >
+                    <span
+                      className="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span className="sr-only">Previous</span>
+                  </a>
+                  <a
+                    className="carousel-control-next"
+                    href="#carouselExampleIndicators"
+                    role="button"
+                    data-slide="next"
+                  >
+                    <span
+                      className="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span className="sr-only">Next</span>
+                  </a>
+                </div> */}
                 <div className="row" data-aos="fade-up">
                   <div className="col-xl-8 stretch-card grid-margin">
                     <div className="position-relative">
@@ -332,10 +387,22 @@ const Home = () => {
                       <div className="card-body">
                         <div className="row">
                           <div className="col-xl-6">
-                            <div className="card-title">Sport light</div>
+                            <div className="card-title">Sports</div>
                             <div className="row">
                               <div className="col-xl-6 col-lg-8 col-sm-6">
-                                <div className="rotate-img">
+                                <div
+                                  className="rotate-img"
+                                  onClick={(e) =>
+                                    navigate(
+                                      "/main/viewnews/" + newsArray[0]._id
+                                    )
+                                  }
+                                  style={{
+                                    cursor: "pointer",
+
+                                    fontWeight: "bolder",
+                                  }}
+                                >
                                   <img
                                     src={url + "/images/dashboard/home_16.jpg"}
                                     alt="thumb"
@@ -416,7 +483,7 @@ const Home = () => {
                           <div className="col-xl-6">
                             <div className="row">
                               <div className="col-sm-6">
-                                <div className="card-title">Sport light</div>
+                                <div className="card-title">Sports</div>
                                 <div className="border-bottom pb-3">
                                   <div className="rotate-img">
                                     <img
@@ -763,6 +830,7 @@ const Home = () => {
               </div>
             </footer>
           </div>
+          //{" "}
         </div>
       );
     }
