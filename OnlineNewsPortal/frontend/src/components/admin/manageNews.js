@@ -456,12 +456,13 @@ const ManageNews = () => {
       <Toaster position="top-right" reverseOrder={false} />
       <header className="news-back">
       <Grid container spacing={5}>
-        <Grid item md={6}>
-       
-            <Typography className="text-center text-white" variant="h5">
+
+      <Grid item md={6} >
+      
+            <Typography className="nmanage text-center" variant="h5"  >
               Trusted News Tribune
             </Typography>
-            <Typography className="text-center text-white" variant="h2">
+            <Typography className="nmanage text-center" variant="h2" >
               Manage News
             </Typography>
           
@@ -481,15 +482,20 @@ const ManageNews = () => {
                     ),
                   }}
                 />
-                <Button variant="contained" onClick={filternews} type="submit">
+                <Button variant="contained" onClick={filternews} type="submit" align="center">
                   Search
                 </Button>
+                <br></br>
+                <br></br>
              
             </div>
+            <br></br>
+                <br></br>
+             
             </Grid>
            
 
-            <Grid item md={2}>
+            <Grid item md={2} sx={{mt: 27}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -502,19 +508,19 @@ const ManageNews = () => {
               </select>
             </Grid>
 
-            <Grid item md={2}>
+            <Grid item md={2}  sx={{mt: 27}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
                 onChange={filterByMonth}
               >
                 <option selected>Select a Month</option>
-                {["Jan", "Feb", "Mar", "Apr"].map((mon, i) => (
+                {["Jan", "Feb", "Mar", "Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"].map((mon, i) => (
                   <option value={i}>{mon}</option>
                 ))}
               </select>
             </Grid>
-            <Grid item md={2}>
+            <Grid item md={2} sx={{mt: 27}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"

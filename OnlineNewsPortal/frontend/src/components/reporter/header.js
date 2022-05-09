@@ -86,12 +86,6 @@ export default function Header() {
 
 
 
-          <IconButton className="nav-item">
-          <NavLink className="nav-link" to="/main/topstories">
-           Top Stories
-          </NavLink>
-        </IconButton>
-
          
             <IconButton className="nav-item">
               <NavLink className="nav-link" to="/reporter/dashboard/addnews">
@@ -149,17 +143,17 @@ export default function Header() {
             anchorEl={userMenuPos}
             open={userMenuOpen}
             onClose={(e) => setUserMenuPos(null)}
-          >
+           >
             <MenuItem>
               <ListItemIcon>
-                <FollowTheSigns fontSize="small" />
-              </ListItemIcon>
-              <ListItemText>Register as User</ListItemText>
-            </MenuItem>
-            <MenuItem>Signup</MenuItem>
-          </Menu>
+               <FollowTheSigns fontSize="small" />
+             </ListItemIcon>
+             <ListItemText>Register as User</ListItemText>
+           </MenuItem>
+             <MenuItem>Signup</MenuItem>
+           </Menu>
 
-          <Tooltip title="Reporter">
+          // <Tooltip title="Reporter">
             <IconButton
               size="large"
               edge="start"

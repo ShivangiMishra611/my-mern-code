@@ -477,10 +477,14 @@ const ManageCurrentAffairs = () => {
               ),
             }}/>
             <Button variant="contained"  onClick={filternews}
-            type="submit">Search
+            type="submit" align="center" >Search
             
             </Button>
+            <br></br>
+            <br></br>
           </div>
+          <br></br>
+          <br></br>
           </Grid>
           <Grid item md={2}>
               <select
@@ -495,7 +499,7 @@ const ManageCurrentAffairs = () => {
               </select>
             </Grid>
 
-            <Grid item md={2}>
+            <Grid item md={2} sx={{mt: 27}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
