@@ -10715,12 +10715,14 @@
   }
   
   footer {
-    color: #ffffff;
+    color: #ffff;
+    background-color: #950000;
   }
   
   footer .footer-top {
     background: #032a63;
     padding: 74px 0 48px 0;
+    background: #950000;
   }
   
   footer .footer-top .social-media {
@@ -10756,14 +10758,17 @@
   
   footer .footer-top .social-media li a:hover {
     background: #000000;
+    
   }
   
   footer .footer-top .social-media li a:hover i {
     color: #ffffff;
+    background: #950000;
   }
   
   footer .footer-top .footer-border-bottom {
     border-bottom: 1px solid rgba(99, 99, 99, 0.2);
+    background: #950000;
   }
   
   footer .footer-top .count {
@@ -10774,11 +10779,12 @@
     font-size: 10px;
     text-align: center;
     padding-top: 1px;
+    background: #950000;
   }
   
   footer .footer-bottom {
     padding: 24px 0 48px 0;
-    background: #032a63;
+    background: #950000;
   }
   
   .error-wrap {

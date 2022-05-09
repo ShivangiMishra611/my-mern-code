@@ -495,7 +495,7 @@ const ManageNews = () => {
             </Grid>
            
 
-            <Grid item md={2} sx={{mt:  14}}>
+            <Grid item md={2} sx={{mt: 27}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -508,7 +508,7 @@ const ManageNews = () => {
               </select>
             </Grid>
 
-            <Grid item md={2}  sx={{mt: 14}}>
+            <Grid item md={2}  sx={{mt: 27}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -520,7 +520,7 @@ const ManageNews = () => {
                 ))}
               </select>
             </Grid>
-            <Grid item md={2} sx={{mt: 14}}>
+            <Grid item md={2} sx={{mt: 27}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"

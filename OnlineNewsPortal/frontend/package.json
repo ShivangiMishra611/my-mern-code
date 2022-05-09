@@ -20,6 +20,7 @@
     "react-hot-toast": "^2.2.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-share": "^4.4.0",
     "sweetalert2": "^11.4.4",
     "sweetalert2-react-content": "^4.2.0",
     "swiper": "^8.1.4",

@@ -200,11 +200,35 @@ color:whitesmoke;
  .lnmanage{
   color: white;
   padding-left: 18rem; 
-  
-  
-
  }
-    
+ .img-slider{
+   box-shadow:rgb(149,157 ,165,0.2) 0px 8px 24px;
+   animation:changeImage 20s linear infinite;
+   display:grid;
+  
+ } 
+ /* @keyframes changeImage {
+   0%{
+     background-image: url(http://localhost:5000/images/crypto.webp);
+   }
+   25%{
+    background-image: url(http://localhost:5000/images/crypto.webp);
+   }
+   50%{
+    background-image: url(http://localhost:5000/images/crypto.webp);
+   }
+   75%{
+    background-image: url(http://localhost:5000/images/crypto.webp);
+   }
+   100%{
+    background-image: url(http://localhost:5000/images/crypto.webp);
+   }
+ }
+      */
+      .footer-bottom{
+        height:3vh;
+        background-color: red;
+      }
   
 
     

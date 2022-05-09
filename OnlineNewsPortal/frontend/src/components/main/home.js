@@ -82,87 +82,31 @@ const Home = () => {
             </div>
             <div className="content-wrapper">
               <div className="container">
-                {/* <div
-                  id="carouselExampleIndicators"
-                  className="carousel slide"
-                  data-ride="carousel"
-                >
-                  <ol className="carousel-indicators">
-                    <li
-                      data-target="#carouselExampleIndicators"
-                      data-slide-to="0"
-                      className="active"
-                    ></li>
-                    <li
-                      data-target="#carouselExampleIndicators"
-                      data-slide-to="1"
-                    ></li>
-                    <li
-                      data-target="#carouselExampleIndicators"
-                      data-slide-to="2"
-                    ></li>
-                  </ol>
-                  <div className="carousel-inner">
-                    <div className="carousel-item active">
-                      <img className="img-fluid" src="..." alt="First slide" />
-                    </div>
-                    <div className="carousel-item">
-                      <img className="img-fluid" src="..." alt="Second slide" />
-                    </div>
-                    <div className="carousel-item">
-                      <img className="img-fluid" src="..." alt="Third slide" />
-                    </div>
-                  </div>
-                  <a
-                    className="carousel-control-prev"
-                    href="#carouselExampleIndicators"
-                    role="button"
-                    data-slide="prev"
-                  >
-                    <span
-                      className="carousel-control-prev-icon"
-                      aria-hidden="true"
-                    ></span>
-                    <span className="sr-only">Previous</span>
-                  </a>
-                  <a
-                    className="carousel-control-next"
-                    href="#carouselExampleIndicators"
-                    role="button"
-                    data-slide="next"
-                  >
-                    <span
-                      className="carousel-control-next-icon"
-                      aria-hidden="true"
-                    ></span>
-                    <span className="sr-only">Next</span>
-                  </a>
-                </div> */}
-                <div className="row" data-aos="fade-up">
-                  <div className="col-xl-8 stretch-card grid-margin">
-                    <div className="position-relative">
-                      <img
-                        className="img-fluid"
-                        src={url + "/images/dashboard/banner.jpg"}
-                        alt=""
-                      />
-                      <div
-                        className="banner-content"
-                        onClick={(e) =>
-                          navigate("/main/viewnews/" + newsArray[0]._id)
-                        }
-                      >
-                        <div className="badge badge-danger fs-12 font-weight-bold mb-3">
-                          global news
-                        </div>
-                        <h1 className="mb-0">GLOBAL PANDEMIC</h1>
-                        <h1 className="mb-2"></h1>
-                        <div className="fs-12">
-                          <span className="mr-2">Photo </span>10 Minutes ago
-                        </div>
+              <div className="img-slider" data-aos="fade-up">
+              <div className="col-xl-8 stretch-card grid-margin">
+                <div className="position-relative">
+                    <img
+                      className="img-fluid"
+                      src={url + "/images/corona.webp"}
+                      alt=""
+                      width="950"
+                      height="850"
+                    />
+
+                    <div
+                      className="banner-content"
+                      onClick={(e) =>
+                        navigate("/main/viewnews/" + newsArray[0]._id)
+                      }
+                    >
+               
+                  
+                       
+                        
                       </div>
                     </div>
-                  </div>
+                    </div>
+                
                   <div className="col-xl-4 stretch-card grid-margin">
                     <div className="card bg-dark text-white">
                       <div className="card-body">
@@ -679,19 +623,30 @@ const Home = () => {
                       <ul className="social-media mb-3">
                         <li>
                           <a href="#">
-                            <i className="mdi mdi-facebook"></i>
+                            <i className=" fab fa-facebook"></i>
                           </a>
                         </li>
                         <li>
                           <a href="#">
-                            <i className="mdi mdi-youtube"></i>
+                            <i className="fab  fa-youtube"></i>
                           </a>
                         </li>
                         <li>
                           <a href="#">
-                            <i className="mdi mdi-twitter"></i>
+                            <i className="fab fa-twitter"></i>
                           </a>
                         </li>
+
+                        <li>
+                        <a href="#">
+                          <i className="fab fa-pinterest"></i>
+                        </a>
+                      </li>
+                      <li>
+                      <a href="#">
+                        <i className="fab fa-whatsapp"></i>
+                      </a>
+                    </li>
                       </ul>
                     </div>
                     <div className="col-sm-4">
@@ -764,34 +719,36 @@ const Home = () => {
                       <h3 className="font-weight-bold mb-3">CATEGORIES</h3>
                       <div className="footer-border-bottom pb-2">
                         <div className="d-flex justify-content-between align-items-center">
-                          <h5 className="mb-0 font-weight-600">Magazine</h5>
-                          <div className="count">1</div>
+                          <h5 className="mb-0 font-weight-600">MY CITY</h5>
+                         
                         </div>
                       </div>
                       <div className="footer-border-bottom pb-2 pt-2">
                         <div className="d-flex justify-content-between align-items-center">
-                          <h5 className="mb-0 font-weight-600">Business</h5>
-                          <div className="count">1</div>
+                          <h5 className="mb-0 font-weight-600">SPORTS</h5>
+                         
                         </div>
                       </div>
                       <div className="footer-border-bottom pb-2 pt-2">
                         <div className="d-flex justify-content-between align-items-center">
-                          <h5 className="mb-0 font-weight-600">Sports</h5>
-                          <div className="count">1</div>
+                          <h5 className="mb-0 font-weight-600">WORLD</h5>
+                         
                         </div>
                       </div>
-                      <div className="footer-border-bottom pb-2 pt-2">
-                        <div className="d-flex justify-content-between align-items-center">
-                          <h5 className="mb-0 font-weight-600">Arts</h5>
-                          <div className="count">1</div>
-                        </div>
-                      </div>
-                      <div className="pt-2">
-                        <div className="d-flex justify-content-between align-items-center">
-                          <h5 className="mb-0 font-weight-600">Politics</h5>
-                          <div className="count">1</div>
-                        </div>
-                      </div>
+                     
+                          <div className=" footer-border-bottom pb-2 pt-2">
+                          <div className="d-flex justify-content-between align-items-center">
+                            <h5 className="mb-0 font-weight-600">EDUCATION</h5>
+                            </div>
+                            </div>
+                            <div className="footer-border-bottom pb-2 pt-2">
+                            <div className="d-flex justify-content-between align-items-center">
+                              <h5 className="mb-0 font-weight-600">TECHNOLOGY</h5>
+                              </div>
+                              </div>
+
+
+
                     </div>
                   </div>
                 </div>
@@ -802,25 +759,26 @@ const Home = () => {
                     <div className="col-sm-12">
                       <div className="d-sm-flex justify-content-between align-items-center">
                         <div className="fs-14 font-weight-600">
-                          © 2020 @{" "}
+                          © 2022 @{" "}
                           <a
                             href="https://www.bootstrapdash.com/"
                             target="_blank"
                             className="text-white"
                           >
                             {" "}
-                            BootstrapDash
+                            
                           </a>
-                          . All rights reserved.
+                          All rights reserved.
                         </div>
                         <div className="fs-14 font-weight-600">
                           Handcrafted by{" "}
+                           
                           <a
                             href="https://www.bootstrapdash.com/"
                             target="_blank"
                             className="text-white"
                           >
-                            BootstrapDash
+                            TNT
                           </a>
                         </div>
                       </div>
