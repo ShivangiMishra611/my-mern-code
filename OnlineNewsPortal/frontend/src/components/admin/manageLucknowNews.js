@@ -234,7 +234,7 @@ const ManageLucknowNews = () => {
               <Formik
                 initialValues={updateFormdata}
                 onSubmit={submitNews}
-                validationSchema={validationSchema}
+                // validationSchema={validationSchema}
               >
                 {({ values, handleChange, handleSubmit, errors }) => (
                   <form onSubmit={handleSubmit}>
@@ -377,9 +377,7 @@ const ManageLucknowNews = () => {
                           className="form-control"
                           type="file"
                           id="thumbnail"
-                          value={values.thumbnail}
-                          error={Boolean(errors.thumbnail)}
-                          helperText={errors.thumbnail}
+                          
                           onChange={uploadThumbnail}
                         />
                       </div>

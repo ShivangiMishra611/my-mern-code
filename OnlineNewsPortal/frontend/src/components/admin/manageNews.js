@@ -240,7 +240,7 @@ const ManageNews = () => {
               <Formik
                 initialValues={updateFormdata}
                 onSubmit={submitNews}
-                validationSchema={validationSchema}
+                // validationSchema={validationSchema}
               >
                 {({ values, handleChange, handleSubmit, errors }) => (
                   <form onSubmit={handleSubmit}>
@@ -383,9 +383,7 @@ const ManageNews = () => {
                           className="form-control"
                           type="file"
                           id="thumbnail"
-                          value={values.thumbnail}
-                          error={Boolean(errors.thumbnail)}
-                          helperText={errors.thumbnail}
+                         
                           onChange={uploadThumbnail}
                         />
                       </div>
@@ -436,6 +434,30 @@ const ManageNews = () => {
     console.log(filtered);
     setNewsArray(filtered);
   };
+
+  // const filterByCategory = (e) => {
+  //   fetch(url + "/news/getall")
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     console.log(data);
+  //     const filtered = data.filter(({ category }) => {
+  //       return category.toLowerCase();
+  //     });
+  //     console.log(filtered);
+  //     setNewsArray(filtered);
+  //     setLoading(false);
+  //   });
+  //   // const cat = e.target.value;
+
+  //   // const filtered = masterArray.filter((news) => {
+  //   //   const cat1=masterArray.filter((news)
+    
+  //   //   return category.toLowerCase() == cat;
+  //   // });
+  //   // console.log(filtered);
+  //   // setNewsArray(filtered);
+  // };
+
 
   const filterByYear = (e) => {
     const selYear = e.target.value;
@@ -520,6 +542,19 @@ const ManageNews = () => {
                 ))}
               </select>
             </Grid>
+
+            {/* <Grid item md={2}  sx={{mt: 27}}>
+              <select
+                class="form-select mt-5"
+                aria-label="Default select example"
+                onChange={filterByCategory}
+              >
+                <option selected>Select a Category</option>
+                {["World", "Feb", "Mar", "Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"].map((category) => (
+                  <option value={category}>{category}</option>
+                ))}
+              </select>
+            </Grid> */}
             <Grid item md={2} sx={{mt: 27}}>
               <select
                 class="form-select mt-5"

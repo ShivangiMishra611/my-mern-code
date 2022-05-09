@@ -237,7 +237,7 @@ const ManageReporters = () => {
               <Formik
                 initialValues={updateFormdata}
                 onSubmit={submitReporter}
-                validationSchema={validationSchema}
+                // validationSchema={validationSchema}
               >
                 {({ values, handleChange, handleSubmit, errors }) => (
                   <form onSubmit={handleSubmit}>

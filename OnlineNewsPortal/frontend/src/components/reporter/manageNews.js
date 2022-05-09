@@ -114,6 +114,8 @@ const RManageNews = () => {
         const filtered = data.filter(({ title }) => {
           return title.toLowerCase().includes(filter.toLowerCase());
         });
+
+        
         console.log(filtered);
         setNewsArray(filtered);
         setLoading(false);
