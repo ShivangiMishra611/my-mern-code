@@ -11,10 +11,15 @@ import TimeAgo from "javascript-time-ago";
 
 const Home = () => {
   const url = app_config.api_url;
-  // const timeAgo = new TimeAgo("en-US");
+  const timeAgo = new TimeAgo("en-US");
   const [newsArray, setNewsArray] = useState([]);
+  const [sportsArray, setSportsArray] = useState([]);
+  const [businessArray, setBusinessArray] = useState([]);
+  const [educationArray, setEducationArray] = useState([]);
+  const [worldArray, setWorldArray] = useState([]);
   // const [newsList, setNewsList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sLoading, setSLoading] = useState(true);
   const navigate = useNavigate();
   const categories = [
     "Sports",
@@ -37,6 +42,48 @@ const Home = () => {
         setLoading(false);
       });
   };
+
+ 
+
+  const fetchSportsData = () => {
+    fetch(url + "/news/sports")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setSportsArray(data);
+        setSLoading(false);
+      });
+  };
+
+  const fetchBusinessData = () => {
+    fetch(url + "/news/business")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setBusinessArray(data);
+        setSLoading(false);
+      });
+  };
+
+  const fetchEducationData = () => {
+    fetch(url + "/news/education")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setEducationArray(data);
+        setSLoading(false);
+      });
+  };
+
+  const fetchWorldData = () => {
+    fetch(url + "/news/world")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setWorldArray(data);
+        setSLoading(false);
+      });
+  };
   const refreshData = (filter) => {
     setLoading(true);
     fetch(url + "/news/approvenews")
@@ -47,10 +94,426 @@ const Home = () => {
   };
   useEffect(() => {
     fetchData();
+    fetchSportsData();
+    fetchWorldData();
+    fetchBusinessData();
+    fetchEducationData();
   }, []);
 
   const truncate = (text, n) => {
     return text.substring(0, n) + "...";
+  };
+
+  const displaySports = () => {
+    if (!sLoading) {
+      return (
+        <div className="row" data-aos="fade-up">
+   
+          <div className="col-sm-12">
+            <div className="card">
+              <div className="card-body">
+                <div className="row">
+                  <div className="col-xl-6">
+                    <div className="card-title">Sports</div>
+                    <div className="row">
+                      <div className="col-xl-6 col-lg-8 col-sm-6">
+                        <div className="border-bottom pb-3 mb-3">
+                          <div
+                            className="rotate-img"
+                            onClick={(e) =>
+                              navigate("/main/viewnews/" + sportsArray[0]._id)
+                            }
+                            style={{
+                              cursor: "pointer",
+
+                              fontWeight: "bolder",
+                            }}
+                          >
+                            <img
+                              src={url + "/" + sportsArray[0].thumbnail}
+                              alt="thumb"
+                              className="img-fluid"
+                            />
+                          </div>
+                          <Tooltip title={sportsArray[0].title}>
+                            <p
+                              className="fs-16 font-weight-600 mb-0 mt-3"
+                              onClick={(e) =>
+                                navigate("/main/viewnews/" + sportsArray[0]._id)
+                              }
+                              style={{
+                                cursor: "pointer",
+
+                                fontWeight: "bolder",
+                              }}
+                            >
+                              {truncate(sportsArray[0].title, 25)}
+                            </p>
+                          </Tooltip>
+                          <p
+                            className="fs-13 mb-1"
+                            style={{
+                              color: "black",
+                              fontWeight: "bolder",
+                            }}
+                          >
+                            <span
+                              className="mr-2"
+                              style={{
+                                color: "black",
+                                fontWeight: "bolder",
+                              }}
+                            >
+                              {sportsArray[0].category}
+                            </span>
+                            {timeAgo.format(new Date(sportsArray[0].createdAt))}
+                          </p>
+                        </div>
+                        <div className="border-bottom pb-3 mb-3">
+                          <div
+                            className="rotate-img"
+                            onClick={(e) =>
+                              navigate("/main/viewnews/" + sportsArray[1]._id)
+                            }
+                            style={{
+                              cursor: "pointer",
+
+                              fontWeight: "bolder",
+                            }}
+                          >
+                            <img
+                              src={url + "/" + sportsArray[1].thumbnail}
+                              alt="thumb"
+                              className="img-fluid"
+                            />
+                          </div>
+                          <Tooltip title={sportsArray[1].title}>
+                            <p
+                              className="fs-16 font-weight-600 mb-0 mt-3"
+                              onClick={(e) =>
+                                navigate("/main/viewnews/" + sportsArray[1]._id)
+                              }
+                              style={{
+                                cursor: "pointer",
+
+                                fontWeight: "bolder",
+                              }}
+                            >
+                              {truncate(sportsArray[1].title, 25)}
+                            </p>
+                          </Tooltip>
+                          <p
+                            className="fs-13 mb-1 "
+                            style={{
+                              color: "black",
+                              fontWeight: "bolder",
+                            }}
+                          >
+                            <span
+                              className="mr-2"
+                              style={{
+                                color: "black",
+                                fontWeight: "bolder",
+                              }}
+                            >
+                              Sports
+                            </span>
+                            {timeAgo.format(new Date(sportsArray[1].createdAt))}
+                          </p>
+                        </div>
+
+                        <div className="border-bottom pb-3 mb-3">
+                          <div
+                            className="rotate-img"
+                            onClick={(e) =>
+                              navigate("/main/viewnews/" + sportsArray[2]._id)
+                            }
+                            style={{
+                              cursor: "pointer",
+
+                              fontWeight: "bolder",
+                            }}
+                          >
+                            <img
+                              src={url + "/" + sportsArray[2].thumbnail}
+                              alt="thumb"
+                              className="img-fluid"
+                            />
+                          </div>
+                          <Tooltip title={sportsArray[2].title}>
+                            <p
+                              className="fs-16 font-weight-600 mb-0 mt-3"
+                              onClick={(e) =>
+                                navigate("/main/viewnews/" + sportsArray[2]._id)
+                              }
+                              style={{
+                                cursor: "pointer",
+
+                                fontWeight: "bolder",
+                              }}
+                            >
+                              {truncate(sportsArray[2].title, 25)}
+                            </p>
+                          </Tooltip>
+                          <p
+                            className="fs-13 mb-1 "
+                            style={{
+                              color: "black",
+                              fontWeight: "bolder",
+                            }}
+                          >
+                            <span
+                              className="mr-2"
+                              style={{
+                                color: "black",
+                                fontWeight: "bolder",
+                              }}
+                            >
+                              Sports
+                            </span>
+                            {timeAgo.format(new Date(sportsArray[2].createdAt))}
+                          </p>
+                        </div>
+                      </div>
+                    
+                      <div className="card-title">Business</div>
+                   
+                      <div className="col-xl-6 col-lg-4 col-sm-6">
+                        <div className="border-bottom pb-3 mb-3">
+                        <div
+                            className="rotate-img"
+                            onClick={(e) =>
+                              navigate("/main/viewnews/" + businessArray[0]._id)
+                            }
+                            style={{
+                              cursor: "pointer",
+
+                              fontWeight: "bolder",
+                            }}
+                          >
+                            <img
+                              src={url + "/" + businessArray[0].thumbnail}
+                              alt="thumb"
+                              className="img-fluid"
+                            />
+                          </div>
+                          <Tooltip title={businessArray[0].title}>
+                            <p
+                              className="fs-16 font-weight-600 mb-0 mt-3"
+                              onClick={(e) =>
+                                navigate("/main/viewnews/" + businessArray[0]._id)
+                              }
+                              style={{
+                                cursor: "pointer",
+
+                                fontWeight: "bolder",
+                              }}
+                            >
+                              {truncate(businessArray[0].title, 25)}
+                            </p>
+                          </Tooltip>
+                          <p
+                            className="fs-13 mb-1 "
+                            style={{
+                              color: "black",
+                              fontWeight: "bolder",
+                            }}
+                          >
+                            <span
+                              className="mr-2"
+                              style={{
+                                color: "black",
+                                fontWeight: "bolder",
+                              }}
+                            >
+                              Sports
+                            </span>
+                            {timeAgo.format(new Date(businessArray[0].createdAt))}
+                          </p>
+                          </div>
+                         
+                          
+                          
+                          
+                       
+                      
+                     
+                       
+                     
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xl-6">
+                    <div className="row">
+                      <div className="col-sm-6">
+                        <div className="card-title">Sports</div>
+                        <div className="border-bottom pb-3">
+                          <div className="rotate-img">
+                            <img
+                              src={url + "/images/dashboard/home_17.jpg"}
+                              alt="thumb"
+                              className="img-fluid"
+                            />
+                          </div>
+                          <p className="fs-16 font-weight-600 mb-0 mt-3">
+                            Kaine: Trump Jr. may have
+                          </p>
+                          <p className="fs-13 text-muted mb-0">
+                            <span className="mr-2">Photo </span>10 Minutes ago
+                          </p>
+                        </div>
+                        <div className="pt-3 pb-3">
+                          <div className="rotate-img">
+                            <img
+                              src={url + "/images/dashboard/home_18.jpg"}
+                              alt="thumb"
+                              className="img-fluid"
+                            />
+                          </div>
+                          <p className="fs-16 font-weight-600 mb-0 mt-3">
+                            Kaine: Trump Jr. may have
+                          </p>
+                          <p className="fs-13 text-muted mb-0">
+                            <span className="mr-2">Photo </span>10 Minutes ago
+                          </p>
+                        </div>
+                      </div>
+                      <div className="col-sm-6">
+                        <div className="card-title">Celebrity news</div>
+                        <div className="row">
+                          <div className="col-sm-12">
+                            <div className="border-bottom pb-3">
+                              <div className="row">
+                                <div className="col-sm-5 pr-2">
+                                  <div className="rotate-img">
+                                    <img
+                                      src={
+                                        url + "/images/dashboard/home_19.jpg"
+                                      }
+                                      alt="thumb"
+                                      className="img-fluid w-100"
+                                    />
+                                  </div>
+                                </div>
+                                <div className="col-sm-7 pl-2">
+                                  <p className="fs-16 font-weight-600 mb-0">
+                                    Online shopping ..
+                                  </p>
+                                  <p className="fs-13 text-muted mb-0">
+                                    <span className="mr-2">Photo </span>
+                                    10 Minutes ago
+                                  </p>
+                                  <p className="mb-0 fs-13">
+                                    Lorem Ipsum has been
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-sm-12">
+                            <div className="border-bottom pb-3 pt-3">
+                              <div className="row">
+                                <div className="col-sm-5 pr-2">
+                                  <div className="rotate-img">
+                                    <img
+                                      src={
+                                        url + "/images/dashboard/home_20.jpg"
+                                      }
+                                      alt="thumb"
+                                      className="img-fluid w-100"
+                                    />
+                                  </div>
+                                </div>
+                                <div className="col-sm-7 pl-2">
+                                  <p className="fs-16 font-weight-600 mb-0">
+                                    Online shopping ..
+                                  </p>
+                                  <p className="fs-13 text-muted mb-0">
+                                    <span className="mr-2">Photo </span>
+                                    10 Minutes ago
+                                  </p>
+                                  <p className="mb-0 fs-13">
+                                    Lorem Ipsum has been
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-sm-12">
+                            <div className="border-bottom pb-3 pt-3">
+                              <div className="row">
+                                <div className="col-sm-5 pr-2">
+                                  <div className="rotate-img">
+                                    <img
+                                      src={
+                                        url + "/images/dashboard/home_21.jpg"
+                                      }
+                                      alt="thumb"
+                                      className="img-fluid w-100"
+                                    />
+                                  </div>
+                                </div>
+                                <div className="col-sm-7 pl-2">
+                                  <p className="fs-16 font-weight-600 mb-0">
+                                    Online shopping ..
+                                  </p>
+                                  <p className="fs-13 text-muted mb-0">
+                                    <span className="mr-2">Photo </span>
+                                    10 Minutes ago
+                                  </p>
+                                  <p className="mb-0 fs-13">
+                                    Lorem Ipsum has been
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-sm-12">
+                            <div className="pt-3">
+                              <div className="row">
+                                <div className="col-sm-5 pr-2">
+                                  <div className="rotate-img">
+                                    <img
+                                      src={
+                                        url + "/images/dashboard/home_22.jpg"
+                                      }
+                                      alt="thumb"
+                                      className="img-fluid w-100"
+                                    />
+                                  </div>
+                                </div>
+                                <div className="col-sm-7 pl-2">
+                                  <p className="fs-16 font-weight-600 mb-0">
+                                    Online shopping ..
+                                  </p>
+                                  <p className="fs-13 text-muted mb-0">
+                                    <span className="mr-2">Photo </span>
+                                    10 Minutes ago
+                                  </p>
+                                  <p className="mb-0 fs-13">
+                                    Lorem Ipsum has been
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
   };
 
   const displayStories = () => {
@@ -82,62 +545,6 @@ const Home = () => {
             </div>
             <div className="content-wrapper">
               <div className="container">
-                {/* <div
-                  id="carouselExampleIndicators"
-                  className="carousel slide"
-                  data-ride="carousel"
-                >
-                  <ol className="carousel-indicators">
-                    <li
-                      data-target="#carouselExampleIndicators"
-                      data-slide-to="0"
-                      className="active"
-                    ></li>
-                    <li
-                      data-target="#carouselExampleIndicators"
-                      data-slide-to="1"
-                    ></li>
-                    <li
-                      data-target="#carouselExampleIndicators"
-                      data-slide-to="2"
-                    ></li>
-                  </ol>
-                  <div className="carousel-inner">
-                    <div className="carousel-item active">
-                      <img className="img-fluid" src="..." alt="First slide" />
-                    </div>
-                    <div className="carousel-item">
-                      <img className="img-fluid" src="..." alt="Second slide" />
-                    </div>
-                    <div className="carousel-item">
-                      <img className="img-fluid" src="..." alt="Third slide" />
-                    </div>
-                  </div>
-                  <a
-                    className="carousel-control-prev"
-                    href="#carouselExampleIndicators"
-                    role="button"
-                    data-slide="prev"
-                  >
-                    <span
-                      className="carousel-control-prev-icon"
-                      aria-hidden="true"
-                    ></span>
-                    <span className="sr-only">Previous</span>
-                  </a>
-                  <a
-                    className="carousel-control-next"
-                    href="#carouselExampleIndicators"
-                    role="button"
-                    data-slide="next"
-                  >
-                    <span
-                      className="carousel-control-next-icon"
-                      aria-hidden="true"
-                    ></span>
-                    <span className="sr-only">Next</span>
-                  </a>
-                </div> */}
                 <div className="row" data-aos="fade-up">
                   <div className="col-xl-8 stretch-card grid-margin">
                     <div className="position-relative">
@@ -361,7 +768,7 @@ const Home = () => {
                                     >
                                       {category}{" "}
                                     </span>
-                                    {/* {timeAgo.format(new Date(createdAt))} */}
+                                    {timeAgo.format(new Date(createdAt))}
                                   </div>
                                   <p
                                     className="mb-0"
@@ -381,284 +788,7 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="row" data-aos="fade-up">
-                  <div className="col-sm-12">
-                    <div className="card">
-                      <div className="card-body">
-                        <div className="row">
-                          <div className="col-xl-6">
-                            <div className="card-title">Sports</div>
-                            <div className="row">
-                              <div className="col-xl-6 col-lg-8 col-sm-6">
-                                <div
-                                  className="rotate-img"
-                                  onClick={(e) =>
-                                    navigate(
-                                      "/main/viewnews/" + newsArray[0]._id
-                                    )
-                                  }
-                                  style={{
-                                    cursor: "pointer",
-
-                                    fontWeight: "bolder",
-                                  }}
-                                >
-                                  <img
-                                    src={url + "/images/dashboard/home_16.jpg"}
-                                    alt="thumb"
-                                    className="img-fluid"
-                                  />
-                                </div>
-                                <h2 className="mt-3 text-primary mb-2">
-                                  Newsrooms exercise..
-                                </h2>
-                                <p className="fs-13 mb-1 text-muted">
-                                  <span className="mr-2">Photo </span>10 Minutes
-                                  ago
-                                </p>
-                                <p className="my-3 fs-15">
-                                  Lorem Ipsum has been the industry's standard
-                                  dummy text ever since the 1500s, when an
-                                  unknown printer took
-                                </p>
-                                <a
-                                  href="#"
-                                  className="font-weight-600 fs-16 text-dark"
-                                >
-                                  Read more
-                                </a>
-                              </div>
-                              <div className="col-xl-6 col-lg-4 col-sm-6">
-                                <div className="border-bottom pb-3 mb-3">
-                                  <h3 className="font-weight-600 mb-0">
-                                    Social distancing is ..
-                                  </h3>
-                                  <p className="fs-13 text-muted mb-0">
-                                    <span className="mr-2">Photo </span>10
-                                    Minutes ago
-                                  </p>
-                                  <p className="mb-0">
-                                    Lorem Ipsum has been the industry's
-                                  </p>
-                                </div>
-                                <div className="border-bottom pb-3 mb-3">
-                                  <h3 className="font-weight-600 mb-0">
-                                    Panic buying is forcing..
-                                  </h3>
-                                  <p className="fs-13 text-muted mb-0">
-                                    <span className="mr-2">Photo </span>10
-                                    Minutes ago
-                                  </p>
-                                  <p className="mb-0">
-                                    Lorem Ipsum has been the industry's
-                                  </p>
-                                </div>
-                                <div className="border-bottom pb-3 mb-3">
-                                  <h3 className="font-weight-600 mb-0">
-                                    Businesses ask hundreds..
-                                  </h3>
-                                  <p className="fs-13 text-muted mb-0">
-                                    <span className="mr-2">Photo </span>10
-                                    Minutes ago
-                                  </p>
-                                  <p className="mb-0">
-                                    Lorem Ipsum has been the industry's
-                                  </p>
-                                </div>
-                                <div>
-                                  <h3 className="font-weight-600 mb-0">
-                                    Tesla's California factory..
-                                  </h3>
-                                  <p className="fs-13 text-muted mb-0">
-                                    <span className="mr-2">Photo </span>10
-                                    Minutes ago
-                                  </p>
-                                  <p className="mb-0">
-                                    Lorem Ipsum has been the industry's
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-xl-6">
-                            <div className="row">
-                              <div className="col-sm-6">
-                                <div className="card-title">Sports</div>
-                                <div className="border-bottom pb-3">
-                                  <div className="rotate-img">
-                                    <img
-                                      src={
-                                        url + "/images/dashboard/home_17.jpg"
-                                      }
-                                      alt="thumb"
-                                      className="img-fluid"
-                                    />
-                                  </div>
-                                  <p className="fs-16 font-weight-600 mb-0 mt-3">
-                                    Kaine: Trump Jr. may have
-                                  </p>
-                                  <p className="fs-13 text-muted mb-0">
-                                    <span className="mr-2">Photo </span>10
-                                    Minutes ago
-                                  </p>
-                                </div>
-                                <div className="pt-3 pb-3">
-                                  <div className="rotate-img">
-                                    <img
-                                      src={
-                                        url + "/images/dashboard/home_18.jpg"
-                                      }
-                                      alt="thumb"
-                                      className="img-fluid"
-                                    />
-                                  </div>
-                                  <p className="fs-16 font-weight-600 mb-0 mt-3">
-                                    Kaine: Trump Jr. may have
-                                  </p>
-                                  <p className="fs-13 text-muted mb-0">
-                                    <span className="mr-2">Photo </span>10
-                                    Minutes ago
-                                  </p>
-                                </div>
-                              </div>
-                              <div className="col-sm-6">
-                                <div className="card-title">Celebrity news</div>
-                                <div className="row">
-                                  <div className="col-sm-12">
-                                    <div className="border-bottom pb-3">
-                                      <div className="row">
-                                        <div className="col-sm-5 pr-2">
-                                          <div className="rotate-img">
-                                            <img
-                                              src={
-                                                url +
-                                                "/images/dashboard/home_19.jpg"
-                                              }
-                                              alt="thumb"
-                                              className="img-fluid w-100"
-                                            />
-                                          </div>
-                                        </div>
-                                        <div className="col-sm-7 pl-2">
-                                          <p className="fs-16 font-weight-600 mb-0">
-                                            Online shopping ..
-                                          </p>
-                                          <p className="fs-13 text-muted mb-0">
-                                            <span className="mr-2">Photo </span>
-                                            10 Minutes ago
-                                          </p>
-                                          <p className="mb-0 fs-13">
-                                            Lorem Ipsum has been
-                                          </p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="row">
-                                  <div className="col-sm-12">
-                                    <div className="border-bottom pb-3 pt-3">
-                                      <div className="row">
-                                        <div className="col-sm-5 pr-2">
-                                          <div className="rotate-img">
-                                            <img
-                                              src={
-                                                url +
-                                                "/images/dashboard/home_20.jpg"
-                                              }
-                                              alt="thumb"
-                                              className="img-fluid w-100"
-                                            />
-                                          </div>
-                                        </div>
-                                        <div className="col-sm-7 pl-2">
-                                          <p className="fs-16 font-weight-600 mb-0">
-                                            Online shopping ..
-                                          </p>
-                                          <p className="fs-13 text-muted mb-0">
-                                            <span className="mr-2">Photo </span>
-                                            10 Minutes ago
-                                          </p>
-                                          <p className="mb-0 fs-13">
-                                            Lorem Ipsum has been
-                                          </p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="row">
-                                  <div className="col-sm-12">
-                                    <div className="border-bottom pb-3 pt-3">
-                                      <div className="row">
-                                        <div className="col-sm-5 pr-2">
-                                          <div className="rotate-img">
-                                            <img
-                                              src={
-                                                url +
-                                                "/images/dashboard/home_21.jpg"
-                                              }
-                                              alt="thumb"
-                                              className="img-fluid w-100"
-                                            />
-                                          </div>
-                                        </div>
-                                        <div className="col-sm-7 pl-2">
-                                          <p className="fs-16 font-weight-600 mb-0">
-                                            Online shopping ..
-                                          </p>
-                                          <p className="fs-13 text-muted mb-0">
-                                            <span className="mr-2">Photo </span>
-                                            10 Minutes ago
-                                          </p>
-                                          <p className="mb-0 fs-13">
-                                            Lorem Ipsum has been
-                                          </p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="row">
-                                  <div className="col-sm-12">
-                                    <div className="pt-3">
-                                      <div className="row">
-                                        <div className="col-sm-5 pr-2">
-                                          <div className="rotate-img">
-                                            <img
-                                              src={
-                                                url +
-                                                "/images/dashboard/home_22.jpg"
-                                              }
-                                              alt="thumb"
-                                              className="img-fluid w-100"
-                                            />
-                                          </div>
-                                        </div>
-                                        <div className="col-sm-7 pl-2">
-                                          <p className="fs-16 font-weight-600 mb-0">
-                                            Online shopping ..
-                                          </p>
-                                          <p className="fs-13 text-muted mb-0">
-                                            <span className="mr-2">Photo </span>
-                                            10 Minutes ago
-                                          </p>
-                                          <p className="mb-0 fs-13">
-                                            Lorem Ipsum has been
-                                          </p>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {displaySports()}
               </div>
             </div>
             <footer>
