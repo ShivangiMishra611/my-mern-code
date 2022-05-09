@@ -80,36 +80,7 @@ export default function Header2() {
             Trusted News Tribune
           </Typography>
 
-          <IconButton className="nav-item">
-            <NavLink className="nav-link" to="/main/topstories">
-              Top Stories
-            </NavLink>
-          </IconButton>
-
-          <IconButton className="nav-item">
-            <NavLink className="nav-link" to="/admin/managenews">
-              Manage News
-            </NavLink>
-          </IconButton>
-
-          <IconButton className="nav-item">
-            <NavLink className="nav-link" to="/main/login">
-              Login
-            </NavLink>
-          </IconButton>
-
-          <IconButton className="nav-item">
-            <NavLink className="nav-link" to="/main/signup">
-              Signup
-            </NavLink>
-          </IconButton>
-
-          <IconButton className="nav-item" color="success">
-            <NavLink className="nav-link" to="/main/archieve">
-              Archieves
-            </NavLink>
-          </IconButton>
-
+        
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
