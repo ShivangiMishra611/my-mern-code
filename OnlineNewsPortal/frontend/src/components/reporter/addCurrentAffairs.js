@@ -71,6 +71,7 @@ const CurrentAffairs = () => {
         });
       }
       return res.json();
+      
     });
   };
 

@@ -116,6 +116,7 @@ const Home = () => {
                   <div className="col-xl-6">
                     <div className="card-title">Sports</div>
                     <div className="row">
+                      
                       <div className="col-xl-6 col-lg-8 col-sm-6">
                         <div className="border-bottom pb-3 mb-3">
                           <div
