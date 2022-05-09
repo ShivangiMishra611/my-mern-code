@@ -63,6 +63,7 @@ TimeAgo.addDefaultLocale(en)
           >
             <Route element={<AddNews />} path="addnews" />
             <Route element={<AddLucknowNews />} path="addlucknownews" />
+            
             <Route element={<AddCurrentAffairs />} path="addcurrentaffairs" />
             <Route element={<RManageNews />} path="managenews" />
             <Route element={<RManageCurrentAffairs />} path="managecurrentaffairs" />
