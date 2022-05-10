@@ -180,7 +180,7 @@ color:whitesmoke;
   background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/currentaffair.jpg);
   padding: 2rem;
   text-shadow: 2px 2px 3px #0000005c;
-  height: 800px;
+  height: 100%;
 
 
  }
