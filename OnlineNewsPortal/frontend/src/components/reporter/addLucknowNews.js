@@ -96,7 +96,7 @@ const AddLucknowNews = () => {
   const validationSchema = Yup.object().shape({
     title: Yup.string()
       .min(2, "Too Short!")
-      .max(50, "Too Long!")
+      .max(100, "Too Long!")
       .required("Title is Required"),
     category: Yup.string().required("Category is Required"),
     summary: Yup.string().required("News Summary is Required"),
