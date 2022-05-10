@@ -529,6 +529,35 @@ const Home = () => {
                     >
                       View Top Stories
                     </span>
+
+                    <ul className="social-media mb-3">
+                    <li>
+                      <a href="#">
+                        <i className=" fab fa-facebook"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i className="fab  fa-youtube"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i className="fab fa-twitter"></i>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="#">
+                        <i className="fab fa-pinterest"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i className="fab fa-whatsapp"></i>
+                      </a>
+                    </li>
+                  </ul>
                     <p className="mb-0"></p>
                   </div>
                   <div className="d-flex">
@@ -548,7 +577,7 @@ const Home = () => {
                       <div className="position-relative">
                         <img
                           className="img-fluid"
-                          src={url + "/images/corona.webp"}
+                          src={url + "/images/breakning news.mp4"}
                           alt=""
                         />
 
