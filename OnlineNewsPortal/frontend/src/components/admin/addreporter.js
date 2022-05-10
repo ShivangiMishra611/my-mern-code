@@ -37,6 +37,15 @@ const AddReporter = () => {
   };
 
   const reporterSubmit = (values) => {
+    if(!thumbnail){
+      Swal.fire({
+        icon : 'error',
+        text : 'PLese select a file!'
+      })
+      .then(() => {
+        return;
+      })
+    }
     values.thumbnail = thumbnail;
     console.log(values);
 
@@ -96,9 +105,9 @@ const AddReporter = () => {
     // .required("Number is Required"),
     age: Yup.number().min(18).max(40),
     email: Yup.string().email("Invalid email").required("Email is Required"),
-    file: Yup.object().shape({
-      thumbnail: Yup.string().required('file required')
-  }).required('File required'),
+  //   file: Yup.object().shape({
+  //     thumbnail: Yup.string().required('file required')
+  // }).required('File required'),
     password: Yup.string()
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
@@ -291,10 +300,6 @@ const AddReporter = () => {
                       <input
                         className="form-control"
                         type="file"
-                        id="thumbnail"
-                        error={Boolean(errors.thumbnail)}
-                        value={values.thumbnail}
-                        helperText={errors.thumbnail}
                         onChange={uploadThumbnail}
                       />
                     </div>
