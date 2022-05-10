@@ -71,6 +71,7 @@ const CurrentAffairs = () => {
         });
       }
       return res.json();
+      
     });
   };
 
@@ -261,9 +262,7 @@ const CurrentAffairs = () => {
                       className="form-control"
                       type="file"
                       id="thumbnail"
-                      value={values.thumbnail}
-                      error={Boolean(errors.thumbnail)}
-                      helperText={errors.thumbnail}
+                     
                       onChange={uploadThumbnail}
                     />
                   </div>

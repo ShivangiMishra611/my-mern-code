@@ -21,6 +21,8 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
   const [sLoading, setSLoading] = useState(true);
   const [BLoading, setBLoading] = useState(true);
+  const [ELoading, setELoading] = useState(true);
+  const [WLoading, setWLoading] = useState(true);
   const navigate = useNavigate();
   const categories = [
     "Sports",
@@ -64,11 +66,337 @@ const Home = () => {
       });
   };
 
+  const showEducationData = () => {
+    if (!ELoading) {
+      return (
+        <div className="col-sm-6">
+          <div className="card-title">Education News</div>
+          <div className="border-bottom pb-3">
+            <div
+              className="rotate-img"
+              onClick={(e) =>
+                navigate("/main/viewnews/" + educationArray[0]._id)
+              }
+              style={{
+                cursor: "pointer",
+
+                fontWeight: "bolder",
+              }}
+            >
+              <img
+                src={url + "/" + educationArray[0].thumbnail}
+                alt="thumb"
+                className="img-fluid"
+              />
+            </div>
+            <Tooltip title={educationArray[0].title}>
+              <p
+                className="fs-16 font-weight-600 mb-0 mt-3"
+                onClick={(e) =>
+                  navigate("/main/viewnews/" + educationArray[0]._id)
+                }
+                style={{
+                  cursor: "pointer",
+                  color: "#950000",
+
+                  fontWeight: "bolder",
+                }}
+              >
+                {truncate(educationArray[0].title, 25)}
+              </p>
+            </Tooltip>
+            <p
+              className="fs-13 mb-0"
+              style={{
+                color: "black",
+                fontWeight: "bolder",
+              }}
+            >
+              <span
+                className="mr-2"
+                style={{
+                  color: "black",
+                  fontWeight: "bolder",
+                }}
+              >
+                Education{" "}
+              </span>{" "}
+              {timeAgo.format(new Date(educationArray[0].createdAt))}
+            </p>
+          </div>
+          <div className="border-bottom pb-3">
+            <div
+              className="rotate-img"
+              onClick={(e) =>
+                navigate("/main/viewnews/" + educationArray[1]._id)
+              }
+              style={{
+                cursor: "pointer",
+
+                fontWeight: "bolder",
+              }}
+            >
+              <img
+                src={url + "/" + educationArray[1].thumbnail}
+                alt="thumb"
+                className="img-fluid"
+              />
+            </div>
+            <Tooltip title={educationArray[1].title}>
+              <p
+                className="fs-16 font-weight-600 mb-0 mt-3"
+                onClick={(e) =>
+                  navigate("/main/viewnews/" + educationArray[1]._id)
+                }
+                style={{
+                  cursor: "pointer",
+                  color: "#950000",
+
+                  fontWeight: "bolder",
+                }}
+              >
+                {truncate(educationArray[1].title, 25)}
+              </p>
+            </Tooltip>
+            <p
+              className="fs-13  mb-0"
+              style={{
+                color: "black",
+                fontWeight: "bolder",
+              }}
+            >
+              <span
+                className="mr-2"
+                style={{
+                  color: "black",
+                  fontWeight: "bolder",
+                }}
+              >
+                Education
+              </span>{" "}
+              {timeAgo.format(new Date(educationArray[1].createdAt))}
+            </p>
+          </div>
+          <div className="border-bottom pb-3">
+            <div
+              className="rotate-img"
+              onClick={(e) =>
+                navigate("/main/viewnews/" + educationArray[2]._id)
+              }
+              style={{
+                cursor: "pointer",
+
+                fontWeight: "bolder",
+              }}
+            >
+              <img
+                src={url + "/" + educationArray[2].thumbnail}
+                alt="thumb"
+                className="img-fluid"
+              />
+            </div>
+            <Tooltip title={educationArray[2].title}>
+              <p
+                className="fs-16 font-weight-600 mb-0 mt-3"
+                onClick={(e) =>
+                  navigate("/main/viewnews/" + educationArray[2]._id)
+                }
+                style={{
+                  cursor: "pointer",
+                  color: "#950000",
+
+                  fontWeight: "bolder",
+                }}
+              >
+                {truncate(educationArray[2].title, 25)}
+              </p>
+            </Tooltip>
+            <p
+              className="fs-13  mb-0"
+              style={{
+                color: "black",
+                fontWeight: "bolder",
+              }}
+            >
+              <span
+                className="mr-2"
+                style={{
+                  color: "black",
+                  fontWeight: "bolder",
+                }}
+              >
+                Education
+              </span>{" "}
+              {timeAgo.format(new Date(educationArray[2].createdAt))}
+            </p>
+          </div>
+        </div>
+      );
+    }
+  };
+
+  const showWorldData = () => {
+    if (!WLoading) {
+      return (
+        <div className="col-sm-6">
+          <div className="card-title">World News</div>
+          <div className="border-bottom pb-3">
+            <div
+              className="rotate-img"
+              onClick={(e) => navigate("/main/viewnews/" + worldArray[0]._id)}
+              style={{
+                cursor: "pointer",
+
+                fontWeight: "bolder",
+              }}
+            >
+              <img
+                src={url + "/" + worldArray[0].thumbnail}
+                alt="thumb"
+                className="img-fluid"
+              />
+            </div>
+            <Tooltip title={worldArray[0].title}>
+              <p
+                className="fs-16 font-weight-600 mb-0 mt-3"
+                onClick={(e) => navigate("/main/viewnews/" + worldArray[0]._id)}
+                style={{
+                  cursor: "pointer",
+                  color: "#950000",
+
+                  fontWeight: "bolder",
+                }}
+              >
+                {truncate(worldArray[0].title, 25)}
+              </p>
+            </Tooltip>
+            <p
+              className="fs-13 mb-0"
+              style={{
+                color: "black",
+                fontWeight: "bolder",
+              }}
+            >
+              <span
+                className="mr-2"
+                style={{
+                  color: "black",
+                  fontWeight: "bolder",
+                }}
+              >
+                World{" "}
+              </span>{" "}
+              {timeAgo.format(new Date(worldArray[0].createdAt))}
+            </p>
+          </div>
+          <div className="border-bottom pb-3">
+            <div
+              className="rotate-img"
+              onClick={(e) => navigate("/main/viewnews/" + worldArray[1]._id)}
+              style={{
+                cursor: "pointer",
+
+                fontWeight: "bolder",
+              }}
+            >
+              <img
+                src={url + "/" + worldArray[1].thumbnail}
+                alt="thumb"
+                className="img-fluid"
+              />
+            </div>
+            <Tooltip title={worldArray[1].title}>
+              <p
+                className="fs-16 font-weight-600 mb-0 mt-3"
+                onClick={(e) => navigate("/main/viewnews/" + worldArray[1]._id)}
+                style={{
+                  cursor: "pointer",
+                  color: "#950000",
+
+                  fontWeight: "bolder",
+                }}
+              >
+                {truncate(worldArray[1].title, 25)}
+              </p>
+            </Tooltip>
+            <p
+              className="fs-13  mb-0"
+              style={{
+                color: "black",
+                fontWeight: "bolder",
+              }}
+            >
+              <span
+                className="mr-2"
+                style={{
+                  color: "black",
+                  fontWeight: "bolder",
+                }}
+              >
+                World
+              </span>{" "}
+              {timeAgo.format(new Date(worldArray[1].createdAt))}
+            </p>
+          </div>
+          <div className="border-bottom pb-3">
+            <div
+              className="rotate-img"
+              onClick={(e) => navigate("/main/viewnews/" + worldArray[2]._id)}
+              style={{
+                cursor: "pointer",
+
+                fontWeight: "bolder",
+              }}
+            >
+              <img
+                src={url + "/" + worldArray[2].thumbnail}
+                alt="thumb"
+                className="img-fluid"
+              />
+            </div>
+            <Tooltip title={worldArray[2].title}>
+              <p
+                className="fs-16 font-weight-600 mb-0 mt-3"
+                onClick={(e) => navigate("/main/viewnews/" + worldArray[2]._id)}
+                style={{
+                  cursor: "pointer",
+                  color: "#950000",
+
+                  fontWeight: "bolder",
+                }}
+              >
+                {truncate(worldArray[2].title, 25)}
+              </p>
+            </Tooltip>
+            <p
+              className="fs-13  mb-0"
+              style={{
+                color: "black",
+                fontWeight: "bolder",
+              }}
+            >
+              <span
+                className="mr-2"
+                style={{
+                  color: "black",
+                  fontWeight: "bolder",
+                }}
+              >
+                World
+              </span>{" "}
+              {timeAgo.format(new Date(worldArray[2].createdAt))}
+            </p>
+          </div>
+        </div>
+      );
+    }
+  };
+
   const showBusinessData = () => {
     if (!BLoading) {
       return (
         <div className="col-xl-6 col-lg-6 col-sm-6">
-        <div className="card-title">Business</div>
+          <div className="card-title">Business</div>
           <div className="border-bottom pb-3 mb-3">
             <div
               className="rotate-img"
@@ -95,6 +423,7 @@ const Home = () => {
                 }
                 style={{
                   cursor: "pointer",
+                  color: "#950000",
 
                   fontWeight: "bolder",
                 }}
@@ -121,6 +450,112 @@ const Home = () => {
               {timeAgo.format(new Date(businessArray[0].createdAt))}
             </p>
           </div>
+          <div className="border-bottom pb-3 mb-3">
+            <div
+              className="rotate-img"
+              onClick={(e) =>
+                navigate("/main/viewnews/" + businessArray[1]._id)
+              }
+              style={{
+                cursor: "pointer",
+
+                fontWeight: "bolder",
+              }}
+            >
+              <img
+                src={url + "/" + businessArray[1].thumbnail}
+                alt="thumb"
+                className="img-fluid"
+              />
+            </div>
+            <Tooltip title={businessArray[1].title}>
+              <p
+                className="fs-16 font-weight-600 mb-0 mt-3"
+                onClick={(e) =>
+                  navigate("/main/viewnews/" + businessArray[1]._id)
+                }
+                style={{
+                  cursor: "pointer",
+                  color: "#950000",
+
+                  fontWeight: "bolder",
+                }}
+              >
+                {truncate(businessArray[1].title, 25)}
+              </p>
+            </Tooltip>
+            <p
+              className="fs-13 mb-1 "
+              style={{
+                color: "black",
+                fontWeight: "bolder",
+              }}
+            >
+              <span
+                className="mr-2"
+                style={{
+                  color: "black",
+                  fontWeight: "bolder",
+                }}
+              >
+                Sports
+              </span>
+              {timeAgo.format(new Date(businessArray[1].createdAt))}
+            </p>
+          </div>
+          <div className="border-bottom pb-3 mb-3">
+            <div
+              className="rotate-img"
+              onClick={(e) =>
+                navigate("/main/viewnews/" + businessArray[2]._id)
+              }
+              style={{
+                cursor: "pointer",
+
+                fontWeight: "bolder",
+              }}
+            >
+              <img
+                src={url + "/" + businessArray[2].thumbnail}
+                alt="thumb"
+                className="img-fluid"
+              />
+            </div>
+            <Tooltip title={businessArray[2].title}>
+              <p
+                className="fs-16 font-weight-600 mb-0 mt-3"
+                onClick={(e) =>
+                  navigate("/main/viewnews/" + businessArray[2]._id)
+                }
+                style={{
+                  cursor: "pointer",
+                  color: "#950000",
+
+                  fontWeight: "bolder",
+                }}
+              >
+                {truncate(businessArray[2].title, 25)}
+              </p>
+            </Tooltip>
+            <p
+              className="fs-13 mb-1 "
+              style={{
+                color: "black",
+                fontWeight: "bolder",
+              }}
+            >
+              <span
+                className="mr-2"
+                style={{
+                  color: "black",
+                  fontWeight: "bolder",
+                }}
+              >
+                Sports
+              </span>
+              {timeAgo.format(new Date(businessArray[2].createdAt))}
+            </p>
+          </div>
         </div>
       );
     }
@@ -132,7 +567,7 @@ const Home = () => {
       .then((data) => {
         console.log(data);
         setEducationArray(data);
-        setSLoading(false);
+        setELoading(false);
       });
   };
 
@@ -142,7 +577,7 @@ const Home = () => {
       .then((data) => {
         console.log(data);
         setWorldArray(data);
-        setSLoading(false);
+        setWLoading(false);
       });
   };
   const refreshData = (filter) => {
@@ -175,9 +610,8 @@ const Home = () => {
                 <div className="row">
                   <div className="col-xl-6">
                     <div className="row">
-                      <div className="col-xl-6 col-lg-6 col-sm-6">
-                    <div className="card-title">Sports</div>
-
+                      <div className="col-xl-6 col-lg-8 col-sm-6">
+                        <div className="card-title">Sports</div>
                         <div className="border-bottom pb-3 mb-3">
                           <div
                             className="rotate-img"
@@ -204,6 +638,7 @@ const Home = () => {
                               }
                               style={{
                                 cursor: "pointer",
+                                color: "#950000",
 
                                 fontWeight: "bolder",
                               }}
@@ -256,6 +691,7 @@ const Home = () => {
                               }
                               style={{
                                 cursor: "pointer",
+                                color: "#950000",
 
                                 fontWeight: "bolder",
                               }}
@@ -309,6 +745,7 @@ const Home = () => {
                               }
                               style={{
                                 cursor: "pointer",
+                                color: "#950000",
 
                                 fontWeight: "bolder",
                               }}
@@ -342,40 +779,9 @@ const Home = () => {
                   </div>
                   <div className="col-xl-6">
                     <div className="row">
-                      <div className="col-sm-6">
-                        <div className="card-title">Sports</div>
-                        <div className="border-bottom pb-3">
-                          <div className="rotate-img">
-                            <img
-                              src={url + "/images/dashboard/home_17.jpg"}
-                              alt="thumb"
-                              className="img-fluid"
-                            />
-                          </div>
-                          <p className="fs-16 font-weight-600 mb-0 mt-3">
-                            Kaine: Trump Jr. may have
-                          </p>
-                          <p className="fs-13 text-muted mb-0">
-                            <span className="mr-2">Photo </span>10 Minutes ago
-                          </p>
-                        </div>
-                        <div className="pt-3 pb-3">
-                          <div className="rotate-img">
-                            <img
-                              src={url + "/images/dashboard/home_18.jpg"}
-                              alt="thumb"
-                              className="img-fluid"
-                            />
-                          </div>
-                          <p className="fs-16 font-weight-600 mb-0 mt-3">
-                            Kaine: Trump Jr. may have
-                          </p>
-                          <p className="fs-13 text-muted mb-0">
-                            <span className="mr-2">Photo </span>10 Minutes ago
-                          </p>
-                        </div>
-                      </div>
-                      <div className="col-sm-6">
+                      {showEducationData()}
+                      {showWorldData()}
+                      {/* <div className="col-sm-6">
                         <div className="card-title">Celebrity news</div>
                         <div className="row">
                           <div className="col-sm-12">
@@ -501,7 +907,7 @@ const Home = () => {
                             </div>
                           </div>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -649,7 +1055,9 @@ const Home = () => {
                                 <span className="mr-2">
                                   {newsArray[0].category}
                                 </span>
-                                10 Minutes ago
+                                {timeAgo.format(
+                                  new Date(newsArray[0].createdAt)
+                                )}
                               </div>
                             </div>
                             <div className="rotate-img">
@@ -683,7 +1091,9 @@ const Home = () => {
                                 <span className="mr-2">
                                   {newsArray[1].category}
                                 </span>
-                                10 Minutes ago
+                                {timeAgo.format(
+                                  new Date(newsArray[1].createdAt)
+                                )}
                               </div>
                             </div>
                             <div className="rotate-img">
@@ -717,7 +1127,9 @@ const Home = () => {
                                 <span className="mr-2">
                                   {newsArray[2].category}
                                 </span>
-                                10 Minutes ago
+                                {timeAgo.format(
+                                  new Date(newsArray[2].createdAt)
+                                )}
                               </div>
                             </div>
                             <div className="rotate-img">
@@ -798,7 +1210,7 @@ const Home = () => {
                                       className="mb-2 font-weight-600"
                                       style={{
                                         cursor: "pointer",
-                                        color: "black",
+                                        color: "#950000",
                                         fontWeight: "bolder",
                                         "&:hover": {
                                           color: "red",
@@ -900,18 +1312,29 @@ const Home = () => {
                         <div className="col-sm-12">
                           <div className="footer-border-bottom pb-2">
                             <div className="row">
-                              <div className="col-3">
+                            <div className="rotate-img col-3">
                                 <img
-                                  src={url + "/images/dashboard/home_1.jpg"}
+                                  src={url + "/" + newsArray[6].thumbnail}
                                   alt="thumb"
                                   className="img-fluid"
                                 />
                               </div>
-                              <div className="col-9">
-                                <h5 className="font-weight-600">
-                                  Cotton import from USA to soar was American
-                                  traders predict
+                              <div className="col-9" >
+                              <Tooltip title={newsArray[6].title}>
+                                <h5 className="font-weight-600"  onClick={(e) =>
+                                    navigate(
+                                      "/main/viewnews/" + newsArray[6]._id
+                                    )
+                                  }
+                                  style={{
+                                    cursor: "pointer",
+
+                                    fontWeight: "bolder",
+                                  }}>
+                                     {truncate(newsArray[6].title, 45)}
+                                 
                                 </h5>
+                                </Tooltip>
                               </div>
                             </div>
                           </div>
@@ -921,18 +1344,29 @@ const Home = () => {
                         <div className="col-sm-12">
                           <div className="footer-border-bottom pb-2 pt-2">
                             <div className="row">
-                              <div className="col-3">
+                              <div className="rotate-img col-3">
                                 <img
-                                  src={url + "/images/dashboard/home_2.jpg"}
+                                  src={url + "/" + newsArray[3].thumbnail}
                                   alt="thumb"
                                   className="img-fluid"
                                 />
                               </div>
-                              <div className="col-9">
-                                <h5 className="font-weight-600">
-                                  Cotton import from USA to soar was American
-                                  traders predict
+                              <div className="col-9" >
+                              <Tooltip title={newsArray[3].title}>
+                                <h5 className="font-weight-600"  onClick={(e) =>
+                                    navigate(
+                                      "/main/viewnews/" + newsArray[3]._id
+                                    )
+                                  }
+                                  style={{
+                                    cursor: "pointer",
+
+                                    fontWeight: "bolder",
+                                  }}>
+                                     {truncate(newsArray[3].title, 45)}
+                                 
                                 </h5>
+                                </Tooltip>
                               </div>
                             </div>
                           </div>
@@ -942,18 +1376,30 @@ const Home = () => {
                         <div className="col-sm-12">
                           <div>
                             <div className="row">
-                              <div className="col-3">
+                            <div className="rotate-img col-3">
                                 <img
-                                  src={url + "/images/dashboard/home_3.jpg"}
+                                  src={url + "/" + newsArray[4].thumbnail}
                                   alt="thumb"
                                   className="img-fluid"
                                 />
                               </div>
-                              <div className="col-9">
-                                <h5 className="font-weight-600 mb-3">
-                                  Cotton import from USA to soar was American
-                                  traders predict
+                              
+                               <div className="col-9" >
+                              <Tooltip title={newsArray[4].title}>
+                                <h5 className="font-weight-600"  onClick={(e) =>
+                                    navigate(
+                                      "/main/viewnews/" + newsArray[4]._id
+                                    )
+                                  }
+                                  style={{
+                                    cursor: "pointer",
+
+                                    fontWeight: "bolder",
+                                  }}>
+                                     {truncate(newsArray[4].title, 45)}
+                                 
                                 </h5>
+                                </Tooltip>
                               </div>
                             </div>
                           </div>
@@ -964,28 +1410,72 @@ const Home = () => {
                       <h3 className="font-weight-bold mb-3">CATEGORIES</h3>
                       <div className="footer-border-bottom pb-2">
                         <div className="d-flex justify-content-between align-items-center">
-                          <h5 className="mb-0 font-weight-600">MY CITY</h5>
+                          <h5
+                            className="mb-0 font-weight-600"
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            onClick={(e) => navigate("/main/lucknownews")}
+                          >
+                            MY CITY
+                          </h5>
                         </div>
                       </div>
                       <div className="footer-border-bottom pb-2 pt-2">
                         <div className="d-flex justify-content-between align-items-center">
-                          <h5 className="mb-0 font-weight-600">SPORTS</h5>
+                          <h5
+                            className="mb-0 font-weight-600"
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            onClick={(e) => navigate("/main/topstories/Sports")}
+                          >
+                            SPORTS
+                          </h5>
                         </div>
                       </div>
                       <div className="footer-border-bottom pb-2 pt-2">
                         <div className="d-flex justify-content-between align-items-center">
-                          <h5 className="mb-0 font-weight-600">WORLD</h5>
+                          <h5
+                            className="mb-0 font-weight-600"
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            onClick={(e) => navigate("/main/topstories/World")}
+                          >
+                            WORLD
+                          </h5>
                         </div>
                       </div>
 
                       <div className=" footer-border-bottom pb-2 pt-2">
                         <div className="d-flex justify-content-between align-items-center">
-                          <h5 className="mb-0 font-weight-600">EDUCATION</h5>
+                          <h5
+                            className="mb-0 font-weight-600"
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            onClick={(e) =>
+                              navigate("/main/topstories/Education")
+                            }
+                          >
+                            EDUCATION
+                          </h5>
                         </div>
                       </div>
                       <div className="footer-border-bottom pb-2 pt-2">
                         <div className="d-flex justify-content-between align-items-center">
-                          <h5 className="mb-0 font-weight-600">TECHNOLOGY</h5>
+                          <h5
+                            className="mb-0 font-weight-600"
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            onClick={(e) =>
+                              navigate("/main/topstories/Technology")
+                            }
+                          >
+                            TECHNOLOGY
+                          </h5>
                         </div>
                       </div>
                     </div>

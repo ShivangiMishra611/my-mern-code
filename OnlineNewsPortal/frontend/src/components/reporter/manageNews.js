@@ -114,6 +114,8 @@ const RManageNews = () => {
         const filtered = data.filter(({ title }) => {
           return title.toLowerCase().includes(filter.toLowerCase());
         });
+
+        
         console.log(filtered);
         setNewsArray(filtered);
         setLoading(false);
@@ -173,6 +175,7 @@ const RManageNews = () => {
                   variant="extended"
                   size="small"
                   sx={{ color: green[30] }}   />
+                  
                 </Fab>
               </Tooltip>
             </Stack>

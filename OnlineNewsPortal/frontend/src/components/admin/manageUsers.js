@@ -230,7 +230,7 @@ const ManageUsers = () => {
           <Formik
                   initialValues={updateFormdata}
                   onSubmit={submitUsers}
-                  validationSchema={validationSchema}
+                  // validationSchema={validationSchema}
                 >
                   {({
                     values,
