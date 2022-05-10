@@ -530,34 +530,65 @@ const Home = () => {
                       View Top Stories
                     </span>
 
-                    <ul className="social-media mb-3">
-                    <li>
-                      <a href="#">
-                        <i className=" fab fa-facebook"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i className="fab  fa-youtube"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i className="fab fa-twitter"></i>
-                      </a>
-                    </li>
+             
+<br></br>
+<br></br>
+                 
+                        <div className="d-flex justify-content-between align-items-center">
+                          <h5 className="mb-0 font-weight-600">MY CITY</h5>
+                        </div>
+&nbsp;&nbsp;
+                        <div className="d-flex justify-content-between align-items-center">
+                        <h5 className="mb-0 font-weight-600">SPORTS</h5>
+                      </div>
+                      &nbsp;&nbsp;
+                        <div className="d-flex justify-content-between align-items-center">
+                        <h5 className="mb-0 font-weight-600">WORLD</h5>
+                      </div>
 
-                    <li>
-                      <a href="#">
-                        <i className="fab fa-pinterest"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i className="fab fa-whatsapp"></i>
-                      </a>
-                    </li>
-                  </ul>
+                      &nbsp;&nbsp;
+                      <div className="d-flex justify-content-between align-items-center">
+                      <h5 className="mb-0 font-weight-600">LIFESTYLE</h5>
+                    </div>
+
+                    &nbsp;&nbsp;
+                    <div className="d-flex justify-content-between align-items-center">
+                    <h5 className="mb-0 font-weight-600">ENTERTAINMENT</h5>
+                  </div>
+                  &nbsp;&nbsp;
+                  <div className="d-flex justify-content-between align-items-center">
+                  <h5 className="mb-0 font-weight-600">BUSINESS</h5>
+                </div>
+                &nbsp;&nbsp;
+                <div className="d-flex justify-content-between align-items-center">
+                <h5 className="mb-0 font-weight-600">TECHNOLOGY</h5>
+              </div>
+              <ul className="social-media mb-3">
+              <li>
+                <a href="#">
+                  <i className=" fab fa-facebook"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i className="fab  fa-youtube"></i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i className="fab fa-twitter"></i>
+                </a>
+              </li>
+
+             
+              <li>
+                <a href="#">
+                  <i className="fab fa-whatsapp"></i>
+                </a>
+              </li>
+            </ul>
+
+
                     <p className="mb-0"></p>
                   </div>
                   <div className="d-flex">
@@ -575,11 +606,12 @@ const Home = () => {
                   <div className="row">
                     <div className="col-xl-8 stretch-card grid-margin">
                       <div className="position-relative">
-                        <img
+                        <video width="700" height="600" controls>
                           className="img-fluid"
-                          src={url + "/images/breakning news.mp4"}
+                          <source src="breakning news.mp4"></source>
+                           
                           alt=""
-                        />
+                          </video>
 
                         <div
                           className="banner-content"
