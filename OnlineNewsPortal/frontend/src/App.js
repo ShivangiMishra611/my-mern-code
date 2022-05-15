@@ -28,6 +28,7 @@ import Home from "./components/main/home";
 import ReporterLogin from "./components/reporter/reporterLogin";
 import AdminLogin from "./components/admin/adminLogin";
 import Authenticator from "./components/authenticator";
+import ReporterAuthenticator from "./components/reporterAuthenticator";
 import AddCurrentAffairs from "./components/reporter/addCurrentAffairs";
 import CurrentAffairs from "./components/main/currentAffairs";
 import ManageCurrentAffairs from "./components/admin/manageCurrentAffairs";
@@ -57,7 +58,10 @@ TimeAgo.addDefaultLocale(en)
         <Routes>
           <Route
             element={
-              <Reporter />
+              <ReporterAuthenticator>
+               <Reporter />
+              </ReporterAuthenticator>
+             
             }
             path="reporter"
           >
@@ -87,9 +91,10 @@ TimeAgo.addDefaultLocale(en)
 
           <Route
             element={
+              <ReporterAuthenticator>
               <Admin />
-              // <Authenticator>
-              // </Authenticator>
+              </ReporterAuthenticator>
+            
             }
             path="admin"
           >

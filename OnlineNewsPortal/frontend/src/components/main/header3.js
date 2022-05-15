@@ -24,6 +24,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { ListItemIcon, ListItemText } from "@mui/material";
 import { useEffect, useState } from "react";
+import BadgeIcon from "@mui/icons-material/Badge";
 
 const pages = [
   {
@@ -83,15 +84,11 @@ const Header = () => {
       icon: <AccountCircle />,
       link: "/profile",
     },
-    {
-      name: "Manage Vlogs",
-      icon: <Subscriptions />,
-      link: "/managevlog",
-    },
+    
     {
       name: "Logout",
       icon: <AccountCircle />,
-      click: logout,
+      click: {logout},
     },
   ];
 
@@ -102,10 +99,29 @@ const Header = () => {
       link: "/profile",
     },
     {
-      name: "Manage News",
-      icon: <Subscriptions />,
-      link: "/reporter/managenews",
+      name: "Add News",
+      icon: <BadgeIcon />,
+      link: "/reporter/addnews",
     },
+
+    {
+      name: "Add Current Affairs",
+      icon: <BadgeIcon />,
+      link: "/reporter/addcurrentaffairs",
+    },
+
+    {
+      name:"Manage News",
+      icon:<BadgeIcon  />,
+      link:"/reporter/managenews",
+    },
+
+    {
+      name:"Manage Current Affairs",
+      icon:<BadgeIcon  />,
+      link:"/reporter/managecurrentaffairs",
+    },
+   
     {
       name: "Logout",
       icon: <AccountCircle />,
@@ -135,7 +151,7 @@ const Header = () => {
       return (
         <Box sx={{ display: { xs: "none", md: "flex" } }}>
           {" "}
-          <Tooltip title="Reporter">
+          <Tooltip title="Reporter/Admin Login">
             <IconButton
               onClick={(e) => setRepMenuPos(e.currentTarget)}
               size="large"
@@ -157,19 +173,15 @@ const Header = () => {
               </ListItemIcon>
               <ListItemText>Login</ListItemText>
             </MenuItem>
-            <MenuItem onClick={(e)=>navigate("/main/signup")}>
-            <ListItemIcon>
-            <ExitToAppIcon  fontSize="small" />
-            </ListItemIcon>
-            <ListItemText>Signup</ListItemText>
-            </MenuItem>
+
+           
           </Menu>
         </Box>
       );
-    } else {
+    } else{
       return (
         <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-          <Tooltip title="Open settings">
+          <Tooltip title="Settings">
             <IconButton
               onClick={(e) => setRepMenuPos2(e.currentTarget)}
               sx={{ p: 0 }}
@@ -193,7 +205,7 @@ const Header = () => {
             open={Boolean(repMenuPos2)}
             onClose={(e) => setRepMenuPos2(null)}
           >
-            {userMenu.map(({ name, icon, link, click }) => (
+            {repMenu.map(({ name, icon, link, click }) => (
               <MenuItem
                 key={name}
                 onClick={link ? (e) => navigate(link) : click}
