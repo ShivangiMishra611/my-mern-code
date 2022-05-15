@@ -115,7 +115,7 @@ const CurrentAffairs = () => {
                   ? "list-group-item active"
                   : "list-group-item"
               }
-              style={{ fontWeight: "600", cursor: "pointer" }}
+              style={{ fontWeight: "600", cursor: "pointer", color:"orange" }}
               onClick={(e) => applyDateFilter(date)}
             >
               {monthNames[date.getMonth()]} {date.getFullYear()}
