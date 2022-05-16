@@ -229,9 +229,46 @@ color:whitesmoke;
         height:3vh;
         background-color: red;
       }
-  
+      .custom{
+        background-color:rgb(80, 4, 4);
+        color:white;
+        font-size:13px;
+        border: 2px solid black;
+        border-radius: 2px;
+      }
+      .custom:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2),0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition-duration: 0.4s;
 
-    
+
+      }
+      .custom1{
+        color:rgb(80, 4, 4);
+      }
+      .categories{
+        color: rgb(80, 4, 4);
+        padding-bottom: 5px;
+        margin-left: 2rem; 
+        /* background: url(http://localhost:5000/images/cat.jpg);  */
+        height:1000px;
+       
+      }
+      
+       .sub-category{
+        color:white;
+      } 
+.title{
+  text-align: justify;
+}
+.view{
+  width:50%;
+  height: 150px;
+  
+}
+.cardview{
+  position:relative;
+}
+
   
 
 

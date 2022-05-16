@@ -484,7 +484,7 @@ const ManageCurrentAffairs = () => {
           <br></br>
           <br></br>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2}  sx={{mt: 24}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -497,7 +497,7 @@ const ManageCurrentAffairs = () => {
               </select>
             </Grid>
 
-            <Grid item md={2} sx={{mt: 27}}>
+            <Grid item md={2} sx={{mt: 24}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -509,7 +509,7 @@ const ManageCurrentAffairs = () => {
                 ))}
               </select>
             </Grid>
-            <Grid item md={2}>
+            <Grid item md={2} sx={{mt: 24}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"

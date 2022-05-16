@@ -278,9 +278,7 @@ const TopStories = () => {
         <Typography className="text-center text-white" variant="h5">
           Trusted News Tribune
         </Typography>
-        <Typography className="text-center text-white" variant="h2">
-          Top Stories
-        </Typography>
+        
         <div className="col-6 mx-auto">
           <div className="input-group mt-5">
             <input

@@ -140,7 +140,7 @@ export default function Header2() {
               </ListItemIcon>
               <ListItemText>Login</ListItemText>
             </MenuItem>
-            <MenuItem>Signup</MenuItem>
+           
           </Menu>
         </Toolbar>
       </AppBar>

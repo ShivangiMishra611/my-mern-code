@@ -474,7 +474,7 @@ const ManageLucknowNews = () => {
             </Button>
           </div>
           </Grid>
-          <Grid item md={2} sx={{mt: 32}}>
+          <Grid item md={2} sx={{mt: 36}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -487,7 +487,7 @@ const ManageLucknowNews = () => {
               </select>
             </Grid>
 
-            <Grid item md={2}  sx={{mt: 32}}>
+            <Grid item md={2}  sx={{mt: 36}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -499,7 +499,7 @@ const ManageLucknowNews = () => {
                 ))}
               </select>
             </Grid>
-            <Grid item md={2} sx={{mt: 32}}>
+            <Grid item md={2} sx={{mt: 36}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"

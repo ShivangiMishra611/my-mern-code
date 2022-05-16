@@ -117,6 +117,8 @@ const ManageUsers = () => {
           <AccordionDetails>
            <h3>{user.username}</h3>
 
+           <h3>{user.age}</h3>
+
            <h3>{user.email}</h3>
 
            <h3>{user.password}</h3>

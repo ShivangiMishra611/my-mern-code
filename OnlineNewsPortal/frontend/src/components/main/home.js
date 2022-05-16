@@ -928,47 +928,156 @@ const Home = () => {
               <div className="container">
                 <div className="d-lg-flex align-items-center justify-content-between">
                   <div className="d-flex align-items-center">
-                    <span
-                      className="badge badge-dark mr-3"
-                      style={{ cursor: "pointer" }}
-                      onClick={(e) => navigate("/main/topstories")}
-                    >
-                      View Top Stories
-                    </span>
+                    
+<br></br>
+<br></br>
 
-             
-<br></br>
-<br></br>
-                 
-                        <div className="d-flex justify-content-between align-items-center">
-                          <h5 className="mb-0 font-weight-600">MY CITY</h5>
+<div className="d-flex justify-content-between align-items-center">
+                          <h6
+                            className="custom"
+                            style={{
+                              cursor: "pointer",
+                            
+                            }}
+                            onClick={(e) => navigate("/main/lucknownews")}
+                          >
+                            MY CITY
+                          </h6>
                         </div>
-&nbsp;&nbsp;
-                        <div className="d-flex justify-content-between align-items-center">
-                        <h5 className="mb-0 font-weight-600">SPORTS</h5>
                       </div>
-                      &nbsp;&nbsp;
+                     
                         <div className="d-flex justify-content-between align-items-center">
-                        <h5 className="mb-0 font-weight-600">WORLD</h5>
+                          <h6
+                            className="custom font-weight-600"
+                            style={{
+                              cursor: "pointer",
+                             
+                            }}
+                            onClick={(e) => navigate("/main/topstories/Sports")}
+                          >
+                            SPORTS
+                          </h6>
+                        </div>
+                      
+                     
+                        <div className="d-flex justify-content-between align-items-center">
+                          <h6
+                            className="custom font-weight-600"
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            onClick={(e) => navigate("/main/topstories/World")}
+                          >
+                            WORLD
+                          </h6>
+                        </div>
+
+                        
+                        <div className="d-flex justify-content-between align-items-center">
+                        <h6
+                          className="custom font-weight-600"
+                          style={{
+                            cursor: "pointer",
+                          }}
+                          onClick={(e) =>
+                            navigate("/main/topstories/Lifestyle")
+                          }
+                        >
+                          LIFESTYLE
+                        </h6>
                       </div>
 
-                      &nbsp;&nbsp;
+
+                      
                       <div className="d-flex justify-content-between align-items-center">
-                      <h5 className="mb-0 font-weight-600">LIFESTYLE</h5>
+                      <h6
+                        className="custom font-weight-600"
+                        style={{
+                          cursor: "pointer",
+                          
+                        }}
+                        onClick={(e) =>
+                          navigate("/main/topstories/Entertainment")
+                        }
+                      >
+                        ENTERTAINMENT
+                      </h6>
                     </div>
+                    
 
-                    &nbsp;&nbsp;
-                    <div className="d-flex justify-content-between align-items-center">
-                    <h5 className="mb-0 font-weight-600">ENTERTAINMENT</h5>
-                  </div>
-                  &nbsp;&nbsp;
-                  <div className="d-flex justify-content-between align-items-center">
-                  <h5 className="mb-0 font-weight-600">BUSINESS</h5>
-                </div>
-                &nbsp;&nbsp;
-                <div className="d-flex justify-content-between align-items-center">
-                <h5 className="mb-0 font-weight-600">TECHNOLOGY</h5>
-              </div>
+                      
+                      <div className="d-flex justify-content-between align-items-center">
+                      <h6
+                        className="custom font-weight-600"
+                        style={{
+                          cursor: "pointer",
+                        }}
+                        onClick={(e) =>
+                          navigate("/main/topstories/Health")
+                        }
+                      >
+                        HEALTH
+                      </h6>
+                    </div>
+                    
+
+
+
+
+
+                      
+
+
+
+
+                        <div className="d-flex justify-content-between align-items-center">
+                        <h6
+                          className="custom font-weight-600"
+                          style={{
+                            cursor: "pointer",
+                          }}
+                          onClick={(e) =>
+                            navigate("/main/topstories/Business")
+                          }
+                        >
+                          BUSINESS
+                        </h6>
+                      </div>
+                      
+
+                     
+                        <div className="d-flex justify-content-between align-items-center">
+                          <h6
+                            className="custom font-weight-600"
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            onClick={(e) =>
+                              navigate("/main/topstories/Education")
+                            }
+                          >
+                            EDUCATION
+                          </h6>
+                        </div>
+                      
+
+                     
+                        <div className="d-flex justify-content-between align-items-center">
+                          <h6
+                            className="custom font-weight-600"
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            onClick={(e) =>
+                              navigate("/main/topstories/Technology")
+                            }
+                          >
+                            TECHNOLOGY
+                          </h6>
+                        
+
+                 
+                     
               <ul className="social-media mb-3">
               <li>
                 <a href="#">
@@ -991,14 +1100,16 @@ const Home = () => {
                 <a href="#">
                   <i className="fab fa-whatsapp"></i>
                 </a>
+
               </li>
             </ul>
+            &nbsp;&nbsp;
 
 
                     <p className="mb-0"></p>
                   </div>
                   <div className="d-flex">
-                    <span className="mr-3 text-danger">
+                    <span className="custom1">
                       {format(new Date(), "PPPP")}
                     </span>
                     {/* <span className="text-danger">30°C,London</span> */}
@@ -1148,7 +1259,11 @@ const Home = () => {
                 <div className="row" data-aos="fade-up">
                   <div className="col-lg-3 stretch-card grid-margin">
                     <div className="card">
-                      <div className="card-body">
+                   
+
+
+
+                      <div className="categories " >
                         <h2>Category</h2>
                         <ul className="vertical-menu">
                           <li>
@@ -1159,6 +1274,7 @@ const Home = () => {
                               MYCITY
                             </NavLink>
                           </li>
+                          
                           {categories.map((category) => (
                             <li>
                               <NavLink

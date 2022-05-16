@@ -474,7 +474,7 @@ const ManageNews = () => {
   };
 
   return (
-    <div className="">
+    <div className="title">
       <Toaster position="top-right" reverseOrder={false} />
       <header className="news-back">
       <Grid container spacing={5}>
@@ -487,6 +487,7 @@ const ManageNews = () => {
             <Typography className="nmanage text-center" variant="h2" >
               Manage News
             </Typography>
+            
           
               <div className="input-group mt-5">
                 <input
@@ -572,7 +573,7 @@ const ManageNews = () => {
             {displayNews()}
             {updateForm()}
          
-       
+          
        </header>
     </div>
   );

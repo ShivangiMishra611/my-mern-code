@@ -58,8 +58,15 @@ const ViewNews = () => {
   const displayNews = () => {
     if (!loading) {
       return (
-    
+        <div className="view">
+        
+
+       
+       
+        
+      
         <Card className="cardview" sx={{ maxWidth: 700, mt: 5 }}>
+        
          
           <CardMedia
             component="img"
@@ -68,6 +75,8 @@ const ViewNews = () => {
             alt="sports news"
           />
           <CardContent>
+
+      
            
             <Tooltip title={newsData.title}>
                   <h2
@@ -86,9 +95,7 @@ const ViewNews = () => {
                 </Tooltip>
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
-              <FavoriteIcon />
-            </IconButton>
+          
             <IconButton aria-label="share">
               <ShareIcon />
             </IconButton>
@@ -119,6 +126,7 @@ const ViewNews = () => {
             </CardContent>
           </Collapse>
         </Card>
+        </div>
       );
     }
   };
