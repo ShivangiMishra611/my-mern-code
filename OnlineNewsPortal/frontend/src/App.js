@@ -34,13 +34,11 @@ import ManageCurrentAffairs from "./components/admin/manageCurrentAffairs";
 import RManageCurrentAffairs from "./components/reporter/manageCurrentAffairs";
 import RManageNews from "./components/reporter/manageNews";
 import { createTheme, ThemeProvider } from "@mui/material";
-import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en.json'
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en.json";
 
 function App() {
-
-
-// TimeAgo.addDefaultLocale(en)
+  // TimeAgo.addDefaultLocale(en)
 
   const theme1 = createTheme({
     palette: {
@@ -55,17 +53,15 @@ function App() {
     <ThemeProvider theme={theme1}>
       <BrowserRouter>
         <Routes>
-          <Route
-            element={
-              <Reporter />
-            }
-            path="reporter"
-          >
+          <Route element={<Reporter />} path="reporter">
             <Route element={<AddNews />} path="addnews" />
             <Route element={<AddLucknowNews />} path="addlucknownews" />
             <Route element={<AddCurrentAffairs />} path="addcurrentaffairs" />
             <Route element={<RManageNews />} path="managenews" />
-            <Route element={<RManageCurrentAffairs />} path="managecurrentaffairs" />
+            <Route
+              element={<RManageCurrentAffairs />}
+              path="managecurrentaffairs"
+            />
           </Route>
 
           <Route element={<Main />} path="main">

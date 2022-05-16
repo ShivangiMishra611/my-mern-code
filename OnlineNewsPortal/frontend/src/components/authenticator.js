@@ -17,6 +17,7 @@ const Authenticator = ({ children }) => {
       title : 'OOops!!',
       text : 'You need to be logged in'
     })
+
     return <Navigate to="/main/login" />;
   } else if (currentUser) {
     console.log(currentUser);
@@ -24,6 +25,7 @@ const Authenticator = ({ children }) => {
       navigate("/admin");
     } else {
       navigate("/reporter");
+      
     }
   }
 
