@@ -20,6 +20,7 @@ router.get("/getall", (req, res) => {
   Model.find({})
     .then((data) => {
       console.log("News data fetched successfully..");
+      
       res.status(200).json(data);
     })
     .catch((err) => {
@@ -32,6 +33,54 @@ router.get("/approvenews", (req, res) => {
   Model.find({approvenews:true})
     .then((data) => {
       console.log("News data fetched successfully..");
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get("/sports", (req, res) => {
+  Model.find({category:'Sports'})
+    .then((data) => {
+      console.log("Sports data fetched successfully..");
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get("/business", (req, res) => {
+  Model.find({category:'Business'})
+    .then((data) => {
+      console.log("Business data fetched successfully..");
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get("/education", (req, res) => {
+  Model.find({category:'Education'})
+    .then((data) => {
+      console.log("Education data fetched successfully..");
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get("/world", (req, res) => {
+  Model.find({category:'World'})
+    .then((data) => {
+      console.log("World data fetched successfully..");
       res.status(200).json(data);
     })
     .catch((err) => {

@@ -64,6 +64,7 @@ const Login = () => {
           title: "success",
           text: "Loggedin Successfully",
         });
+        navigate("/main/home");
         res.json().then((data) => {
           setCurrentUser(data);
           console.log(data);

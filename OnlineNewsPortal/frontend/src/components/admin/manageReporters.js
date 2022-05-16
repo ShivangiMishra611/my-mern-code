@@ -237,7 +237,7 @@ const ManageReporters = () => {
               <Formik
                 initialValues={updateFormdata}
                 onSubmit={submitReporter}
-                validationSchema={validationSchema}
+                // validationSchema={validationSchema}
               >
                 {({ values, handleChange, handleSubmit, errors }) => (
                   <form onSubmit={handleSubmit}>
@@ -249,7 +249,7 @@ const ManageReporters = () => {
                         variant="outlined"
                         id="name"
                         type="text"
-                        onChange={handleChange}
+                        onChange={handleChange} 
                         value={values.name}
                         error={Boolean(errors.name)}
                         helperText={errors.name}
@@ -431,10 +431,6 @@ const ManageReporters = () => {
                         <input
                           className="form-control"
                           type="file"
-                          id="thumbnail"
-                          value={values.thumbnail}
-                          error={Boolean(errors.thumbnail)}
-                          helperText={errors.thumbnail}
                           onChange={uploadThumbnail}
                         />
                       </div>

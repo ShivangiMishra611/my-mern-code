@@ -4,7 +4,6 @@ import {
   Autocomplete,
   Card,
   CardContent,
-
   Chip,
   FormControl,
   InputAdornment,
@@ -151,6 +150,7 @@ const ManageNews = () => {
             <h5>{news.summary}</h5>
 
             <h5>{news.category}</h5>
+            <h5>{news.createdAt}</h5>
             <Stack direction="row" spacing={2}>
               <Fab
                 disabled={news.approvenews}
@@ -240,7 +240,7 @@ const ManageNews = () => {
               <Formik
                 initialValues={updateFormdata}
                 onSubmit={submitNews}
-                validationSchema={validationSchema}
+                // validationSchema={validationSchema}
               >
                 {({ values, handleChange, handleSubmit, errors }) => (
                   <form onSubmit={handleSubmit}>
@@ -383,9 +383,6 @@ const ManageNews = () => {
                           className="form-control"
                           type="file"
                           id="thumbnail"
-                          value={values.thumbnail}
-                          error={Boolean(errors.thumbnail)}
-                          helperText={errors.thumbnail}
                           onChange={uploadThumbnail}
                         />
                       </div>
@@ -416,7 +413,6 @@ const ManageNews = () => {
     }
   };
 
-  //
   const filterByDate = (e) => {
     const selDate = e.target.value;
 
@@ -437,6 +433,29 @@ const ManageNews = () => {
     setNewsArray(filtered);
   };
 
+  // const filterByCategory = (e) => {
+  //   fetch(url + "/news/getall")
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     console.log(data);
+  //     const filtered = data.filter(({ category }) => {
+  //       return category.toLowerCase();
+  //     });
+  //     console.log(filtered);
+  //     setNewsArray(filtered);
+  //     setLoading(false);
+  //   });
+  //   // const cat = e.target.value;
+
+  //   // const filtered = masterArray.filter((news) => {
+  //   //   const cat1=masterArray.filter((news)
+
+  //   //   return category.toLowerCase() == cat;
+  //   // });
+  //   // console.log(filtered);
+  //   // setNewsArray(filtered);
+  // };
+
   const filterByYear = (e) => {
     const selYear = e.target.value;
     console.log(e.target.value);
@@ -455,84 +474,122 @@ const ManageNews = () => {
     <div className="">
       <Toaster position="top-right" reverseOrder={false} />
       <header className="news-back">
-      <Grid container spacing={5}>
-        <Grid item md={6}>
-       
-            <Typography className="text-center text-white" variant="h5">
+        <Grid container spacing={5}>
+          <Grid item md={6}>
+            <Typography className="nmanage text-center" variant="h5">
               Trusted News Tribune
             </Typography>
-            <Typography className="text-center text-white" variant="h2">
+            <Typography className="nmanage text-center" variant="h2">
               Manage News
             </Typography>
-          
-              <div className="input-group mt-5">
-                <input
-                  className="form-control"
-                  value={filter}
-                  label="Search Here"
-                  onChange={(e) => setFilter(e.target.value)}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <SearchIcon
-                          sx={{ color: "active.active", mr: 1, my: 0.5 }}
-                        />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-                <Button variant="contained" onClick={filternews} type="submit">
-                  Search
-                </Button>
-             
+
+            <div className="input-group mt-5">
+              <input
+                className="form-control"
+                value={filter}
+                label="Search Here"
+                onChange={(e) => setFilter(e.target.value)}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon
+                        sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                      />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              <Button
+                variant="contained"
+                onClick={filternews}
+                type="submit"
+                align="center"
+              >
+                Search
+              </Button>
+              <br></br>
+              <br></br>
             </div>
-            </Grid>
-           
+            <br></br>
+            <br></br>
+          </Grid>
 
-            <Grid item md={2}>
+          <Grid item md={2} sx={{ mt: 27 }}>
+            <select
+              class="form-select mt-5"
+              aria-label="Default select example"
+              onChange={filterByYear}
+            >
+              <option selected>Select a Year</option>
+              {[2021, 2022].map((year) => (
+                <option value={year}>{year}</option>
+              ))}
+            </select>
+          </Grid>
+
+          <Grid item md={2} sx={{ mt: 27 }}>
+            <select
+              class="form-select mt-5"
+              aria-label="Default select example"
+              onChange={filterByMonth}
+            >
+              <option selected>Select a Month</option>
+              {[
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sept",
+                "Oct",
+                "Nov",
+                "Dec",
+              ].map((mon, i) => (
+                <option value={i}>{mon}</option>
+              ))}
+            </select>
+          </Grid>
+
+          {/* <Grid item md={2}  sx={{mt: 27}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
-                onChange={filterByYear}
+                onChange={filterByCategory}
               >
-                <option selected>Select a Year</option>
-                {[2021, 2022].map((year) => (
-                  <option value={year}>{year}</option>
+                <option selected>Select a Category</option>
+                {[ "Sports",
+    "Politics",
+    "World",
+    "Lifestyle",
+    "Entertainment",
+    "Health",
+    "Business",
+    "Education",
+    "Technology"].map((category) => (
+                  <option value={category}>{category}</option>
                 ))}
               </select>
-            </Grid>
+            </Grid> */}
+          <Grid item md={2} sx={{ mt: 27 }}>
+            <select
+              class="form-select mt-5"
+              aria-label="Default select example"
+              onChange={filterByDate}
+            >
+              <option selected>Select a Date</option>
+              {Array.from({ length: 31 }, (_, i) => i + 1).map((date) => (
+                <option value={date}>{date}</option>
+              ))}
+            </select>
+          </Grid>
+        </Grid>
 
-            <Grid item md={2}>
-              <select
-                class="form-select mt-5"
-                aria-label="Default select example"
-                onChange={filterByMonth}
-              >
-                <option selected>Select a Month</option>
-                {["Jan", "Feb", "Mar", "Apr"].map((mon, i) => (
-                  <option value={i}>{mon}</option>
-                ))}
-              </select>
-            </Grid>
-            <Grid item md={2}>
-              <select
-                class="form-select mt-5"
-                aria-label="Default select example"
-                onChange={filterByDate}
-              >
-                <option selected>Select a Date</option>
-                {Array.from({ length: 31 }, (_, i) => i + 1).map((date) => (
-                  <option value={date}>{date}</option>
-                ))}
-              </select>
-            </Grid>
-            </Grid>
-
-            {displayNews()}
-            {updateForm()}
-         
-       
-       </header>
+        {displayNews()}
+        {updateForm()}
+      </header>
     </div>
   );
 };

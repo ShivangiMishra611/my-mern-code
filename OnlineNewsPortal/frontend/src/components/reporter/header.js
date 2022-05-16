@@ -86,12 +86,6 @@ export default function Header() {
 
 
 
-          <IconButton className="nav-item">
-          <NavLink className="nav-link" to="/main/topstories">
-           Top Stories
-          </NavLink>
-        </IconButton>
-
          
             <IconButton className="nav-item">
               <NavLink className="nav-link" to="/reporter/dashboard/addnews">
@@ -135,7 +129,7 @@ export default function Header() {
 
           <Tooltip title="Reporter Actions">
             <IconButton
-            onClick={(e) => setUserMenuPos(e.currentTarget)}
+             onClick={(e) => setRepMenuPos(e.currentTarget)}
               size="large"
               edge="start"
               color="inherit"
@@ -144,22 +138,23 @@ export default function Header() {
               <AccountCircle />
             </IconButton>
           </Tooltip>
-
+        
           <Menu
-            anchorEl={userMenuPos}
-            open={userMenuOpen}
-            onClose={(e) => setUserMenuPos(null)}
-          >
-            <MenuItem>
+            anchorEl={repMenuPos}
+            open={Boolean(repMenuPos)}
+            onClose={(e) => setRepMenuPos(null)}
+           >
+            <MenuItem onClick={logout}>
+          
               <ListItemIcon>
-                <FollowTheSigns fontSize="small" />
-              </ListItemIcon>
-              <ListItemText>Register as User</ListItemText>
-            </MenuItem>
-            <MenuItem>Signup</MenuItem>
-          </Menu>
+               <FollowTheSigns fontSize="small" />
+             </ListItemIcon>
+             <ListItemText>Logout</ListItemText>
+           </MenuItem>
+            
+           </Menu>
 
-          <Tooltip title="Reporter">
+          // <Tooltip title="Reporter">
             <IconButton
               size="large"
               edge="start"

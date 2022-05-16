@@ -94,21 +94,11 @@ color:whitesmoke;
 .current{
   background: url(http://localhost:5000/images/backcurrent.webp);
  
-}
-.lucknow{
-  background: url(http://localhost:5000/images/lko.jpg) ;
-  
-  /* background-repeat: no-repeat; */
-  background-size:cover ;
-  
+
  
 
 }
-.top-stories{
-  
-    /* background: url(http://localhost:5000/images/patterntop.png); */
-    background-size: cover;
-  }
+
  
   
   .cardview{
@@ -169,7 +159,9 @@ color:whitesmoke;
     background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/managenews.jpg);
     padding: 2rem;
     text-shadow: 2px 2px 3px #0000005c;
-    height: 800px;
+    height: 100%;
+    background-size: cover;
+  
 
   }
   .lkonews-back{
@@ -177,13 +169,14 @@ color:whitesmoke;
     padding: 2rem;
     text-shadow: 2px 2px 3px #0000005c;
     height: 800px;
+    background-size: cover;
 
   }
  .current-back{
   background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/currentaffair.jpg);
   padding: 2rem;
   text-shadow: 2px 2px 3px #0000005c;
-  height: 800px;
+  height: 100%;
 
 
  }
@@ -195,7 +188,43 @@ color:whitesmoke;
 
 
  }
-    
+ .nmanage{
+   color: white;
+   padding-left: 18rem; 
+   
+ }
+ .lnmanage{
+  color: white;
+  padding-left: 18rem; 
+ }
+ .img-slider{
+   box-shadow:rgb(149,157 ,165,0.2) 0px 8px 24px;
+   animation:changeImage 20s linear infinite;
+   display:grid;
+  
+ } 
+ /* @keyframes changeImage {
+   0%{
+     background-image: url(http://localhost:5000/images/crypto.webp);
+   }
+   25%{
+    background-image: url(http://localhost:5000/images/crypto.webp);
+   }
+   50%{
+    background-image: url(http://localhost:5000/images/crypto.webp);
+   }
+   75%{
+    background-image: url(http://localhost:5000/images/crypto.webp);
+   }
+   100%{
+    background-image: url(http://localhost:5000/images/crypto.webp);
+   }
+ }
+      */
+      .footer-bottom{
+        height:3vh;
+        background-color: red;
+      }
   
 
     

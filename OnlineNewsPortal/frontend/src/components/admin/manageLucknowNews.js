@@ -234,7 +234,7 @@ const ManageLucknowNews = () => {
               <Formik
                 initialValues={updateFormdata}
                 onSubmit={submitNews}
-                validationSchema={validationSchema}
+                // validationSchema={validationSchema}
               >
                 {({ values, handleChange, handleSubmit, errors }) => (
                   <form onSubmit={handleSubmit}>
@@ -377,9 +377,7 @@ const ManageLucknowNews = () => {
                           className="form-control"
                           type="file"
                           id="thumbnail"
-                          value={values.thumbnail}
-                          error={Boolean(errors.thumbnail)}
-                          helperText={errors.thumbnail}
+                          
                           onChange={uploadThumbnail}
                         />
                       </div>
@@ -450,10 +448,10 @@ const ManageLucknowNews = () => {
       <header className="lkonews-back">
       <Grid container spacing={5}>
         <Grid item md={6}>
-        <Typography className="text-center text-white" variant="h5">
+        <Typography className="lnmanage text-center" variant="h5">
           Trusted News Tribune
         </Typography>
-        <Typography className="text-center text-white" variant="h2">
+        <Typography className="lnmanage text-center" variant="h2">
           Manage Lucknow News
         </Typography>
         
@@ -476,7 +474,7 @@ const ManageLucknowNews = () => {
             </Button>
           </div>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2} sx={{mt: 32}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -489,7 +487,7 @@ const ManageLucknowNews = () => {
               </select>
             </Grid>
 
-            <Grid item md={2}>
+            <Grid item md={2}  sx={{mt: 32}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -501,7 +499,7 @@ const ManageLucknowNews = () => {
                 ))}
               </select>
             </Grid>
-            <Grid item md={2}>
+            <Grid item md={2} sx={{mt: 32}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"

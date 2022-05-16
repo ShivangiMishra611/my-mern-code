@@ -14,6 +14,7 @@ import {
 import { useEffect, useState } from "react";
 import app_config from "../../config";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+
 import ShareIcon from "@mui/icons-material/Share";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
@@ -123,7 +124,7 @@ const TopStories = () => {
   };
 
   const refreshSubData = (filter) => {
-    setCurrentCategory(filter);
+    // setCurrentCategory(filter);
     setLoading(true);
     fetch(url + "/news/approvenews")
       .then((res) => res.json())
@@ -198,6 +199,7 @@ const TopStories = () => {
   };
 
   const displaySubCategories = () => {
+    if(category || currentCategory)
     return newsCategories[category ? category : currentCategory].map((cate) => (
       <Button
         color="warning"
@@ -251,12 +253,7 @@ const TopStories = () => {
                 >
                   {truncate(news.summary, 100)}
                 </h4>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                  <ShareIcon />
-                </IconButton>
+               
               </CardContent>
               <CardActions>
                 <Button

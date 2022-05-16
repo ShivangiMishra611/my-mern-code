@@ -28,6 +28,7 @@ import Home from "./components/main/home";
 import ReporterLogin from "./components/reporter/reporterLogin";
 import AdminLogin from "./components/admin/adminLogin";
 import Authenticator from "./components/authenticator";
+import ReporterAuthenticator from "./components/reporterAuthenticator";
 import AddCurrentAffairs from "./components/reporter/addCurrentAffairs";
 import CurrentAffairs from "./components/main/currentAffairs";
 import ManageCurrentAffairs from "./components/admin/manageCurrentAffairs";
@@ -36,9 +37,10 @@ import RManageNews from "./components/reporter/manageNews";
 import { createTheme, ThemeProvider } from "@mui/material";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en.json";
+import AdminAuthenticator from "./components/adminAuthenticator";
 
 function App() {
-  // TimeAgo.addDefaultLocale(en)
+  TimeAgo.addDefaultLocale(en);
 
   const theme1 = createTheme({
     palette: {
@@ -53,9 +55,17 @@ function App() {
     <ThemeProvider theme={theme1}>
       <BrowserRouter>
         <Routes>
-          <Route element={<Reporter />} path="reporter">
+          <Route
+            element={
+              <ReporterAuthenticator>
+                <Reporter />
+              </ReporterAuthenticator>
+            }
+            path="reporter"
+          >
             <Route element={<AddNews />} path="addnews" />
             <Route element={<AddLucknowNews />} path="addlucknownews" />
+
             <Route element={<AddCurrentAffairs />} path="addcurrentaffairs" />
             <Route element={<RManageNews />} path="managenews" />
             <Route
@@ -82,9 +92,9 @@ function App() {
 
           <Route
             element={
-              <Admin />
-              // <Authenticator>
-              // </Authenticator>
+              <AdminAuthenticator>
+                <Admin />
+              </AdminAuthenticator>
             }
             path="admin"
           >

@@ -7,12 +7,13 @@ import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import BadgeIcon from "@mui/icons-material/Badge";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import NewspaperIcon from '@mui/icons-material/Newspaper';
+import { blue } from "@mui/material/colors";
 
 const Admin = () => {
   const sidebarOptions = [
     {
       title: "Add Reporter",
-      icon: <PersonAddIcon />,
+      icon: <PersonAddIcon  sx={{color: blue[30]}}  />,
       link: "/admin/addreporter",
     },
     {
