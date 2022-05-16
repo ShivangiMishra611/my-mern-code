@@ -935,66 +935,58 @@ const Home = () => {
                     >
                       View Top Stories
                     </span>
-
-             
-<br></br>
-<br></br>
-                 
-                        <div className="d-flex justify-content-between align-items-center">
-                          <h5 className="mb-0 font-weight-600">MY CITY</h5>
-                        </div>
-&nbsp;&nbsp;
-                        <div className="d-flex justify-content-between align-items-center">
-                        <h5 className="mb-0 font-weight-600">SPORTS</h5>
-                      </div>
-                      &nbsp;&nbsp;
-                        <div className="d-flex justify-content-between align-items-center">
-                        <h5 className="mb-0 font-weight-600">WORLD</h5>
-                      </div>
-
-                      &nbsp;&nbsp;
-                      <div className="d-flex justify-content-between align-items-center">
-                      <h5 className="mb-0 font-weight-600">LIFESTYLE</h5>
+                    <br></br>
+                    <br></br>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <h5 className="mb-0 font-weight-600">MY CITY</h5>
                     </div>
-
                     &nbsp;&nbsp;
                     <div className="d-flex justify-content-between align-items-center">
-                    <h5 className="mb-0 font-weight-600">ENTERTAINMENT</h5>
-                  </div>
-                  &nbsp;&nbsp;
-                  <div className="d-flex justify-content-between align-items-center">
-                  <h5 className="mb-0 font-weight-600">BUSINESS</h5>
-                </div>
-                &nbsp;&nbsp;
-                <div className="d-flex justify-content-between align-items-center">
-                <h5 className="mb-0 font-weight-600">TECHNOLOGY</h5>
-              </div>
-              <ul className="social-media mb-3">
-              <li>
-                <a href="#">
-                  <i className=" fab fa-facebook"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fab  fa-youtube"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fab fa-twitter"></i>
-                </a>
-              </li>
+                      <h5 className="mb-0 font-weight-600">SPORTS</h5>
+                    </div>
+                    &nbsp;&nbsp;
+                    <div className="d-flex justify-content-between align-items-center">
+                      <h5 className="mb-0 font-weight-600">WORLD</h5>
+                    </div>
+                    &nbsp;&nbsp;
+                    <div className="d-flex justify-content-between align-items-center">
+                      <h5 className="mb-0 font-weight-600">LIFESTYLE</h5>
+                    </div>
+                    &nbsp;&nbsp;
+                    <div className="d-flex justify-content-between align-items-center">
+                      <h5 className="mb-0 font-weight-600">ENTERTAINMENT</h5>
+                    </div>
+                    &nbsp;&nbsp;
+                    <div className="d-flex justify-content-between align-items-center">
+                      <h5 className="mb-0 font-weight-600">BUSINESS</h5>
+                    </div>
+                    &nbsp;&nbsp;
+                    <div className="d-flex justify-content-between align-items-center">
+                      <h5 className="mb-0 font-weight-600">TECHNOLOGY</h5>
+                    </div>
+                    <ul className="social-media mb-3">
+                      <li>
+                        <a href="#">
+                          <i className=" fab fa-facebook"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i className="fab  fa-youtube"></i>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i className="fab fa-twitter"></i>
+                        </a>
+                      </li>
 
-             
-              <li>
-                <a href="#">
-                  <i className="fab fa-whatsapp"></i>
-                </a>
-              </li>
-            </ul>
-
-
+                      <li>
+                        <a href="#">
+                          <i className="fab fa-whatsapp"></i>
+                        </a>
+                      </li>
+                    </ul>
                     <p className="mb-0"></p>
                   </div>
                   <div className="d-flex">
@@ -1012,12 +1004,13 @@ const Home = () => {
                   <div className="row">
                     <div className="col-xl-8 stretch-card grid-margin">
                       <div className="position-relative">
-                        <video width="700" height="600" controls>
+                        <video
+                          src={url + "/images/breakning_news.mp4"}
+                          style={{ height: "100%" }}
+                          controls
                           className="img-fluid"
-                          <source src="breakning news.mp4"></source>
-                           
-                          alt=""
-                          </video>
+                          autoPlay
+                        ></video>
 
                         <div
                           className="banner-content"
@@ -1312,28 +1305,30 @@ const Home = () => {
                         <div className="col-sm-12">
                           <div className="footer-border-bottom pb-2">
                             <div className="row">
-                            <div className="rotate-img col-3">
+                              <div className="rotate-img col-3">
                                 <img
                                   src={url + "/" + newsArray[6].thumbnail}
                                   alt="thumb"
                                   className="img-fluid"
                                 />
                               </div>
-                              <div className="col-9" >
-                              <Tooltip title={newsArray[6].title}>
-                                <h5 className="font-weight-600"  onClick={(e) =>
-                                    navigate(
-                                      "/main/viewnews/" + newsArray[6]._id
-                                    )
-                                  }
-                                  style={{
-                                    cursor: "pointer",
+                              <div className="col-9">
+                                <Tooltip title={newsArray[6].title}>
+                                  <h5
+                                    className="font-weight-600"
+                                    onClick={(e) =>
+                                      navigate(
+                                        "/main/viewnews/" + newsArray[6]._id
+                                      )
+                                    }
+                                    style={{
+                                      cursor: "pointer",
 
-                                    fontWeight: "bolder",
-                                  }}>
-                                     {truncate(newsArray[6].title, 45)}
-                                 
-                                </h5>
+                                      fontWeight: "bolder",
+                                    }}
+                                  >
+                                    {truncate(newsArray[6].title, 45)}
+                                  </h5>
                                 </Tooltip>
                               </div>
                             </div>
@@ -1351,21 +1346,23 @@ const Home = () => {
                                   className="img-fluid"
                                 />
                               </div>
-                              <div className="col-9" >
-                              <Tooltip title={newsArray[3].title}>
-                                <h5 className="font-weight-600"  onClick={(e) =>
-                                    navigate(
-                                      "/main/viewnews/" + newsArray[3]._id
-                                    )
-                                  }
-                                  style={{
-                                    cursor: "pointer",
+                              <div className="col-9">
+                                <Tooltip title={newsArray[3].title}>
+                                  <h5
+                                    className="font-weight-600"
+                                    onClick={(e) =>
+                                      navigate(
+                                        "/main/viewnews/" + newsArray[3]._id
+                                      )
+                                    }
+                                    style={{
+                                      cursor: "pointer",
 
-                                    fontWeight: "bolder",
-                                  }}>
-                                     {truncate(newsArray[3].title, 45)}
-                                 
-                                </h5>
+                                      fontWeight: "bolder",
+                                    }}
+                                  >
+                                    {truncate(newsArray[3].title, 45)}
+                                  </h5>
                                 </Tooltip>
                               </div>
                             </div>
@@ -1376,29 +1373,31 @@ const Home = () => {
                         <div className="col-sm-12">
                           <div>
                             <div className="row">
-                            <div className="rotate-img col-3">
+                              <div className="rotate-img col-3">
                                 <img
                                   src={url + "/" + newsArray[4].thumbnail}
                                   alt="thumb"
                                   className="img-fluid"
                                 />
                               </div>
-                              
-                               <div className="col-9" >
-                              <Tooltip title={newsArray[4].title}>
-                                <h5 className="font-weight-600"  onClick={(e) =>
-                                    navigate(
-                                      "/main/viewnews/" + newsArray[4]._id
-                                    )
-                                  }
-                                  style={{
-                                    cursor: "pointer",
 
-                                    fontWeight: "bolder",
-                                  }}>
-                                     {truncate(newsArray[4].title, 45)}
-                                 
-                                </h5>
+                              <div className="col-9">
+                                <Tooltip title={newsArray[4].title}>
+                                  <h5
+                                    className="font-weight-600"
+                                    onClick={(e) =>
+                                      navigate(
+                                        "/main/viewnews/" + newsArray[4]._id
+                                      )
+                                    }
+                                    style={{
+                                      cursor: "pointer",
+
+                                      fontWeight: "bolder",
+                                    }}
+                                  >
+                                    {truncate(newsArray[4].title, 45)}
+                                  </h5>
                                 </Tooltip>
                               </div>
                             </div>

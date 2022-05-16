@@ -18,7 +18,10 @@ import KeyIcon from "@mui/icons-material/Key";
 import WcIcon from "@mui/icons-material/Wc";
 import CallIcon from "@mui/icons-material/Call";
 import * as Yup from "yup";
+<<<<<<< HEAD
 import "yup-phone";
+=======
+>>>>>>> a5cbaf1deb676f3dffede843a415ff223b7f9d67
 
 const AddReporter = () => {
   const url = app_config.api_url;
@@ -37,6 +40,7 @@ const AddReporter = () => {
   };
 
   const reporterSubmit = (values) => {
+<<<<<<< HEAD
     if(!thumbnail){
       Swal.fire({
         icon : 'error',
@@ -46,6 +50,8 @@ const AddReporter = () => {
         return;
       })
     }
+=======
+>>>>>>> a5cbaf1deb676f3dffede843a415ff223b7f9d67
     values.thumbnail = thumbnail;
     console.log(values);
 
@@ -97,6 +103,7 @@ const AddReporter = () => {
       .max(50, "Too Long!")
       .required("FullName is Required"),
     // gender: Yup.string().required("Gender is Required"),
+<<<<<<< HEAD
     number: Yup.string()
     .phone()
     .required("Number is Required"),
@@ -108,6 +115,14 @@ const AddReporter = () => {
   //   file: Yup.object().shape({
   //     thumbnail: Yup.string().required('file required')
   // }).required('File required'),
+=======
+    // number: Yup.number()
+    // .min(6)
+    // .max(10)
+    // .required("Number is Required"),
+    age: Yup.string().required("Age is Required"),
+    email: Yup.string().email("Invalid email").required("Email is Required"),
+>>>>>>> a5cbaf1deb676f3dffede843a415ff223b7f9d67
     password: Yup.string()
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
@@ -117,7 +132,10 @@ const AddReporter = () => {
     confirm: Yup.string()
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Password Confirmation is Required"),
+<<<<<<< HEAD
 
+=======
+>>>>>>> a5cbaf1deb676f3dffede843a415ff223b7f9d67
   });
 
   return (
@@ -133,7 +151,11 @@ const AddReporter = () => {
             <Formik
               initialValues={reporterForm}
               onSubmit={reporterSubmit}
+<<<<<<< HEAD
                validationSchema={validationSchema}
+=======
+              // validationSchema={validationSchema}
+>>>>>>> a5cbaf1deb676f3dffede843a415ff223b7f9d67
             >
               {({ values, handleChange, handleSubmit, errors }) => (
                 <form onSubmit={handleSubmit}>
@@ -300,6 +322,10 @@ const AddReporter = () => {
                       <input
                         className="form-control"
                         type="file"
+<<<<<<< HEAD
+=======
+                        id="thumbnail"
+>>>>>>> a5cbaf1deb676f3dffede843a415ff223b7f9d67
                         onChange={uploadThumbnail}
                       />
                     </div>

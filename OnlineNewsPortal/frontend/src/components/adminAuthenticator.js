@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const Authenticator = ({ children }) => {
+const AdminAuthenticator = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
-    JSON.parse(sessionStorage.getItem("user"))
+    JSON.parse(sessionStorage.getItem("admin"))
   );
 
   const navigate = useNavigate();
@@ -13,10 +13,10 @@ const Authenticator = ({ children }) => {
 
   if (!currentUser) {
     Swal.fire({
-      icon : 'info',
-      title : 'OOops!!',
-      text : 'You need to be logged in'
-    })
+      icon: "info",
+      title: "OOops!!",
+      text: "You need to be logged in",
+    });
 
     return <Navigate to="/main/login" />;
   } else if (currentUser) {
@@ -25,11 +25,10 @@ const Authenticator = ({ children }) => {
       navigate("/admin");
     } else {
       navigate("/reporter");
-      
     }
   }
 
   return children;
 };
 
-export default Authenticator;
+export default AdminAuthenticator;
