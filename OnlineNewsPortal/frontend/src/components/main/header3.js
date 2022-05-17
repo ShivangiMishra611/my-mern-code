@@ -24,7 +24,12 @@ import {
 import { useNavigate } from "react-router-dom";
 import { ListItemIcon, ListItemText } from "@mui/material";
 import { useEffect, useState } from "react";
+
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import BadgeIcon from "@mui/icons-material/Badge";
+import GroupAddIcon from "@mui/icons-material/GroupAdd";
+import NewspaperIcon from '@mui/icons-material/Newspaper';
+import { blue } from "@mui/material/colors";
 
 const pages = [
   {
@@ -84,6 +89,67 @@ const Header = () => {
       icon: <AccountCircle />,
       link: "/profile",
     },
+    {
+      name: "Add Reporter",
+      icon: <PersonAddIcon  sx={{color: blue[30]}}  />,
+      link: "/admin/addreporter",
+    },
+    {
+      name:"Add News",
+      icon: <NewspaperIcon />,
+      link:"/admin/addnews"
+      },
+
+      {
+        name:"Add  Lucknow News",
+        icon: <NewspaperIcon />,
+        link:"/admin/addlucknownews"
+        },
+
+        {
+          name:"Add  Current Affairs",
+          icon: <NewspaperIcon />,
+          link:"/admin/addcurrentaffairs"
+          },
+
+          {
+            name: "Manage Reporter",
+            icon: <GroupAddIcon />,
+            link: "/admin/managereporters",
+          },
+      
+
+
+
+          {
+            name: "Manage News",
+            icon: <BadgeIcon />,
+            link: "/admin/managenews",
+          },
+
+          
+          {
+            name: "Manage Lucknow News",
+            icon: <BadgeIcon />,
+            link: "/admin/managelucknownews",
+          },
+      
+      
+
+   
+    {
+      name: "Manage Current Affairs",
+      icon: <BadgeIcon />,
+      link: "/admin/managecurrentaffairs",
+    },
+   
+    {
+      name: "Manage Users",
+      icon: <GroupAddIcon />,
+      link: "/admin/manageusers",
+    },
+   
+
     
     {
       name: "Logout",
