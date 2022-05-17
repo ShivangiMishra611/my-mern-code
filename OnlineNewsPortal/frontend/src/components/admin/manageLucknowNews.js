@@ -144,6 +144,7 @@ const ManageLucknowNews = () => {
             <h5>{newsLucknow.summary}</h5>
 
             <Typography>{newsLucknow.category}</Typography>
+            <h5>{newsLucknow.createdAt}</h5>
 
             <Stack direction="row" spacing={2}>
               <Fab

@@ -10,6 +10,7 @@ const Main = () => {
       <Header />
       <Outlet />
     </div>
+    
   );
 };
 

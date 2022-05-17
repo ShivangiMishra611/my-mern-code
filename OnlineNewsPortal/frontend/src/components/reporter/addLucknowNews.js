@@ -59,7 +59,7 @@ const AddLucknowNews = () => {
     console.log(values);
 
 
-    fetch(url + "/news/add", {
+    fetch(url + "/newsLucknow/add", {
       method: "POST",
       body: JSON.stringify(values),
       headers: {
