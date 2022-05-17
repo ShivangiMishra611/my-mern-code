@@ -11,21 +11,14 @@ const AdminAuthenticator = ({ children }) => {
 
   console.log(currentUser);
 
-  if (!currentUser) {
+  if (currentUser === null) {
     Swal.fire({
       icon: "info",
       title: "OOops!!",
-      text: "You need to be logged in",
+      text: "You need to be admin",
     });
 
-    return <Navigate to="/main/login" />;
-  } else if (currentUser) {
-    console.log(currentUser);
-    if (currentUser.isAdmin) {
-      navigate("/admin");
-    } else {
-      navigate("/reporter");
-    }
+    return <Navigate to="/main/reporterlogin" />;
   }
 
   return children;

@@ -7,15 +7,11 @@ const mySchema = new mongoose.Schema({
   subCategory: String,
   thumbnail: String,
   tags: Array,
-  uploadedBy: {type : mongoose.Types.ObjectId, ref:'reporters'},
- 
+  uploadedBy: { type: mongoose.Types.ObjectId, ref: "reporters" },
 
-  
-
-  
   createdAt: { type: Date, default: new Date() },
 
-  approvenews:{type:Boolean,default:false}
+  approvenews: { type: Boolean, default: false },
 });
 
 const myModel = mongoose.model("newscurrent", mySchema);
