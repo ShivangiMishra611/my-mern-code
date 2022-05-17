@@ -1,78 +1,74 @@
 import { Container } from "@mui/material";
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Sidebar from "../sidebar";
+import Sidebar from "./sidebar";
 
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import BadgeIcon from "@mui/icons-material/Badge";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import NewspaperIcon from '@mui/icons-material/Newspaper';
+import NewspaperIcon from "@mui/icons-material/Newspaper";
 import { blue } from "@mui/material/colors";
+import { AccountCircle } from "@mui/icons-material";
 
 const Admin = () => {
   const sidebarOptions = [
     {
+      title: "Manage Profile",
+      icon: <AccountCircle />,
+      link: "/admin/profile",
+    },
+    {
       title: "Add Reporter",
-      icon: <PersonAddIcon  sx={{color: blue[30]}}  />,
+      icon: <PersonAddIcon sx={{ color: blue[30] }} />,
       link: "/admin/addreporter",
     },
     {
-      title:"Add News",
+      title: "Add News",
       icon: <NewspaperIcon />,
-      link:"/admin/addnews"
-      },
+      link: "/admin/addnews",
+    },
 
-      {
-        title:"Add  Lucknow News",
-        icon: <NewspaperIcon />,
-        link:"/admin/addlucknownews"
-        },
+    {
+      title: "Add  Lucknow News",
+      icon: <NewspaperIcon />,
+      link: "/admin/addlucknownews",
+    },
 
-        {
-          title:"Add  Current Affairs",
-          icon: <NewspaperIcon />,
-          link:"/admin/addcurrentaffairs"
-          },
+    {
+      title: "Add  Current Affairs",
+      icon: <NewspaperIcon />,
+      link: "/admin/addcurrentaffairs",
+    },
 
-          {
-            title: "Manage Reporter",
-            icon: <GroupAddIcon />,
-            link: "/admin/managereporters",
-          },
-      
+    {
+      title: "Manage Reporter",
+      icon: <GroupAddIcon />,
+      link: "/admin/managereporters",
+    },
 
+    {
+      title: "Manage News",
+      icon: <BadgeIcon />,
+      link: "/admin/managenews",
+    },
 
+    {
+      title: "Manage Lucknow News",
+      icon: <BadgeIcon />,
+      link: "/admin/managelucknownews",
+    },
 
-          {
-            title: "Manage News",
-            icon: <BadgeIcon />,
-            link: "/admin/managenews",
-          },
-
-          
-          {
-            title: "Manage Lucknow News",
-            icon: <BadgeIcon />,
-            link: "/admin/managelucknownews",
-          },
-      
-      
-
-   
     {
       title: "Manage Current Affairs",
       icon: <BadgeIcon />,
       link: "/admin/managecurrentaffairs",
     },
-   
+
     {
       title: "Manage Users",
       icon: <GroupAddIcon />,
       link: "/admin/manageusers",
     },
-   
-
-
   ];
 
   return (

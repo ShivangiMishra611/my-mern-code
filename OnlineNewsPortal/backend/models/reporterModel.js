@@ -8,6 +8,7 @@ const mySchema = new mongoose.Schema({
   gender: String,
   age: Number,
   thumbnail: String,
+  avatar: String,
   isAdmin: { type: Boolean, default: false },
   createdAt: { type: Date, default: new Date() },
 });

@@ -64,16 +64,14 @@ const Login = () => {
           title: "success",
           text: "Loggedin Successfully",
         });
-        navigate("/reporter/addnews");
         res.json().then((data) => {
           setCurrentUser(data);
           console.log(data);
-          //storing value in session
-          sessionStorage.setItem("reporter", JSON.stringify(data));
-          sessionStorage.setItem("loginStatus", JSON.stringify(true));
           if (data.isAdmin) {
+            sessionStorage.setItem("admin", JSON.stringify(data));
             navigate("/admin/addreporter");
           } else {
+            sessionStorage.setItem("reporter", JSON.stringify(data));
             navigate("/reporter/addnews");
           }
         });

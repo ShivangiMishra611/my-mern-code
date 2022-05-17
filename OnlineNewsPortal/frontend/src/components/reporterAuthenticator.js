@@ -11,32 +11,13 @@ const ReporterAuthenticator = ({ children }) => {
 
   console.log(currentUser);
 
-  if (!currentUser) {
+  if (currentUser === null) {
     Swal.fire({
       icon: "info",
-      title: "OOops!!",
-      text: "You need to be logged in",
+      title: "OOPS!!",
+      text: "You need to be a reporter!!",
     });
     return <Navigate to="/main/reporterlogin" />;
-  }
-   else if (currentUser) {
-  
-    console.log(currentUser);
-    if (currentUser.isAdmin) {
-      Swal.fire({
-        icon: "info",
-        title: "Welcome",
-        text: "You are logged in!",
-      });
-      navigate("/admin");
-    } else {
-      Swal.fire({
-        icon: "info",
-        title: "Welcome",
-        text: "You are logged in!",
-      });
-      navigate("/reporter");
-    }
   }
 
   return children;

@@ -13,20 +13,12 @@ const Authenticator = ({ children }) => {
 
   if (!currentUser) {
     Swal.fire({
-      icon : 'info',
-      title : 'OOops!!',
-      text : 'You need to be logged in'
-    })
+      icon: "info",
+      title: "OOops!!",
+      text: "You need to be logged in",
+    });
 
     return <Navigate to="/main/login" />;
-  } else if (currentUser) {
-    console.log(currentUser);
-    if (currentUser.isAdmin) {
-      navigate("/admin");
-    } else {
-      navigate("/reporter");
-      
-    }
   }
 
   return children;

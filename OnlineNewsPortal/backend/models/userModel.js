@@ -6,6 +6,7 @@ const mySchema = new mongoose.Schema({
   username: String,
   password: String,
   age: Number,
+  avatar: String,
   createdAt: { type: Date, default: new Date() },
 });
 
