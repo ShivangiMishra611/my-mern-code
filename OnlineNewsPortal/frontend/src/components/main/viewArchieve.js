@@ -53,6 +53,7 @@ const ViewArchieve = () => {
       .then((data) => {
         console.log(data);
         setNewsArray(data);
+        setMasterArray(data);
         setLoading(false);
       });
   };
@@ -126,6 +127,7 @@ const ViewArchieve = () => {
             </Grid>
             <Grid item xs={6} md={8}>
               <CardContent>
+              <h5>{news.createdAt}</h5>
               <Tooltip title={news.title}>
                   <h2
                     component="div"
@@ -267,7 +269,18 @@ const ViewArchieve = () => {
                 onChange={filterByMonth}
               >
                 <option selected>Select a Month</option>
-                {["Jan", "Feb", "Mar", "Apr"].map((mon, i) => (
+                {[ "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sept",
+                "Oct",
+                "Nov",
+                "Dec",].map((mon, i) => (
                   <option value={i}>{mon}</option>
                 ))}
               </select>
