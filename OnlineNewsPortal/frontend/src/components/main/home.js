@@ -1137,7 +1137,7 @@ const Home = () => {
                       <div className="header-cat "  style={{mb:2}} >
                       <br></br>
                       
-                        <h1><b>CATEGORIES</b></h1>
+                        <h1>CATEGORIES</h1>
                         <ul className="vertical-menu">
                           <li>
                             <NavLink
@@ -1197,8 +1197,8 @@ const Home = () => {
                                         <h2>Trusted News Tribune</h2>
                                         
                                         
-                                      </span>
-                                    </div>
+                                      </span> 
+                                     </div> 
                                   </div>
                                 </div>
                                 <div className="col-sm-8  grid-margin">

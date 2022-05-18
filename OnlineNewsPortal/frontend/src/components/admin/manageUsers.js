@@ -124,7 +124,7 @@ const ManageUsers = () => {
            <h3>{user.password}</h3>
          
           <Stack direction="row" spacing={2}>
-          <Fab
+          {/* <Fab
              disabled={user.approveusers}
               variant="extended"
               size="small"
@@ -136,7 +136,7 @@ const ManageUsers = () => {
               {user.approveusers ? "Approved" : "Approve Users"}
               
            
-            </Fab>
+            </Fab> */}
 
 
             <Fab
