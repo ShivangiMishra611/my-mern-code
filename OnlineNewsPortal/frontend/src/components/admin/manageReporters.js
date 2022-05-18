@@ -62,7 +62,7 @@ const ManageReporters = () => {
     let form = new FormData();
     form.append("myfile", file);
 
-    fetch(url + "/util/uploadfile", { method: "POST", body: form }).then(
+    fetch(url + "/util/uploadfile", { method: "PUT", body: form }).then(
       (res) => {
         console.log(res.status);
       }
@@ -251,8 +251,8 @@ const ManageReporters = () => {
                         type="text"
                         onChange={handleChange} 
                         value={values.name}
-                        error={Boolean(errors.name)}
-                        helperText={errors.name}
+                        // error={Boolean(errors.name)}
+                        // helperText={errors.name}
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
@@ -278,7 +278,7 @@ const ManageReporters = () => {
                         id="email"
                         onChange={handleChange}
                         value={values.email}
-                        error={errors.email}
+                        // error={errors.email}
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
@@ -292,7 +292,7 @@ const ManageReporters = () => {
                             </InputAdornment>
                           ),
                         }}
-                        helperText={errors.email}
+                        // helperText={errors.email}
                       />
                     </div>
 
@@ -306,7 +306,7 @@ const ManageReporters = () => {
                         id="password"
                         onChange={handleChange}
                         value={values.password}
-                        error={errors.password}
+                        // error={errors.password}
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
@@ -320,7 +320,7 @@ const ManageReporters = () => {
                             </InputAdornment>
                           ),
                         }}
-                        helperText={errors.password}
+                        // helperText={errors.password}
                       />
 
                       <div className="mb-3">
@@ -333,7 +333,7 @@ const ManageReporters = () => {
                           id="confirmpassword"
                           onChange={handleChange}
                           value={values.confirmpassword}
-                          error={errors.confirmpassword}
+                          // error={errors.confirmpassword}
                           InputProps={{
                             endAdornment: (
                               <InputAdornment position="end">
@@ -347,7 +347,7 @@ const ManageReporters = () => {
                               </InputAdornment>
                             ),
                           }}
-                          helperText={errors.confirmpassword}
+                          // helperText={errors.confirmpassword}
                         />
                         <div className="mb-3">
                           {/* <RadioGroup  
@@ -391,7 +391,7 @@ const ManageReporters = () => {
                             type="number"
                             onChange={handleChange}
                             value={values.number}
-                            error={errors.number}
+                            // error={errors.number}
                             InputProps={{
                               endAdornment: (
                                 <InputAdornment position="end">
@@ -405,7 +405,7 @@ const ManageReporters = () => {
                                 </InputAdornment>
                               ),
                             }}
-                            helperText={errors.number}
+                            // helperText={errors.number}
                           />
                         </div>
                       </div>
@@ -419,18 +419,19 @@ const ManageReporters = () => {
                           type="number"
                           onChange={handleChange}
                           value={values.age}
-                          error={errors.age}
-                          helperText={errors.age}
+                          // error={errors.age}
+                          // helperText={errors.age}
                         />
                       </div>
 
                       <div className="mb-3">
-                        <label htmlFor="formFile" className="form-label">
+                        <label HtmlFor="formFile" className="form-label">
                           Add Image
                         </label>
                         <input
                           className="form-control"
                           type="file"
+                          id="thumbnail"
                           onChange={uploadThumbnail}
                         />
                       </div>
@@ -438,7 +439,7 @@ const ManageReporters = () => {
                       <Button
                         type="submit"
                         className="btn btn-primary"
-                        color="success"
+                        color="primary"
                         variant="contained"
                       >
                         Submit

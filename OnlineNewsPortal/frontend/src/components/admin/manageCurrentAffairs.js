@@ -146,6 +146,8 @@ const ManageCurrentAffairs = () => {
             <br></br>
             
             <h5>{newscurrent.summary}</h5>
+            <h5>{newscurrent.category}</h5>
+            <h5>{newscurrent.createdAt}</h5>
 
             <Typography>{newscurrent.categorystate}</Typography>
          
@@ -504,7 +506,18 @@ const ManageCurrentAffairs = () => {
                 onChange={filterByMonth}
               >
                 <option selected>Select a Month</option>
-                {["Jan", "Feb", "Mar", "Apr"].map((mon, i) => (
+                {[ "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sept",
+                "Oct",
+                "Nov",
+                "Dec"].map((mon, i) => (
                   <option value={i}>{mon}</option>
                 ))}
               </select>

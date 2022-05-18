@@ -108,7 +108,7 @@ export default function Sidebar({ children, sidebarOptions, title }) {
   const [userMenu, setUserMenu] = useState(null);
 
   const [currentUser, setCurrentUser] = useState(
-    JSON.parse(sessionStorage.getItem("admin"))
+    JSON.parse(sessionStorage.getItem("user"))
   );
   const url = app_config.api_url;
   const navigate = useNavigate();
@@ -120,10 +120,10 @@ export default function Sidebar({ children, sidebarOptions, title }) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const reporterLogout = () => {
+  const userLogout = () => {
     // setAnchorElUser(null);
-    sessionStorage.removeItem("admin");
-    navigate("/main/reporterlogin");
+    sessionStorage.removeItem("user");
+    navigate("/main/login");
   };
 
   return (
@@ -185,9 +185,10 @@ export default function Sidebar({ children, sidebarOptions, title }) {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Admin Options">
+            <Tooltip title="User Options">
               <IconButton onClick={(e) => setUserMenu(e.currentTarget)}>
                 <Avatar
+                
                   alt="Cindy Baker"
                   src={url + "/" + currentUser.avatar}
                 />
@@ -198,7 +199,7 @@ export default function Sidebar({ children, sidebarOptions, title }) {
               open={Boolean(userMenu)}
               onClose={(e) => setUserMenu(null)}
             >
-              <MenuItem onClick={reporterLogout}>
+              <MenuItem onClick={userLogout}>
                 <ListItemIcon>
                   <FollowTheSigns fontSize="small" />
                 </ListItemIcon>

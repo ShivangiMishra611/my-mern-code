@@ -91,10 +91,10 @@ const Login = () => {
       .required("FullName is Required"),
 
     password: Yup.string()
-      // .matches(
-      //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-      //   "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-      // )
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+      )
       .required("Password is Required"),
   });
 
@@ -113,9 +113,9 @@ const Login = () => {
             </Grid>
             <Grid item xs={6} md={5}>
               <CardContent sx={{ display: "flex", flexDirection: "column" }}>
-                <Avatar style={avatarStyle}>
-                  <LockIcon />
-                </Avatar>
+                {/* <Avatar style={avatarStyle}>
+                  <LockIcon /> */}
+                {/* </Avatar> */}
                 <p className="h3 text-center mb-5 mt-5">Sign In</p>
                 <Formik
                   initialValues={loginForm}
@@ -182,7 +182,7 @@ const Login = () => {
                       />
 
                       <Button
-                        color="success"
+                        color="primary"
                         variant="contained"
                         className=" w-100 mt-5"
                         type="submit"
@@ -194,11 +194,11 @@ const Login = () => {
                         <Link href="resetPassword">Forgot Password?</Link>
                       </Typography>
 
-                      <Typography>
+                      {/* <Typography>
                         {" "}
                         Do'nt have an account?
                         <Link href="signup">Sign Up</Link>
-                      </Typography>
+                      </Typography> */}
                     </form>
                   )}
                 </Formik>

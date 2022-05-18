@@ -153,11 +153,12 @@ const LucknowNews = () => {
             </Grid>
             <Grid item xs={6} md={8}>
               <CardContent>
+              <h5>{newsLucknow.createdAt}</h5>
               <Tooltip title={newsLucknow.title}>
               <h2
                   component="div"
                   variant="h5"
-                  onClick={(e) => navigate("/main/viewnews/" + newsLucknow._id)}
+                  onClick={(e) => navigate("/main/viewlucknow/" + newsLucknow._id)}
                   style={{
                     cursor: "pointer",
                     color: "#950000",
@@ -196,7 +197,7 @@ const LucknowNews = () => {
                   size="small"
                   color="primary"
                   variant="contained"
-                  onClick={(e) => navigate("/main/viewnews/" + newsLucknow._id)}
+                  onClick={(e) => navigate("/main/viewlucknow/" + newsLucknow._id)}
                 >
                   Learn More
                 </Button>

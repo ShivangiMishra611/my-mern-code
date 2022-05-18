@@ -52,6 +52,18 @@ router.delete("/delete/:id", (req, res) => {
     });
 });
 
+router.get("/getbyid/:id", (req, res) => {
+  console.log(req.params.id);
+  Model.findById(req.params.id)
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json(err);
+    });
+});
+
 router.put("/update/:id", (req, res) => {
   Model.findByIdAndUpdate(req.params.id, req.body)
     .then((data) => {
