@@ -1269,7 +1269,7 @@ const Home = () => {
                       </h5>
                       <ul className="social-media mb-3">
                         <li>
-                          <a href="#">
+                        <a href="https://www.facebook.com/summertrainingandinternship2022/"  target="_blank">
                             <i className=" fab fa-facebook"></i>
                           </a>
                         </li>
@@ -1279,8 +1279,8 @@ const Home = () => {
                           </a>
                         </li>
                         <li>
-                          <a href="#">
-                            <i className="fab fa-twitter"></i>
+                        <a href="https://www.instagram.com/rajpootnikita18/"  target="_blank">
+                            <i className="fab fa-instagram"></i>
                           </a>
                         </li>
 

@@ -101,11 +101,11 @@ function App() {
           </Route>
 
           <Route
-            // element={
-            //   <AdminAuthenticator>
-            //     <Admin />
-            //   </AdminAuthenticator>
-            // }
+            element={
+              <AdminAuthenticator>
+                <Admin />
+              </AdminAuthenticator>
+            }
             path="admin"
           >
             <Route element={<AddReporter />} path="addreporter" />
