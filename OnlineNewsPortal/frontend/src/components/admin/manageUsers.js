@@ -90,8 +90,8 @@ const ManageUsers = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        const filtered = data.filter(({ title }) => {
-          return title.toLowerCase().includes(filter.toLowerCase());
+        const filtered = data.filter(({ username }) => {
+          return username.toLowerCase().includes(filter.toLowerCase());
         });
         console.log(filtered);
         setUsersArray(filtered);
@@ -241,7 +241,7 @@ const ManageUsers = () => {
                     errors,
                     touched,
                   }) => (
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} >
                       <TextField
                         className="w-100 mt-3"
                         placeholder="Name"
