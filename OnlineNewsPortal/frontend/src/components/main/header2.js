@@ -79,7 +79,7 @@ export default function Header2() {
           >
             Trusted News Tribune
           </Typography>
-
+          
         
           <Search>
             <SearchIconWrapper>

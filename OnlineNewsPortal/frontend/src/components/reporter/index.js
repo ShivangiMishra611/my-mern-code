@@ -5,13 +5,18 @@ import Sidebar from "../sidebar";
 
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import BadgeIcon from "@mui/icons-material/Badge";
+import { NavLink, useNavigate } from "react-router-dom";
 
 
 const Reporter = () => {
+
+ 
+  
   const sidebarOptions = [
     
 
     {
+      
       title: "Add News",
       icon: <BadgeIcon />,
       link: "/reporter/addnews",
@@ -33,7 +38,9 @@ const Reporter = () => {
       title:"Manage Current Affairs",
       icon:<BadgeIcon  />,
       link:"/reporter/managecurrentaffairs",
-    }
+    },
+
+   
 
 
   ];

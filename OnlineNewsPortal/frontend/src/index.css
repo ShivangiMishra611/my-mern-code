@@ -265,13 +265,16 @@ color:whitesmoke;
   height: 150px;
   
 }
-.cardview{
-  position:relative;
+
+.logo{
+  width:100px;
 }
-
-  
-
-
+.footer-top{
+  padding-top:1rem;
+}
+.cardview{
+  background-color:blueviolet;
+}
   
   
 

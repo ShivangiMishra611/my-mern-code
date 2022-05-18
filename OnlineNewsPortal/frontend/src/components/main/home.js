@@ -1313,9 +1313,11 @@ const Home = () => {
                                         className="img-fluid"
                                       />
                                     </div>
-                                    <div className="badge-positioned">
+                                    <div className="logo">
                                       <span className="badge badge-danger font-weight-bold">
                                         Trusted News Tribune
+                                        <img src="/images/logoo.png" id="logo" ></img>
+                                        
                                       </span>
                                     </div>
                                   </div>

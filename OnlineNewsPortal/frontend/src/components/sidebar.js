@@ -22,6 +22,19 @@ import {
 import { styled, useTheme } from "@mui/material/styles";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import MenuItem from "@mui/material/MenuItem";
+import {
+  AccountCircle,
+  AppRegistration,
+  Campaign,
+  FollowTheSigns,
+  Home,
+  Login,
+  MoreVert,
+  Subscriptions,
+} from "@mui/icons-material";
+
+
 
 const drawerWidth = 240;
 
@@ -103,6 +116,11 @@ export default function Sidebar({ children, sidebarOptions, title }) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const reporterLogout = () => {
+    // setAnchorElUser(null);
+    sessionStorage.removeItem("reporter");
+    navigate("/main/reporterlogin");
+  };
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -124,6 +142,7 @@ export default function Sidebar({ children, sidebarOptions, title }) {
           <Typography variant="h6" noWrap component="div">
             {title}
           </Typography>
+          
           <Box sx={{flexGrow : 1}}>
             <Button sx={{ml : 3 }} color="inherit" onClick={e => navigate('/main/topstories')}>
              TOP STORIES
@@ -155,12 +174,19 @@ export default function Sidebar({ children, sidebarOptions, title }) {
 
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="User Options">
+            <Tooltip title="Reporter Options">
               <IconButton>
                 <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
               </IconButton>
             </Tooltip>
-            <Menu></Menu>
+            <Menu>
+            <MenuItem onClick={reporterLogout}>
+              <ListItemIcon >
+                <FollowTheSigns fontSize="small" />
+              </ListItemIcon>
+              <ListItemText>Logout</ListItemText>
+            </MenuItem>
+            </Menu>
           </Box>
         </Toolbar>
       </AppBar>

@@ -129,7 +129,7 @@ export default function Header() {
 
           <Tooltip title="Reporter Actions">
             <IconButton
-            onClick={(e) => setUserMenuPos(e.currentTarget)}
+             onClick={(e) => setRepMenuPos(e.currentTarget)}
               size="large"
               edge="start"
               color="inherit"
@@ -138,19 +138,20 @@ export default function Header() {
               <AccountCircle />
             </IconButton>
           </Tooltip>
-
+        
           <Menu
-            anchorEl={userMenuPos}
-            open={userMenuOpen}
-            onClose={(e) => setUserMenuPos(null)}
+            anchorEl={repMenuPos}
+            open={Boolean(repMenuPos)}
+            onClose={(e) => setRepMenuPos(null)}
            >
-            <MenuItem>
+            <MenuItem onClick={logout}>
+          
               <ListItemIcon>
                <FollowTheSigns fontSize="small" />
              </ListItemIcon>
-             <ListItemText>Register as User</ListItemText>
+             <ListItemText>Logout</ListItemText>
            </MenuItem>
-             <MenuItem>Signup</MenuItem>
+            
            </Menu>
 
           // <Tooltip title="Reporter">

@@ -58,15 +58,24 @@ const ViewNews = () => {
   const displayNews = () => {
     if (!loading) {
       return (
-        <div className="view">
+        <Card  classname="view">
+        <CardMedia sx={{mt:1, mr:1}}
+          component="img"
+          height="330"
+          width="100"
+          image={url+"/images/advv.png"}
         
+          
+        />
+       
+
 
        
-       
+  
+  
+        <Card className="cardview" sx={{ maxWidth: 900, ml:23,mt:1, }}>
         
       
-        <Card className="cardview" sx={{ maxWidth: 700, mt: 5 }}>
-        
          
           <CardMedia
             component="img"
@@ -74,6 +83,8 @@ const ViewNews = () => {
             image={url + "/" + newsData.thumbnail}
             alt="sports news"
           />
+
+         
           <CardContent>
 
       
@@ -126,7 +137,8 @@ const ViewNews = () => {
             </CardContent>
           </Collapse>
         </Card>
-        </div>
+        </Card>
+      
       );
     }
   };
