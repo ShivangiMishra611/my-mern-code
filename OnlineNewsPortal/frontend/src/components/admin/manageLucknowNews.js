@@ -57,11 +57,14 @@ const ManageLucknowNews = () => {
   };
 
   const newsCategories = [
-    "Sports",
+    "Civic Issues",
+    "Crime",
     "Politics",
-    "World",
-    "Lifestyle",
-    "Entertainment",
+    "School And Colleges",
+    "UP Elections",
+    "Pollution News",
+    "Events"
+   
   ];
   const uploadThumbnail = (e) => {
     console.log("file selected");
@@ -193,7 +196,7 @@ const ManageLucknowNews = () => {
   };
 
   const submitNews = (values) => {
-    // values.thumbnail = thumbnail;
+    values.thumbnail = thumbnail;
     console.log(values);
 
     fetch(url + "/newsLucknow/update/" + values._id, {
@@ -276,8 +279,8 @@ const ManageLucknowNews = () => {
 
                         <Select
                           labelId="demo-simple-select-label1"
-                          id="category"
-                          name="category"
+                          id="categorystate"
+                          name="categorystate"
                           label="Category"
                           value={values.category}
                           error={Boolean(errors.category)}
@@ -377,6 +380,7 @@ const ManageLucknowNews = () => {
                         <input
                           className="form-control"
                           type="file"
+                          id="thumbnail"
                          
                           
                           onChange={uploadThumbnail}
@@ -447,7 +451,7 @@ const ManageLucknowNews = () => {
       <Toaster position="top-right" reverseOrder={false} />
 
       <header className="lkonews-back">
-      <div classNAme="TNT">
+      <div className="TNT">
       
 
       

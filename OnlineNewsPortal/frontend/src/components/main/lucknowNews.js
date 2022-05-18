@@ -90,7 +90,7 @@ const LucknowNews = () => {
   };
   const applyFilter = (data, filter) => {
     const filteredArray = data.filter((newsLucknow) => {
-      return filter.toLowerCase() == newsLucknow.categorystate.toLowerCase();
+      return filter.toLowerCase() == newsLucknow.category.toLowerCase();
     });
 
     console.log(filteredArray);
@@ -187,9 +187,8 @@ const LucknowNews = () => {
                   <IconButton aria-label="add to favorites">
                   <FavoriteIcon />
                 </IconButton>
-                <IconButton aria-label="share">
-                  <ShareIcon />
-                </IconButton>
+               
+                
               </CardContent>
               
               <CardActions>

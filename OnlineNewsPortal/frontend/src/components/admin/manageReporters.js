@@ -183,7 +183,7 @@ const ManageReporters = () => {
     }
   };
   const submitReporter = (values) => {
-    // values.thumbnail = thumbnail;
+    values.thumbnail = thumbnail;
     console.log(values);
 
     fetch(url + "/reporter/update/" + values._id, {

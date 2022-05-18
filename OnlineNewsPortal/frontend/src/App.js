@@ -3,6 +3,7 @@ import "./App.css";
 import Admin from "./components/admin";
 import User from "./components/user";
 import AddReporter from "./components/admin/addreporter";
+
 import ManageReporters from "./components/admin/manageReporters";
 
 import ManageNews from "./components/admin/manageNews";
@@ -80,7 +81,6 @@ function App() {
               path="managecurrentaffairs"
             />
           </Route>
-     
 
           <Route element={<Main />} path="main">
             <Route element={<ReporterLogin />} path="reporterlogin" />
