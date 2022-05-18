@@ -75,28 +75,37 @@ const Feedback = () => {
   
 
   return (
-    <div>
+    <div className="feedback">
     <Container maxWidth="xl">
         <Card className="mt-4" sx={{ display: "flex", ml: 2 }}>
-          <Grid container>
-            <Grid item xs={6} md={7}>
-              <CardMedia
-                component="img"
-                height="650"
-                image={url + "/images/feedback.jpg"}
-              />
-            </Grid>
-    
+        <Grid container>
+        <Grid item xs={6} md={7}>
+          <CardMedia
+            component="img"
+            height="700"
+            image={url + "/images/like.webp"}
+          />
+        </Grid>
+        <Grid item xs={6} md={5}>
+      
+        <CardContent sx={{ display: "flex", flexDirection: "column" }}>
+          
+           
     <Formik initialValues={feedbackForm} onSubmit={feedbackSubmit}>
       {({ values, handleChange, handleSubmit, errors }) => (
         <form onSubmit={handleSubmit}>
         
-          <h3 className="card- header">   &nbsp; Your FeedBack  </h3>
+          <h1 classname="center">&nbsp;&nbsp;&nbsp;&nbsp;
+          <b><center>FeedBack</center> </b></h1> 
+
+  
+ 
+          <br></br>
+          <br></br>
           
-          <h6> We would like your feedback to improve our news portal.</h6>
-          <div className="mb-4">
-          <TextField
-           className="w-100 mt-3"
+          
+          <TextField 
+          className="w-100 mt-3"
            id="name"
             label="name"
             type="text"
@@ -104,15 +113,17 @@ const Feedback = () => {
              onChange={handleChange}
              value={values.name}
              error={errors.name} />
-          </div>
+          
           <div className="mb-4">
-          <h6> Please select your feedback category below:</h6>
+          <br></br>
+          
           <TextField 
           id="suggestion" 
           placeholder="Suggestion"
            variant="filled"
-            /> &nbsp; &nbsp;&nbsp;
-              <TextField 
+            /> <br></br>
+            <br></br>
+              <TextField  
               className="mb-4"
               
               id="compliment" 
@@ -122,18 +133,18 @@ const Feedback = () => {
           
           </div>
      
-           <div className="card-body">
-            <div className="mb-4">
-            <h6> Please  leave your feedback below. </h6>
+           <div className="card-body"  >
+            <div className="mb-3">
+         
             <TextareaAutosize
-            classname="w-100 mt-3"
-            
-            aria-label="maximum height"
-            placeholder="Give ur feedback here..."
-            variant ="outlined"
+        aria-label="minimum height"
+     minRows={3}
+  placeholder="Give ur Feedback here..."
+  style={{ width: 370, height:150, ml:1}}
+
 
           
-            style={{ width: 500  ,  height: 200}}
+           
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -149,6 +160,7 @@ const Feedback = () => {
             }}
           />
           </div>
+          
 
 
              
@@ -159,6 +171,7 @@ const Feedback = () => {
               className=" w-100 mt -3 btn btn-primary"
               color="success"
               variant="contained"
+              
 
               InputProps={{
                 endAdornment: (
@@ -181,6 +194,8 @@ const Feedback = () => {
       )}
       
     </Formik>
+    </CardContent>
+    </Grid>
     </Grid>
     </Card>
     </Container>

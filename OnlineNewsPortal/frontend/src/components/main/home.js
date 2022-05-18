@@ -1187,7 +1187,7 @@ const Home = () => {
                                     <div className="logo">
                                       <span className="badge badge-danger font-weight-bold">
                                      
-                                        <h3>Trusted News Tribune</h3>
+                                        <h2>Trusted News Tribune</h2>
                                         
                                         
                                       </span>
@@ -1273,11 +1273,7 @@ const Home = () => {
                             <i className=" fab fa-facebook"></i>
                           </a>
                         </li>
-                        <li>
-                          <a href="#">
-                            <i className="fab  fa-youtube"></i>
-                          </a>
-                        </li>
+
                         <li>
                         <a href="https://www.instagram.com/rajpootnikita18/"  target="_blank">
                             <i className="fab fa-instagram"></i>
@@ -1285,15 +1281,11 @@ const Home = () => {
                         </li>
 
                         <li>
-                          <a href="#">
+                        <a href="https://in.linkedin.com/company/summertrainingandinternship2022/"  target="_blank">
                             <i className="fab fa-linkedin"></i>
                           </a>
                         </li>
-                        <li>
-                          <a href="#">
-                            <i className="fab fa-instagram"></i>
-                          </a>
-                        </li>
+                        
                       </ul>
                     </div>
                     <div className="col-sm-4">
@@ -1406,28 +1398,33 @@ const Home = () => {
                       <h3 className="font-weight-bold mb-3">CATEGORIES</h3>
                       <div className="footer-border-bottom pb-2">
                         <div className="d-flex justify-content-between align-items-center">
-                          <h5
+                          <h3
                             className="mb-0 font-weight-600"
                             style={{
                               cursor: "pointer",
                             }}
                             onClick={(e) => navigate("/main/lucknownews")}
                           >
+                          <br></br>
+                          <br></br>
                             MY CITY
-                          </h5>
+                          </h3>
                         </div>
                       </div>
                       <div className="footer-border-bottom pb-2 pt-2">
                         <div className="d-flex justify-content-between align-items-center">
-                          <h5
+                          <h3
                             className="mb-0 font-weight-600"
                             style={{
                               cursor: "pointer",
                             }}
                             onClick={(e) => navigate("/main/topstories/Sports")}
                           >
+                         <br></br>
+                         <br></br>
+                         <br></br>
                             SPORTS
-                          </h5>
+                          </h3>
                         </div>
                       </div>
                       <div className="footer-border-bottom pb-2 pt-2">

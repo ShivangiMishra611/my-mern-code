@@ -78,7 +78,7 @@ export default function Header2() {
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
           
-           Trusted News Tribune 
+           <h5>Trusted News Tribune </h5>
           </Typography>
           
         

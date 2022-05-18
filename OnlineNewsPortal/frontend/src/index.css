@@ -155,7 +155,7 @@ color:whitesmoke;
 
   }
   .news-back{
-    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/managenews.jpg);
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/managing.jpg);
     padding: 2rem;
     text-shadow: 2px 2px 3px #0000005c;
     height: 100%;
@@ -164,7 +164,7 @@ color:whitesmoke;
 
   }
   .lkonews-back{
-    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/luckk.jpg);
+    background: linear-gradient(to right, #0000009b, #000000ad), url(http://localhost:5000/images/lkoo.jpg);
     padding: 2rem;
     text-shadow: 2px 2px 3px #0000005c;
     height: 800px;
@@ -251,8 +251,6 @@ color:whitesmoke;
 .footer-top{
   padding-top:1rem;
 }
-/* .TNT{
-  image:url(http://localhost:5000/images/logoo.png);
+.feed-header{
+  align-items: center;
 }
-   */
-
