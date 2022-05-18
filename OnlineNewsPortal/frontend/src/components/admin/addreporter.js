@@ -4,11 +4,13 @@ import app_config from "../../config";
 import {
   TextField,
   Card,
+  Button,
   CardContent,
   CardMedia,
   Grid,
   Container,
   Typography,
+  IconButton,
 } from "@mui/material";
 import Swal from "sweetalert2";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
@@ -17,6 +19,8 @@ import EmailIcon from "@mui/icons-material/Email";
 import KeyIcon from "@mui/icons-material/Key";
 import WcIcon from "@mui/icons-material/Wc";
 import CallIcon from "@mui/icons-material/Call";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import * as Yup from "yup";
 import "yup-phone";
 
@@ -24,6 +28,7 @@ const AddReporter = () => {
   const url = app_config.api_url;
 
   const [thumbnail, setThumbnail] = useState("");
+  const [passVisible, setPassVisible] = useState(false);
   // const img1="image1.jpg"
   const reporterForm = {
     name: "",
@@ -37,15 +42,14 @@ const AddReporter = () => {
   };
 
   const reporterSubmit = (values) => {
-    if(!thumbnail){
-      Swal.fire({
-        icon : 'error',
-        text : 'PLese select a file!'
-      })
-      .then(() => {
-        return;
-      })
-    }
+    // if (!thumbnail) {
+    //   Swal.fire({
+    //     icon: "error",
+    //     text: "PLese select a file!",
+    //   }).then(() => {
+    //     return;
+    //   });
+    // }
     values.thumbnail = thumbnail;
     console.log(values);
 
@@ -63,13 +67,14 @@ const AddReporter = () => {
           title: "success",
           text: "Reporter added Successfully",
         });
-      } else if (res.status === 300) {
-        Swal.fire({
-          icon: "error",
-          title: "failed",
-          text: " failed",
-        });
       }
+      // } else if (res.status === 300) {
+      //   Swal.fire({
+      //     icon: "error",
+      //     title: "failed",
+      //     text: " failed",
+      //   });
+      // }
 
       return res.json();
     });
@@ -97,24 +102,22 @@ const AddReporter = () => {
       .max(50, "Too Long!")
       .required("FullName is Required"),
     // gender: Yup.string().required("Gender is Required"),
-    number: Yup.string()
-    .phone()
-    .required("Number is Required"),
+    number: Yup.string().phone().required("Number is Required"),
     // .min(6)
     // .max(10)
     // .required("Number is Required"),
     age: Yup.number().min(18).max(40),
     email: Yup.string().email("Invalid email").required("Email is Required"),
-  //   file: Yup.object().shape({
-  //     thumbnail: Yup.string().required('file required')
-  // }).required('File required'),
+    //   file: Yup.object().shape({
+    //     thumbnail: Yup.string().required('file required')
+    // }).required('File required'),
     password: Yup.string()
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
         "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
       )
       .required("Password is Required"),
-    confirm: Yup.string()
+    confirmpassword: Yup.string()
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Password Confirmation is Required"),
   });
@@ -132,7 +135,7 @@ const AddReporter = () => {
             <Formik
               initialValues={reporterForm}
               onSubmit={reporterSubmit}
-               validationSchema={validationSchema}
+              validationSchema={validationSchema}
             >
               {({ values, handleChange, handleSubmit, errors }) => (
                 <form onSubmit={handleSubmit}>
@@ -198,7 +201,7 @@ const AddReporter = () => {
                         className="w-100 mt-3"
                         placeholder="Password"
                         label="Password"
-                        type="password"
+                        type={passVisible ? "text" : "password"}
                         variant="outlined"
                         id="password"
                         onChange={handleChange}
@@ -207,16 +210,23 @@ const AddReporter = () => {
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
-                              <KeyIcon
-                                sx={{
-                                  color: "active.active",
-                                  mr: 1,
-                                  my: 0.5,
+                              <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={(e) => {
+                                  setPassVisible(!passVisible);
                                 }}
-                              />
+                                edge="end"
+                              >
+                                {passVisible ? (
+                                  <Visibility />
+                                ) : (
+                                  <VisibilityOff />
+                                )}
+                              </IconButton>
                             </InputAdornment>
                           ),
                         }}
+                       
                         helperText={errors.password}
                       />
                     </div>
@@ -226,7 +236,7 @@ const AddReporter = () => {
                         className="w-100 mt-3"
                         placeholder="Password"
                         label="Confirm Password"
-                        type="password"
+                        type={passVisible ? "text" : "password"}
                         variant="outlined"
                         id="confirmpassword"
                         onChange={handleChange}
@@ -235,13 +245,19 @@ const AddReporter = () => {
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
-                              <KeyIcon
-                                sx={{
-                                  color: "active.active",
-                                  mr: 1,
-                                  my: 0.5,
+                              <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={(e) => {
+                                  setPassVisible(!passVisible);
                                 }}
-                              />
+                                edge="end"
+                              >
+                                {passVisible ? (
+                                  <Visibility />
+                                ) : (
+                                  <VisibilityOff />
+                                )}
+                              </IconButton>
                             </InputAdornment>
                           ),
                         }}
@@ -293,7 +309,7 @@ const AddReporter = () => {
                     </div>
 
                     <div className="mb-3">
-                      <label htmlFor="formFile" className="form-label">
+                    <label for="formFile" class="form-label">
                         Add Image
                       </label>
                       <input
@@ -302,8 +318,7 @@ const AddReporter = () => {
                         onChange={uploadThumbnail}
                       />
                     </div>
-
-                    <button type="submit" className=" w-100 btn btn-primary">
+                    <button type="submit" className="w-100 btn btn-primary">
                       Submit
                     </button>
                   </div>

@@ -44,7 +44,7 @@ const AdminProfile = (props) => {
         res.json().then((data) => {
           console.log(data);
           setCurrentUser(data);
-          sessionStorage.setItem("user", JSON.stringify(data));
+          sessionStorage.setItem("reporter", JSON.stringify(data));
         });
       }
       Swal.fire({
