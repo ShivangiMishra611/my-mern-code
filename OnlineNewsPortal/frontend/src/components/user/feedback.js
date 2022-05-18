@@ -82,7 +82,7 @@ const Feedback = () => {
         <Grid item xs={6} md={7}>
           <CardMedia
             component="img"
-            height="700"
+            height="645"
             image={url + "/images/like.webp"}
           />
         </Grid>
@@ -133,14 +133,14 @@ const Feedback = () => {
           
           </div>
      
-           <div className="card-body"  >
-            <div className="mb-3">
+           <div className="mt-1"  >
+          
          
-            <TextareaAutosize
+            <TextareaAutosize 
         aria-label="minimum height"
      minRows={3}
   placeholder="Give ur Feedback here..."
-  style={{ width: 370, height:150, ml:1}}
+  style={{ width: 377, height:150}}
 
 
           
@@ -162,10 +162,11 @@ const Feedback = () => {
           </div>
           
 
+<br></br>
 
              
-            
-            <button
+            <div classname="mt-2">
+            <button  
             
               type="submit"
               className=" w-100 mt -3 btn btn-primary"
@@ -189,7 +190,9 @@ const Feedback = () => {
             >
               Send Feedback
             </button>
-          </div>
+            </div>
+            
+          
         </form>
       )}
       

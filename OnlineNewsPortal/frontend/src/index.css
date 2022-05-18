@@ -251,6 +251,14 @@ color:whitesmoke;
 .footer-top{
   padding-top:1rem;
 }
-.feed-header{
-  align-items: center;
+.category-header{
+  margin-top: 3rem;
+  font-weight: bold;
+  font-size: large;
+  
+ 
+  
+}
+.header-cat{
+  padding:5rem;
 }
