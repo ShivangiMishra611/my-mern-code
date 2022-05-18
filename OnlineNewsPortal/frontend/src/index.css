@@ -14,9 +14,9 @@ code {
 
 
 .title-current{
-  height: 168px;
-  background-color:blue;
-  background-image: url(http://localhost:5000/images/ca.png);
+  height: 170px;
+ 
+  background-image: url(http://localhost:5000/images/ccc.jpg);
 }
 .nav-link{
 color:white;
@@ -90,10 +90,6 @@ color:whitesmoke;
 
 .loginn{
   background: url(http://localhost:5000/images/backk.jpg);
-  
-  
-  
-
 }
 .current{
   background: url(http://localhost:5000/images/backcurrent.webp);
@@ -113,9 +109,8 @@ color:whitesmoke;
     height: 250px;
     background-position: top;
     align-content: center;
-    margin-top: rem;
-    margin-left:3rem;
-    margin-right:3rem;
+    
+    
   }
   .rep-login{
     background: url(https://i.pinimg.com/736x/4f/96/1d/4f961dac467855fe2ad7bc042d34809b.jpg);
@@ -164,7 +159,7 @@ color:whitesmoke;
     padding: 2rem;
     text-shadow: 2px 2px 3px #0000005c;
     height: 100%;
-    background-size: cover;
+    
   
 
   }
@@ -174,6 +169,7 @@ color:whitesmoke;
     text-shadow: 2px 2px 3px #0000005c;
     height: 800px;
     background-size: cover;
+    
 
   }
  .current-back{
@@ -207,24 +203,7 @@ color:whitesmoke;
    display:grid;
   
  } 
- /* @keyframes changeImage {
-   0%{
-     background-image: url(http://localhost:5000/images/crypto.webp);
-   }
-   25%{
-    background-image: url(http://localhost:5000/images/crypto.webp);
-   }
-   50%{
-    background-image: url(http://localhost:5000/images/crypto.webp);
-   }
-   75%{
-    background-image: url(http://localhost:5000/images/crypto.webp);
-   }
-   100%{
-    background-image: url(http://localhost:5000/images/crypto.webp);
-   }
- }
-      */
+ 
       .footer-bottom{
         height:3vh;
         background-color: red;
@@ -272,9 +251,8 @@ color:whitesmoke;
 .footer-top{
   padding-top:1rem;
 }
-.cardview{
-  background-color:blueviolet;
+/* .TNT{
+  image:url(http://localhost:5000/images/logoo.png);
 }
-  
-  
+   */
 

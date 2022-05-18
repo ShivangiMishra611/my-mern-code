@@ -188,9 +188,9 @@ const AddLucknowNews = () => {
                     </Select>
                   </FormControl>
                     </Grid>
-                  </Grid>
+                  
 
-
+<Grid item sm={6} xs={12}>
                   <TextField
                     className="w-100 mt-3"
                     label="Add News"
@@ -218,10 +218,11 @@ const AddLucknowNews = () => {
                       ),
                     }}
                   />
+                  </Grid>
 
                   <br></br>
                   <br></br>
-
+<Grid item sm={6} xs={12}>
                   <Autocomplete
                     className="mt-5"
                     multiple
@@ -253,6 +254,8 @@ const AddLucknowNews = () => {
                       />
                     )}
                   />
+                  </Grid>
+                  </Grid>
 
                   <br></br>
                   <br></br>

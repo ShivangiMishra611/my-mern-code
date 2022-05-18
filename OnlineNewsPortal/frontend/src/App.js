@@ -33,15 +33,17 @@ import AddCurrentAffairs from "./components/reporter/addCurrentAffairs";
 import CurrentAffairs from "./components/main/currentAffairs";
 import ManageCurrentAffairs from "./components/admin/manageCurrentAffairs";
 import RManageCurrentAffairs from "./components/reporter/manageCurrentAffairs";
+// import RManageLucknowNews from "./components/reporter/managelucknowNews";
 import RManageNews from "./components/reporter/manageNews";
 import { createTheme, ThemeProvider } from "@mui/material";
-import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en.json'
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en.json";
+import AdminAuthenticator from "./components/adminAuthenticator";
+import ReporterProfile from "./components/reporter/profile";
+import AdminProfile from "./components/admin/profile";
 
 function App() {
-
-
-TimeAgo.addDefaultLocale(en)
+  TimeAgo.addDefaultLocale(en);
 
   const theme1 = createTheme({
     palette: {
@@ -59,19 +61,23 @@ TimeAgo.addDefaultLocale(en)
           <Route
             element={
               <ReporterAuthenticator>
-               <Reporter />
+                <Reporter />
               </ReporterAuthenticator>
-             
             }
             path="reporter"
           >
             <Route element={<AddNews />} path="addnews" />
+            <Route element={<ReporterProfile />} path="profile" />
             <Route element={<AddLucknowNews />} path="addlucknownews" />
-            
+
             <Route element={<AddCurrentAffairs />} path="addcurrentaffairs" />
             <Route element={<RManageNews />} path="managenews" />
-            <Route element={<RManageCurrentAffairs />} path="managecurrentaffairs" />
+            <Route
+              element={<RManageCurrentAffairs />}
+              path="managecurrentaffairs"
+            />
           </Route>
+     
 
           <Route element={<Main />} path="main">
             <Route element={<ReporterLogin />} path="reporterlogin" />
@@ -90,16 +96,16 @@ TimeAgo.addDefaultLocale(en)
           </Route>
 
           <Route
-            element={
-              <ReporterAuthenticator>
-              <Admin />
-              </ReporterAuthenticator>
-            
-            }
+            // element={
+            //   <AdminAuthenticator>
+            //     <Admin />
+            //   </AdminAuthenticator>
+            // }
             path="admin"
           >
             <Route element={<AddReporter />} path="addreporter" />
             <Route element={<AddNews />} path="addnews" />
+            <Route element={<AdminProfile />} path="profile" />
             <Route element={<AddLucknowNews />} path="addlucknownews" />
             <Route element={<AddCurrentAffairs />} path="addcurrentaffairs" />
             <Route element={<ManageNews />} path="managenews" />

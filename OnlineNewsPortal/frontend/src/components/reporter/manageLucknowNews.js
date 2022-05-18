@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import {
   Autocomplete,
+  Button,
   Card,
   CardContent,
   Chip,
-  Button,
   FormControl,
   InputAdornment,
   InputLabel,
@@ -29,9 +29,10 @@ import BeenhereRoundedIcon from "@mui/icons-material/BeenhereRounded";
 import { Formik } from "formik";
 import Swal from "sweetalert2";
 import { Edit, TitleSharp, Category, Newspaper } from "@mui/icons-material";
-import { green } from '@mui/material/colors';
+import { green } from "@mui/material/colors";
 import * as Yup from "yup";
-const ManageCurrentAffairs = () => {
+
+const RManageLucknowNews = () => {
   const [NewsArray, setNewsArray] = useState([]);
   const [masterArray, setMasterArray] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -44,11 +45,8 @@ const ManageCurrentAffairs = () => {
 
   const url = app_config.api_url;
 
-  
- 
-
   const fetchData = () => {
-    fetch(url + "/newscurrent/getall")
+    fetch(url + "/newsLucknow/getall")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -57,10 +55,13 @@ const ManageCurrentAffairs = () => {
         setLoading(false);
       });
   };
+
   const newsCategories = [
-    "National",
-    "International",
-   
+    "Sports",
+    "Politics",
+    "World",
+    "Lifestyle",
+    "Entertainment",
   ];
   const uploadThumbnail = (e) => {
     console.log("file selected");
@@ -79,7 +80,7 @@ const ManageCurrentAffairs = () => {
   };
 
   const deleteNews = (id) => {
-    fetch(url + "/newscurrent/delete/" + id, { method: "DELETE" })
+    fetch(url + "/newsLucknow/delete/" + id, { method: "DELETE" })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -95,7 +96,7 @@ const ManageCurrentAffairs = () => {
   };
 
   const approveNews = (id) => {
-    fetch(url + "/newscurrent/update/" + id, {
+    fetch(url + "/newsLucknow/update/" + id, {
       method: "PUT",
       body: JSON.stringify({ approvenews: true }),
       headers: { "Content-Type": "application/json" },
@@ -106,9 +107,8 @@ const ManageCurrentAffairs = () => {
         fetchData();
       });
   };
-
   const filternews = () => {
-    fetch(url + "/newscurrent/getall")
+    fetch(url + "/newsLucknow/getall")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -120,8 +120,6 @@ const ManageCurrentAffairs = () => {
         setLoading(false);
       });
   };
- 
-    
 
   useEffect(() => {
     fetchData();
@@ -129,77 +127,75 @@ const ManageCurrentAffairs = () => {
 
   const displayNews = () => {
     if (!loading) {
-      return NewsArray.map((newscurrent, i) => (
-        <Accordion key={newscurrent._id}>
+      return NewsArray.map((newsLucknow, i) => (
+        <Accordion key={newsLucknow._id}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <h4>{newscurrent.title}</h4>
+            <h4>{newsLucknow.title}</h4>
             <br></br>
-            <br></br>
-            
           </AccordionSummary>
           <AccordionDetails>
-            <img src={url + "/" + newscurrent.thumbnail} height="200" />
+            <img src={url + "/" + newsLucknow.thumbnail} height="200" />
             <br></br>
-            
-            <h5>{newscurrent.summary}</h5>
+            <br></br>
+            <h5>{newsLucknow.summary}</h5>
 
-            <Typography>{newscurrent.categorystate}</Typography>
-         
-          <Stack direction="row" spacing={2}>
-            <Fab
-              disabled={newscurrent.approvenews}
-              variant="extended"
-              size="small"
-              color="primary"
-              onClick={(e) => approveNews(newscurrent._id)}
-              aria-label="add"
-            >
-              <BeenhereRoundedIcon sx={{ mr: 1 }} />
-              {newscurrent.approvenews ? "Approved" : "Approve News"}
-            </Fab>
+            <Typography>{newsLucknow.category}</Typography>
 
-            <Fab
-              variant="extended"
-              size="small"
-              color="primary"
-              onClick={(e) => deleteNews(newscurrent._id)}
-              aria-label="add"
-            >
-              <DeleteRoundedIcon sx={{ mr: 1 }} />
-              
-            </Fab>
-            <Tooltip title="Update News Article">
+            <Stack direction="row" spacing={2}>
+              <Fab
+                disabled={newsLucknow.approvenews}
+                variant="extended"
+                size="small"
+                color="primary"
+                onClick={(e) => approveNews(newsLucknow._id)}
+                aria-label="add"
+              >
+                <BeenhereRoundedIcon sx={{ mr: 1 }} />
+                {newsLucknow.approvenews ? "Approved" : ""}
+              </Fab>
+
+              <Fab
+                variant="extended"
+                size="small"
+                color="primary"
+                onClick={(e) => deleteNews(newsLucknow._id)}
+                aria-label="add"
+              >
+                <DeleteRoundedIcon sx={{ mr: 1 }} />
+              </Fab>
+              <Tooltip title="Update News Article">
                 <Fab
                   size="medium"
                   color="success"
                   onClick={(e) => {
-                    setUpdateFormdata(newscurrent);
+                    setUpdateFormdata(newsLucknow);
                     setShowUpdateForm(true);
                   }}
                   aria-label="add"
                 >
-                  <Edit 
-                  variant="extended"
-                  size="small"
-                  sx={{ color: green[30] }} />
+                  <Edit
+                    variant="extended"
+                    size="small"
+                    sx={{ color: green[30] }}
+                  />
                 </Fab>
               </Tooltip>
-          </Stack>
+            </Stack>
           </AccordionDetails>
         </Accordion>
       ));
     }
   };
-  
+
   const submitNews = (values) => {
     // values.thumbnail = thumbnail;
     console.log(values);
 
-    fetch(url + "/newscurrent/update/" + values._id, {
+    fetch(url + "/newsLucknow/update/" + values._id, {
       method: "PUT",
       body: JSON.stringify(values),
       headers: {
@@ -211,7 +207,7 @@ const ManageCurrentAffairs = () => {
         Swal.fire({
           icon: "success",
           title: "success",
-          text: "Current Affairs Updated Successfully",
+          text: "News Updated Successfully",
         });
         fetchData();
         setShowUpdateForm(false);
@@ -224,26 +220,24 @@ const ManageCurrentAffairs = () => {
       .min(2, "Too Short!")
       .max(100, "Too Long!")
       .required("Title is Required"),
-    categorystate: Yup.string().required("Category is Required"),
+    category: Yup.string().required("State is Required"),
     summary: Yup.string().required("News Summary is Required"),
     tags: Yup.string().required("News Tags is Required"),
   });
+
   const updateForm = () => {
     if (showUpdateForm) {
       return (
         <div>
           <Card>
-            <CardContent sx={{ width: 700}}>
+            <CardContent sx={{ width: 640 }}>
               <Formik
                 initialValues={updateFormdata}
                 onSubmit={submitNews}
                 // validationSchema={validationSchema}
-               
               >
                 {({ values, handleChange, handleSubmit, errors }) => (
                   <form onSubmit={handleSubmit}>
-                   
-
                     <div className="card-body">
                       <TextField
                         className="w-100 mt-3"
@@ -278,14 +272,15 @@ const ManageCurrentAffairs = () => {
                         <InputLabel id="demo-simple-select-label1">
                           Category
                         </InputLabel>
+
                         <Select
                           labelId="demo-simple-select-label1"
-                          id="categorystate"
-                          name="categorystate"
-                          label="Categorystate"
-                          value={values.categorystate}
-                          error={Boolean(errors.categorystate)}
-                          helperText={errors.categorystate}
+                          id="category"
+                          name="category"
+                          label="Category"
+                          value={values.category}
+                          error={Boolean(errors.category)}
+                          helperText={errors.category}
                           onChange={handleChange}
                           InputProps={{
                             endAdornment: (
@@ -301,10 +296,8 @@ const ManageCurrentAffairs = () => {
                             ),
                           }}
                         >
-                          {newsCategories.map((categorystate) => (
-                            <MenuItem value={categorystate}>
-                              {categorystate}
-                            </MenuItem>
+                          {newsCategories.map((category) => (
+                            <MenuItem value={category}>{category}</MenuItem>
                           ))}
                         </Select>
                       </FormControl>
@@ -384,14 +377,17 @@ const ManageCurrentAffairs = () => {
                           className="form-control"
                           type="file"
                           id="thumbnail"
-                         
+                          
                           onChange={uploadThumbnail}
                         />
                       </div>
 
-                      <Button type="submit" className="btn btn-primary"
-                      color="success"
-                      variant="contained">
+                      <Button
+                        type="submit"
+                        className="btn btn-primary"
+                        color="success"
+                        variant="contained"
+                      >
                         Submit
                       </Button>
                       <Button
@@ -414,8 +410,8 @@ const ManageCurrentAffairs = () => {
   const filterByDate = (e) => {
     const selDate = e.target.value;
 
-    const filtered = masterArray.filter((newscurrent) => {
-      const newsDate = new Date(newscurrent.createdAt);
+    const filtered = masterArray.filter((newsLucknow) => {
+      const newsDate = new Date(newsLucknow.createdAt);
       return newsDate.getDate() == selDate;
     });
     setNewsArray(filtered);
@@ -423,8 +419,8 @@ const ManageCurrentAffairs = () => {
   const filterByMonth = (e) => {
     const selDate = e.target.value;
 
-    const filtered = masterArray.filter((newscurrent) => {
-      const newsDate = new Date(newscurrent.createdAt);
+    const filtered = masterArray.filter((newsLucknow) => {
+      const newsDate = new Date(newsLucknow.createdAt);
       return newsDate.getMonth() == selDate;
     });
     console.log(filtered);
@@ -435,8 +431,8 @@ const ManageCurrentAffairs = () => {
     const selYear = e.target.value;
     console.log(e.target.value);
 
-    const filtered = masterArray.filter((newscurrent) => {
-      const newsDate = new Date(newscurrent.createdAt);
+    const filtered = masterArray.filter((newsLucknow) => {
+      const newsDate = new Date(newsLucknow.createdAt);
       // console.log(newsDate.getFullYear());
       return newsDate.getFullYear() == selYear;
     });
@@ -445,46 +441,41 @@ const ManageCurrentAffairs = () => {
     console.log(NewsArray);
   };
 
-
   return (
-    <div className="">
+    <div className="managing">
       <Toaster position="top-right" reverseOrder={false} />
+
+      <header className="lkonews-back">
      
-      <header className="current-back">
-      <Grid container spacing={5}>
-        <Grid item md={6}>
-       
-      
-       
-        <Typography className="text-center text-white" variant="h2"  sx={{ml:65,mt:1}}>
-          Manage Current Affairs
+        <div className="TNT">
+        <Typography className="lnmanage text-center" variant="h5">
+          Trusted News Tribune
+        </Typography>
+        <Typography className="lnmanage text-center" variant="h2">
+          Manage Lucknow News
         </Typography>
         
           <div className="input-group mt-5">
-            <input className="form-control" 
-            value={filter}
-            label="Search Here"
-            onChange={(e) => setFilter(e.target.value)}
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon
-                    sx={{ color: "active.active", mr: 1, my: 0.5 }}
-                  />
-                </InputAdornment>
-              ),
-            }}/>
-            <Button variant="contained"  onClick={filternews}
-            type="submit" align="center" >Search
-            
+            <input className="form-control"
+             value={filter}
+             label="Search Here"
+             onChange={(e) => setFilter(e.target.value)}
+             InputProps={{
+               startAdornment: (
+                 <InputAdornment position="start">
+                   <SearchIcon
+                     sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                   />
+                 </InputAdornment>
+               ),
+             }} />
+            <Button variant="contained" onClick={filternews} type="submit">
+              Search
             </Button>
-            <br></br>
-            <br></br>
           </div>
-          <br></br>
-          <br></br>
-          </Grid>
-          <Grid item md={2}  sx={{mt: 28}}>
+          </div>
+          
+          <Grid item md={2} sx={{mt: 30}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -497,7 +488,7 @@ const ManageCurrentAffairs = () => {
               </select>
             </Grid>
 
-            <Grid item md={2} sx={{mt: 28}}>
+            <Grid item md={2}  sx={{mt: 36}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -509,7 +500,7 @@ const ManageCurrentAffairs = () => {
                 ))}
               </select>
             </Grid>
-            <Grid item md={2} sx={{mt: 28}}>
+            <Grid item md={2} sx={{mt: 36}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -521,19 +512,16 @@ const ManageCurrentAffairs = () => {
                 ))}
               </select>
             </Grid>
-            </Grid>
+            
+        
        
 
+        {displayNews()}
 
-
-  
-
-      {displayNews()}
-      {updateForm()}
+        {updateForm()}
       </header>
     </div>
-    
   );
 };
 
-export default ManageCurrentAffairs;
+export default RManageLucknowNews;

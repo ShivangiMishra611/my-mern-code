@@ -3,6 +3,7 @@ import {
   Button,
   Autocomplete,
   Card,
+  
   CardContent,
   Chip,
   FormControl,
@@ -412,7 +413,7 @@ const RManageNews = () => {
       <Toaster position="top-right" reverseOrder={false} />
       <div className="manage-news"></div>
      
-     <TextField sx={{ borderRadius:'16px'}}
+     <TextField 
        className="w-50 mt-5 "
        label="Search Here"
        value={filter}

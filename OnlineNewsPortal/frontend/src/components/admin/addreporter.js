@@ -14,9 +14,10 @@ import Swal from "sweetalert2";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import InputAdornment from "@mui/material/InputAdornment";
 import EmailIcon from "@mui/icons-material/Email";
-import KeyIcon from "@mui/icons-material/Key";
-import WcIcon from "@mui/icons-material/Wc";
+
 import CallIcon from "@mui/icons-material/Call";
+import LockIcon from "@mui/icons-material/Lock";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
 import * as Yup from "yup";
 import "yup-phone";
 
@@ -117,7 +118,6 @@ const AddReporter = () => {
     confirm: Yup.string()
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Password Confirmation is Required"),
-
   });
 
   return (
@@ -192,9 +192,9 @@ const AddReporter = () => {
                           helperText={errors.email}
                         />
                       </Grid>
-                    </Grid>
+                   
 
-                    <div className="mb-3">
+                    <Grid item sm={6} xs={12}>
                       <TextField
                         className="w-100 mt-3"
                         placeholder="Password"
@@ -208,7 +208,7 @@ const AddReporter = () => {
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
-                              <KeyIcon
+                              <LockIcon
                                 sx={{
                                   color: "active.active",
                                   mr: 1,
@@ -220,9 +220,9 @@ const AddReporter = () => {
                         }}
                         helperText={errors.password}
                       />
-                    </div>
+                    </Grid>
 
-                    <div className="mb-3">
+                    <Grid item sm={6} xs={12}>
                       <TextField
                         className="w-100 mt-3"
                         placeholder="Password"
@@ -236,7 +236,7 @@ const AddReporter = () => {
                         InputProps={{
                           endAdornment: (
                             <InputAdornment position="end">
-                              <KeyIcon
+                              <LockOpenIcon
                                 sx={{
                                   color: "active.active",
                                   mr: 1,
@@ -248,9 +248,9 @@ const AddReporter = () => {
                         }}
                         helperText={errors.confirmpassword}
                       />
-                    </div>
+                    </Grid>
 
-                    <div className="mb-3">
+                    <Grid item sm={6} xs={12}>
                       <TextField
                         className="w-100 mt-3"
                         placeholder="Contact"
@@ -276,9 +276,10 @@ const AddReporter = () => {
                         }}
                         helperText={errors.number}
                       />
-                    </div>
+                    </Grid>
+                    
 
-                    <div className="mb-3">
+                    <Grid  item sm={6} xs={12}>
                       <TextField
                         className="w-100 mt-3"
                         placeholder="Age"
@@ -291,7 +292,8 @@ const AddReporter = () => {
                         error={errors.age}
                         helperText={errors.age}
                       />
-                    </div>
+                    </Grid>
+                    </Grid>
 
                     <div className="mb-3">
                       <label htmlFor="formFile" className="form-label">

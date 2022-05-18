@@ -198,7 +198,7 @@ const ManageNews = () => {
   };
 
   const submitNews = (values) => {
-    // values.thumbnail = thumbnail;
+    values.thumbnail = thumbnail;
     console.log(values);
 
     fetch(url + "/news/update/" + values._id, {
@@ -476,12 +476,17 @@ const ManageNews = () => {
       <header className="news-back">
         <Grid container spacing={5}>
           <Grid item md={6}>
-            <Typography className="nmanage text-center" variant="h5">
-              Trusted News Tribune
+           
+            <Typography className="nmanage text-center" variant="h2" sx={{ml:30}}>
+              Manage  
+                
             </Typography>
-            <Typography className="nmanage text-center" variant="h2">
-              Manage News
-            </Typography>
+
+            <Typography className="nmanage text-center" variant="h2" sx={{ml:30}}>
+              &nbsp;News
+              
+          </Typography>
+          
             
           
               <div className="input-group mt-5">
@@ -511,7 +516,7 @@ const ManageNews = () => {
             <br></br>
           </Grid>
 
-          <Grid item md={2} sx={{ mt: 27 }}>
+          <Grid item md={2} sx={{ mt: 19 }}>
             <select
               class="form-select mt-5"
               aria-label="Default select example"
@@ -524,7 +529,7 @@ const ManageNews = () => {
             </select>
           </Grid>
 
-          <Grid item md={2} sx={{ mt: 27 }}>
+          <Grid item md={2} sx={{ mt: 19 }}>
             <select
               class="form-select mt-5"
               aria-label="Default select example"
@@ -570,7 +575,7 @@ const ManageNews = () => {
                 ))}
               </select>
             </Grid> */}
-          <Grid item md={2} sx={{ mt: 27 }}>
+          <Grid item md={2} sx={{ mt: 19 }}>
             <select
               class="form-select mt-5"
               aria-label="Default select example"

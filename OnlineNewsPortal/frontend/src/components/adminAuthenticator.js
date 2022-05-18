@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const ReporterAuthenticator = ({ children }) => {
+const AdminAuthenticator = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(
-    JSON.parse(sessionStorage.getItem("reporter"))
+    JSON.parse(sessionStorage.getItem("admin"))
   );
 
   const navigate = useNavigate();
@@ -14,13 +14,14 @@ const ReporterAuthenticator = ({ children }) => {
   if (currentUser === null) {
     Swal.fire({
       icon: "info",
-      title: "OOPS!!",
-      text: "You need to be a reporter!!",
+      title: "OOops!!",
+      text: "You need to be admin",
     });
+
     return <Navigate to="/main/reporterlogin" />;
   }
 
   return children;
 };
 
-export default ReporterAuthenticator;
+export default AdminAuthenticator;
