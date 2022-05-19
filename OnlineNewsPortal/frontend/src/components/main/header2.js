@@ -77,9 +77,10 @@ export default function Header2() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            Trusted News Tribune
+          
+           <h5>Trusted News Tribune </h5>
           </Typography>
-
+          
         
           <Search>
             <SearchIconWrapper>
@@ -140,7 +141,7 @@ export default function Header2() {
               </ListItemIcon>
               <ListItemText>Login</ListItemText>
             </MenuItem>
-            <MenuItem>Signup</MenuItem>
+           
           </Menu>
         </Toolbar>
       </AppBar>

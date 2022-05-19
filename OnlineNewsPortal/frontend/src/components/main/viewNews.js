@@ -10,10 +10,12 @@ import {
   IconButton,
   Tooltip,
   CardActions,
+ 
+  Typography
 } from "@mui/material";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
+
+
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import { useEffect, useState } from "react";
@@ -21,9 +23,10 @@ import { useEffect, useState } from "react";
 const ViewNews = () => {
   const { id } = useParams();
   const url = app_config.api_url;
-
+  
   const [newsData, setNewsData] = React.useState({});
   const [loading, setLoading] = React.useState(true);
+  
 
   const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -55,11 +58,32 @@ const ViewNews = () => {
     fetchData();
   }, []);
 
+  
+
   const displayNews = () => {
     if (!loading) {
       return (
-    
-        <Card className="cardview" sx={{ maxWidth: 700, mt: 5 }}>
+        <Card  classname="view">
+        
+        <header className="stories-header">
+          <Typography className="text-center text-white" variant="h2">
+            Trusted News Tribune
+          </Typography>
+          
+        
+            
+          </header>
+  
+        
+       
+
+
+       
+  
+  
+        <Card className="cardview" sx={{ maxWidth: 900, ml:23,mt:1, }}>
+        
+      
          
           <CardMedia
             component="img"
@@ -67,7 +91,11 @@ const ViewNews = () => {
             image={url + "/" + newsData.thumbnail}
             alt="sports news"
           />
+
+         
           <CardContent>
+
+      
            
             <Tooltip title={newsData.title}>
                   <h2
@@ -86,20 +114,9 @@ const ViewNews = () => {
                 </Tooltip>
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
-              <FavoriteIcon />
-            </IconButton>
-            <IconButton aria-label="share">
-              <ShareIcon />
-            </IconButton>
-            <ExpandMore
-              expand={expanded}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="show more"
-            >
-              <ExpandMoreIcon />
-            </ExpandMore>
+          
+            
+           
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
@@ -119,6 +136,10 @@ const ViewNews = () => {
             </CardContent>
           </Collapse>
         </Card>
+      
+        </Card>
+        
+      
       );
     }
   };

@@ -115,7 +115,7 @@ const CurrentAffairs = () => {
                   ? "list-group-item active"
                   : "list-group-item"
               }
-              style={{ fontWeight: "600", cursor: "pointer" }}
+              style={{ fontWeight: "600", cursor: "pointer", color:"orange" }}
               onClick={(e) => applyDateFilter(date)}
             >
               {monthNames[date.getMonth()]} {date.getFullYear()}
@@ -225,12 +225,13 @@ const CurrentAffairs = () => {
             </Grid>
             <Grid item xs={6} md={8}>
               <CardContent>
+              <h5>{newscurrent.createdAt}</h5>
                 <Tooltip title={newscurrent.title}>
                   <h2
                     component="div"
                     variant="h5"
                     onClick={(e) =>
-                      navigate("/main/viewnews/" + newscurrent._id)
+                      navigate("/main/viewcurrent/" + newscurrent._id)
                     }
                     style={{
                       cursor: "pointer",
@@ -260,7 +261,7 @@ const CurrentAffairs = () => {
                   size="small"
                   color="primary"
                   variant="contained"
-                  onClick={(e) => navigate("/main/viewnews/" + newscurrent._id)}
+                  onClick={(e) => navigate("/main/viewcurrent/" + newscurrent._id)}
                 >
                   Learn More
                 </Button>

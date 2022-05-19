@@ -198,7 +198,7 @@ const ManageNews = () => {
   };
 
   const submitNews = (values) => {
-    // values.thumbnail = thumbnail;
+    values.thumbnail = thumbnail;
     console.log(values);
 
     fetch(url + "/news/update/" + values._id, {
@@ -471,50 +471,52 @@ const ManageNews = () => {
   };
 
   return (
-    <div className="">
+    <div className="title">
       <Toaster position="top-right" reverseOrder={false} />
       <header className="news-back">
         <Grid container spacing={5}>
           <Grid item md={6}>
-            <Typography className="nmanage text-center" variant="h5">
-              Trusted News Tribune
-            </Typography>
-            <Typography className="nmanage text-center" variant="h2">
-              Manage News
+           
+            <Typography className="nmanage text-center" variant="h2" sx={{ml:30}}>
+              Manage  
+                
             </Typography>
 
-            <div className="input-group mt-5">
-              <input
-                className="form-control"
-                value={filter}
-                label="Search Here"
-                onChange={(e) => setFilter(e.target.value)}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SearchIcon
-                        sx={{ color: "active.active", mr: 1, my: 0.5 }}
-                      />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              <Button
-                variant="contained"
-                onClick={filternews}
-                type="submit"
-                align="center"
-              >
-                Search
-              </Button>
-              <br></br>
-              <br></br>
+            <Typography className="nmanage text-center" variant="h2" sx={{ml:30}}>
+              &nbsp;News
+              
+          </Typography>
+          
+            
+          
+              <div className="input-group mt-5">
+                <input
+                  className="form-control"
+                  value={filter}
+                  label="Search Here"
+                  onChange={(e) => setFilter(e.target.value)}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon
+                          sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                        />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                <Button variant="contained" onClick={filternews} type="submit" align="center">
+                  Search
+                </Button>
+                <br></br>
+                <br></br>
+             
             </div>
             <br></br>
             <br></br>
           </Grid>
 
-          <Grid item md={2} sx={{ mt: 27 }}>
+          <Grid item md={2} sx={{ mt: 19 }}>
             <select
               class="form-select mt-5"
               aria-label="Default select example"
@@ -527,7 +529,7 @@ const ManageNews = () => {
             </select>
           </Grid>
 
-          <Grid item md={2} sx={{ mt: 27 }}>
+          <Grid item md={2} sx={{ mt: 19 }}>
             <select
               class="form-select mt-5"
               aria-label="Default select example"
@@ -573,7 +575,7 @@ const ManageNews = () => {
                 ))}
               </select>
             </Grid> */}
-          <Grid item md={2} sx={{ mt: 27 }}>
+          <Grid item md={2} sx={{ mt: 19 }}>
             <select
               class="form-select mt-5"
               aria-label="Default select example"
@@ -587,9 +589,11 @@ const ManageNews = () => {
           </Grid>
         </Grid>
 
-        {displayNews()}
-        {updateForm()}
-      </header>
+            {displayNews()}
+            {updateForm()}
+         
+          
+       </header>
     </div>
   );
 };

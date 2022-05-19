@@ -57,11 +57,14 @@ const ManageLucknowNews = () => {
   };
 
   const newsCategories = [
-    "Sports",
+    "Civic Issues",
+    "Crime",
     "Politics",
-    "World",
-    "Lifestyle",
-    "Entertainment",
+    "School And Colleges",
+    "UP Elections",
+    "Pollution News",
+    "Events"
+   
   ];
   const uploadThumbnail = (e) => {
     console.log("file selected");
@@ -144,6 +147,7 @@ const ManageLucknowNews = () => {
             <h5>{newsLucknow.summary}</h5>
 
             <Typography>{newsLucknow.category}</Typography>
+            <h5>{newsLucknow.createdAt}</h5>
 
             <Stack direction="row" spacing={2}>
               <Fab
@@ -192,7 +196,7 @@ const ManageLucknowNews = () => {
   };
 
   const submitNews = (values) => {
-    // values.thumbnail = thumbnail;
+    values.thumbnail = thumbnail;
     console.log(values);
 
     fetch(url + "/newsLucknow/update/" + values._id, {
@@ -275,8 +279,8 @@ const ManageLucknowNews = () => {
 
                         <Select
                           labelId="demo-simple-select-label1"
-                          id="category"
-                          name="category"
+                          id="categorystate"
+                          name="categorystate"
                           label="Category"
                           value={values.category}
                           error={Boolean(errors.category)}
@@ -377,6 +381,7 @@ const ManageLucknowNews = () => {
                           className="form-control"
                           type="file"
                           id="thumbnail"
+                         
                           
                           onChange={uploadThumbnail}
                         />
@@ -442,18 +447,22 @@ const ManageLucknowNews = () => {
   };
 
   return (
-    <div className="">
+    <div className="managing">
       <Toaster position="top-right" reverseOrder={false} />
 
       <header className="lkonews-back">
+      <div className="TNT">
+      
+
+      
       <Grid container spacing={5}>
         <Grid item md={6}>
-        <Typography className="lnmanage text-center" variant="h5">
-          Trusted News Tribune
-        </Typography>
-        <Typography className="lnmanage text-center" variant="h2">
+  
+     
+        <Typography  className="lnmanage text-center" variant="h2" sx={{ml:30}}>
           Manage Lucknow News
         </Typography>
+       
         
           <div className="input-group mt-5">
             <input className="form-control"
@@ -474,7 +483,11 @@ const ManageLucknowNews = () => {
             </Button>
           </div>
           </Grid>
-          <Grid item md={2} sx={{mt: 32}}>
+          
+
+          <br></br>
+          <br></br>
+          <Grid item md={2} sx={{mt:28}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -487,19 +500,19 @@ const ManageLucknowNews = () => {
               </select>
             </Grid>
 
-            <Grid item md={2}  sx={{mt: 32}}>
+            <Grid item md={2}  sx={{mt: 28}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
                 onChange={filterByMonth}
               >
                 <option selected>Select a Month</option>
-                {["Jan", "Feb", "Mar", "Apr"].map((mon, i) => (
+                {["Jan", "Feb", "Mar", "Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"].map((mon, i) => (
                   <option value={i}>{mon}</option>
                 ))}
               </select>
             </Grid>
-            <Grid item md={2} sx={{mt: 32}}>
+            <Grid item md={2} sx={{mt:28}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -510,8 +523,12 @@ const ManageLucknowNews = () => {
                   <option value={date}>{date}</option>
                 ))}
               </select>
+             
             </Grid>
+            
             </Grid>
+            </div>
+            
         
        
 

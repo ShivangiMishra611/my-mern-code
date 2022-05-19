@@ -5,7 +5,7 @@ const mySchema = new mongoose.Schema({
   email: String,
   password: String,
   number: Number,
-  gender: String,
+  gender:String,
   age: Number,
   thumbnail: String,
   avatar: String,

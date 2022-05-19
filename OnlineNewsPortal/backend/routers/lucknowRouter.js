@@ -7,7 +7,7 @@ router.post("/add", (req, res) => {
   new Model(req.body)
     .save()
     .then((data) => {
-      console.log("News data saved successfully..");
+      console.log("Lucknow News data saved successfully..");
       res.status(200).json(data);
     })
     .catch((err) => {
@@ -45,6 +45,18 @@ router.delete("/delete/:id", (req, res) => {
   Model.findByIdAndDelete(req.params.id)
     .then((data) => {
       res.status(200).json({message : 'success'});
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).json(err);
+    });
+});
+
+router.get("/getbyid/:id", (req, res) => {
+  console.log(req.params.id);
+  Model.findById(req.params.id)
+    .then((data) => {
+      res.status(200).json(data);
     })
     .catch((err) => {
       console.error(err);

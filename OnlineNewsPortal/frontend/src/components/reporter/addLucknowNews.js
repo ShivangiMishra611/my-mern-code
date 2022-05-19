@@ -1,4 +1,3 @@
-
 import { Formik } from "formik";
 import Swal from "sweetalert2";
 import { useState } from "react";
@@ -59,7 +58,7 @@ const AddLucknowNews = () => {
     console.log(values);
 
 
-    fetch(url + "/news/add", {
+    fetch(url + "/newsLucknow/add", {
       method: "POST",
       body: JSON.stringify(values),
       headers: {
@@ -96,7 +95,7 @@ const AddLucknowNews = () => {
   const validationSchema = Yup.object().shape({
     title: Yup.string()
       .min(2, "Too Short!")
-      .max(100, "Too Long!")
+      .max(200, "Too Long!")
       .required("Title is Required"),
     category: Yup.string().required("Category is Required"),
     summary: Yup.string().required("News Summary is Required"),
@@ -188,9 +187,9 @@ const AddLucknowNews = () => {
                     </Select>
                   </FormControl>
                     </Grid>
-                  </Grid>
+                  
 
-
+<Grid item sm={6} xs={12}>
                   <TextField
                     className="w-100 mt-3"
                     label="Add News"
@@ -218,10 +217,11 @@ const AddLucknowNews = () => {
                       ),
                     }}
                   />
+                  </Grid>
 
                   <br></br>
                   <br></br>
-
+<Grid item sm={6} xs={12}>
                   <Autocomplete
                     className="mt-5"
                     multiple
@@ -253,6 +253,8 @@ const AddLucknowNews = () => {
                       />
                     )}
                   />
+                  </Grid>
+                  </Grid>
 
                   <br></br>
                   <br></br>

@@ -11,6 +11,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import app_config from "../../config";
 import {
   AccountCircle,
   AppRegistration,
@@ -24,7 +25,13 @@ import {
 import { useNavigate } from "react-router-dom";
 import { ListItemIcon, ListItemText } from "@mui/material";
 import { useEffect, useState } from "react";
+
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import BadgeIcon from "@mui/icons-material/Badge";
+import GroupAddIcon from "@mui/icons-material/GroupAdd";
+import NewspaperIcon from '@mui/icons-material/Newspaper';
+import { blue } from "@mui/material/colors";
+const url = app_config.api_url;
 
 const pages = [
   {
@@ -52,17 +59,24 @@ const Header = () => {
 
   const [currentUser, setCurrentUser] = useState(null);
   const [currentReporter, setCurrentReporter] = useState(null);
+  const [currentAdmin, setCurrentAdmin] = useState(null);
+
 
   const [repMenuPos, setRepMenuPos] = useState(null);
   const [repMenuPos2, setRepMenuPos2] = useState(null);
 
+  const [adminMenuPos, setAdminMenuPos] = useState(null);
+  const [adminMenuPos2, setAdminMenuPos2] = useState(null);
+
   const user = sessionStorage.getItem("user");
   const reporter = sessionStorage.getItem("reporter");
+  const admin = sessionStorage.getItem("admin");
 
   useEffect(() => {
     setCurrentUser(JSON.parse(sessionStorage.getItem("user")));
     setCurrentReporter(JSON.parse(sessionStorage.getItem("reporter")));
-  }, [user, reporter]);
+    setCurrentAdmin(JSON.parse(sessionStorage.getItem("admin")));
+  }, [user, reporter, admin]);
 
   const navigate = useNavigate();
 
@@ -78,25 +92,113 @@ const Header = () => {
     navigate("/main/reporterlogin");
   };
 
+  const adminLogout = () => {
+    // setAnchorElUser(null);
+    sessionStorage.removeItem("admin");
+    navigate("/main/reporterlogin");
+  };
+
   const userMenu = [
     {
       name: "Profile",
       icon: <AccountCircle />,
-      link: "/profile",
+      link: "/user/profile",
     },
+    {
+      name: "Feedback",
+      icon: <AccountCircle />,
+      link: "/user/feedback",
+    },
+   
+
     
     {
       name: "Logout",
       icon: <AccountCircle />,
-      click: {logout},
+      click: logout,
+    },
+  ];
+
+   const adminMenu = [
+    {
+      name: "Profile",
+      icon: <AccountCircle />,
+      link: "/admin/profile",
+    },
+    {
+      name: "Add Reporter",
+      icon: <PersonAddIcon  sx={{color: blue[30]}}  />,
+      link: "/admin/addreporter",
+    },
+    {
+      name:"Add News",
+      icon: <NewspaperIcon />,
+      link:"/admin/addnews"
+      },
+
+      {
+        name:"Add  Lucknow News",
+        icon: <NewspaperIcon />,
+        link:"/admin/addlucknownews"
+        },
+
+        {
+          name:"Add  Current Affairs",
+          icon: <NewspaperIcon />,
+          link:"/admin/addcurrentaffairs"
+          },
+
+          {
+            name: "Manage Reporter",
+            icon: <GroupAddIcon />,
+            link: "/admin/managereporters",
+          },
+      
+
+
+
+          {
+            name: "Manage News",
+            icon: <BadgeIcon />,
+            link: "/admin/managenews",
+          },
+
+          
+          {
+            name: "Manage Lucknow News",
+            icon: <BadgeIcon />,
+            link: "/admin/managelucknownews",
+          },
+      
+      
+
+   
+    {
+      name: "Manage Current Affairs",
+      icon: <BadgeIcon />,
+      link: "/admin/managecurrentaffairs",
+    },
+   
+    {
+      name: "Manage Users",
+      icon: <GroupAddIcon />,
+      link: "/admin/manageusers",
+    },
+   
+
+    
+    {
+      name: "Logout",
+      icon: <AccountCircle />,
+      click: adminLogout,
     },
   ];
 
   const repMenu = [
     {
-      name: "Profile",
+      name: "Manage Profile",
       icon: <AccountCircle />,
-      link: "/profile",
+     link: "/reporter/profile",
     },
     {
       name: "Add News",
@@ -111,21 +213,20 @@ const Header = () => {
     },
 
     {
-      name:"Manage News",
-      icon:<BadgeIcon  />,
-      link:"/reporter/managenews",
+      name: "Manage News",
+      icon: <BadgeIcon />,
+      link: "/reporter/managenews",
     },
 
     {
-      name:"Manage Current Affairs",
-      icon:<BadgeIcon  />,
-      link:"/reporter/managecurrentaffairs",
+      name: "Manage Current Affairs",
+      icon: <BadgeIcon />,
+      link: "/reporter/managecurrentaffairs",
     },
-   
     {
       name: "Logout",
       icon: <AccountCircle />,
-      click: reporterLogout,
+      click: reporterLogout
     },
   ];
 
@@ -151,7 +252,7 @@ const Header = () => {
       return (
         <Box sx={{ display: { xs: "none", md: "flex" } }}>
           {" "}
-          <Tooltip title="Reporter/Admin Login">
+          <Tooltip title="Reporter Login">
             <IconButton
               onClick={(e) => setRepMenuPos(e.currentTarget)}
               size="large"
@@ -186,7 +287,7 @@ const Header = () => {
               onClick={(e) => setRepMenuPos2(e.currentTarget)}
               sx={{ p: 0 }}
             >
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <Avatar alt="Remy Sharp" src={url + "/" + currentReporter.avatar} />
             </IconButton>
           </Tooltip>
           <Menu
@@ -206,6 +307,80 @@ const Header = () => {
             onClose={(e) => setRepMenuPos2(null)}
           >
             {repMenu.map(({ name, icon, link, click }) => (
+              <MenuItem
+                key={name}
+                onClick={link ? (e) => navigate(link) : click}
+              >
+                <ListItemIcon>{icon}</ListItemIcon>
+                <ListItemText>{name}</ListItemText>
+              </MenuItem>
+            ))}
+          </Menu>
+        </Box>
+      );
+    }
+  };
+
+  const adminOptions = () => {
+    if (currentAdmin === null && currentAdmin === null) {
+      return (
+        <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          {" "}
+          <Tooltip title="Admin Login">
+            <IconButton
+              onClick={(e) => setAdminMenuPos(e.currentTarget)}
+              size="large"
+              edge="start"
+              color="inherit"
+              sx={{ ml: 2 }}
+            >
+              <Campaign />
+            </IconButton>
+          </Tooltip>
+          <Menu
+            anchorEl={adminMenuPos}
+            open={Boolean(adminMenuPos)}
+            onClose={(e) => setAdminMenuPos(null)}
+          >
+            <MenuItem onClick={(e)=>navigate("/main/reporterlogin")}>
+              <ListItemIcon>
+                <FollowTheSigns fontSize="small" />
+              </ListItemIcon>
+              <ListItemText>Login</ListItemText>
+            </MenuItem>
+
+           
+          </Menu>
+        </Box>
+      );
+    } else if (currentAdmin.isAdmin){
+      return (
+        <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
+          <Tooltip title="Settings">
+            <IconButton
+              onClick={(e) => setAdminMenuPos2(e.currentTarget)}
+              sx={{ p: 0 }}
+            >
+              <Avatar alt="Remy Sharp" src={url + "/" + currentAdmin.avatar} />
+            </IconButton>
+          </Tooltip>
+          <Menu
+            sx={{ mt: "45px" }}
+            id="menu-appbar"
+            anchorEl={adminMenuPos2}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            open={Boolean(adminMenuPos2)}
+            onClose={(e) => setRepMenuPos2(null)}
+          >
+            {adminMenu.map(({ name, icon, link, click }) => (
               <MenuItem
                 key={name}
                 onClick={link ? (e) => navigate(link) : click}
@@ -245,23 +420,23 @@ const Header = () => {
               <ListItemIcon >
                 <FollowTheSigns fontSize="small" />
               </ListItemIcon>
-              <ListItemText>Register as User</ListItemText>
+              <ListItemText>Login</ListItemText>
             </MenuItem>
-            <MenuItem  onClick={(e)=>navigate("/main/signup")}> 
+            {/* <MenuItem  onClick={(e)=>navigate("/main/signup")}> 
             <ListItemIcon>
             <ExitToAppIcon  fontSize="small"  />
             </ListItemIcon>
             <ListItemText>Signup</ListItemText>
-            </MenuItem>
+            </MenuItem> */}
           </Menu>
         </Box>
       );
     } else {
       return (
         <Box sx={{ flexGrow: 0, display: { xs: "none", md: "flex" } }}>
-          <Tooltip title="Open settings">
+          <Tooltip title="User Options">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <Avatar alt="Remy Sharp" src={url + "/" + currentUser.avatar}/>
             </IconButton>
           </Tooltip>
           <Menu
@@ -364,6 +539,7 @@ const Header = () => {
             ))}
           </Box>
           {UserOptions()}
+          {adminOptions()}
           {reporterOptions()}
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <Tooltip title={"Home"}>
@@ -380,6 +556,7 @@ const Header = () => {
 
           <Box sx={{ flexGrow: 0, ml: 3, display: { xs: "flex", md: "none" } }}>
             {UserOptions()}
+            {adminOptions()}
             {reporterOptions()}
             <Tooltip>
               <IconButton

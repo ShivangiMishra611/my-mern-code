@@ -147,7 +147,11 @@ const ManageCurrentAffairs = () => {
             
             <h5>{newscurrent.summary}</h5>
 
-            <Typography>{newscurrent.categorystate}</Typography>
+            <h5>{newscurrent.categorystate}</h5>
+         
+            <h5>{newscurrent.createdAt}</h5>
+
+          
          
           <Stack direction="row" spacing={2}>
             <Fab
@@ -196,7 +200,7 @@ const ManageCurrentAffairs = () => {
   };
   
   const submitNews = (values) => {
-    // values.thumbnail = thumbnail;
+    values.thumbnail = thumbnail;
     console.log(values);
 
     fetch(url + "/newscurrent/update/" + values._id, {
@@ -453,10 +457,10 @@ const ManageCurrentAffairs = () => {
       <header className="current-back">
       <Grid container spacing={5}>
         <Grid item md={6}>
-        <Typography className="text-center text-white" variant="h5">
-          Trusted News Tribune
-        </Typography>
-        <Typography className="text-center text-white" variant="h2">
+       
+      
+       
+        <Typography className="text-center text-white" variant="h2"  sx={{ml:65,mt:1}}>
           Manage Current Affairs
         </Typography>
         
@@ -484,7 +488,7 @@ const ManageCurrentAffairs = () => {
           <br></br>
           <br></br>
           </Grid>
-          <Grid item md={2}>
+          <Grid item md={2}  sx={{mt: 28}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -497,19 +501,30 @@ const ManageCurrentAffairs = () => {
               </select>
             </Grid>
 
-            <Grid item md={2} sx={{mt: 27}}>
+            <Grid item md={2} sx={{mt: 28}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
                 onChange={filterByMonth}
               >
                 <option selected>Select a Month</option>
-                {["Jan", "Feb", "Mar", "Apr"].map((mon, i) => (
+                {[ "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sept",
+                "Oct",
+                "Nov",
+                "Dec"].map((mon, i) => (
                   <option value={i}>{mon}</option>
                 ))}
               </select>
             </Grid>
-            <Grid item md={2}>
+            <Grid item md={2} sx={{mt: 28}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"

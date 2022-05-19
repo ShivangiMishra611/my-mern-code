@@ -8,6 +8,10 @@ import { useEffect, useState } from "react";
 import app_config from "../../config";
 import React from "react";
 import TimeAgo from "javascript-time-ago";
+import {
+  Grid,
+  CardMedia,
+} from "@mui/material";
 
 const Home = () => {
   const url = app_config.api_url;
@@ -781,133 +785,7 @@ const Home = () => {
                     <div className="row">
                       {showEducationData()}
                       {showWorldData()}
-                      {/* <div className="col-sm-6">
-                        <div className="card-title">Celebrity news</div>
-                        <div className="row">
-                          <div className="col-sm-12">
-                            <div className="border-bottom pb-3">
-                              <div className="row">
-                                <div className="col-sm-5 pr-2">
-                                  <div className="rotate-img">
-                                    <img
-                                      src={
-                                        url + "/images/dashboard/home_19.jpg"
-                                      }
-                                      alt="thumb"
-                                      className="img-fluid w-100"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-sm-7 pl-2">
-                                  <p className="fs-16 font-weight-600 mb-0">
-                                    Online shopping ..
-                                  </p>
-                                  <p className="fs-13 text-muted mb-0">
-                                    <span className="mr-2">Photo </span>
-                                    10 Minutes ago
-                                  </p>
-                                  <p className="mb-0 fs-13">
-                                    Lorem Ipsum has been
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row">
-                          <div className="col-sm-12">
-                            <div className="border-bottom pb-3 pt-3">
-                              <div className="row">
-                                <div className="col-sm-5 pr-2">
-                                  <div className="rotate-img">
-                                    <img
-                                      src={
-                                        url + "/images/dashboard/home_20.jpg"
-                                      }
-                                      alt="thumb"
-                                      className="img-fluid w-100"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-sm-7 pl-2">
-                                  <p className="fs-16 font-weight-600 mb-0">
-                                    Online shopping ..
-                                  </p>
-                                  <p className="fs-13 text-muted mb-0">
-                                    <span className="mr-2">Photo </span>
-                                    10 Minutes ago
-                                  </p>
-                                  <p className="mb-0 fs-13">
-                                    Lorem Ipsum has been
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row">
-                          <div className="col-sm-12">
-                            <div className="border-bottom pb-3 pt-3">
-                              <div className="row">
-                                <div className="col-sm-5 pr-2">
-                                  <div className="rotate-img">
-                                    <img
-                                      src={
-                                        url + "/images/dashboard/home_21.jpg"
-                                      }
-                                      alt="thumb"
-                                      className="img-fluid w-100"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-sm-7 pl-2">
-                                  <p className="fs-16 font-weight-600 mb-0">
-                                    Online shopping ..
-                                  </p>
-                                  <p className="fs-13 text-muted mb-0">
-                                    <span className="mr-2">Photo </span>
-                                    10 Minutes ago
-                                  </p>
-                                  <p className="mb-0 fs-13">
-                                    Lorem Ipsum has been
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="row">
-                          <div className="col-sm-12">
-                            <div className="pt-3">
-                              <div className="row">
-                                <div className="col-sm-5 pr-2">
-                                  <div className="rotate-img">
-                                    <img
-                                      src={
-                                        url + "/images/dashboard/home_22.jpg"
-                                      }
-                                      alt="thumb"
-                                      className="img-fluid w-100"
-                                    />
-                                  </div>
-                                </div>
-                                <div className="col-sm-7 pl-2">
-                                  <p className="fs-16 font-weight-600 mb-0">
-                                    Online shopping ..
-                                  </p>
-                                  <p className="fs-13 text-muted mb-0">
-                                    <span className="mr-2">Photo </span>
-                                    10 Minutes ago
-                                  </p>
-                                  <p className="mb-0 fs-13">
-                                    Lorem Ipsum has been
-                                  </p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div> */}
+                     
                     </div>
                   </div>
                 </div>
@@ -928,69 +806,186 @@ const Home = () => {
               <div className="container">
                 <div className="d-lg-flex align-items-center justify-content-between">
                   <div className="d-flex align-items-center">
-                    <span
-                      className="badge badge-dark mr-3"
-                      style={{ cursor: "pointer" }}
-                      onClick={(e) => navigate("/main/topstories")}
-                    >
-                      View Top Stories
-                    </span>
-                    <br></br>
-                    <br></br>
-                    <div className="d-flex justify-content-between align-items-center">
-                      <h5 className="mb-0 font-weight-600">MY CITY</h5>
-                    </div>
-                    &nbsp;&nbsp;
-                    <div className="d-flex justify-content-between align-items-center">
-                      <h5 className="mb-0 font-weight-600">SPORTS</h5>
-                    </div>
-                    &nbsp;&nbsp;
-                    <div className="d-flex justify-content-between align-items-center">
-                      <h5 className="mb-0 font-weight-600">WORLD</h5>
-                    </div>
-                    &nbsp;&nbsp;
-                    <div className="d-flex justify-content-between align-items-center">
-                      <h5 className="mb-0 font-weight-600">LIFESTYLE</h5>
-                    </div>
-                    &nbsp;&nbsp;
-                    <div className="d-flex justify-content-between align-items-center">
-                      <h5 className="mb-0 font-weight-600">ENTERTAINMENT</h5>
-                    </div>
-                    &nbsp;&nbsp;
-                    <div className="d-flex justify-content-between align-items-center">
-                      <h5 className="mb-0 font-weight-600">BUSINESS</h5>
-                    </div>
-                    &nbsp;&nbsp;
-                    <div className="d-flex justify-content-between align-items-center">
-                      <h5 className="mb-0 font-weight-600">TECHNOLOGY</h5>
-                    </div>
-                    <ul className="social-media mb-3">
-                      <li>
-                        <a href="#">
-                          <i className=" fab fa-facebook"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab  fa-youtube"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-twitter"></i>
-                        </a>
-                      </li>
+                    
+<br></br>
+<br></br>
 
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-whatsapp"></i>
-                        </a>
-                      </li>
-                    </ul>
+<div className="d-flex justify-content-between align-items-center">
+                          <h6
+                            className="custom"
+                            style={{
+                              cursor: "pointer",
+                            
+                            }}
+                            onClick={(e) => navigate("/main/lucknownews")}
+                          >
+                            MY CITY
+                          </h6>
+                        </div>
+                      </div>
+                     
+                        <div className="d-flex justify-content-between align-items-center">
+                          <h6
+                            className="custom font-weight-600"
+                            style={{
+                              cursor: "pointer",
+                             
+                            }}
+                            onClick={(e) => navigate("/main/topstories/Sports")}
+                          >
+                            SPORTS
+                          </h6>
+                        </div>
+                      
+                     
+                        <div className="d-flex justify-content-between align-items-center">
+                          <h6
+                            className="custom font-weight-600"
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            onClick={(e) => navigate("/main/topstories/World")}
+                          >
+                            WORLD
+                          </h6>
+                        </div>
+
+                        
+                        <div className="d-flex justify-content-between align-items-center">
+                        <h6
+                          className="custom font-weight-600"
+                          style={{
+                            cursor: "pointer",
+                          }}
+                          onClick={(e) =>
+                            navigate("/main/topstories/Lifestyle")
+                          }
+                        >
+                          LIFESTYLE
+                        </h6>
+                      </div>
+
+
+                      
+                      <div className="d-flex justify-content-between align-items-center">
+                      <h6
+                        className="custom font-weight-600"
+                        style={{
+                          cursor: "pointer",
+                          
+                        }}
+                        onClick={(e) =>
+                          navigate("/main/topstories/Entertainment")
+                        }
+                      >
+                        ENTERTAINMENT
+                      </h6>
+                    </div>
+                    
+
+                      
+                      <div className="d-flex justify-content-between align-items-center">
+                      <h6
+                        className="custom font-weight-600"
+                        style={{
+                          cursor: "pointer",
+                        }}
+                        onClick={(e) =>
+                          navigate("/main/topstories/Health")
+                        }
+                      >
+                        HEALTH
+                      </h6>
+                    </div>
+                    
+
+
+
+
+
+                      
+
+
+
+
+                        <div className="d-flex justify-content-between align-items-center">
+                        <h6
+                          className="custom font-weight-600"
+                          style={{
+                            cursor: "pointer",
+                          }}
+                          onClick={(e) =>
+                            navigate("/main/topstories/Business")
+                          }
+                        >
+                          BUSINESS
+                        </h6>
+                      </div>
+                      
+
+                     
+                        <div className="d-flex justify-content-between align-items-center">
+                          <h6
+                            className="custom font-weight-600"
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            onClick={(e) =>
+                              navigate("/main/topstories/Education")
+                            }
+                          >
+                            EDUCATION
+                          </h6>
+                        </div>
+                      
+
+                     
+                        <div className="d-flex justify-content-between align-items-center">
+                          <h6
+                            className="custom font-weight-600"
+                            style={{
+                              cursor: "pointer",
+                            }}
+                            onClick={(e) =>
+                              navigate("/main/topstories/Technology")
+                            }
+                          >
+                            TECHNOLOGY
+                          </h6>
+                        
+
+                 
+                     
+              <ul className="social-media mb-3">
+              <li>
+              <a href="https://www.facebook.com/summertrainingandinternship2022/"  target="_blank">
+                  <i className=" fab fa-facebook"></i>
+                </a>
+              </li>
+              <li>
+              <a href="https://in.linkedin.com/company/summertrainingandinternship2022/"  target="_blank">
+                  <i className="fab  fa-linkedin"></i>
+                </a>
+              </li>
+             
+             
+             
+              <li>
+                <a href="https://www.instagram.com/rajpootnikita18/"  target="_blank">
+                  <i className="fab fa-instagram"></i>
+                </a>
+
+              </li>
+            </ul>
+            &nbsp;&nbsp;
+
+
+                     
+                    
                     <p className="mb-0"></p>
                   </div>
                   <div className="d-flex">
-                    <span className="mr-3 text-danger">
+                    <span className="custom1">
                       {format(new Date(), "PPPP")}
                     </span>
                     {/* <span className="text-danger">30°C,London</span> */}
@@ -1014,9 +1009,7 @@ const Home = () => {
 
                         <div
                           className="banner-content"
-                          onClick={(e) =>
-                            navigate("/main/viewnews/" + newsArray[0]._id)
-                          }
+                         
                         ></div>
                       </div>
                     </div>
@@ -1141,24 +1134,48 @@ const Home = () => {
                 <div className="row" data-aos="fade-up">
                   <div className="col-lg-3 stretch-card grid-margin">
                     <div className="card">
-                      <div className="card-body">
-                        <h2>Category</h2>
+                   
+
+
+
+                      <div className= "header-cat "  >
+                      <br></br>
+                     
+                        <h3><b>CATEGORIES</b></h3>
+                        <Grid item xs={6} md={7}>
+                        <CardMedia  style={{width: 190}}
+                          component="img"
+                          height="220"
+                          
+                          
+                          
+                          image={url + "/images/globe.jpg"}
+                        />
+                      </Grid>
+                        
                         <ul className="vertical-menu">
                           <li>
                             <NavLink
                               className="nav-link"
                               to="/main/lucknownews"
                             >
+                            <br></br>
+                            <b>
                               MYCITY
+                            
+                              </b>
                             </NavLink>
                           </li>
+                          <br></br>
+                          
+                          
                           {categories.map((category) => (
-                            <li>
-                              <NavLink
-                                className="nav-link"
-                                to={"/main/topstories/" + category}
+                            <li  >
+                              <NavLink 
+                                className="category-header" 
+                                to={"/main/topstories/" + category }
                               >
-                                {category.toUpperCase()}
+                                {category.toUpperCase()  }
                               </NavLink>
                             </li>
                           ))}
@@ -1190,11 +1207,14 @@ const Home = () => {
                                         className="img-fluid"
                                       />
                                     </div>
-                                    <div className="badge-positioned">
+                                    <div className="logo">
                                       <span className="badge badge-danger font-weight-bold">
-                                        Trusted News Tribune
-                                      </span>
-                                    </div>
+                                     
+                                        <h2>Trusted News Tribune</h2>
+                                        
+                                        
+                                      </span> 
+                                     </div> 
                                   </div>
                                 </div>
                                 <div className="col-sm-8  grid-margin">
@@ -1265,38 +1285,30 @@ const Home = () => {
                         className="footer-logo"
                         alt=""
                       />
-                      <h5 className="font-weight-normal mt-4 mb-5">
+                      <h3 className="font-weight-normal mt-4 mb-5">
                         Newspaper is your news, entertainment, music fashion
                         website. We provide you with the latest breaking news
                         and videos straight from the entertainment industry.
-                      </h5>
+                      </h3>
                       <ul className="social-media mb-3">
                         <li>
-                          <a href="#">
+                        <a href="https://www.facebook.com/summertrainingandinternship2022/"  target="_blank">
                             <i className=" fab fa-facebook"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i className="fab  fa-youtube"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i className="fab fa-twitter"></i>
                           </a>
                         </li>
 
                         <li>
-                          <a href="#">
-                            <i className="fab fa-pinterest"></i>
+                        <a href="https://www.instagram.com/rajpootnikita18/"  target="_blank">
+                            <i className="fab fa-instagram"></i>
                           </a>
                         </li>
+
                         <li>
-                          <a href="#">
-                            <i className="fab fa-whatsapp"></i>
+                        <a href="https://in.linkedin.com/company/summertrainingandinternship2022/"  target="_blank">
+                            <i className="fab fa-linkedin"></i>
                           </a>
                         </li>
+                        
                       </ul>
                     </div>
                     <div className="col-sm-4">
@@ -1416,6 +1428,7 @@ const Home = () => {
                             }}
                             onClick={(e) => navigate("/main/lucknownews")}
                           >
+                         
                             MY CITY
                           </h5>
                         </div>
@@ -1429,6 +1442,7 @@ const Home = () => {
                             }}
                             onClick={(e) => navigate("/main/topstories/Sports")}
                           >
+                        
                             SPORTS
                           </h5>
                         </div>

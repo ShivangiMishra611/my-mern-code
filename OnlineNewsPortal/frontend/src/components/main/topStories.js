@@ -13,10 +13,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import app_config from "../../config";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 
-import ShareIcon from "@mui/icons-material/Share";
-import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -68,7 +65,7 @@ const TopStories = () => {
 
     Education: ["BOARD EXAMS", "ENTRANCE EXAMS", "ADMISSION", "CBSE"],
 
-    Technolog: ["TECH NEWS", "GADGETS"],
+    Technology: ["TECH NEWS", "GADGETS"],
 
     World: ["US", "PAKISTAN", "CHINA", "UK", "SOUTH ASIA", "REST OF  WORLD"],
   };
@@ -227,6 +224,7 @@ const TopStories = () => {
             </Grid>
             <Grid item xs={6} md={8}>
               <CardContent>
+              <h5>{news.createdAt}</h5>
                 <Tooltip title={news.title}>
                   <h2
                     component="div"
@@ -278,9 +276,7 @@ const TopStories = () => {
         <Typography className="text-center text-white" variant="h5">
           Trusted News Tribune
         </Typography>
-        <Typography className="text-center text-white" variant="h2">
-          Top Stories
-        </Typography>
+        
         <div className="col-6 mx-auto">
           <div className="input-group mt-5">
             <input

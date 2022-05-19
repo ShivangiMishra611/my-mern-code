@@ -27,7 +27,7 @@ const Signup = () => {
   const navigate = useNavigate();
   // const img1="image1.jpg"
   const userForm = {
-    name: "",
+  
     username: "",
     password: "",
     confirmPassword: "",
@@ -120,7 +120,7 @@ const Signup = () => {
                     touched,
                   }) => (
                     <form onSubmit={handleSubmit}>
-                      <TextField
+                      {/* <TextField
                         className="w-100 "
                         placeholder="Name"
                         label="name"
@@ -139,7 +139,7 @@ const Signup = () => {
                             </InputAdornment>
                           ),
                         }}
-                      />
+                      /> */}
 
                       <TextField
                         className="w-100 mt-3"

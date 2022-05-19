@@ -3,6 +3,7 @@ import "./App.css";
 import Admin from "./components/admin";
 import User from "./components/user";
 import AddReporter from "./components/admin/addreporter";
+
 import ManageReporters from "./components/admin/manageReporters";
 
 import ManageNews from "./components/admin/manageNews";
@@ -21,6 +22,8 @@ import AddNews from "./components/reporter/addNews";
 import AddLucknowNews from "./components/reporter/addLucknowNews";
 import ViewArchieve from "./components/main/viewArchieve";
 import ViewNews from "./components/main/viewNews";
+import ViewCurrent from "./components/main/viewCurrent";
+import ViewLucknow from "./components/main/viewLucknow";
 import ResetPassword from "./components/main/resetPassword";
 
 import Feedback from "./components/user/feedback";
@@ -33,6 +36,7 @@ import AddCurrentAffairs from "./components/reporter/addCurrentAffairs";
 import CurrentAffairs from "./components/main/currentAffairs";
 import ManageCurrentAffairs from "./components/admin/manageCurrentAffairs";
 import RManageCurrentAffairs from "./components/reporter/manageCurrentAffairs";
+// import RManageLucknowNews from "./components/reporter/managelucknowNews";
 import RManageNews from "./components/reporter/manageNews";
 import { createTheme, ThemeProvider } from "@mui/material";
 import TimeAgo from "javascript-time-ago";
@@ -40,6 +44,7 @@ import en from "javascript-time-ago/locale/en.json";
 import AdminAuthenticator from "./components/adminAuthenticator";
 import ReporterProfile from "./components/reporter/profile";
 import AdminProfile from "./components/admin/profile";
+import UserProfile from "./components/user/profile";
 
 function App() {
   TimeAgo.addDefaultLocale(en);
@@ -89,6 +94,8 @@ function App() {
             <Route element={<LucknowNews />} path="lucknownews" />
             <Route element={<CurrentAffairs />} path="currentaffairs" />
             <Route element={<ViewNews />} path="viewnews/:id" />
+            <Route element={<ViewCurrent />} path="viewcurrent/:id" />
+            <Route element={<ViewLucknow />} path="viewlucknow/:id" />
             {/* <Route element={<ViewNews />} path="viewnews" /> */}
             <Route element={<Home />} path="home" />
           </Route>
@@ -124,6 +131,7 @@ function App() {
 
           <Route element={<User />} path="user">
             <Route element={<Feedback />} path="feedback" />
+            <Route element={<UserProfile />} path="profile" />
           </Route>
 
           <Route element={<Navigate to="/main/home" />} path="/" />

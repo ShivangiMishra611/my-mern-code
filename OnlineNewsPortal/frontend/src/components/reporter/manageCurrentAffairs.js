@@ -441,6 +441,10 @@ const RManageCurrentAffairs = () => {
         Search
       </Fab>
 
+    <br></br>
+    <br></br>
+    <br></br>
+
       <Container>
       {displayNews()}
       </Container>

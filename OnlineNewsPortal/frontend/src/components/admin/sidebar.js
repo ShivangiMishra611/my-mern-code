@@ -122,7 +122,7 @@ export default function Sidebar({ children, sidebarOptions, title }) {
   };
   const reporterLogout = () => {
     // setAnchorElUser(null);
-    sessionStorage.removeItem("reporter");
+    sessionStorage.removeItem("admin");
     navigate("/main/reporterlogin");
   };
 
@@ -206,6 +206,20 @@ export default function Sidebar({ children, sidebarOptions, title }) {
               </MenuItem>
             </Menu>
           </Box>
+
+          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+            <Tooltip title={"Home"}>
+              <IconButton
+                size="large"
+                color="inherit"
+                onClick={(e) => navigate("/main/home")}
+                sx={{ mr: 2 }}
+              >
+                <Home />
+              </IconButton>
+            </Tooltip>
+          </Box>
+
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>

@@ -142,8 +142,9 @@ export default function Sidebar({ children, sidebarOptions, title }) {
           <Typography variant="h6" noWrap component="div">
             {title}
           </Typography>
+          
           <Box sx={{flexGrow : 1}}>
-            <Button sx={{ml : 3}} color="inherit" onClick={e => navigate('/main/topstories')}>
+            <Button sx={{ml : 3 }} color="inherit" onClick={e => navigate('/main/topstories')}>
              TOP STORIES
             </Button>
           </Box>
