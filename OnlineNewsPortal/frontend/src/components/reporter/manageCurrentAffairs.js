@@ -55,11 +55,11 @@ const RManageCurrentAffairs = () => {
         setLoading(false);
       });
   };
-  const newsCategories = [
-    "National",
-    "International",
+  // const newsCategories = [
+  //   "National",
+  //   "International",
    
-  ];
+  // ];
   const uploadThumbnail = (e) => {
     console.log("file selected");
 
@@ -145,7 +145,7 @@ const RManageCurrentAffairs = () => {
             <br></br>
             <h5>{newscurrent.summary}</h5>
 
-            <Typography>{newscurrent.categorystate}</Typography>
+            {/* <Typography>{newscurrent.categorystate}</Typography> */}
          
           <Stack direction="row" spacing={2}>
             <Fab
@@ -273,7 +273,7 @@ const RManageCurrentAffairs = () => {
                       <br></br>
                       <br></br>
 
-                      <FormControl fullWidth>
+                      {/* <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label1">
                           Category
                         </InputLabel>
@@ -306,7 +306,7 @@ const RManageCurrentAffairs = () => {
                             </MenuItem>
                           ))}
                         </Select>
-                      </FormControl>
+                      </FormControl> */}
                       <br></br>
                       <br></br>
 

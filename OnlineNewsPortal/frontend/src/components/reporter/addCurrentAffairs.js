@@ -33,14 +33,14 @@ const AddCurrentAffairs = () => {
   const newsForm = {
     title: "",
 
-    categorystate: "",
+    // categorystate: "",
     subCategory: "",
     summary: "",
     thumbnail: "",
     tags: "",
   };
 
-  const newsCategories = ["National", "International"];
+  // const newsCategories = ["National", "International"];
 
   const [tags, setTags] = useState([]);
   const img1 = "ADDNEWS.jpeg";
@@ -88,7 +88,7 @@ const AddCurrentAffairs = () => {
       .min(2, "Too Short!")
       .max(200, "Too Long!")
       .required("Title is Required"),
-    categorystate: Yup.string().required("Category is Required"),
+    // categorystate: Yup.string().required("Category is Required"),
     summary: Yup.string().required("News Summary is Required"),
     tags: Yup.string().required("News Tags is Required"),
   });
@@ -112,7 +112,7 @@ const AddCurrentAffairs = () => {
                 <form onSubmit={handleSubmit}>
                   <div className="card-body">
                     <Grid container spacing={5}>
-                      <Grid item sm={6} xs={12}>
+                      {/* <Grid item sm={6} xs={12}> */}
                         <TextField
                           className="w-100 mt-3"
                           placeholder="Title"
@@ -137,8 +137,8 @@ const AddCurrentAffairs = () => {
                             ),
                           }}
                         />
-                      </Grid>
-                      <Grid item sm={6} xs={12}>
+                      {/* </Grid> */}
+                      {/* <Grid item sm={6} xs={12}>
                         <FormControl fullWidth className="mt-3">
                           <InputLabel id="demo-simple-select-label1">
                             Category
@@ -172,9 +172,9 @@ const AddCurrentAffairs = () => {
                             ))}
                           </Select>
                         </FormControl>
-                      </Grid>
+                      </Grid> */}
 
-                      <Grid item sm={6} xs={12}>
+                      {/* <Grid item sm={6} xs={12}> */}
                         <TextField
                           className="w-100 mt-3"
                           label="Add News"
@@ -202,11 +202,11 @@ const AddCurrentAffairs = () => {
                             ),
                           }}
                         />
-                      </Grid>
+                      {/* </Grid> */}
 
                       <br></br>
                       <br></br>
-                      <Grid item sm={6} xs={12}>
+                      {/* <Grid item sm={6} xs={12}> */}
                         <Autocomplete
                           className="mt-5"
                           multiple
@@ -238,7 +238,7 @@ const AddCurrentAffairs = () => {
                           )}
                         />
                       </Grid>
-                    </Grid>
+                    {/* </Grid> */}
 
                     <br></br>
                     <br></br>

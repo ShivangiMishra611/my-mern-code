@@ -30,7 +30,7 @@ const CurrentAffairs = () => {
   const [dateFilters, setDateFilters] = useState([]);
   const [currentDateFilter, setCurrentDateFilter] = useState(null);
 
-  const newsCategories = ["National", "International"];
+  // const newsCategories = ["National", "International"];
   const monthNames = [
     "January",
     "February",
@@ -197,18 +197,18 @@ const CurrentAffairs = () => {
     return text.substring(0, n) + "...";
   };
 
-  const displayCategories = () => {
-    return newsCategories.map((categorystate) => (
-      <Button
-        color="primary"
-        variant="contained"
-        size="medium"
-        onClick={(e) => refreshData(categorystate)}
-      >
-        {categorystate}
-      </Button>
-    ));
-  };
+  // const displayCategories = () => {
+  //   return newsCategories.map((categorystate) => (
+  //     <Button
+  //       color="primary"
+  //       variant="contained"
+  //       size="medium"
+  //       onClick={(e) => refreshData(categorystate)}
+  //     >
+  //       {categorystate}
+  //     </Button>
+  //   ));
+  // };
 
   const displaynews = () => {
     if (!loading) {
@@ -314,7 +314,7 @@ const CurrentAffairs = () => {
                 justifyContent: "space-between",
               }}
             >
-              {displayCategories()}
+              {/* {displayCategories()} */}
             </Box>
           </div>
         </Container>
