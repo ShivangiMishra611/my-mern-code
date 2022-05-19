@@ -19,6 +19,7 @@ const AdminProfile = (props) => {
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(sessionStorage.getItem("admin"))
   );
+
   const [selImage, setSelImage] = useState("");
   const url = app_config.api_url;
 
