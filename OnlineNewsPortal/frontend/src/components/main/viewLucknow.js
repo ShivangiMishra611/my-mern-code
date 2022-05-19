@@ -10,6 +10,7 @@ import {
   IconButton,
   Tooltip,
   CardActions,
+  Typography
 } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
@@ -58,6 +59,16 @@ const ViewLucknow = () => {
   const displayNews = () => {
     if (!loading) {
       return (
+        <div className="view">
+        <header className="stories-header">
+          <Typography className="text-center text-white" variant="h2">
+            Trusted News Tribune
+          </Typography>
+          
+        
+            
+          </header>
+  
     
         <Card className="cardview" sx={{ maxWidth: 700, mt: 5 }}>
          
@@ -119,6 +130,7 @@ const ViewLucknow = () => {
             </CardContent>
           </Collapse>
         </Card>
+        </div>
       );
     }
   };

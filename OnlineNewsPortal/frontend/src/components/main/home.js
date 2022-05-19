@@ -1143,10 +1143,13 @@ const Home = () => {
                      
                         <h3><b>CATEGORIES</b></h3>
                         <Grid item xs={6} md={7}>
-                        <CardMedia
+                        <CardMedia  style={{width: 190}}
                           component="img"
-                          height="100"
-                          image={url + "/images/lock.jpg"}
+                          height="220"
+                          
+                          
+                          
+                          image={url + "/images/globe.jpg"}
                         />
                       </Grid>
                         
@@ -1159,6 +1162,7 @@ const Home = () => {
                             <br></br>
                             <b>
                               MYCITY
+                            
                               </b>
                             </NavLink>
                           </li>

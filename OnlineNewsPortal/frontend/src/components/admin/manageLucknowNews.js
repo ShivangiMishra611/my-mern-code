@@ -459,7 +459,7 @@ const ManageLucknowNews = () => {
         <Grid item md={6}>
   
      
-        <Typography  className="lnmanage text-center" variant="h2" sx={{ml:19}}>
+        <Typography  className="lnmanage text-center" variant="h2" sx={{ml:30}}>
           Manage Lucknow News
         </Typography>
        

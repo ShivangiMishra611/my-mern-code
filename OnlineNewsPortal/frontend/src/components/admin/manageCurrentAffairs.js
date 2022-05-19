@@ -460,7 +460,7 @@ const ManageCurrentAffairs = () => {
        
       
        
-        <Typography className="text-center text-white" variant="h2"  sx={{ml:55,mt:1}}>
+        <Typography className="text-center text-white" variant="h2"  sx={{ml:65,mt:1}}>
           Manage Current Affairs
         </Typography>
         

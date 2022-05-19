@@ -477,12 +477,12 @@ const ManageNews = () => {
         <Grid container spacing={5}>
           <Grid item md={6}>
            
-            <Typography className="nmanage text-center" variant="h2" sx={{ml:20}}>
+            <Typography className="nmanage text-center" variant="h2" sx={{ml:30}}>
               Manage  
                 
             </Typography>
 
-            <Typography className="nmanage text-center" variant="h2" sx={{ml:22}}>
+            <Typography className="nmanage text-center" variant="h2" sx={{ml:30}}>
               &nbsp;News
               
           </Typography>

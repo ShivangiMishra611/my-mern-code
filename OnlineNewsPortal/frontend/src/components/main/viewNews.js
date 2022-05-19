@@ -10,10 +10,12 @@ import {
   IconButton,
   Tooltip,
   CardActions,
+ 
+  Typography
 } from "@mui/material";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
+
+
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import { useEffect, useState } from "react";
@@ -21,9 +23,10 @@ import { useEffect, useState } from "react";
 const ViewNews = () => {
   const { id } = useParams();
   const url = app_config.api_url;
-
+  
   const [newsData, setNewsData] = React.useState({});
   const [loading, setLoading] = React.useState(true);
+  
 
   const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -55,18 +58,23 @@ const ViewNews = () => {
     fetchData();
   }, []);
 
+  
+
   const displayNews = () => {
     if (!loading) {
       return (
         <Card  classname="view">
-        <CardMedia sx={{mt:1, mr:1}}
-          component="img"
-          height="330"
-          width="100"
-          image={url+"/images/advv.png"}
         
+        <header className="stories-header">
+          <Typography className="text-center text-white" variant="h2">
+            Trusted News Tribune
+          </Typography>
           
-        />
+        
+            
+          </header>
+  
+        
        
 
 
@@ -107,17 +115,8 @@ const ViewNews = () => {
           </CardContent>
           <CardActions disableSpacing>
           
-            <IconButton aria-label="share">
-              <ShareIcon />
-            </IconButton>
-            <ExpandMore
-              expand={expanded}
-              onClick={handleExpandClick}
-              aria-expanded={expanded}
-              aria-label="show more"
-            >
-              <ExpandMoreIcon />
-            </ExpandMore>
+            
+           
           </CardActions>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
@@ -137,7 +136,9 @@ const ViewNews = () => {
             </CardContent>
           </Collapse>
         </Card>
+      
         </Card>
+        
       
       );
     }

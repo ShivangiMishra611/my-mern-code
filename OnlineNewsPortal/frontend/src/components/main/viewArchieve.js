@@ -154,12 +154,7 @@ const ViewArchieve = () => {
                 >
                   {truncate(news.summary, 100)}
                 </h4>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                  <ShareIcon />
-                </IconButton>
+                
               </CardContent>
               <CardActions>
               <Button
@@ -220,13 +215,14 @@ const ViewArchieve = () => {
       <Grid container spacing={5}>
         <Grid item md={6}>
 
+ 
+        <Typography className="text-center text-white" variant="h2" sx={{ml:74}}>
+        News 
+      </Typography>
 
-
-      <Typography className="text-center text-white" variant="h5">
-      Trusted News Tribune
-    </Typography>
-    <Typography className="text-center text-white" variant="h2">
-      News Archieves
+    
+    <Typography className="text-center text-white" variant="h2" sx={{ml:66}}>
+      Archieves
     </Typography>
    
       <div className="input-group mt-5">
@@ -249,7 +245,7 @@ const ViewArchieve = () => {
     </div>
     </Grid>
    
-    <Grid item md={2}>
+    <Grid item md={2} sx={{mt:20}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -262,7 +258,7 @@ const ViewArchieve = () => {
               </select>
             </Grid>
 
-            <Grid item md={2}>
+            <Grid item md={2} sx={{mt:20}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -285,7 +281,7 @@ const ViewArchieve = () => {
                 ))}
               </select>
             </Grid>
-            <Grid item md={2}>
+            <Grid item md={2} sx={{mt:20}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
