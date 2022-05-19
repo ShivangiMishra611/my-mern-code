@@ -1209,8 +1209,8 @@ const Home = () => {
                                         <h2>Trusted News Tribune</h2>
                                         
                                         
-                                      </span>
-                                    </div>
+                                      </span> 
+                                     </div> 
                                   </div>
                                 </div>
                                 <div className="col-sm-8  grid-margin">

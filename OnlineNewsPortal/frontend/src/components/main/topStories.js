@@ -68,7 +68,7 @@ const TopStories = () => {
 
     Education: ["BOARD EXAMS", "ENTRANCE EXAMS", "ADMISSION", "CBSE"],
 
-    Technolog: ["TECH NEWS", "GADGETS"],
+    Technology: ["TECH NEWS", "GADGETS"],
 
     World: ["US", "PAKISTAN", "CHINA", "UK", "SOUTH ASIA", "REST OF  WORLD"],
   };

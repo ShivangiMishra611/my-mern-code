@@ -7,7 +7,7 @@ router.post("/add", (req, res) => {
   new Model(req.body)
     .save()
     .then((data) => {
-      console.log("News data saved successfully..");
+      console.log("Lucknow News data saved successfully..");
       res.status(200).json(data);
     })
     .catch((err) => {

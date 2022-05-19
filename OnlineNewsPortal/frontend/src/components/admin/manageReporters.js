@@ -138,7 +138,7 @@ const ManageReporters = () => {
             <h2>{reporter.age}</h2>
 
             <Stack direction="row" spacing={2}>
-              <Fab
+              {/* <Fab
                 disabled={reporter.approvereporter}
                 variant="extended"
                 size="small"
@@ -148,7 +148,7 @@ const ManageReporters = () => {
               >
                 <BeenhereRoundedIcon sx={{ mr: 1 }} />
                 {reporter.approvereporter ? "Approved" : "Approve Reporter"}
-              </Fab>
+              </Fab> */}
 
               <Fab
                 variant="extended"
@@ -183,7 +183,7 @@ const ManageReporters = () => {
     }
   };
   const submitReporter = (values) => {
-    // values.thumbnail = thumbnail;
+    values.thumbnail = thumbnail;
     console.log(values);
 
     fetch(url + "/reporter/update/" + values._id, {

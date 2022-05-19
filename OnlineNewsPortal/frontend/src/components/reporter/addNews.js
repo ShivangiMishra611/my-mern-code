@@ -320,6 +320,8 @@ const AddNews = () => {
                       <input
                         className="form-control"
                         type="file"
+                        id="thumbnail"
+
                         onChange={uploadThumbnail}
                       />
                     </div>

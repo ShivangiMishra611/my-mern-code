@@ -146,10 +146,12 @@ const ManageCurrentAffairs = () => {
             <br></br>
             
             <h5>{newscurrent.summary}</h5>
-            <h5>{newscurrent.category}</h5>
+
+            <h5>{newscurrent.categorystate}</h5>
+         
             <h5>{newscurrent.createdAt}</h5>
 
-            <Typography>{newscurrent.categorystate}</Typography>
+          
          
           <Stack direction="row" spacing={2}>
             <Fab
@@ -198,7 +200,7 @@ const ManageCurrentAffairs = () => {
   };
   
   const submitNews = (values) => {
-    // values.thumbnail = thumbnail;
+    values.thumbnail = thumbnail;
     console.log(values);
 
     fetch(url + "/newscurrent/update/" + values._id, {
