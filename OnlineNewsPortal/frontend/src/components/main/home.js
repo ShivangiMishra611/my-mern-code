@@ -1134,25 +1134,32 @@ const Home = () => {
 
 
 
-                      <div className="categories " >
-                        <h2>Category</h2>
+                      <div className="header-cat "  style={{mb:2}} >
+                      <br></br>
+                      
+                        <h1><b>CATEGORIES</b></h1>
                         <ul className="vertical-menu">
                           <li>
                             <NavLink
                               className="nav-link"
                               to="/main/lucknownews"
                             >
+                            <br></br>
+                            <b>
                               MYCITY
+                              </b>
                             </NavLink>
                           </li>
+                          <br></br>
+                          
                           
                           {categories.map((category) => (
-                            <li>
-                              <NavLink
-                                className="nav-link"
-                                to={"/main/topstories/" + category}
+                            <li  >
+                              <NavLink 
+                                className="category-header" 
+                                to={"/main/topstories/" + category }
                               >
-                                {category.toUpperCase()}
+                                {category.toUpperCase()  }
                               </NavLink>
                             </li>
                           ))}
@@ -1262,11 +1269,11 @@ const Home = () => {
                         className="footer-logo"
                         alt=""
                       />
-                      <h5 className="font-weight-normal mt-4 mb-5">
+                      <h3 className="font-weight-normal mt-4 mb-5">
                         Newspaper is your news, entertainment, music fashion
                         website. We provide you with the latest breaking news
                         and videos straight from the entertainment industry.
-                      </h5>
+                      </h3>
                       <ul className="social-media mb-3">
                         <li>
                         <a href="https://www.facebook.com/summertrainingandinternship2022/"  target="_blank">
@@ -1398,33 +1405,30 @@ const Home = () => {
                       <h3 className="font-weight-bold mb-3">CATEGORIES</h3>
                       <div className="footer-border-bottom pb-2">
                         <div className="d-flex justify-content-between align-items-center">
-                          <h3
+                          <h5
                             className="mb-0 font-weight-600"
                             style={{
                               cursor: "pointer",
                             }}
                             onClick={(e) => navigate("/main/lucknownews")}
                           >
-                          <br></br>
-                          <br></br>
+                         
                             MY CITY
-                          </h3>
+                          </h5>
                         </div>
                       </div>
                       <div className="footer-border-bottom pb-2 pt-2">
                         <div className="d-flex justify-content-between align-items-center">
-                          <h3
+                          <h5
                             className="mb-0 font-weight-600"
                             style={{
                               cursor: "pointer",
                             }}
                             onClick={(e) => navigate("/main/topstories/Sports")}
                           >
-                         <br></br>
-                         <br></br>
-                         <br></br>
+                        
                             SPORTS
-                          </h3>
+                          </h5>
                         </div>
                       </div>
                       <div className="footer-border-bottom pb-2 pt-2">
