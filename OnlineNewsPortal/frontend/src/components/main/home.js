@@ -8,6 +8,10 @@ import { useEffect, useState } from "react";
 import app_config from "../../config";
 import React from "react";
 import TimeAgo from "javascript-time-ago";
+import {
+  Grid,
+  CardMedia,
+} from "@mui/material";
 
 const Home = () => {
   const url = app_config.api_url;
@@ -1134,10 +1138,21 @@ const Home = () => {
 
 
 
-                      <div className="header-cat "  style={{mb:2}} >
+                      <div className= "header-cat "  >
                       <br></br>
-                      
-                        <h1>CATEGORIES</h1>
+                     
+                        <h3><b>CATEGORIES</b></h3>
+                        <Grid item xs={6} md={7}>
+                        <CardMedia  style={{width: 190}}
+                          component="img"
+                          height="220"
+                          
+                          
+                          
+                          image={url + "/images/globe.jpg"}
+                        />
+                      </Grid>
+                        
                         <ul className="vertical-menu">
                           <li>
                             <NavLink
@@ -1147,6 +1162,7 @@ const Home = () => {
                             <br></br>
                             <b>
                               MYCITY
+                            
                               </b>
                             </NavLink>
                           </li>
