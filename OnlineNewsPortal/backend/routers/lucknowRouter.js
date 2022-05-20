@@ -7,7 +7,7 @@ router.post("/add", (req, res) => {
   new Model(req.body)
     .save()
     .then((data) => {
-      console.log("Lucknow News data saved successfully..");
+      console.log("News data saved successfully..");
       res.status(200).json(data);
     })
     .catch((err) => {
@@ -20,6 +20,7 @@ router.get("/getall", (req, res) => {
   Model.find({})
     .then((data) => {
       console.log("News data fetched successfully..");
+      
       res.status(200).json(data);
     })
     .catch((err) => {
@@ -39,6 +40,14 @@ router.get("/approvenews", (req, res) => {
       res.status(500).json(err);
     });
 });
+
+
+
+
+
+
+
+
 
 
 router.delete("/delete/:id", (req, res) => {
@@ -75,5 +84,5 @@ router.put("/update/:id", (req, res) => {
     });
 });
 
-// for exporting router
+
 module.exports = router;

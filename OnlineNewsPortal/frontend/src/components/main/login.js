@@ -26,11 +26,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const avatarStyle = {
-    backgroundColor: "green",
-    justifyContent: "center",
-    alignItems: "center",
-  };
+  // const avatarStyle = {
+  //   backgroundColor: "green",
+  //   justifyContent: "center",
+  //   alignItems: "center",
+  // };
 
   const url = app_config.api_url;
 
@@ -110,9 +110,9 @@ const Login = () => {
             </Grid>
             <Grid item xs={6} md={5}>
               <CardContent sx={{ display: "flex", flexDirection: "column" }}>
-                <Avatar style={avatarStyle}>
+                {/* <Avatar style={avatarStyle}>
                   <LockIcon />
-                </Avatar>
+                </Avatar> */}
                 <p className="h3 text-center mb-5 mt-5">Sign In</p>
                 <Formik
                   initialValues={loginForm}
@@ -179,7 +179,7 @@ const Login = () => {
                       />
 
                       <Button
-                        color="success"
+                        color="primary"
                         variant="contained"
                         className="mt-5"
                         type="submit"

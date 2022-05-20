@@ -33,14 +33,14 @@ const AddCurrentAffairs = () => {
   const newsForm = {
     title: "",
 
-    categorystate: "",
+    // categorystate: "",
     subCategory: "",
     summary: "",
     thumbnail: "",
     tags: "",
   };
 
-  const newsCategories = ["National", "International"];
+  // const newsCategories = ["National", "International"];
 
   const [tags, setTags] = useState([]);
   const img1 = "ADDNEWS.jpeg";
@@ -88,7 +88,7 @@ const AddCurrentAffairs = () => {
       .min(2, "Too Short!")
       .max(200, "Too Long!")
       .required("Title is Required"),
-    categorystate: Yup.string().required("Category is Required"),
+    // categorystate: Yup.string().required("Category is Required"),
     summary: Yup.string().required("News Summary is Required"),
     tags: Yup.string().required("News Tags is Required"),
   });

@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 
 import {
- Button,
+  Button,
   Card,
   CardContent,
- 
   InputAdornment,
- 
   Typography,
   TextField,
   Tooltip,
@@ -20,9 +18,9 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import SearchIcon from "@mui/icons-material/Search";
 import Stack from "@mui/material/Stack";
-import Fab from '@mui/material/Fab';
-import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
-import BeenhereRoundedIcon from '@mui/icons-material/BeenhereRounded';
+import Fab from "@mui/material/Fab";
+import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
+import BeenhereRoundedIcon from "@mui/icons-material/BeenhereRounded";
 import PersonIcon from "@mui/icons-material/Person";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
@@ -32,7 +30,7 @@ import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 import { Formik } from "formik";
 import Swal from "sweetalert2";
 import { Edit } from "@mui/icons-material";
-import { green } from '@mui/material/colors';
+import { green } from "@mui/material/colors";
 import * as Yup from "yup";
 
 const ManageUsers = () => {
@@ -111,20 +109,20 @@ const ManageUsers = () => {
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
-                      >
-           <h3>{user.name}</h3>
+          >
+            <h3>{user.name}</h3>
           </AccordionSummary>
           <AccordionDetails>
-           <h3>{user.username}</h3>
+            <h3>{user.username}</h3>
 
-           <h3>{user.age}</h3>
+            <h3>{user.age}</h3>
 
-           <h3>{user.email}</h3>
+            <h3>{user.email}</h3>
 
-           <h3>{user.password}</h3>
-         
-          <Stack direction="row" spacing={2}>
-          {/* <Fab
+            <h3>{user.password}</h3>
+
+            <Stack direction="row" spacing={2}>
+              {/* <Fab
              disabled={user.approveusers}
               variant="extended"
               size="small"
@@ -138,18 +136,16 @@ const ManageUsers = () => {
            
             </Fab> */}
 
-
-            <Fab
-              variant="extended"
-              size="small"
-              color="primary"
-              onClick={(e) => deleteUsers(user._id)}
-              aria-label="add"
-            >
-              <DeleteRoundedIcon sx={{ mr: 1 }} />
-            
-            </Fab>
-            <Tooltip title="Update News Article">
+              <Fab
+                variant="extended"
+                size="small"
+                color="primary"
+                onClick={(e) => deleteUsers(user._id)}
+                aria-label="add"
+              >
+                <DeleteRoundedIcon sx={{ mr: 1 }} />
+              </Fab>
+              <Tooltip title="Update News Article">
                 <Fab
                   size="medium"
                   color="success"
@@ -160,14 +156,13 @@ const ManageUsers = () => {
                   aria-label="add"
                 >
                   <Edit
-                  variant="extended"
-                  size="small"
-                  sx={{ color: green[30] }}   />
+                    variant="extended"
+                    size="small"
+                    sx={{ color: green[30] }}
+                  />
                 </Fab>
               </Tooltip>
-           
-           
-          </Stack>
+            </Stack>
           </AccordionDetails>
         </Accordion>
       ));
@@ -228,63 +223,56 @@ const ManageUsers = () => {
       return (
         <div>
           <Card>
-          <CardContent sx={{ width: 640 }}>
-          <Formik
-                  initialValues={updateFormdata}
-                  onSubmit={submitUsers}
-                  // validationSchema={validationSchema}
-                >
-                  {({
-                    values,
-                    handleChange,
-                    handleSubmit,
-                    errors,
-                    touched,
-                  }) => (
-                    <form onSubmit={handleSubmit} >
-                      <TextField
-                        className="w-100 mt-3"
-                        placeholder="Name"
-                        label="name"
-                        variant="outlined"
-                        id="name"
-                        onChange={handleChange}
-                        value={values.name}
-                        error={Boolean(errors.name)}
-                        helperText="Enter your name please"
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <PersonIcon
-                                sx={{ color: "active.active", mr: 1, my: 0.5 }}
-                              />
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
+            <CardContent sx={{ width: 640 }}>
+              <Formik
+                initialValues={updateFormdata}
+                onSubmit={submitUsers}
+                // validationSchema={validationSchema}
+              >
+                {({ values, handleChange, handleSubmit, errors, touched }) => (
+                  <form onSubmit={handleSubmit}>
+                    <TextField
+                      className="w-100 mt-3"
+                      placeholder="Name"
+                      label="name"
+                      variant="outlined"
+                      id="name"
+                      onChange={handleChange}
+                      value={values.name}
+                      error={Boolean(errors.name)}
+                      helperText="Enter your name please"
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <PersonIcon
+                              sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                            />
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
 
-                      <TextField
-                        className="w-100 mt-3"
-                        placeholder="username"
-                        label="username"
-                        variant="outlined"
-                        id="username"
-                        onChange={handleChange}
-                        value={values.username}
-                        error={Boolean(errors.username)}
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <PersonIcon
-                                sx={{ color: "active.active", mr: 1, my: 0.5 }}
-                              />
-                            </InputAdornment>
-                          ),
-                        }}
-                        helperText="Enter your Username please"
-                      />
-                      <TextField
-                      
+                    <TextField
+                      className="w-100 mt-3"
+                      placeholder="username"
+                      label="username"
+                      variant="outlined"
+                      id="username"
+                      onChange={handleChange}
+                      value={values.username}
+                      error={Boolean(errors.username)}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <PersonIcon
+                              sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                            />
+                          </InputAdornment>
+                        ),
+                      }}
+                      helperText="Enter your Username please"
+                    />
+                    <TextField
                       className="w-100 mt-3"
                       placeholder="email"
                       label="Email"
@@ -383,58 +371,66 @@ const ManageUsers = () => {
                       helperText="Enter your Contact no. please"
                     />
 
-<Button type="submit" className="btn btn-primary"
-                       color="success"
-                       variant="contained">
-                        Submit
-                      </Button>
-                      <Button
-                        onClick={(e) => setShowUpdateForm(false)}
-                        type="button"
-                        className="btn btn-primary"
-                      >
-                        Cancel
-                      </Button>
+                    <Button
+                      type="submit"
+                      className="btn btn-primary"
+                      color="success"
+                      variant="contained"
+                    >
+                      Submit
+                    </Button>
+                    <Button
+                      onClick={(e) => setShowUpdateForm(false)}
+                      type="button"
+                      className="btn btn-primary"
+                    >
+                      Cancel
+                    </Button>
                   </form>
                 )}
               </Formik>
             </CardContent>
-          
-      </Card>
-   
-  </div>
-);
-                    }
-};
+          </Card>
+        </div>
+      );
+    }
+  };
 
   return (
     <div className="">
-    <Toaster position="top-right" reverseOrder={false} />
-   
-    <header className="users-back">
-      <Typography className="text-center text-white" variant="h5">
-        Trusted News Tribune
-      </Typography>
-      <Typography className="text-center text-white" variant="h2">
-        Manage Users
-      </Typography>
-      <div className="col-6 mx-auto">
-        <div className="input-group mt-5">
-          <input className="form-control" />
-          <Button variant="contained"  onClick={filternews}
-          type="Submit">Search
-          
-          </Button>
+      <Toaster position="top-right" reverseOrder={false} />
+
+      <header className="users-back">
+        <Typography className="text-center text-white" variant="h5">
+          Trusted News Tribune
+        </Typography>
+        <Typography className="text-center text-white" variant="h2">
+          Manage Users
+        </Typography>
+        <div className="col-6 mx-auto">
+          <div className="input-group mt-5">
+            <input className="form-control"
+             value={filter}
+             label="Search Here"
+             onChange={(e) => setFilter(e.target.value)}
+             InputProps={{
+               startAdornment: (
+                 <InputAdornment position="start">
+                   <SearchIcon
+                     sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                   />
+                 </InputAdornment>
+               ),
+             }} />
+            <Button variant="contained" onClick={filternews} type="Submit">
+              Search
+            </Button>
+          </div>
         </div>
-      </div>
-      <br></br>
+        <br></br>
 
-
-
-   
-    
-      {displayUsers()}
-      {updateForm()}
+        {displayUsers()}
+        {updateForm()}
       </header>
     </div>
   );
