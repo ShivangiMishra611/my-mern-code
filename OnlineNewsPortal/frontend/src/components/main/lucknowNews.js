@@ -184,10 +184,7 @@ const LucknowNews = () => {
                  
                   {truncate(newsLucknow.summary, 100)}
                   </h4>
-                  <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-               
+                 
                 
               </CardContent>
               

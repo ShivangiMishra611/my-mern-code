@@ -79,6 +79,7 @@ const ViewCurrent = () => {
           <CardMedia
             component="img"
             height="350"
+            image={url + "/" + newsData.thumbnail}
             alt="sports news"
           />
           <CardContent>

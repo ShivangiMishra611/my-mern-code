@@ -12,7 +12,7 @@ import {
   Select,
   TextField,
   Tooltip,
-  Container,
+  Grid,
 } from "@mui/material";
 import toast, { Toaster } from "react-hot-toast";
 import app_config from "../../config";
@@ -33,6 +33,7 @@ import { green } from '@mui/material/colors';
 import * as Yup from "yup";
 const RManageCurrentAffairs = () => {
   const [NewsArray, setNewsArray] = useState([]);
+  const [masterArray, setMasterArray] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [showUpdateForm, setShowUpdateForm] = useState(false);
@@ -52,6 +53,7 @@ const RManageCurrentAffairs = () => {
       .then((data) => {
         console.log(data);
         setNewsArray(data);
+        setMasterArray(data);
         setLoading(false);
       });
   };
@@ -126,10 +128,8 @@ const RManageCurrentAffairs = () => {
   }, []);
 
   const displayNews = () => {
-    
     if (!loading) {
       return NewsArray.map((newscurrent, i) => (
-        
         <Accordion key={newscurrent._id}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -138,28 +138,24 @@ const RManageCurrentAffairs = () => {
           >
             <h4>{newscurrent.title}</h4>
             <br></br>
+            <br></br>
+            
           </AccordionSummary>
           <AccordionDetails>
             <img src={url + "/" + newscurrent.thumbnail} height="200" />
             <br></br>
-            <br></br>
+            
             <h5>{newscurrent.summary}</h5>
 
-            {/* <Typography>{newscurrent.categorystate}</Typography> */}
+            {/* <h5>{newscurrent.categorystate}</h5> */}
+         
+            <h5>{newscurrent.createdAt}</h5>
+
+          
          
           <Stack direction="row" spacing={2}>
-            <Fab
-              disabled={newscurrent.approvenews}
-              variant="extended"
-              size="small"
-              color="primary"
-              onClick={(e) => approveNews(newscurrent._id)}
-              aria-label="add"
-            >
-              <BeenhereRoundedIcon sx={{ mr: 1 }} />
-              {newscurrent.approvenews ? "Approved" : "Approve News"}
-            </Fab>
-
+           
+             
             <Fab
               variant="extended"
               size="small"
@@ -190,13 +186,11 @@ const RManageCurrentAffairs = () => {
           </AccordionDetails>
         </Accordion>
       ));
-      
     }
-    
   };
   
   const submitNews = (values) => {
-    // values.thumbnail = thumbnail;
+    values.thumbnail = thumbnail;
     console.log(values);
 
     fetch(url + "/newscurrent/update/" + values._id, {
@@ -224,7 +218,7 @@ const RManageCurrentAffairs = () => {
       .min(2, "Too Short!")
       .max(100, "Too Long!")
       .required("Title is Required"),
-    categorystate: Yup.string().required("State is Required"),
+    // categorystate: Yup.string().required("Category is Required"),
     summary: Yup.string().required("News Summary is Required"),
     tags: Yup.string().required("News Tags is Required"),
   });
@@ -233,11 +227,11 @@ const RManageCurrentAffairs = () => {
       return (
         <div>
           <Card>
-            <CardContent sx={{ width: 640 }}>
+            <CardContent sx={{ width: 700}}>
               <Formik
                 initialValues={updateFormdata}
                 onSubmit={submitNews}
-                validationSchema={validationSchema}
+                // validationSchema={validationSchema}
                
               >
                 {({ values, handleChange, handleSubmit, errors }) => (
@@ -251,7 +245,8 @@ const RManageCurrentAffairs = () => {
                         label="Title"
                         variant="outlined"
                         id="title"
-                          onChange={handleChange}
+                        type="text"
+                        onChange={handleChange}
                         value={values.title}
                         error={Boolean(errors.title)}
                         helperText={errors.title}
@@ -307,8 +302,8 @@ const RManageCurrentAffairs = () => {
                           ))}
                         </Select>
                       </FormControl> */}
-                      <br></br>
-                      <br></br>
+                      {/* <br></br>
+                      <br></br> */}
 
                       <TextField
                         className="w-100 mt-3"
@@ -383,14 +378,14 @@ const RManageCurrentAffairs = () => {
                           className="form-control"
                           type="file"
                           id="thumbnail"
-                          value={values.thumbnail}
-                          error={Boolean(errors.thumbnail)}
-                          helperText={errors.thumbnail}
+                         
                           onChange={uploadThumbnail}
                         />
                       </div>
 
-                      <Button type="submit" className="btn btn-primary">
+                      <Button type="submit" className="btn btn-primary"
+                      color="success"
+                      variant="contained">
                         Submit
                       </Button>
                       <Button
@@ -410,48 +405,140 @@ const RManageCurrentAffairs = () => {
       );
     }
   };
+  const filterByDate = (e) => {
+    const selDate = e.target.value;
+
+    const filtered = masterArray.filter((newscurrent) => {
+      const newsDate = new Date(newscurrent.createdAt);
+      return newsDate.getDate() == selDate;
+    });
+    setNewsArray(filtered);
+  };
+  const filterByMonth = (e) => {
+    const selDate = e.target.value;
+
+    const filtered = masterArray.filter((newscurrent) => {
+      const newsDate = new Date(newscurrent.createdAt);
+      return newsDate.getMonth() == selDate;
+    });
+    console.log(filtered);
+    setNewsArray(filtered);
+  };
+
+  const filterByYear = (e) => {
+    const selYear = e.target.value;
+    console.log(e.target.value);
+
+    const filtered = masterArray.filter((newscurrent) => {
+      const newsDate = new Date(newscurrent.createdAt);
+      // console.log(newsDate.getFullYear());
+      return newsDate.getFullYear() == selYear;
+    });
+    console.log(filtered);
+    setNewsArray([...filtered]);
+    console.log(NewsArray);
+  };
+
 
   return (
-    <div className="newsmanage">
+    <div className="">
       <Toaster position="top-right" reverseOrder={false} />
-      <div className="title-current"></div>
      
-      <TextField
-        className="w-50 mt-5"
-        label="Search Here" 
-        value={filter}
-        onChange={(e) => setFilter(e.target.value)}
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <SearchIcon sx={{ color: "active.active", mr: 1, my: 0.5 }} />
-            </InputAdornment>
-          ),
-        }}
-      />
+      <header className="current-back">
+      <Grid container spacing={5}>
+        <Grid item md={6}>
+       
+      
+       
+        <Typography className="text-white" variant="h2"  sx={{ml:50}}>
+          Manage Current Affairs
+        </Typography>
+        
+          <div className="input-group mt-5">
+            <input className="form-control" 
+            value={filter}
+            label="Search Here"
+            onChange={(e) => setFilter(e.target.value)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon
+                    sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                  />
+                </InputAdornment>
+              ),
+            }}/>
+            <Button variant="contained"  onClick={filternews}
+            type="submit" align="center" >Search
+            
+            </Button>
+            <br></br>
+            <br></br>
+          </div>
+          <br></br>
+          <br></br>
+          </Grid>
+          <Grid item md={2}  sx={{mt: 28}}>
+              <select
+                class="form-select mt-5"
+                aria-label="Default select example"
+                onChange={filterByYear}
+              >
+                <option selected>Select a Year</option>
+                {[2021, 2022].map((year) => (
+                  <option value={year}>{year}</option>
+                ))}
+              </select>
+            </Grid>
 
-      <Fab
-        className="w-30 mt-5"
-        variant="extended"
-        color="primary"
-        aria-label="add"
-        type="submit"
-        onClick={filternews}
-      >
-        Search
-      </Fab>
+            <Grid item md={2} sx={{mt: 28}}>
+              <select
+                class="form-select mt-5"
+                aria-label="Default select example"
+                onChange={filterByMonth}
+              >
+                <option selected>Select a Month</option>
+                {[ "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sept",
+                "Oct",
+                "Nov",
+                "Dec"].map((mon, i) => (
+                  <option value={i}>{mon}</option>
+                ))}
+              </select>
+            </Grid>
+            <Grid item md={2} sx={{mt: 28}}>
+              <select
+                class="form-select mt-5"
+                aria-label="Default select example"
+                onChange={filterByDate}
+              >
+                <option selected>Select a Date</option>
+                {Array.from({ length: 31 }, (_, i) => i + 1).map((date) => (
+                  <option value={date}>{date}</option>
+                ))}
+              </select>
+            </Grid>
+            </Grid>
+       
 
-    <br></br>
-    <br></br>
-    <br></br>
 
-      <Container>
+
+  
+
       {displayNews()}
-      </Container>
       {updateForm()}
+      </header>
     </div>
+    
   );
 };
 
 export default RManageCurrentAffairs;
-  
