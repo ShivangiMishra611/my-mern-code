@@ -8,10 +8,9 @@ const newsRouter = require("./routers/newsRouter");
 const reporterRouter = require("./routers/reporterRouter");
 const feedbackRouter = require("./routers/feedbackRouter");
 const currentAffairsRouter = require("./routers/currentAffairsRouter");
-
+const lucknowRouter = require("./routers/lucknowRouter");
 
 // const managerRouter = require("./routers/managerRouter");
-
 
 const utilRouter = require("./routers/utils");
 
@@ -29,6 +28,7 @@ app.use("/news", newsRouter);
 app.use("/reporter", reporterRouter);
 app.use("/feedback", feedbackRouter);
 app.use("/newscurrent", currentAffairsRouter);
+app.use("/newsLucknow", lucknowRouter);
 
 // app.use("/reporter", reporterRouter);
 
@@ -53,8 +53,6 @@ io.on("connection", (socket) => {
 });
 
 app.use(express.static("./uploads"));
-
-
 
 httpServer.listen(port, () => {
   console.log("server started");
