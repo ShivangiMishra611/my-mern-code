@@ -12,8 +12,7 @@ import {
   CardActions,
   Typography
 } from "@mui/material";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
+
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import * as React from "react";
 import { styled } from "@mui/material/styles";
@@ -59,7 +58,8 @@ const ViewLucknow = () => {
   const displayNews = () => {
     if (!loading) {
       return (
-        <div className="view">
+        <Card  classname="">
+        
         <header className="stories-header">
           <Typography className="text-center text-white" variant="h2">
             Trusted News Tribune
@@ -69,6 +69,7 @@ const ViewLucknow = () => {
             
           </header>
   
+      
     
         <Card className="cardview" sx={{ maxWidth: 700, mt: 5 }}>
          
@@ -97,12 +98,7 @@ const ViewLucknow = () => {
                 </Tooltip>
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
-              <FavoriteIcon />
-            </IconButton>
-            <IconButton aria-label="share">
-              <ShareIcon />
-            </IconButton>
+           
             <ExpandMore
               expand={expanded}
               onClick={handleExpandClick}
@@ -112,6 +108,7 @@ const ViewLucknow = () => {
               <ExpandMoreIcon />
             </ExpandMore>
           </CardActions>
+          </Card>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
             <h5
@@ -130,7 +127,7 @@ const ViewLucknow = () => {
             </CardContent>
           </Collapse>
         </Card>
-        </div>
+      
       );
     }
   };
