@@ -57,11 +57,11 @@ const ManageCurrentAffairs = () => {
         setLoading(false);
       });
   };
-  const newsCategories = [
-    "National",
-    "International",
+  // const newsCategories = [
+  //   "National",
+  //   "International",
    
-  ];
+  // ];
   const uploadThumbnail = (e) => {
     console.log("file selected");
 
@@ -147,7 +147,7 @@ const ManageCurrentAffairs = () => {
             
             <h5>{newscurrent.summary}</h5>
 
-            <h5>{newscurrent.categorystate}</h5>
+            {/* <h5>{newscurrent.categorystate}</h5> */}
          
             <h5>{newscurrent.createdAt}</h5>
 
@@ -228,7 +228,7 @@ const ManageCurrentAffairs = () => {
       .min(2, "Too Short!")
       .max(100, "Too Long!")
       .required("Title is Required"),
-    categorystate: Yup.string().required("Category is Required"),
+    // categorystate: Yup.string().required("Category is Required"),
     summary: Yup.string().required("News Summary is Required"),
     tags: Yup.string().required("News Tags is Required"),
   });
@@ -278,7 +278,7 @@ const ManageCurrentAffairs = () => {
                       <br></br>
                       <br></br>
 
-                      <FormControl fullWidth>
+                      {/* <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label1">
                           Category
                         </InputLabel>
@@ -311,9 +311,9 @@ const ManageCurrentAffairs = () => {
                             </MenuItem>
                           ))}
                         </Select>
-                      </FormControl>
-                      <br></br>
-                      <br></br>
+                      </FormControl> */}
+                      {/* <br></br>
+                      <br></br> */}
 
                       <TextField
                         className="w-100 mt-3"

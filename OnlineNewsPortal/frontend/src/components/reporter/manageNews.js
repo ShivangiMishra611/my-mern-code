@@ -3,7 +3,6 @@ import {
   Button,
   Autocomplete,
   Card,
-  
   CardContent,
   Chip,
   FormControl,
@@ -13,6 +12,8 @@ import {
   Select,
   TextField,
   Tooltip,
+  Typography,
+  Grid,
 } from "@mui/material";
 import toast, { Toaster } from "react-hot-toast";
 import app_config from "../../config";
@@ -29,11 +30,12 @@ import BeenhereRoundedIcon from "@mui/icons-material/BeenhereRounded";
 import { Formik } from "formik";
 import Swal from "sweetalert2";
 import { Edit, TitleSharp, Category, Newspaper } from "@mui/icons-material";
-import { green } from '@mui/material/colors';
+import { green } from "@mui/material/colors";
 import * as Yup from "yup";
 
 const RManageNews = () => {
   const [NewsArray, setNewsArray] = useState([]);
+  const [masterArray, setMasterArray] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [showUpdateForm, setShowUpdateForm] = useState(false);
@@ -51,16 +53,22 @@ const RManageNews = () => {
       .then((data) => {
         console.log(data);
         setNewsArray(data);
+        setMasterArray(data);
         setLoading(false);
       });
   };
-  
+
   const newsCategories = [
     "Sports",
     "Politics",
     "World",
     "Lifestyle",
     "Entertainment",
+    "Health",
+    "Business",
+    "Education",
+    "Technology",
+    "Jobs",
   ];
   const uploadThumbnail = (e) => {
     console.log("file selected");
@@ -85,7 +93,6 @@ const RManageNews = () => {
         console.log(data);
         fetchData();
         toast.success("News Successfully Deleted!!", {
-
           style: {
             borderRadius: "10px",
             background: "#333",
@@ -95,18 +102,18 @@ const RManageNews = () => {
       });
   };
 
-//   const approveNews = (id) => {
-//     fetch(url + "/news/update/" + id, {
-//       method: "PUT",
-//       body: JSON.stringify({ approvenews: true }),
-//       headers: { "Content-Type": "application/json" },
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {
-//         console.log(data);
-//         fetchData();
-//       });
-//   };
+  const approveNews = (id) => {
+    fetch(url + "/news/update/" + id, {
+      method: "PUT",
+      body: JSON.stringify({ approvenews: true }),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        fetchData();
+      });
+  };
   const filternews = () => {
     fetch(url + "/news/getall")
       .then((res) => res.json())
@@ -115,14 +122,11 @@ const RManageNews = () => {
         const filtered = data.filter(({ title }) => {
           return title.toLowerCase().includes(filter.toLowerCase());
         });
-
-        
         console.log(filtered);
         setNewsArray(filtered);
         setLoading(false);
       });
   };
-
 
   useEffect(() => {
     fetchData();
@@ -136,7 +140,6 @@ const RManageNews = () => {
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
-           
           >
             <h4>{news.title}</h4>
           </AccordionSummary>
@@ -147,20 +150,18 @@ const RManageNews = () => {
             <h5>{news.summary}</h5>
 
             <h5>{news.category}</h5>
+            <h5>{news.createdAt}</h5>
             <Stack direction="row" spacing={2}>
-            <br></br>
-            <br></br>
-              
+             
+
               <Fab
                 variant="extended"
                 size="small"
                 color="primary"
                 onClick={(e) => deleteNews(news._id)}
-               
-              aria-label="add"
+                aria-label="add"
               >
-                <DeleteRoundedIcon sx={{ mr: 1}} />
-              
+                <DeleteRoundedIcon sx={{ mr: 1 }} />
               </Fab>
               <Tooltip title="Update News Article">
                 <Fab
@@ -173,10 +174,10 @@ const RManageNews = () => {
                   aria-label="add"
                 >
                   <Edit
-                  variant="extended"
-                  size="small"
-                  sx={{ color: green[30] }}   />
-                  
+                    variant="extended"
+                    size="small"
+                    sx={{ color: green[30] }}
+                  />
                 </Fab>
               </Tooltip>
             </Stack>
@@ -187,7 +188,7 @@ const RManageNews = () => {
   };
 
   const submitNews = (values) => {
-    // values.thumbnail = thumbnail;
+    values.thumbnail = thumbnail;
     console.log(values);
 
     fetch(url + "/news/update/" + values._id, {
@@ -213,7 +214,7 @@ const RManageNews = () => {
   const validationSchema = Yup.object().shape({
     title: Yup.string()
       .min(2, "Too Short!")
-      .max(50, "Too Long!")
+      .max(100, "Too Long!")
       .required("Title is Required"),
     category: Yup.string().required("Category is Required"),
     summary: Yup.string().required("News Summary is Required"),
@@ -229,13 +230,10 @@ const RManageNews = () => {
               <Formik
                 initialValues={updateFormdata}
                 onSubmit={submitNews}
-                validationSchema={validationSchema}
-               
+                // validationSchema={validationSchema}
               >
                 {({ values, handleChange, handleSubmit, errors }) => (
                   <form onSubmit={handleSubmit}>
-                   
-                   
                     <div className="card-body">
                       <TextField
                         className="w-100 mt-3"
@@ -295,9 +293,7 @@ const RManageNews = () => {
                           }}
                         >
                           {newsCategories.map((category) => (
-                            <MenuItem value={category}>
-                              {category}
-                            </MenuItem>
+                            <MenuItem value={category}>{category}</MenuItem>
                           ))}
                         </Select>
                       </FormControl>
@@ -377,17 +373,16 @@ const RManageNews = () => {
                           className="form-control"
                           type="file"
                           id="thumbnail"
-                          value={values.thumbnail}
-                          error={Boolean(errors.thumbnail)}
-                          helperText={errors.thumbnail}
                           onChange={uploadThumbnail}
-                        
                         />
                       </div>
 
-                      <Button type="submit" className="btn btn-primary"
-                       color="success"
-                       variant="contained">
+                      <Button
+                        type="submit"
+                        className="btn btn-primary"
+                        color="success"
+                        variant="contained"
+                      >
                         Submit
                       </Button>
                       <Button
@@ -408,45 +403,184 @@ const RManageNews = () => {
     }
   };
 
+  const filterByDate = (e) => {
+    const selDate = e.target.value;
+
+    const filtered = masterArray.filter((news) => {
+      const newsDate = new Date(news.createdAt);
+      return newsDate.getDate() == selDate;
+    });
+    setNewsArray(filtered);
+  };
+  const filterByMonth = (e) => {
+    const selDate = e.target.value;
+
+    const filtered = masterArray.filter((news) => {
+      const newsDate = new Date(news.createdAt);
+      return newsDate.getMonth() == selDate;
+    });
+    console.log(filtered);
+    setNewsArray(filtered);
+  };
+
+  // const filterByCategory = (e) => {
+  //   fetch(url + "/news/getall")
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     console.log(data);
+  //     const filtered = data.filter(({ category }) => {
+  //       return category.toLowerCase();
+  //     });
+  //     console.log(filtered);
+  //     setNewsArray(filtered);
+  //     setLoading(false);
+  //   });
+  //   // const cat = e.target.value;
+
+  //   // const filtered = masterArray.filter((news) => {
+  //   //   const cat1=masterArray.filter((news)
+
+  //   //   return category.toLowerCase() == cat;
+  //   // });
+  //   // console.log(filtered);
+  //   // setNewsArray(filtered);
+  // };
+
+  const filterByYear = (e) => {
+    const selYear = e.target.value;
+    console.log(e.target.value);
+
+    const filtered = masterArray.filter((news) => {
+      const newsDate = new Date(news.createdAt);
+      // console.log(newsDate.getFullYear());
+      return newsDate.getFullYear() == selYear;
+    });
+    console.log(filtered);
+    setNewsArray([...filtered]);
+    console.log(NewsArray);
+  };
+
   return (
-    <div className="newsmanage">
+    <div className="title">
       <Toaster position="top-right" reverseOrder={false} />
-      <div className="manage-news"></div>
-     
-     <TextField 
-       className="w-50 mt-5 "
-       label="Search Here"
-       value={filter}
-       onChange={(e) => setFilter(e.target.value)}
-       InputProps={{
-         startAdornment: (
-           <InputAdornment position="start">
-             <SearchIcon sx={{ color: "active.active", mr: 1, my: 0.5 }} />
-           </InputAdornment>
-         ),
-       }}
-     />
-    
+      <header className="news-back">
+        <Grid container spacing={5}>
+          <Grid item md={6}>
+           
+            <Typography className="text-white text-center" variant="h2" sx={{ml:50}}>
+              Manage News 
+                
+            </Typography>
 
-     <Fab 
-       className="w-30 mt-5"
-       variant="extended"
-       color="primary"
-       aria-label="add"
-       type="submit"
-       onClick={filternews}
-     >
-       Search
-     </Fab>
+           
+          
+            
+          
+              <div className="input-group mt-5">
+                <input
+                  className="form-control"
+                  value={filter}
+                  label="Search Here"
+                  onChange={(e) => setFilter(e.target.value)}
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">
+                        <SearchIcon
+                          sx={{ color: "active.active", mr: 1, my: 0.5 }}
+                        />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+                <Button variant="contained" onClick={filternews} type="submit" align="center">
+                  Search
+                </Button>
+                <br></br>
+                <br></br>
+             
+            </div>
+            <br></br>
+            <br></br>
+          </Grid>
 
-     <br></br>
-     <br></br>
-     <br></br>
-  
+          <Grid item md={2} sx={{ mt: 19 }}>
+            <select
+              class="form-select mt-5"
+              aria-label="Default select example"
+              onChange={filterByYear}
+            >
+              <option selected>Select a Year</option>
+              {[2021, 2022].map((year) => (
+                <option value={year}>{year}</option>
+              ))}
+            </select>
+          </Grid>
 
-      {displayNews()}
+          <Grid item md={2} sx={{ mt: 19 }}>
+            <select
+              class="form-select mt-5"
+              aria-label="Default select example"
+              onChange={filterByMonth}
+            >
+              <option selected>Select a Month</option>
+              {[
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "Jun",
+                "Jul",
+                "Aug",
+                "Sept",
+                "Oct",
+                "Nov",
+                "Dec",
+              ].map((mon, i) => (
+                <option value={i}>{mon}</option>
+              ))}
+            </select>
+          </Grid>
 
-      {updateForm()}
+          {/* <Grid item md={2}  sx={{mt: 27}}>
+              <select
+                class="form-select mt-5"
+                aria-label="Default select example"
+                onChange={filterByCategory}
+              >
+                <option selected>Select a Category</option>
+                {[ "Sports",
+    "Politics",
+    "World",
+    "Lifestyle",
+    "Entertainment",
+    "Health",
+    "Business",
+    "Education",
+    "Technology"].map((category) => (
+                  <option value={category}>{category}</option>
+                ))}
+              </select>
+            </Grid> */}
+          <Grid item md={2} sx={{ mt: 19 }}>
+            <select
+              class="form-select mt-5"
+              aria-label="Default select example"
+              onChange={filterByDate}
+            >
+              <option selected>Select a Date</option>
+              {Array.from({ length: 31 }, (_, i) => i + 1).map((date) => (
+                <option value={date}>{date}</option>
+              ))}
+            </select>
+          </Grid>
+        </Grid>
+
+            {displayNews()}
+            {updateForm()}
+         
+          
+       </header>
     </div>
   );
 };

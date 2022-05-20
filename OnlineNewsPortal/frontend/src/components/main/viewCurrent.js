@@ -12,8 +12,7 @@ import {
   CardActions,
   Typography
 } from "@mui/material";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ShareIcon from "@mui/icons-material/Share";
+
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import * as React from "react";
 import { styled } from "@mui/material/styles";
@@ -59,7 +58,8 @@ const ViewCurrent = () => {
   const displayNews = () => {
     if (!loading) {
       return (
-        <div className="view">
+        <Card  classname="">
+        
         <header className="stories-header">
           <Typography className="text-center text-white" variant="h2">
             Trusted News Tribune
@@ -68,7 +68,7 @@ const ViewCurrent = () => {
         
             
           </header>
-  
+       
         
        
         
@@ -79,6 +79,7 @@ const ViewCurrent = () => {
           <CardMedia
             component="img"
             height="350"
+            image={url + "/" + newsData.thumbnail}
             alt="sports news"
           />
           <CardContent>
@@ -100,12 +101,7 @@ const ViewCurrent = () => {
                 </Tooltip>
           </CardContent>
           <CardActions disableSpacing>
-            <IconButton aria-label="add to favorites">
-              <FavoriteIcon />
-            </IconButton>
-            <IconButton aria-label="share">
-              <ShareIcon />
-            </IconButton>
+          
             <ExpandMore
               expand={expanded}
               onClick={handleExpandClick}
@@ -115,6 +111,7 @@ const ViewCurrent = () => {
               <ExpandMoreIcon />
             </ExpandMore>
           </CardActions>
+          </Card>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
             <CardContent>
             <h5
@@ -133,7 +130,7 @@ const ViewCurrent = () => {
             </CardContent>
           </Collapse>
         </Card>
-        </div>
+        
         
       );
     }
