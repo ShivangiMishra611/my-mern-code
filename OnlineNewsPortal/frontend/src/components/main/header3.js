@@ -198,7 +198,7 @@ const Header = () => {
     {
       name: "Manage Profile",
       icon: <AccountCircle />,
-     link: "/reporter/profile",
+      link: "/reporter/profile",
     },
     {
       name: "Add News",
@@ -213,6 +213,13 @@ const Header = () => {
     },
 
     {
+      name: "Add Lucknow News",
+      icon: <BadgeIcon />,
+      link: "/reporter/addlucknownews",
+    },
+
+
+    {
       name: "Manage News",
       icon: <BadgeIcon />,
       link: "/reporter/managenews",
@@ -223,6 +230,13 @@ const Header = () => {
       icon: <BadgeIcon />,
       link: "/reporter/managecurrentaffairs",
     },
+
+    {
+      name: "Manage Lucknow News",
+      icon: <BadgeIcon />,
+      link: "/reporter/managelucknownews",
+    },
+   
     {
       name: "Logout",
       icon: <AccountCircle />,

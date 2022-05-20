@@ -28,6 +28,13 @@ const Reporter = () => {
     },
 
     {
+      title: "Add Lucknow News",
+      icon: <BadgeIcon />,
+      link: "/reporter/addlucknownews",
+    },
+
+
+    {
       title: "Manage News",
       icon: <BadgeIcon />,
       link: "/reporter/managenews",
@@ -37,6 +44,12 @@ const Reporter = () => {
       title: "Manage Current Affairs",
       icon: <BadgeIcon />,
       link: "/reporter/managecurrentaffairs",
+    },
+
+    {
+      title: "Manage Lucknow News",
+      icon: <BadgeIcon />,
+      link: "/reporter/managelucknownews",
     },
   ];
   return (

@@ -458,7 +458,7 @@ const Home = () => {
             <div
               className="rotate-img"
               onClick={(e) =>
-                navigate("/main/viewnews/" + businessArray[1]._id)
+                navigate("/main/viewnews/" + businessArray[3]._id)
               }
               style={{
                 cursor: "pointer",
@@ -467,16 +467,16 @@ const Home = () => {
               }}
             >
               <img
-                src={url + "/" + businessArray[1].thumbnail}
+                src={url + "/" + businessArray[3].thumbnail}
                 alt="thumb"
                 className="img-fluid"
               />
             </div>
-            <Tooltip title={businessArray[1].title}>
+            <Tooltip title={businessArray[3].title}>
               <p
                 className="fs-16 font-weight-600 mb-0 mt-3"
                 onClick={(e) =>
-                  navigate("/main/viewnews/" + businessArray[1]._id)
+                  navigate("/main/viewnews/" + businessArray[3]._id)
                 }
                 style={{
                   cursor: "pointer",
@@ -485,7 +485,7 @@ const Home = () => {
                   fontWeight: "bolder",
                 }}
               >
-                {truncate(businessArray[1].title, 25)}
+                {truncate(businessArray[3].title, 25)}
               </p>
             </Tooltip>
             <p
@@ -504,7 +504,7 @@ const Home = () => {
               >
                 Sports
               </span>
-              {timeAgo.format(new Date(businessArray[1].createdAt))}
+              {timeAgo.format(new Date(businessArray[3].createdAt))}
             </p>
           </div>
           <div className="border-bottom pb-3 mb-3">
@@ -620,7 +620,7 @@ const Home = () => {
                           <div
                             className="rotate-img"
                             onClick={(e) =>
-                              navigate("/main/viewnews/" + sportsArray[0]._id)
+                              navigate("/main/viewnews/" + sportsArray[3]._id)
                             }
                             style={{
                               cursor: "pointer",
@@ -629,16 +629,16 @@ const Home = () => {
                             }}
                           >
                             <img
-                              src={url + "/" + sportsArray[0].thumbnail}
+                              src={url + "/" + sportsArray[3].thumbnail}
                               alt="thumb"
                               className="img-fluid"
                             />
                           </div>
-                          <Tooltip title={sportsArray[0].title}>
+                          <Tooltip title={sportsArray[3].title}>
                             <p
                               className="fs-16 font-weight-600 mb-0 mt-3"
                               onClick={(e) =>
-                                navigate("/main/viewnews/" + sportsArray[0]._id)
+                                navigate("/main/viewnews/" + sportsArray[3]._id)
                               }
                               style={{
                                 cursor: "pointer",
@@ -647,7 +647,7 @@ const Home = () => {
                                 fontWeight: "bolder",
                               }}
                             >
-                              {truncate(sportsArray[0].title, 25)}
+                              {truncate(sportsArray[3].title, 25)}
                             </p>
                           </Tooltip>
                           <p
@@ -664,16 +664,16 @@ const Home = () => {
                                 fontWeight: "bolder",
                               }}
                             >
-                              {sportsArray[0].category}
+                              {sportsArray[3].category}
                             </span>
-                            {timeAgo.format(new Date(sportsArray[0].createdAt))}
+                            {timeAgo.format(new Date(sportsArray[3].createdAt))}
                           </p>
                         </div>
                         <div className="border-bottom pb-3 mb-3">
                           <div
                             className="rotate-img"
                             onClick={(e) =>
-                              navigate("/main/viewnews/" + sportsArray[1]._id)
+                              navigate("/main/viewnews/" + sportsArray[4]._id)
                             }
                             style={{
                               cursor: "pointer",
@@ -682,16 +682,16 @@ const Home = () => {
                             }}
                           >
                             <img
-                              src={url + "/" + sportsArray[1].thumbnail}
+                              src={url + "/" + sportsArray[4].thumbnail}
                               alt="thumb"
                               className="img-fluid"
                             />
                           </div>
-                          <Tooltip title={sportsArray[1].title}>
+                          <Tooltip title={sportsArray[4].title}>
                             <p
                               className="fs-16 font-weight-600 mb-0 mt-3"
                               onClick={(e) =>
-                                navigate("/main/viewnews/" + sportsArray[1]._id)
+                                navigate("/main/viewnews/" + sportsArray[4]._id)
                               }
                               style={{
                                 cursor: "pointer",
@@ -700,7 +700,7 @@ const Home = () => {
                                 fontWeight: "bolder",
                               }}
                             >
-                              {truncate(sportsArray[1].title, 25)}
+                              {truncate(sportsArray[4].title, 25)}
                             </p>
                           </Tooltip>
                           <p
@@ -719,7 +719,7 @@ const Home = () => {
                             >
                               Sports
                             </span>
-                            {timeAgo.format(new Date(sportsArray[1].createdAt))}
+                            {timeAgo.format(new Date(sportsArray[4].createdAt))}
                           </p>
                         </div>
 
@@ -727,7 +727,7 @@ const Home = () => {
                           <div
                             className="rotate-img"
                             onClick={(e) =>
-                              navigate("/main/viewnews/" + sportsArray[2]._id)
+                              navigate("/main/viewnews/" + sportsArray[5]._id)
                             }
                             style={{
                               cursor: "pointer",
@@ -736,16 +736,16 @@ const Home = () => {
                             }}
                           >
                             <img
-                              src={url + "/" + sportsArray[2].thumbnail}
+                              src={url + "/" + sportsArray[5].thumbnail}
                               alt="thumb"
                               className="img-fluid"
                             />
                           </div>
-                          <Tooltip title={sportsArray[2].title}>
+                          <Tooltip title={sportsArray[5].title}>
                             <p
                               className="fs-16 font-weight-600 mb-0 mt-3"
                               onClick={(e) =>
-                                navigate("/main/viewnews/" + sportsArray[2]._id)
+                                navigate("/main/viewnews/" + sportsArray[5]._id)
                               }
                               style={{
                                 cursor: "pointer",
@@ -754,7 +754,7 @@ const Home = () => {
                                 fontWeight: "bolder",
                               }}
                             >
-                              {truncate(sportsArray[2].title, 25)}
+                              {truncate(sportsArray[5].title, 25)}
                             </p>
                           </Tooltip>
                           <p
@@ -773,7 +773,7 @@ const Home = () => {
                             >
                               Sports
                             </span>
-                            {timeAgo.format(new Date(sportsArray[2].createdAt))}
+                            {timeAgo.format(new Date(sportsArray[5].createdAt))}
                           </p>
                         </div>
                       </div>
@@ -1021,11 +1021,11 @@ const Home = () => {
 
                           <div className="d-flex border-bottom-blue pt-3 pb-4 align-items-center justify-content-between">
                             <div className="pr-3">
-                              <Tooltip title={newsArray[0].title}>
+                              <Tooltip title={newsArray[19].title}>
                                 <h5
                                   onClick={(e) =>
                                     navigate(
-                                      "/main/viewnews/" + newsArray[0]._id
+                                      "/main/viewnews/" + newsArray[19]._id
                                     )
                                   }
                                   style={{
@@ -1034,21 +1034,21 @@ const Home = () => {
                                     fontWeight: "bolder",
                                   }}
                                 >
-                                  {truncate(newsArray[0].title, 30)}
+                                  {truncate(newsArray[19].title, 30)}
                                 </h5>
                               </Tooltip>
                               <div className="fs-12">
                                 <span className="mr-2">
-                                  {newsArray[0].category}
+                                  {newsArray[19].category}
                                 </span>
                                 {timeAgo.format(
-                                  new Date(newsArray[0].createdAt)
+                                  new Date(newsArray[19].createdAt)
                                 )}
                               </div>
                             </div>
                             <div className="rotate-img">
                               <img
-                                src={url + "/" + newsArray[0].thumbnail}
+                                src={url + "/" + newsArray[19].thumbnail}
                                 alt="thumb"
                                 className="img-fluid img-lg"
                               />
@@ -1057,11 +1057,11 @@ const Home = () => {
 
                           <div className="d-flex border-bottom-blue pb-4 pt-4 align-items-center justify-content-between">
                             <div className="pr-3">
-                              <Tooltip title={newsArray[1].title}>
+                              <Tooltip title={newsArray[21].title}>
                                 <h5
                                   onClick={(e) =>
                                     navigate(
-                                      "/main/viewnews/" + newsArray[1]._id
+                                      "/main/viewnews/" + newsArray[21]._id
                                     )
                                   }
                                   style={{
@@ -1070,21 +1070,21 @@ const Home = () => {
                                     fontWeight: "bolder",
                                   }}
                                 >
-                                  {truncate(newsArray[1].title, 30)}
+                                  {truncate(newsArray[21].title, 30)}
                                 </h5>
                               </Tooltip>
                               <div className="fs-12">
                                 <span className="mr-2">
-                                  {newsArray[1].category}
+                                  {newsArray[21].category}
                                 </span>
                                 {timeAgo.format(
-                                  new Date(newsArray[1].createdAt)
+                                  new Date(newsArray[21].createdAt)
                                 )}
                               </div>
                             </div>
                             <div className="rotate-img">
                               <img
-                                src={url + "/" + newsArray[1].thumbnail}
+                                src={url + "/" + newsArray[21].thumbnail}
                                 alt="thumb"
                                 className="img-fluid img-lg"
                               />
@@ -1093,11 +1093,11 @@ const Home = () => {
 
                           <div className="d-flex pt-4 align-items-center justify-content-between">
                             <div className="pr-3">
-                              <Tooltip title={newsArray[2].title}>
+                              <Tooltip title={newsArray[22].title}>
                                 <h5
                                   onClick={(e) =>
                                     navigate(
-                                      "/main/viewnews/" + newsArray[2]._id
+                                      "/main/viewnews/" + newsArray[22]._id
                                     )
                                   }
                                   style={{
@@ -1106,21 +1106,21 @@ const Home = () => {
                                     fontWeight: "bolder",
                                   }}
                                 >
-                                  {truncate(newsArray[2].title, 30)}
+                                  {truncate(newsArray[22].title, 30)}
                                 </h5>
                               </Tooltip>
                               <div className="fs-12">
                                 <span className="mr-2">
-                                  {newsArray[2].category}
+                                  {newsArray[22].category}
                                 </span>
                                 {timeAgo.format(
-                                  new Date(newsArray[2].createdAt)
+                                  new Date(newsArray[22].createdAt)
                                 )}
                               </div>
                             </div>
                             <div className="rotate-img">
                               <img
-                                src={url + "/" + newsArray[2].thumbnail}
+                                src={url + "/" + newsArray[22].thumbnail}
                                 alt="thumb"
                                 className="img-fluid img-lg"
                               />
@@ -1187,7 +1187,7 @@ const Home = () => {
                     <div className="card">
                       <div className="card-body">
                         {newsArray
-                          .slice(0, 6)
+                          .slice(24, 30)
                           .map(
                             ({
                               _id,
@@ -1207,10 +1207,10 @@ const Home = () => {
                                         className="img-fluid"
                                       />
                                     </div>
-                                    <div className="logo">
+                                    <div className="">
                                       <span className="badge badge-danger font-weight-bold">
                                      
-                                        <h2>Trusted News Tribune</h2>
+                                      
                                         
                                         
                                       </span> 

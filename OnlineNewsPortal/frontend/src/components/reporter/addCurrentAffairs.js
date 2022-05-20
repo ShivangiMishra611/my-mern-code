@@ -111,8 +111,13 @@ const AddCurrentAffairs = () => {
               {({ values, handleChange, handleSubmit, errors }) => (
                 <form onSubmit={handleSubmit}>
                   <div className="card-body">
+<<<<<<< HEAD
                     
                   <Grid item  xs={12}>
+=======
+                   
+                      <Grid item  xs={12}>
+>>>>>>> 6844d29d27409dadfe267d13efe433ae25febb6c
                         <TextField
                           className="w-100 mt-3"
                           placeholder="Title"
@@ -137,6 +142,7 @@ const AddCurrentAffairs = () => {
                             ),
                           }}
                         />
+<<<<<<< HEAD
                       </Grid>
                       {/* <Grid item sm={6} xs={12}>
                         <FormControl fullWidth className="mt-3">
@@ -174,6 +180,11 @@ const AddCurrentAffairs = () => {
                         </FormControl>
                       </Grid> */}
 
+=======
+                     </Grid>
+                    
+
+>>>>>>> 6844d29d27409dadfe267d13efe433ae25febb6c
                       <Grid item  xs={12}>
                         <TextField
                           className="w-100 mt-3"
@@ -208,7 +219,7 @@ const AddCurrentAffairs = () => {
                       <br></br>
                       <Grid item  xs={12}>
                         <Autocomplete
-                          className="mt-5"
+                          className="mt-2"
                           multiple
                           id="tags"
                           options={["crime", "politics", "sports"].map(
@@ -238,7 +249,11 @@ const AddCurrentAffairs = () => {
                           )}
                         />
                       </Grid>
+<<<<<<< HEAD
                    
+=======
+                    
+>>>>>>> 6844d29d27409dadfe267d13efe433ae25febb6c
 
                     <br></br>
                     <br></br>

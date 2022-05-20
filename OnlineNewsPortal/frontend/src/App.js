@@ -19,7 +19,7 @@ import LucknowNews from "./components/main/lucknowNews";
 
 import Reporter from "./components/reporter";
 import AddNews from "./components/reporter/addNews";
-import AddLucknowNews from "./components/reporter/addLucknowNews";
+// import AddLucknowNews from "./components/reporter/addLucknowNews";
 import ViewArchieve from "./components/main/viewArchieve";
 import ViewNews from "./components/main/viewNews";
 import ViewCurrent from "./components/main/viewCurrent";
@@ -33,10 +33,11 @@ import AdminLogin from "./components/admin/adminLogin";
 import Authenticator from "./components/authenticator";
 import ReporterAuthenticator from "./components/reporterAuthenticator";
 import AddCurrentAffairs from "./components/reporter/addCurrentAffairs";
+import AddLucknowNews from "./components/reporter/addLucknowNews";
 import CurrentAffairs from "./components/main/currentAffairs";
 import ManageCurrentAffairs from "./components/admin/manageCurrentAffairs";
 import RManageCurrentAffairs from "./components/reporter/manageCurrentAffairs";
-// import RManageLucknowNews from "./components/reporter/managelucknowNews";
+import RManageLucknowNews from "./components/reporter/manageLucknowNews";
 import RManageNews from "./components/reporter/manageNews";
 import { createTheme, ThemeProvider } from "@mui/material";
 import TimeAgo from "javascript-time-ago";
@@ -77,9 +78,14 @@ function App() {
             <Route element={<AddCurrentAffairs />} path="addcurrentaffairs" />
             <Route element={<RManageNews />} path="managenews" />
             <Route
-              element={<RManageCurrentAffairs />}
-              path="managecurrentaffairs"
+              element={<RManageLucknowNews />}
+              path="managelucknownews"
             />
+
+            <Route
+            element={<RManageCurrentAffairs />}
+            path="managecurrentaffairs"
+          />
           </Route>
 
           <Route element={<Main />} path="main">

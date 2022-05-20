@@ -13,6 +13,7 @@ import {
  
   Typography
 } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 
 
@@ -58,12 +59,10 @@ const ViewNews = () => {
     fetchData();
   }, []);
 
-  
-
   const displayNews = () => {
     if (!loading) {
       return (
-        <Card  classname="view">
+        <Card  classname="">
         
         <header className="stories-header">
           <Typography className="text-center text-white" variant="h2">
@@ -114,6 +113,14 @@ const ViewNews = () => {
                 </Tooltip>
           </CardContent>
           <CardActions disableSpacing>
+          <ExpandMore
+          expand={expanded}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <ExpandMoreIcon />
+        </ExpandMore>
           
             
            
