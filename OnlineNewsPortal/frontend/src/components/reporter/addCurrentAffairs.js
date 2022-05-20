@@ -111,8 +111,8 @@ const AddCurrentAffairs = () => {
               {({ values, handleChange, handleSubmit, errors }) => (
                 <form onSubmit={handleSubmit}>
                   <div className="card-body">
-                    <Grid container spacing={5}>
-                      <Grid item sm={6} xs={12}>
+                   
+                      <Grid item  xs={12}>
                         <TextField
                           className="w-100 mt-3"
                           placeholder="Title"
@@ -137,44 +137,10 @@ const AddCurrentAffairs = () => {
                             ),
                           }}
                         />
-                      </Grid>
-                      <Grid item sm={6} xs={12}>
-                        <FormControl fullWidth className="mt-3">
-                          <InputLabel id="demo-simple-select-label1">
-                            Category
-                          </InputLabel>
+                     </Grid>
+                    
 
-                          <Select
-                            labelId="demo-simple-select-label1"
-                            id="categorystate"
-                            name="categorystate"
-                            label="Category"
-                            value={values.categorystate}
-                            error={Boolean(errors.categorystate)}
-                            helperText="Category is required"
-                            onChange={handleChange}
-                            InputProps={{
-                              endAdornment: (
-                                <InputAdornment position="end">
-                                  <CategoryIcon
-                                    sx={{
-                                      color: "active.active",
-                                      mr: 1,
-                                      my: 0.5,
-                                    }}
-                                  />
-                                </InputAdornment>
-                              ),
-                            }}
-                          >
-                            {newsCategories.map((categorystate) => (
-                              <MenuItem value={categorystate}>{categorystate}</MenuItem>
-                            ))}
-                          </Select>
-                        </FormControl>
-                      </Grid>
-
-                      <Grid item sm={6} xs={12}>
+                      <Grid item  xs={12}>
                         <TextField
                           className="w-100 mt-3"
                           label="Add News"
@@ -206,9 +172,9 @@ const AddCurrentAffairs = () => {
 
                       <br></br>
                       <br></br>
-                      <Grid item sm={6} xs={12}>
+                      <Grid item  xs={12}>
                         <Autocomplete
-                          className="mt-5"
+                          className="mt-2"
                           multiple
                           id="tags"
                           options={["crime", "politics", "sports"].map(
@@ -238,7 +204,7 @@ const AddCurrentAffairs = () => {
                           )}
                         />
                       </Grid>
-                    </Grid>
+                    
 
                     <br></br>
                     <br></br>
