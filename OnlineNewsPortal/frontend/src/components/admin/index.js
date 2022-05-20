@@ -21,11 +21,13 @@ const Admin = () => {
       title: "Add Reporter",
       icon: <PersonAddIcon sx={{ color: blue[30] }} />,
       link: "/admin/addreporter",
+    
     },
     {
       title: "Add News",
       icon: <NewspaperIcon />,
       link: "/admin/addnews",
+     
     },
 
     {

@@ -276,6 +276,10 @@ const CurrentAffairs = () => {
   return (
     <div>
       <header className="caffairs-header">
+      <a className="navbar-brand" href="#">
+            <img src={url + "/images/logoo.png"} alt="" width="50" height="35" />
+          </a>
+        
         <Typography className="text-center text-white" variant="h5">
           Trusted News Tribune
         </Typography>

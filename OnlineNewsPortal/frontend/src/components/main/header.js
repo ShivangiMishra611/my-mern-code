@@ -14,9 +14,11 @@ const Header = () => {
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            <img src={url + "/images/logo.png"} alt="" width="50" height="35" />
+        <a className="navbar-brand" href="#">
+            <img src={url + "/images/logoo.png"} alt="" width="50" height="35" />
           </a>
+        
+          
           <button
             className="navbar-toggler"
             type="button"
