@@ -447,6 +447,9 @@ const RManageCurrentAffairs = () => {
       <header className="current-back">
       <Grid container spacing={5}>
         <Grid item md={6}>
+        <a className="navbar-brand" href="#">
+            <img src={url + "/images/logoo.png"} alt="" width="50" height="35" />
+          </a>
        
       
        
@@ -478,7 +481,7 @@ const RManageCurrentAffairs = () => {
           <br></br>
           <br></br>
           </Grid>
-          <Grid item md={2}  sx={{mt: 28}}>
+          <Grid item md={2}  sx={{mt: 34}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -491,7 +494,7 @@ const RManageCurrentAffairs = () => {
               </select>
             </Grid>
 
-            <Grid item md={2} sx={{mt: 28}}>
+            <Grid item md={2} sx={{mt: 34}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -514,7 +517,7 @@ const RManageCurrentAffairs = () => {
                 ))}
               </select>
             </Grid>
-            <Grid item md={2} sx={{mt: 28}}>
+            <Grid item md={2} sx={{mt: 34}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"

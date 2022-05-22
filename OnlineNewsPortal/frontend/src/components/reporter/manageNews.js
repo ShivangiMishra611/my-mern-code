@@ -466,6 +466,9 @@ const RManageNews = () => {
       <header className="news-back">
         <Grid container spacing={5}>
           <Grid item md={6}>
+          <a className="navbar-brand" href="#">
+            <img src={url + "/images/logoo.png"} alt="" width="50" height="35" />
+          </a>
            
             <Typography className="text-white text-center" variant="h2" sx={{ml:50}}>
               Manage News 
@@ -503,7 +506,7 @@ const RManageNews = () => {
             <br></br>
           </Grid>
 
-          <Grid item md={2} sx={{ mt: 19 }}>
+          <Grid item md={2} sx={{ mt: 25 }}>
             <select
               class="form-select mt-5"
               aria-label="Default select example"
@@ -516,7 +519,7 @@ const RManageNews = () => {
             </select>
           </Grid>
 
-          <Grid item md={2} sx={{ mt: 19 }}>
+          <Grid item md={2} sx={{ mt: 25 }}>
             <select
               class="form-select mt-5"
               aria-label="Default select example"
@@ -562,7 +565,7 @@ const RManageNews = () => {
                 ))}
               </select>
             </Grid> */}
-          <Grid item md={2} sx={{ mt: 19 }}>
+          <Grid item md={2} sx={{ mt: 25 }}>
             <select
               class="form-select mt-5"
               aria-label="Default select example"

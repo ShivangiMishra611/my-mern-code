@@ -107,6 +107,8 @@
         <div className="addrep-bg">
           <Container maxWidth="lg">
           <div className="add-news-top">
+         
+         
             <Typography variant="h2" sx={{fontWeight : 900}}>ADD LUCKNOW NEWS</Typography>
           </div>
           <Card>

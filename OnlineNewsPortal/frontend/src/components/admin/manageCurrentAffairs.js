@@ -457,10 +457,13 @@ const ManageCurrentAffairs = () => {
       <header className="current-back">
       <Grid container spacing={5}>
         <Grid item md={6}>
+        <a className="navbar-brand" href="#">
+        <img src={url + "/images/logoo.png"} alt="" width="50" height="35" />
+      </a>
        
       
        
-        <Typography className="text-center text-white" variant="h2"  sx={{ml:65,mt:1}}>
+        <Typography className="text-center text-white" variant="h2"  sx={{ml:50,mt:1}}>
           Manage Current Affairs
         </Typography>
         
@@ -488,7 +491,7 @@ const ManageCurrentAffairs = () => {
           <br></br>
           <br></br>
           </Grid>
-          <Grid item md={2}  sx={{mt: 28}}>
+          <Grid item md={2}  sx={{mt: 35}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -501,7 +504,7 @@ const ManageCurrentAffairs = () => {
               </select>
             </Grid>
 
-            <Grid item md={2} sx={{mt: 28}}>
+            <Grid item md={2} sx={{mt: 35}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -524,7 +527,7 @@ const ManageCurrentAffairs = () => {
                 ))}
               </select>
             </Grid>
-            <Grid item md={2} sx={{mt: 28}}>
+            <Grid item md={2} sx={{mt: 35}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"

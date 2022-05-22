@@ -446,7 +446,9 @@ const RManageLucknowNews = () => {
       
       <Grid container spacing={5}>
         <Grid item md={6}>
-  
+        <a className="navbar-brand" href="#">
+        <img src={url + "/images/logoo.png"} alt="" width="50" height="35" />
+      </a>
      
         <Typography  className=" text-white text-center" variant="h2" sx={{ml:50}}>
           Manage Lucknow News
@@ -470,13 +472,17 @@ const RManageLucknowNews = () => {
             <Button variant="contained" onClick={filternews} type="submit">
               Search
             </Button>
+            <br></br>
+            <br></br>
           </div>
+          <br></br>
+          <br></br>
           </Grid>
           
 
           <br></br>
           <br></br>
-          <Grid item md={2} sx={{mt:28}}>
+          <Grid item md={2} sx={{mt:34}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -489,7 +495,7 @@ const RManageLucknowNews = () => {
               </select>
             </Grid>
 
-            <Grid item md={2}  sx={{mt: 28}}>
+            <Grid item md={2}  sx={{mt: 34}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -501,7 +507,7 @@ const RManageLucknowNews = () => {
                 ))}
               </select>
             </Grid>
-            <Grid item md={2} sx={{mt:28}}>
+            <Grid item md={2} sx={{mt:34}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"

@@ -214,6 +214,9 @@ const ViewArchieve = () => {
       <header className="archieve-header">
       <Grid container spacing={5}>
         <Grid item md={6}>
+        <a className="navbar-brand" href="#">
+            <img src={url + "/images/logoo.png"} alt="" width="50" height="35" />
+          </a>
 
  
         <Typography className="text-center text-white" variant="h2" sx={{ml:74}}>
@@ -245,7 +248,7 @@ const ViewArchieve = () => {
     </div>
     </Grid>
    
-    <Grid item md={2} sx={{mt:20}}>
+    <Grid item md={2} sx={{mt:25}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -258,7 +261,7 @@ const ViewArchieve = () => {
               </select>
             </Grid>
 
-            <Grid item md={2} sx={{mt:20}}>
+            <Grid item md={2} sx={{mt:25}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
@@ -281,7 +284,7 @@ const ViewArchieve = () => {
                 ))}
               </select>
             </Grid>
-            <Grid item md={2} sx={{mt:20}}>
+            <Grid item md={2} sx={{mt:25}}>
               <select
                 class="form-select mt-5"
                 aria-label="Default select example"
