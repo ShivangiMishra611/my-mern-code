@@ -225,7 +225,7 @@ const ViewArchieve = () => {
 
     
     <Typography className="text-center text-white" variant="h2" sx={{ml:66}}>
-      Archieves
+      Archives
     </Typography>
    
       <div className="input-group mt-5">
