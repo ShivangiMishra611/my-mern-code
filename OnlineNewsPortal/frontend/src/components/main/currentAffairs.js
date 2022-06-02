@@ -225,6 +225,7 @@ const CurrentAffairs = () => {
             </Grid>
             <Grid item xs={6} md={8}>
               <CardContent>
+              <h5>{newscurrent.uploadedBy}</h5>
               <h5>{newscurrent.createdAt}</h5>
                 <Tooltip title={newscurrent.title}>
                   <h2
