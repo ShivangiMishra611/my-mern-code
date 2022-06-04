@@ -79,7 +79,7 @@ const Home = () => {
             <div
               className="rotate-img"
               onClick={(e) =>
-                navigate("/main/viewnews/" + educationArray[4]._id)
+                navigate("/main/viewnews/" + educationArray[20]._id)
               }
               style={{
                 cursor: "pointer",
@@ -88,16 +88,16 @@ const Home = () => {
               }}
             >
               <img
-                src={url + "/" + educationArray[4].thumbnail}
+                src={url + "/" + educationArray[20].thumbnail}
                 alt="thumb"
                 className="img-fluid"
               />
             </div>
-            <Tooltip title={educationArray[4].title}>
+            <Tooltip title={educationArray[20].title}>
               <p
                 className="fs-16 font-weight-600 mb-0 mt-3"
                 onClick={(e) =>
-                  navigate("/main/viewnews/" + educationArray[4]._id)
+                  navigate("/main/viewnews/" + educationArray[20]._id)
                 }
                 style={{
                   cursor: "pointer",
@@ -106,7 +106,7 @@ const Home = () => {
                   fontWeight: "bolder",
                 }}
               >
-                {truncate(educationArray[4].title, 25)}
+                {truncate(educationArray[20].title, 25)}
               </p>
             </Tooltip>
             <p
@@ -125,14 +125,14 @@ const Home = () => {
               >
                 Education{" "}
               </span>{" "}
-              {timeAgo.format(new Date(educationArray[4].createdAt))}
+              {timeAgo.format(new Date(educationArray[20].createdAt))}
             </p>
           </div>
           <div className="border-bottom pb-3">
             <div
               className="rotate-img"
               onClick={(e) =>
-                navigate("/main/viewnews/" + educationArray[5]._id)
+                navigate("/main/viewnews/" + educationArray[21]._id)
               }
               style={{
                 cursor: "pointer",
@@ -141,16 +141,16 @@ const Home = () => {
               }}
             >
               <img
-                src={url + "/" + educationArray[5].thumbnail}
+                src={url + "/" + educationArray[21].thumbnail}
                 alt="thumb"
                 className="img-fluid"
               />
             </div>
-            <Tooltip title={educationArray[5].title}>
+            <Tooltip title={educationArray[21].title}>
               <p
                 className="fs-16 font-weight-600 mb-0 mt-3"
                 onClick={(e) =>
-                  navigate("/main/viewnews/" + educationArray[5]._id)
+                  navigate("/main/viewnews/" + educationArray[21]._id)
                 }
                 style={{
                   cursor: "pointer",
@@ -159,7 +159,7 @@ const Home = () => {
                   fontWeight: "bolder",
                 }}
               >
-                {truncate(educationArray[5].title, 25)}
+                {truncate(educationArray[21].title, 25)}
               </p>
             </Tooltip>
             <p
@@ -178,14 +178,14 @@ const Home = () => {
               >
                 Education
               </span>{" "}
-              {timeAgo.format(new Date(educationArray[5].createdAt))}
+              {timeAgo.format(new Date(educationArray[21].createdAt))}
             </p>
           </div>
           <div className="border-bottom pb-3">
             <div
               className="rotate-img"
               onClick={(e) =>
-                navigate("/main/viewnews/" + educationArray[6]._id)
+                navigate("/main/viewnews/" + educationArray[22]._id)
               }
               style={{
                 cursor: "pointer",
@@ -194,16 +194,16 @@ const Home = () => {
               }}
             >
               <img
-                src={url + "/" + educationArray[6].thumbnail}
+                src={url + "/" + educationArray[22].thumbnail}
                 alt="thumb"
                 className="img-fluid"
               />
             </div>
-            <Tooltip title={educationArray[6].title}>
+            <Tooltip title={educationArray[22].title}>
               <p
                 className="fs-16 font-weight-600 mb-0 mt-3"
                 onClick={(e) =>
-                  navigate("/main/viewnews/" + educationArray[6]._id)
+                  navigate("/main/viewnews/" + educationArray[22]._id)
                 }
                 style={{
                   cursor: "pointer",
@@ -212,7 +212,7 @@ const Home = () => {
                   fontWeight: "bolder",
                 }}
               >
-                {truncate(educationArray[6].title, 25)}
+                {truncate(educationArray[22].title, 25)}
               </p>
             </Tooltip>
             <p
@@ -231,7 +231,7 @@ const Home = () => {
               >
                 Education
               </span>{" "}
-              {timeAgo.format(new Date(educationArray[6].createdAt))}
+              {timeAgo.format(new Date(educationArray[22].createdAt))}
             </p>
           </div>
         </div>
@@ -247,7 +247,7 @@ const Home = () => {
           <div className="border-bottom pb-3">
             <div
               className="rotate-img"
-              onClick={(e) => navigate("/main/viewnews/" + worldArray[0]._id)}
+              onClick={(e) => navigate("/main/viewnews/" + worldArray[15]._id)}
               style={{
                 cursor: "pointer",
 
@@ -255,15 +255,15 @@ const Home = () => {
               }}
             >
               <img
-                src={url + "/" + worldArray[0].thumbnail}
+                src={url + "/" + worldArray[15].thumbnail}
                 alt="thumb"
                 className="img-fluid"
               />
             </div>
-            <Tooltip title={worldArray[0].title}>
+            <Tooltip title={worldArray[15].title}>
               <p
                 className="fs-16 font-weight-600 mb-0 mt-3"
-                onClick={(e) => navigate("/main/viewnews/" + worldArray[0]._id)}
+                onClick={(e) => navigate("/main/viewnews/" + worldArray[15]._id)}
                 style={{
                   cursor: "pointer",
                   color: "#950000",
@@ -271,7 +271,7 @@ const Home = () => {
                   fontWeight: "bolder",
                 }}
               >
-                {truncate(worldArray[0].title, 25)}
+                {truncate(worldArray[15].title, 25)}
               </p>
             </Tooltip>
             <p
@@ -290,29 +290,29 @@ const Home = () => {
               >
                 World{" "}
               </span>{" "}
-              {timeAgo.format(new Date(worldArray[0].createdAt))}
+              {timeAgo.format(new Date(worldArray[15].createdAt))}
             </p>
           </div>
           <div className="border-bottom pb-3">
             <div
               className="rotate-img"
-              onClick={(e) => navigate("/main/viewnews/" + worldArray[1]._id)}
+              onClick={(e) => navigate("/main/viewnews/" + worldArray[16]._id)}
               style={{
                 cursor: "pointer",
 
                 fontWeight: "bolder",
               }}
             >
-              <img
-                src={url + "/" + worldArray[1].thumbnail}
+              <img 
+                src={url + "/" + worldArray[16].thumbnail}
                 alt="thumb"
                 className="img-fluid"
               />
             </div>
-            <Tooltip title={worldArray[1].title}>
+            <Tooltip title={worldArray[16].title}>
               <p
                 className="fs-16 font-weight-600 mb-0 mt-3"
-                onClick={(e) => navigate("/main/viewnews/" + worldArray[1]._id)}
+                onClick={(e) => navigate("/main/viewnews/" + worldArray[16]._id)}
                 style={{
                   cursor: "pointer",
                   color: "#950000",
@@ -320,7 +320,7 @@ const Home = () => {
                   fontWeight: "bolder",
                 }}
               >
-                {truncate(worldArray[1].title, 25)}
+                {truncate(worldArray[16].title, 25)}
               </p>
             </Tooltip>
             <p
@@ -339,13 +339,13 @@ const Home = () => {
               >
                 World
               </span>{" "}
-              {timeAgo.format(new Date(worldArray[1].createdAt))}
+              {timeAgo.format(new Date(worldArray[16].createdAt))}
             </p>
           </div>
           <div className="border-bottom pb-3">
             <div
               className="rotate-img"
-              onClick={(e) => navigate("/main/viewnews/" + worldArray[2]._id)}
+              onClick={(e) => navigate("/main/viewnews/" + worldArray[17]._id)}
               style={{
                 cursor: "pointer",
 
@@ -353,15 +353,15 @@ const Home = () => {
               }}
             >
               <img
-                src={url + "/" + worldArray[2].thumbnail}
+                src={url + "/" + worldArray[17].thumbnail}
                 alt="thumb"
                 className="img-fluid"
               />
             </div>
-            <Tooltip title={worldArray[2].title}>
+            <Tooltip title={worldArray[17].title}>
               <p
                 className="fs-16 font-weight-600 mb-0 mt-3"
-                onClick={(e) => navigate("/main/viewnews/" + worldArray[2]._id)}
+                onClick={(e) => navigate("/main/viewnews/" + worldArray[17]._id)}
                 style={{
                   cursor: "pointer",
                   color: "#950000",
@@ -369,7 +369,7 @@ const Home = () => {
                   fontWeight: "bolder",
                 }}
               >
-                {truncate(worldArray[2].title, 25)}
+                {truncate(worldArray[17].title, 25)}
               </p>
             </Tooltip>
             <p
@@ -388,7 +388,7 @@ const Home = () => {
               >
                 World
               </span>{" "}
-              {timeAgo.format(new Date(worldArray[2].createdAt))}
+              {timeAgo.format(new Date(worldArray[17].createdAt))}
             </p>
           </div>
         </div>
